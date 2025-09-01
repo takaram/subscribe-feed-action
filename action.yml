@@ -1,23 +1,28 @@
-name: The name of your action here
-description: Provide a description here
-author: Your name or organization here
+name: Subscribe Feed Action
+description: Subscribe to an RSS feed
+author: Takuya Aramaki
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
   icon: heart
   color: red
 
-# Define your inputs here.
 inputs:
-  milliseconds:
-    description: Your input description here
+  feed-url:
+    description: URL of the feed to subscribe to
     required: true
-    default: '1000'
 
-# Define your outputs here.
+  state-file-path:
+    description: "Path to JSON file that stores read/seen items (default: ./rss-state.json)"
+    required: false
+    default: ./rss-state.json
+
 outputs:
-  time:
-    description: Your output description here
+  has-new-items:
+    description: true if there are new items in the feed
+
+  new-items:
+    description: List of new items in the feed
 
 runs:
   using: node24
