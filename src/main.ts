@@ -15,7 +15,8 @@ type State = {
 export async function run(): Promise<void> {
   try {
     const feedUrl = core.getInput('feed-url');
-    const stateFilePath = core.getInput('state-file-path') || './rss-state.json';
+    const stateFilePath =
+      core.getInput('state-file-path') || './rss-state.json';
 
     const parser = new Parser();
     const feed = await parser.parseURL(feedUrl);

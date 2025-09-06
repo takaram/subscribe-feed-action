@@ -13,7 +13,8 @@ inputs:
     required: true
 
   state-file-path:
-    description: "Path to JSON file that stores read/seen items (default: ./rss-state.json)"
+    description:
+      'Path to JSON file that stores read/seen items (default: ./rss-state.json)'
     required: false
     default: ./rss-state.json
 
