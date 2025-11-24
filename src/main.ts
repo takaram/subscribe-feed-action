@@ -1,77 +1,64 @@
 import * as core from '@actions/core';
 import Parser from 'rss-parser';
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { findNewItems, initializeState, State } from './feed';
 
-type State = {
-  idField: 'guid' | 'link' | 'pubDate';
-  readIds: string[];
-};
+export interface Dependencies {
+  getInput: (name: string) => string;
+  setOutput: (name: string, value: any) => void;
+  info: (message: string) => void;
+  setFailed: (message: string) => void;
+  fetchFeed: (url: string) => Promise<Parser.Output<{[key: string]: any}>>;
+  readState: (path: string) => State | null;
+  writeState: (path: string, state: State) => void;
+}
 
-/**
- * The main function for the action.
- *
- * @returns Resolves when the action is complete.
- */
-export async function run(): Promise<void> {
+export async function run(deps: Dependencies): Promise<void> {
   try {
-    const feedUrl = core.getInput('feed-url');
+    const feedUrl = deps.getInput('feed-url');
     const stateFilePath =
-      core.getInput('state-file-path') || './rss-state.json';
+      deps.getInput('state-file-path') || './rss-state.json';
 
-    const parser = new Parser();
-    const feed = await parser.parseURL(feedUrl);
+    const feed = await deps.fetchFeed(feedUrl);
 
     if (feed.items.length === 0) {
-      core.info('Feed contains no item');
+      deps.info('Feed contains no item');
       return;
     }
 
-    const state = readJson(stateFilePath) ?? initializeState(feed);
+    const currentState = deps.readState(stateFilePath) ?? initializeState(feed.items);
 
-    const newItems = feed.items.filter(item => {
-      const id = item[state.idField];
-      if (!id) {
-        core.info(`Item with no ${state.idField} found, skipping`);
-        return false;
-      }
-      return !state.readIds.includes(id);
-    });
+    const { newItems, newState } = findNewItems(feed.items, currentState);
 
-    core.setOutput('has-new-items', newItems.length > 0);
-    core.setOutput('new-items', newItems);
+    deps.setOutput('has-new-items', newItems.length > 0);
+    deps.setOutput('new-items', newItems);
 
-    state.readIds.push(...newItems.map(item => item[state.idField]!));
-    writeFileSync(stateFilePath, JSON.stringify(state));
+    deps.writeState(stateFilePath, newState);
   } catch (error) {
-    // Fail the workflow run if an error occurs
     if (error instanceof Error) {
-      core.setFailed(error.message);
+      deps.setFailed(error.message);
     }
   }
 }
 
-function initializeState(feed: Parser.Output<{}>): State {
-  let idField: State['idField'];
-  if ('guid' in feed.items[0]) {
-    idField = 'guid';
-  } else if ('link' in feed.items[0]) {
-    idField = 'link';
-  } else if ('pubDate' in feed.items[0]) {
-    idField = 'pubDate';
-  } else {
-    throw new Error('No valid ID field found');
-  }
-
-  return {
-    idField,
-    readIds: [],
+export async function main(): Promise<void> {
+  const parser = new Parser();
+  const dependencies: Dependencies = {
+    getInput: core.getInput,
+    setOutput: core.setOutput,
+    info: core.info,
+    setFailed: core.setFailed,
+    fetchFeed: async (url: string) => parser.parseURL(url),
+    readState: (path: string): State | null => {
+      if (existsSync(path)) {
+        const data = readFileSync(path, 'utf-8');
+        return JSON.parse(data) as State;
+      }
+      return null;
+    },
+    writeState: (path: string, state: State) => {
+      writeFileSync(path, JSON.stringify(state));
+    },
   };
-}
-
-function readJson(path: string): State | null {
-  if (existsSync(path)) {
-    const data = readFileSync(path, 'utf-8');
-    return JSON.parse(data) as State;
-  }
-  return null;
+  await run(dependencies);
 }
