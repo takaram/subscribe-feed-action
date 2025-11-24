@@ -1,7 +1,7 @@
 import * as core from '@actions/core';
 import Parser from 'rss-parser';
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
-import { findNewItems, initializeState, State } from './feed';
+import { findNewItems, initializeState, State } from './feed.js';
 
 export interface Dependencies {
   getInput: (name: string) => string;
