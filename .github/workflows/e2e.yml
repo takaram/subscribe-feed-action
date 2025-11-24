@@ -1,0 +1,29 @@
+name: E2E test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+    e2e-test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v5
+
+            - run: echo '{}' > ./state.json
+
+            - id: subscribe-feed
+              uses: ./
+              with:
+                feed-url: 'https://example.com/feed'
+                state-file-path: './state.json'
+
+            - name: Show result
+              env:
+                OUTPUT: ${{ toJson(steps.subscribe-feed.outputs) }}
+              run: echo "Output: $OUTPUT"
+
+            - name: Show updated state file
+              run: cat ./state.json
