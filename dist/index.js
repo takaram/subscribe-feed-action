@@ -1,50 +1,55 @@
-import require$$0 from 'os';
-import require$$0$1 from 'crypto';
-import require$$1 from 'fs';
-import require$$1$5 from 'path';
+import require$$0$2 from 'os';
+import require$$0$3 from 'crypto';
+import require$$1$2 from 'fs';
+import require$$1$8 from 'path';
 import require$$2 from 'http';
-import require$$3 from 'https';
-import require$$0$4 from 'net';
-import require$$1$1 from 'tls';
+import require$$1$3 from 'https';
+import require$$0$6 from 'net';
+import require$$1$4 from 'tls';
 import require$$4 from 'events';
-import require$$0$3 from 'assert';
-import require$$0$2 from 'util';
-import require$$0$5 from 'stream';
+import require$$0$5 from 'assert';
+import require$$0$4 from 'util';
+import require$$0$7 from 'stream';
 import require$$7 from 'buffer';
 import require$$8 from 'querystring';
 import require$$14 from 'stream/web';
-import require$$0$7 from 'node:stream';
-import require$$1$2 from 'node:util';
-import require$$0$6 from 'node:events';
-import require$$0$8 from 'worker_threads';
+import require$$0$9 from 'node:stream';
+import require$$1$5 from 'node:util';
+import require$$0$8 from 'node:events';
+import require$$0$a from 'worker_threads';
 import require$$2$1 from 'perf_hooks';
 import require$$5 from 'util/types';
 import require$$4$1 from 'async_hooks';
-import require$$1$3 from 'console';
-import require$$1$4 from 'url';
-import require$$3$1 from 'zlib';
+import require$$1$6 from 'console';
+import require$$1$7 from 'url';
+import require$$3 from 'zlib';
 import require$$6 from 'string_decoder';
-import require$$0$9 from 'diagnostics_channel';
+import require$$0$b from 'diagnostics_channel';
 import require$$2$2 from 'child_process';
 import require$$6$1 from 'timers';
+import { writeFileSync, existsSync, readFileSync } from 'node:fs';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function getDefaultExportFromCjs (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+}
 
 var core = {};
 
 var command = {};
 
-var utils$1 = {};
+var utils$2 = {};
 
-var hasRequiredUtils$1;
+var hasRequiredUtils$2;
 
-function requireUtils$1 () {
-	if (hasRequiredUtils$1) return utils$1;
-	hasRequiredUtils$1 = 1;
+function requireUtils$2 () {
+	if (hasRequiredUtils$2) return utils$2;
+	hasRequiredUtils$2 = 1;
 	// We use any as a valid input type
 	/* eslint-disable @typescript-eslint/no-explicit-any */
-	Object.defineProperty(utils$1, "__esModule", { value: true });
-	utils$1.toCommandProperties = utils$1.toCommandValue = void 0;
+	Object.defineProperty(utils$2, "__esModule", { value: true });
+	utils$2.toCommandProperties = utils$2.toCommandValue = void 0;
 	/**
 	 * Sanitizes an input into a string so it can be passed into issueCommand safely
 	 * @param input input to sanitize into a string
@@ -58,7 +63,7 @@ function requireUtils$1 () {
 	    }
 	    return JSON.stringify(input);
 	}
-	utils$1.toCommandValue = toCommandValue;
+	utils$2.toCommandValue = toCommandValue;
 	/**
 	 *
 	 * @param annotationProperties
@@ -78,9 +83,9 @@ function requireUtils$1 () {
 	        endColumn: annotationProperties.endColumn
 	    };
 	}
-	utils$1.toCommandProperties = toCommandProperties;
+	utils$2.toCommandProperties = toCommandProperties;
 	
-	return utils$1;
+	return utils$2;
 }
 
 var hasRequiredCommand;
@@ -113,8 +118,8 @@ function requireCommand () {
 	};
 	Object.defineProperty(command, "__esModule", { value: true });
 	command.issue = command.issueCommand = void 0;
-	const os = __importStar(require$$0);
-	const utils_1 = requireUtils$1();
+	const os = __importStar(require$$0$2);
+	const utils_1 = requireUtils$2();
 	/**
 	 * Commands
 	 *
@@ -221,10 +226,10 @@ function requireFileCommand () {
 	fileCommand.prepareKeyValueMessage = fileCommand.issueFileCommand = void 0;
 	// We use any as a valid input type
 	/* eslint-disable @typescript-eslint/no-explicit-any */
-	const crypto = __importStar(require$$0$1);
-	const fs = __importStar(require$$1);
-	const os = __importStar(require$$0);
-	const utils_1 = requireUtils$1();
+	const crypto = __importStar(require$$0$3);
+	const fs = __importStar(require$$1$2);
+	const os = __importStar(require$$0$2);
+	const utils_1 = requireUtils$2();
 	function issueFileCommand(command, message) {
 	    const filePath = process.env[`GITHUB_${command}`];
 	    if (!filePath) {
@@ -259,7 +264,7 @@ function requireFileCommand () {
 
 var oidcUtils = {};
 
-var lib = {};
+var lib$2 = {};
 
 var proxy = {};
 
@@ -372,11 +377,11 @@ var hasRequiredTunnel$1;
 function requireTunnel$1 () {
 	if (hasRequiredTunnel$1) return tunnel$1;
 	hasRequiredTunnel$1 = 1;
-	var tls = require$$1$1;
+	var tls = require$$1$4;
 	var http = require$$2;
-	var https = require$$3;
+	var https = require$$1$3;
 	var events = require$$4;
-	var util = require$$0$2;
+	var util = require$$0$4;
 
 
 	tunnel$1.httpOverHttp = httpOverHttp;
@@ -1090,14 +1095,14 @@ function requireUtil$6 () {
 	if (hasRequiredUtil$6) return util$6;
 	hasRequiredUtil$6 = 1;
 
-	const assert = require$$0$3;
+	const assert = require$$0$5;
 	const { kDestroyed, kBodyUsed } = requireSymbols$4();
 	const { IncomingMessage } = require$$2;
-	const stream = require$$0$5;
-	const net = require$$0$4;
+	const stream = require$$0$7;
+	const net = require$$0$6;
 	const { InvalidArgumentError } = requireErrors();
 	const { Blob } = require$$7;
-	const nodeUtil = require$$0$2;
+	const nodeUtil = require$$0$4;
 	const { stringify } = require$$8;
 	const { headerNameLowerCasedRecord } = requireConstants$4();
 
@@ -1718,7 +1723,7 @@ function requireTimers () {
 	return timers;
 }
 
-var main = {exports: {}};
+var main$1 = {exports: {}};
 
 var sbmh;
 var hasRequiredSbmh;
@@ -1753,8 +1758,8 @@ function requireSbmh () {
 	 * Based heavily on the Streaming Boyer-Moore-Horspool C++ implementation
 	 * by Hongli Lai at: https://github.com/FooBarWidget/boyer-moore-horspool
 	 */
-	const EventEmitter = require$$0$6.EventEmitter;
-	const inherits = require$$1$2.inherits;
+	const EventEmitter = require$$0$8.EventEmitter;
+	const inherits = require$$1$5.inherits;
 
 	function SBMH (needle) {
 	  if (typeof needle === 'string') {
@@ -1963,8 +1968,8 @@ function requirePartStream () {
 	if (hasRequiredPartStream) return PartStream_1;
 	hasRequiredPartStream = 1;
 
-	const inherits = require$$1$2.inherits;
-	const ReadableStream = require$$0$7.Readable;
+	const inherits = require$$1$5.inherits;
+	const ReadableStream = require$$0$9.Readable;
 
 	function PartStream (opts) {
 	  ReadableStream.call(this, opts);
@@ -2008,8 +2013,8 @@ function requireHeaderParser () {
 	if (hasRequiredHeaderParser) return HeaderParser_1;
 	hasRequiredHeaderParser = 1;
 
-	const EventEmitter = require$$0$6.EventEmitter;
-	const inherits = require$$1$2.inherits;
+	const EventEmitter = require$$0$8.EventEmitter;
+	const inherits = require$$1$5.inherits;
 	const getLimit = requireGetLimit();
 
 	const StreamSearch = requireSbmh();
@@ -2116,8 +2121,8 @@ function requireDicer () {
 	if (hasRequiredDicer) return Dicer_1;
 	hasRequiredDicer = 1;
 
-	const WritableStream = require$$0$7.Writable;
-	const inherits = require$$1$2.inherits;
+	const WritableStream = require$$0$9.Writable;
+	const inherits = require$$1$5.inherits;
 
 	const StreamSearch = requireSbmh();
 
@@ -2693,8 +2698,8 @@ function requireMultipart () {
 	//  * support limits.fieldNameSize
 	//     -- this will require modifications to utils.parseParams
 
-	const { Readable } = require$$0$7;
-	const { inherits } = require$$1$2;
+	const { Readable } = require$$0$9;
+	const { inherits } = require$$1$5;
 
 	const Dicer = requireDicer();
 
@@ -3256,11 +3261,11 @@ function requireUrlencoded () {
 var hasRequiredMain;
 
 function requireMain () {
-	if (hasRequiredMain) return main.exports;
+	if (hasRequiredMain) return main$1.exports;
 	hasRequiredMain = 1;
 
-	const WritableStream = require$$0$7.Writable;
-	const { inherits } = require$$1$2;
+	const WritableStream = require$$0$9.Writable;
+	const { inherits } = require$$1$5;
 	const Dicer = requireDicer();
 
 	const MultipartParser = requireMultipart();
@@ -3337,12 +3342,12 @@ function requireMain () {
 	  this._parser.write(chunk, cb);
 	};
 
-	main.exports = Busboy;
-	main.exports.default = Busboy;
-	main.exports.Busboy = Busboy;
+	main$1.exports = Busboy;
+	main$1.exports.default = Busboy;
+	main$1.exports.Busboy = Busboy;
 
-	main.exports.Dicer = Dicer;
-	return main.exports;
+	main$1.exports.Dicer = Dicer;
+	return main$1.exports;
 }
 
 var constants$3;
@@ -3352,7 +3357,7 @@ function requireConstants$3 () {
 	if (hasRequiredConstants$3) return constants$3;
 	hasRequiredConstants$3 = 1;
 
-	const { MessageChannel, receiveMessageOnPort } = require$$0$8;
+	const { MessageChannel, receiveMessageOnPort } = require$$0$a;
 
 	const corsSafeListedMethods = ['GET', 'HEAD', 'POST'];
 	const corsSafeListedMethodsSet = new Set(corsSafeListedMethods);
@@ -3563,7 +3568,7 @@ function requireUtil$5 () {
 	const { getGlobalOrigin } = requireGlobal$1();
 	const { performance } = require$$2$1;
 	const { isBlobLike, toUSVString, ReadableStreamFrom } = requireUtil$6();
-	const assert = require$$0$3;
+	const assert = require$$0$5;
 	const { isUint8Array } = require$$5;
 
 	let supportedHashes = [];
@@ -4728,7 +4733,7 @@ function requireWebidl () {
 	if (hasRequiredWebidl) return webidl_1;
 	hasRequiredWebidl = 1;
 
-	const { types } = require$$0$2;
+	const { types } = require$$0$4;
 	const { hasOwn, toUSVString } = requireUtil$5();
 
 	/** @type {import('../../types/webidl').Webidl} */
@@ -5381,7 +5386,7 @@ var hasRequiredDataURL;
 function requireDataURL () {
 	if (hasRequiredDataURL) return dataURL;
 	hasRequiredDataURL = 1;
-	const assert = require$$0$3;
+	const assert = require$$0$5;
 	const { atob } = require$$7;
 	const { isomorphicDecode } = requireUtil$5();
 
@@ -6019,7 +6024,7 @@ function requireFile () {
 	hasRequiredFile = 1;
 
 	const { Blob, File: NativeFile } = require$$7;
-	const { types } = require$$0$2;
+	const { types } = require$$0$4;
 	const { kState } = requireSymbols$3();
 	const { isBlobLike } = requireUtil$5();
 	const { webidl } = requireWebidl();
@@ -6659,7 +6664,7 @@ function requireBody () {
 	const { DOMException, structuredClone } = requireConstants$3();
 	const { Blob, File: NativeFile } = require$$7;
 	const { kBodyUsed } = requireSymbols$4();
-	const assert = require$$0$3;
+	const assert = require$$0$5;
 	const { isErrored } = requireUtil$6();
 	const { isUint8Array, isArrayBuffer } = require$$5;
 	const { File: UndiciFile } = requireFile();
@@ -7268,7 +7273,7 @@ function requireRequest$1 () {
 	  InvalidArgumentError,
 	  NotSupportedError
 	} = requireErrors();
-	const assert = require$$0$3;
+	const assert = require$$0$5;
 	const { kHTTP2BuildRequest, kHTTP2CopyHeaders, kHTTP1BuildRequest } = requireSymbols$4();
 	const util = requireUtil$6();
 
@@ -7998,8 +8003,8 @@ function requireConnect () {
 	if (hasRequiredConnect) return connect;
 	hasRequiredConnect = 1;
 
-	const net = require$$0$4;
-	const assert = require$$0$3;
+	const net = require$$0$6;
+	const assert = require$$0$5;
 	const util = requireUtil$6();
 	const { InvalidArgumentError, ConnectTimeoutError } = requireErrors();
 
@@ -8084,7 +8089,7 @@ function requireConnect () {
 	    let socket;
 	    if (protocol === 'https:') {
 	      if (!tls) {
-	        tls = require$$1$1;
+	        tls = require$$1$4;
 	      }
 	      servername = servername || options.servername || util.getServerName(host) || null;
 
@@ -8190,15 +8195,15 @@ function requireConnect () {
 
 var constants$2 = {};
 
-var utils = {};
+var utils$1 = {};
 
-var hasRequiredUtils;
+var hasRequiredUtils$1;
 
-function requireUtils () {
-	if (hasRequiredUtils) return utils;
-	hasRequiredUtils = 1;
-	Object.defineProperty(utils, "__esModule", { value: true });
-	utils.enumToMap = void 0;
+function requireUtils$1 () {
+	if (hasRequiredUtils$1) return utils$1;
+	hasRequiredUtils$1 = 1;
+	Object.defineProperty(utils$1, "__esModule", { value: true });
+	utils$1.enumToMap = void 0;
 	function enumToMap(obj) {
 	    const res = {};
 	    Object.keys(obj).forEach((key) => {
@@ -8209,9 +8214,9 @@ function requireUtils () {
 	    });
 	    return res;
 	}
-	utils.enumToMap = enumToMap;
+	utils$1.enumToMap = enumToMap;
 	
-	return utils;
+	return utils$1;
 }
 
 var hasRequiredConstants$2;
@@ -8222,7 +8227,7 @@ function requireConstants$2 () {
 	(function (exports) {
 		Object.defineProperty(exports, "__esModule", { value: true });
 		exports.SPECIAL_HEADERS = exports.HEADER_STATE = exports.MINOR = exports.MAJOR = exports.CONNECTION_TOKEN_CHARS = exports.HEADER_CHARS = exports.TOKEN = exports.STRICT_TOKEN = exports.HEX = exports.URL_CHAR = exports.STRICT_URL_CHAR = exports.USERINFO_CHARS = exports.MARK = exports.ALPHANUM = exports.NUM = exports.HEX_MAP = exports.NUM_MAP = exports.ALPHA = exports.FINISH = exports.H_METHOD_MAP = exports.METHOD_MAP = exports.METHODS_RTSP = exports.METHODS_ICE = exports.METHODS_HTTP = exports.METHODS = exports.LENIENT_FLAGS = exports.FLAGS = exports.TYPE = exports.ERROR = void 0;
-		const utils_1 = requireUtils();
+		const utils_1 = requireUtils$1();
 		(function (ERROR) {
 		    ERROR[ERROR["OK"] = 0] = "OK";
 		    ERROR[ERROR["INTERNAL"] = 1] = "INTERNAL";
@@ -8504,7 +8509,7 @@ function requireRedirectHandler () {
 
 	const util = requireUtil$6();
 	const { kBodyUsed } = requireSymbols$4();
-	const assert = require$$0$3;
+	const assert = require$$0$5;
 	const { InvalidArgumentError } = requireErrors();
 	const EE = require$$4;
 
@@ -8764,10 +8769,10 @@ function requireClient () {
 
 	/* global WebAssembly */
 
-	const assert = require$$0$3;
-	const net = require$$0$4;
+	const assert = require$$0$5;
+	const net = require$$0$6;
 	const http = require$$2;
-	const { pipeline } = require$$0$5;
+	const { pipeline } = require$$0$7;
 	const util = requireUtil$6();
 	const timers = requireTimers();
 	const Request = requireRequest$1();
@@ -11949,8 +11954,8 @@ function requireReadable () {
 	if (hasRequiredReadable) return readable;
 	hasRequiredReadable = 1;
 
-	const assert = require$$0$3;
-	const { Readable } = require$$0$5;
+	const assert = require$$0$5;
+	const { Readable } = require$$0$7;
 	const { RequestAbortedError, NotSupportedError, InvalidArgumentError } = requireErrors();
 	const util = requireUtil$6();
 	const { ReadableStreamFrom, toUSVString } = requireUtil$6();
@@ -12276,7 +12281,7 @@ var hasRequiredUtil$4;
 function requireUtil$4 () {
 	if (hasRequiredUtil$4) return util$4;
 	hasRequiredUtil$4 = 1;
-	const assert = require$$0$3;
+	const assert = require$$0$5;
 	const {
 	  ResponseStatusCodeError
 	} = requireErrors();
@@ -12582,7 +12587,7 @@ function requireApiStream () {
 	if (hasRequiredApiStream) return apiStream;
 	hasRequiredApiStream = 1;
 
-	const { finished, PassThrough } = require$$0$5;
+	const { finished, PassThrough } = require$$0$7;
 	const {
 	  InvalidArgumentError,
 	  InvalidReturnValueError,
@@ -12814,7 +12819,7 @@ function requireApiPipeline () {
 	  Readable,
 	  Duplex,
 	  PassThrough
-	} = require$$0$5;
+	} = require$$0$7;
 	const {
 	  InvalidArgumentError,
 	  InvalidReturnValueError,
@@ -12823,7 +12828,7 @@ function requireApiPipeline () {
 	const util = requireUtil$6();
 	const { AsyncResource } = require$$4$1;
 	const { addSignal, removeSignal } = requireAbortSignal();
-	const assert = require$$0$3;
+	const assert = require$$0$5;
 
 	const kResume = Symbol('resume');
 
@@ -13071,7 +13076,7 @@ function requireApiUpgrade () {
 	const { AsyncResource } = require$$4$1;
 	const util = requireUtil$6();
 	const { addSignal, removeSignal } = requireAbortSignal();
-	const assert = require$$0$3;
+	const assert = require$$0$5;
 
 	class UpgradeHandler extends AsyncResource {
 	  constructor (opts, callback) {
@@ -13376,7 +13381,7 @@ function requireMockUtils () {
 	  types: {
 	    isPromise
 	  }
-	} = require$$0$2;
+	} = require$$0$4;
 
 	function matchValue (match, value) {
 	  if (typeof match === 'string') {
@@ -13936,7 +13941,7 @@ function requireMockClient () {
 	if (hasRequiredMockClient) return mockClient;
 	hasRequiredMockClient = 1;
 
-	const { promisify } = require$$0$2;
+	const { promisify } = require$$0$4;
 	const Client = requireClient();
 	const { buildMockDispatch } = requireMockUtils();
 	const {
@@ -14003,7 +14008,7 @@ function requireMockPool () {
 	if (hasRequiredMockPool) return mockPool;
 	hasRequiredMockPool = 1;
 
-	const { promisify } = require$$0$2;
+	const { promisify } = require$$0$4;
 	const Pool = requirePool();
 	const { buildMockDispatch } = requireMockUtils();
 	const {
@@ -14107,8 +14112,8 @@ function requirePendingInterceptorsFormatter () {
 	if (hasRequiredPendingInterceptorsFormatter) return pendingInterceptorsFormatter;
 	hasRequiredPendingInterceptorsFormatter = 1;
 
-	const { Transform } = require$$0$5;
-	const { Console } = require$$1$3;
+	const { Transform } = require$$0$7;
+	const { Console } = require$$1$6;
 
 	/**
 	 * Gets the output of `console.table(…)` as a string.
@@ -14335,7 +14340,7 @@ function requireProxyAgent () {
 	hasRequiredProxyAgent = 1;
 
 	const { kProxy, kClose, kDestroy, kInterceptors } = requireSymbols$4();
-	const { URL } = require$$1$4;
+	const { URL } = require$$1$7;
 	const Agent = requireAgent();
 	const Pool = requirePool();
 	const DispatcherBase = requireDispatcherBase();
@@ -14530,7 +14535,7 @@ var hasRequiredRetryHandler;
 function requireRetryHandler () {
 	if (hasRequiredRetryHandler) return RetryHandler_1;
 	hasRequiredRetryHandler = 1;
-	const assert = require$$0$3;
+	const assert = require$$0$5;
 
 	const { kRetryHandlerDefaultRetry } = requireSymbols$4();
 	const { RequestRetryError } = requireErrors();
@@ -14967,9 +14972,9 @@ function requireHeaders () {
 	  isValidHeaderName,
 	  isValidHeaderValue
 	} = requireUtil$5();
-	const util = require$$0$2;
+	const util = require$$0$4;
 	const { webidl } = requireWebidl();
-	const assert = require$$0$3;
+	const assert = require$$0$5;
 
 	const kHeadersMap = Symbol('headers map');
 	const kHeadersSortedMap = Symbol('headers map sorted');
@@ -15575,8 +15580,8 @@ function requireResponse () {
 	const { getGlobalOrigin } = requireGlobal$1();
 	const { URLSerializer } = requireDataURL();
 	const { kHeadersList, kConstruct } = requireSymbols$4();
-	const assert = require$$0$3;
-	const { types } = require$$0$2;
+	const assert = require$$0$5;
+	const { types } = require$$0$4;
 
 	const ReadableStream = globalThis.ReadableStream || require$$14.ReadableStream;
 	const textEncoder = new TextEncoder('utf-8');
@@ -16159,7 +16164,7 @@ function requireRequest () {
 	const { getGlobalOrigin } = requireGlobal$1();
 	const { URLSerializer } = requireDataURL();
 	const { kHeadersList, kConstruct } = requireSymbols$4();
-	const assert = require$$0$3;
+	const assert = require$$0$5;
 	const { getMaxListeners, setMaxListeners, getEventListeners, defaultMaxListeners } = require$$4;
 
 	let TransformStream = globalThis.TransformStream;
@@ -17093,7 +17098,7 @@ function requireFetch () {
 	} = requireResponse();
 	const { Headers } = requireHeaders();
 	const { Request, makeRequest } = requireRequest();
-	const zlib = require$$3$1;
+	const zlib = require$$3;
 	const {
 	  bytesMatch,
 	  makePolicyContainer,
@@ -17125,7 +17130,7 @@ function requireFetch () {
 	  urlHasHttpsScheme
 	} = requireUtil$5();
 	const { kState, kHeaders, kGuard, kRealm } = requireSymbols$3();
-	const assert = require$$0$3;
+	const assert = require$$0$5;
 	const { safelyExtractBody } = requireBody();
 	const {
 	  redirectStatusSet,
@@ -17137,7 +17142,7 @@ function requireFetch () {
 	} = requireConstants$3();
 	const { kHeadersList } = requireSymbols$4();
 	const EE = require$$4;
-	const { Readable, pipeline } = require$$0$5;
+	const { Readable, pipeline } = require$$0$7;
 	const { addAbortListener, isErrored, isReadable, nodeMajor, nodeMinor } = requireUtil$6();
 	const { dataURLProcessor, serializeAMimeType } = requireDataURL();
 	const { TransformStream } = require$$14;
@@ -19577,7 +19582,7 @@ function requireUtil$3 () {
 	const { getEncoding } = requireEncoding();
 	const { DOMException } = requireConstants$3();
 	const { serializeAMimeType, parseMIMEType } = requireDataURL();
-	const { types } = require$$0$2;
+	const { types } = require$$0$4;
 	const { StringDecoder } = require$$6;
 	const { btoa } = require$$7;
 
@@ -20331,7 +20336,7 @@ function requireUtil$2 () {
 	if (hasRequiredUtil$2) return util$2;
 	hasRequiredUtil$2 = 1;
 
-	const assert = require$$0$3;
+	const assert = require$$0$5;
 	const { URLSerializer } = requireDataURL();
 	const { isValidHeaderName } = requireUtil$5();
 
@@ -20398,7 +20403,7 @@ function requireCache () {
 	const { kState, kHeaders, kGuard, kRealm } = requireSymbols$3();
 	const { fetching } = requireFetch();
 	const { urlIsHttpHttpsScheme, createDeferredPromise, readAllBytes } = requireUtil$5();
-	const assert = require$$0$3;
+	const assert = require$$0$5;
 	const { getGlobalDispatcher } = requireGlobal();
 
 	/**
@@ -21691,7 +21696,7 @@ function requireParse () {
 	const { maxNameValuePairSize, maxAttributeValueSize } = requireConstants$1();
 	const { isCTLExcludingHtab } = requireUtil$1();
 	const { collectASequenceOfCodePointsFast } = requireDataURL();
-	const assert = require$$0$3;
+	const assert = require$$0$5;
 
 	/**
 	 * @description Parses the field-value attributes of a set-cookie header string.
@@ -22285,7 +22290,7 @@ function requireEvents () {
 
 	const { webidl } = requireWebidl();
 	const { kEnumerableProperty } = requireUtil$6();
-	const { MessagePort } = require$$0$8;
+	const { MessagePort } = require$$0$a;
 
 	/**
 	 * @see https://html.spec.whatwg.org/multipage/comms.html#messageevent
@@ -22802,7 +22807,7 @@ function requireConnection () {
 	if (hasRequiredConnection) return connection;
 	hasRequiredConnection = 1;
 
-	const diagnosticsChannel = require$$0$9;
+	const diagnosticsChannel = require$$0$b;
 	const { uid, states } = requireConstants();
 	const {
 	  kReadyState,
@@ -23182,8 +23187,8 @@ function requireReceiver () {
 	if (hasRequiredReceiver) return receiver;
 	hasRequiredReceiver = 1;
 
-	const { Writable } = require$$0$5;
-	const diagnosticsChannel = require$$0$9;
+	const { Writable } = require$$0$7;
+	const diagnosticsChannel = require$$0$b;
 	const { parserStates, opcodes, states, emptyBuffer } = requireConstants();
 	const { kReadyState, kSentClose, kResponse, kReceivedClose } = requireSymbols();
 	const { isValidStatusCode, failWebsocketConnection, websocketMessageReceived } = requireUtil();
@@ -23554,7 +23559,7 @@ function requireWebsocket () {
 	const { ByteParser } = requireReceiver();
 	const { kEnumerableProperty, isBlobLike } = requireUtil$6();
 	const { getGlobalDispatcher } = requireGlobal();
-	const { types } = require$$0$2;
+	const { types } = require$$0$4;
 
 	let experimentalWarned = false;
 
@@ -24347,13 +24352,13 @@ function requireUndici () {
 	return undici;
 }
 
-var hasRequiredLib;
+var hasRequiredLib$2;
 
-function requireLib () {
-	if (hasRequiredLib) return lib;
-	hasRequiredLib = 1;
+function requireLib$2 () {
+	if (hasRequiredLib$2) return lib$2;
+	hasRequiredLib$2 = 1;
 	/* eslint-disable @typescript-eslint/no-explicit-any */
-	var __createBinding = (lib && lib.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+	var __createBinding = (lib$2 && lib$2.__createBinding) || (Object.create ? (function(o, m, k, k2) {
 	    if (k2 === undefined) k2 = k;
 	    var desc = Object.getOwnPropertyDescriptor(m, k);
 	    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
@@ -24364,19 +24369,19 @@ function requireLib () {
 	    if (k2 === undefined) k2 = k;
 	    o[k2] = m[k];
 	}));
-	var __setModuleDefault = (lib && lib.__setModuleDefault) || (Object.create ? (function(o, v) {
+	var __setModuleDefault = (lib$2 && lib$2.__setModuleDefault) || (Object.create ? (function(o, v) {
 	    Object.defineProperty(o, "default", { enumerable: true, value: v });
 	}) : function(o, v) {
 	    o["default"] = v;
 	});
-	var __importStar = (lib && lib.__importStar) || function (mod) {
+	var __importStar = (lib$2 && lib$2.__importStar) || function (mod) {
 	    if (mod && mod.__esModule) return mod;
 	    var result = {};
 	    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
 	    __setModuleDefault(result, mod);
 	    return result;
 	};
-	var __awaiter = (lib && lib.__awaiter) || function (thisArg, _arguments, P, generator) {
+	var __awaiter = (lib$2 && lib$2.__awaiter) || function (thisArg, _arguments, P, generator) {
 	    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
 	    return new (P || (P = Promise))(function (resolve, reject) {
 	        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -24385,10 +24390,10 @@ function requireLib () {
 	        step((generator = generator.apply(thisArg, _arguments || [])).next());
 	    });
 	};
-	Object.defineProperty(lib, "__esModule", { value: true });
-	lib.HttpClient = lib.isHttps = lib.HttpClientResponse = lib.HttpClientError = lib.getProxyUrl = lib.MediaTypes = lib.Headers = lib.HttpCodes = void 0;
+	Object.defineProperty(lib$2, "__esModule", { value: true });
+	lib$2.HttpClient = lib$2.isHttps = lib$2.HttpClientResponse = lib$2.HttpClientError = lib$2.getProxyUrl = lib$2.MediaTypes = lib$2.Headers = lib$2.HttpCodes = void 0;
 	const http = __importStar(require$$2);
-	const https = __importStar(require$$3);
+	const https = __importStar(require$$1$3);
 	const pm = __importStar(requireProxy());
 	const tunnel = __importStar(requireTunnel());
 	const undici_1 = requireUndici();
@@ -24421,16 +24426,16 @@ function requireLib () {
 	    HttpCodes[HttpCodes["BadGateway"] = 502] = "BadGateway";
 	    HttpCodes[HttpCodes["ServiceUnavailable"] = 503] = "ServiceUnavailable";
 	    HttpCodes[HttpCodes["GatewayTimeout"] = 504] = "GatewayTimeout";
-	})(HttpCodes || (lib.HttpCodes = HttpCodes = {}));
+	})(HttpCodes || (lib$2.HttpCodes = HttpCodes = {}));
 	var Headers;
 	(function (Headers) {
 	    Headers["Accept"] = "accept";
 	    Headers["ContentType"] = "content-type";
-	})(Headers || (lib.Headers = Headers = {}));
+	})(Headers || (lib$2.Headers = Headers = {}));
 	var MediaTypes;
 	(function (MediaTypes) {
 	    MediaTypes["ApplicationJson"] = "application/json";
-	})(MediaTypes || (lib.MediaTypes = MediaTypes = {}));
+	})(MediaTypes || (lib$2.MediaTypes = MediaTypes = {}));
 	/**
 	 * Returns the proxy URL, depending upon the supplied url and proxy environment variables.
 	 * @param serverUrl  The server URL where the request will be sent. For example, https://api.github.com
@@ -24439,7 +24444,7 @@ function requireLib () {
 	    const proxyUrl = pm.getProxyUrl(new URL(serverUrl));
 	    return proxyUrl ? proxyUrl.href : '';
 	}
-	lib.getProxyUrl = getProxyUrl;
+	lib$2.getProxyUrl = getProxyUrl;
 	const HttpRedirectCodes = [
 	    HttpCodes.MovedPermanently,
 	    HttpCodes.ResourceMoved,
@@ -24463,7 +24468,7 @@ function requireLib () {
 	        Object.setPrototypeOf(this, HttpClientError.prototype);
 	    }
 	}
-	lib.HttpClientError = HttpClientError;
+	lib$2.HttpClientError = HttpClientError;
 	class HttpClientResponse {
 	    constructor(message) {
 	        this.message = message;
@@ -24495,12 +24500,12 @@ function requireLib () {
 	        });
 	    }
 	}
-	lib.HttpClientResponse = HttpClientResponse;
+	lib$2.HttpClientResponse = HttpClientResponse;
 	function isHttps(requestUrl) {
 	    const parsedUrl = new URL(requestUrl);
 	    return parsedUrl.protocol === 'https:';
 	}
-	lib.isHttps = isHttps;
+	lib$2.isHttps = isHttps;
 	class HttpClient {
 	    constructor(userAgent, handlers, requestOptions) {
 	        this._ignoreSslError = false;
@@ -25000,10 +25005,10 @@ function requireLib () {
 	        });
 	    }
 	}
-	lib.HttpClient = HttpClient;
+	lib$2.HttpClient = HttpClient;
 	const lowercaseKeys = (obj) => Object.keys(obj).reduce((c, k) => ((c[k.toLowerCase()] = obj[k]), c), {});
 	
-	return lib;
+	return lib$2;
 }
 
 var auth = {};
@@ -25112,7 +25117,7 @@ function requireOidcUtils () {
 	};
 	Object.defineProperty(oidcUtils, "__esModule", { value: true });
 	oidcUtils.OidcClient = void 0;
-	const http_client_1 = requireLib();
+	const http_client_1 = requireLib$2();
 	const auth_1 = requireAuth();
 	const core_1 = requireCore();
 	class OidcClient {
@@ -25199,8 +25204,8 @@ function requireSummary () {
 		};
 		Object.defineProperty(exports, "__esModule", { value: true });
 		exports.summary = exports.markdownSummary = exports.SUMMARY_DOCS_URL = exports.SUMMARY_ENV_VAR = void 0;
-		const os_1 = require$$0;
-		const fs_1 = require$$1;
+		const os_1 = require$$0$2;
+		const fs_1 = require$$1$2;
 		const { access, appendFile, writeFile } = fs_1.promises;
 		exports.SUMMARY_ENV_VAR = 'GITHUB_STEP_SUMMARY';
 		exports.SUMMARY_DOCS_URL = 'https://docs.github.com/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary';
@@ -25506,7 +25511,7 @@ function requirePathUtils () {
 	};
 	Object.defineProperty(pathUtils, "__esModule", { value: true });
 	pathUtils.toPlatformPath = pathUtils.toWin32Path = pathUtils.toPosixPath = void 0;
-	const path = __importStar(require$$1$5);
+	const path = __importStar(require$$1$8);
 	/**
 	 * toPosixPath converts the given path to the posix form. On Windows, \\ will be
 	 * replaced with /.
@@ -25592,8 +25597,8 @@ function requireIoUtil () {
 		var _a;
 		Object.defineProperty(exports, "__esModule", { value: true });
 		exports.getCmdPath = exports.tryGetExecutablePath = exports.isRooted = exports.isDirectory = exports.exists = exports.READONLY = exports.UV_FS_O_EXLOCK = exports.IS_WINDOWS = exports.unlink = exports.symlink = exports.stat = exports.rmdir = exports.rm = exports.rename = exports.readlink = exports.readdir = exports.open = exports.mkdir = exports.lstat = exports.copyFile = exports.chmod = void 0;
-		const fs = __importStar(require$$1);
-		const path = __importStar(require$$1$5);
+		const fs = __importStar(require$$1$2);
+		const path = __importStar(require$$1$8);
 		_a = fs.promises
 		// export const {open} = 'fs'
 		, exports.chmod = _a.chmod, exports.copyFile = _a.copyFile, exports.lstat = _a.lstat, exports.mkdir = _a.mkdir, exports.open = _a.open, exports.readdir = _a.readdir, exports.readlink = _a.readlink, exports.rename = _a.rename, exports.rm = _a.rm, exports.rmdir = _a.rmdir, exports.stat = _a.stat, exports.symlink = _a.symlink, exports.unlink = _a.unlink;
@@ -25782,8 +25787,8 @@ function requireIo () {
 	};
 	Object.defineProperty(io, "__esModule", { value: true });
 	io.findInPath = io.which = io.mkdirP = io.rmRF = io.mv = io.cp = void 0;
-	const assert_1 = require$$0$3;
-	const path = __importStar(require$$1$5);
+	const assert_1 = require$$0$5;
+	const path = __importStar(require$$1$8);
 	const ioUtil = __importStar(requireIoUtil());
 	/**
 	 * Copies a file or folder.
@@ -26088,10 +26093,10 @@ function requireToolrunner () {
 	};
 	Object.defineProperty(toolrunner, "__esModule", { value: true });
 	toolrunner.argStringToArray = toolrunner.ToolRunner = void 0;
-	const os = __importStar(require$$0);
+	const os = __importStar(require$$0$2);
 	const events = __importStar(require$$4);
 	const child = __importStar(require$$2$2);
-	const path = __importStar(require$$1$5);
+	const path = __importStar(require$$1$8);
 	const io = __importStar(requireIo());
 	const ioUtil = __importStar(requireIoUtil());
 	const timers_1 = require$$6$1;
@@ -26831,7 +26836,7 @@ function requirePlatform () {
 		};
 		Object.defineProperty(exports, "__esModule", { value: true });
 		exports.getDetails = exports.isLinux = exports.isMacOS = exports.isWindows = exports.arch = exports.platform = void 0;
-		const os_1 = __importDefault(require$$0);
+		const os_1 = __importDefault(require$$0$2);
 		const exec = __importStar(requireExec());
 		const getWindowsInfo = () => __awaiter(void 0, void 0, void 0, function* () {
 		    const { stdout: version } = yield exec.getExecOutput('powershell -command "(Get-CimInstance -ClassName Win32_OperatingSystem).Version"', undefined, {
@@ -26933,9 +26938,9 @@ function requireCore () {
 		exports.platform = exports.toPlatformPath = exports.toWin32Path = exports.toPosixPath = exports.markdownSummary = exports.summary = exports.getIDToken = exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
 		const command_1 = requireCommand();
 		const file_command_1 = requireFileCommand();
-		const utils_1 = requireUtils$1();
-		const os = __importStar(require$$0);
-		const path = __importStar(require$$1$5);
+		const utils_1 = requireUtils$2();
+		const os = __importStar(require$$0$2);
+		const path = __importStar(require$$1$8);
 		const oidc_utils_1 = requireOidcUtils();
 		/**
 		 * The code to exit an action
@@ -27246,42 +27251,12228 @@ function requireCore () {
 
 var coreExports = requireCore();
 
-/**
- * Waits for a number of milliseconds.
- *
- * @param milliseconds The number of milliseconds to wait.
- * @returns Resolves with 'done!' after the wait is over.
- */
-async function wait(milliseconds) {
-    return new Promise((resolve) => {
-        if (isNaN(milliseconds))
-            throw new Error('milliseconds is not a number');
-        setTimeout(() => resolve('done!'), milliseconds);
-    });
+var xml2js = {};
+
+var defaults = {};
+
+var hasRequiredDefaults;
+
+function requireDefaults () {
+	if (hasRequiredDefaults) return defaults;
+	hasRequiredDefaults = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  defaults.defaults = {
+	    "0.1": {
+	      explicitCharkey: false,
+	      trim: true,
+	      normalize: true,
+	      normalizeTags: false,
+	      attrkey: "@",
+	      charkey: "#",
+	      explicitArray: false,
+	      ignoreAttrs: false,
+	      mergeAttrs: false,
+	      explicitRoot: false,
+	      validator: null,
+	      xmlns: false,
+	      explicitChildren: false,
+	      childkey: '@@',
+	      charsAsChildren: false,
+	      includeWhiteChars: false,
+	      async: false,
+	      strict: true,
+	      attrNameProcessors: null,
+	      attrValueProcessors: null,
+	      tagNameProcessors: null,
+	      valueProcessors: null,
+	      emptyTag: ''
+	    },
+	    "0.2": {
+	      explicitCharkey: false,
+	      trim: false,
+	      normalize: false,
+	      normalizeTags: false,
+	      attrkey: "$",
+	      charkey: "_",
+	      explicitArray: true,
+	      ignoreAttrs: false,
+	      mergeAttrs: false,
+	      explicitRoot: true,
+	      validator: null,
+	      xmlns: false,
+	      explicitChildren: false,
+	      preserveChildrenOrder: false,
+	      childkey: '$$',
+	      charsAsChildren: false,
+	      includeWhiteChars: false,
+	      async: false,
+	      strict: true,
+	      attrNameProcessors: null,
+	      attrValueProcessors: null,
+	      tagNameProcessors: null,
+	      valueProcessors: null,
+	      rootName: 'root',
+	      xmldec: {
+	        'version': '1.0',
+	        'encoding': 'UTF-8',
+	        'standalone': true
+	      },
+	      doctype: null,
+	      renderOpts: {
+	        'pretty': true,
+	        'indent': '  ',
+	        'newline': '\n'
+	      },
+	      headless: false,
+	      chunkSize: 10000,
+	      emptyTag: '',
+	      cdata: false
+	    }
+	  };
+
+	}).call(defaults);
+	return defaults;
 }
 
-/**
- * The main function for the action.
- *
- * @returns Resolves when the action is complete.
- */
-async function run() {
+var builder = {};
+
+var lib$1 = {};
+
+var Utility = {};
+
+var hasRequiredUtility;
+
+function requireUtility () {
+	if (hasRequiredUtility) return Utility;
+	hasRequiredUtility = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var assign, getValue, isArray, isEmpty, isFunction, isObject, isPlainObject,
+	    slice = [].slice,
+	    hasProp = {}.hasOwnProperty;
+
+	  assign = function() {
+	    var i, key, len, source, sources, target;
+	    target = arguments[0], sources = 2 <= arguments.length ? slice.call(arguments, 1) : [];
+	    if (isFunction(Object.assign)) {
+	      Object.assign.apply(null, arguments);
+	    } else {
+	      for (i = 0, len = sources.length; i < len; i++) {
+	        source = sources[i];
+	        if (source != null) {
+	          for (key in source) {
+	            if (!hasProp.call(source, key)) continue;
+	            target[key] = source[key];
+	          }
+	        }
+	      }
+	    }
+	    return target;
+	  };
+
+	  isFunction = function(val) {
+	    return !!val && Object.prototype.toString.call(val) === '[object Function]';
+	  };
+
+	  isObject = function(val) {
+	    var ref;
+	    return !!val && ((ref = typeof val) === 'function' || ref === 'object');
+	  };
+
+	  isArray = function(val) {
+	    if (isFunction(Array.isArray)) {
+	      return Array.isArray(val);
+	    } else {
+	      return Object.prototype.toString.call(val) === '[object Array]';
+	    }
+	  };
+
+	  isEmpty = function(val) {
+	    var key;
+	    if (isArray(val)) {
+	      return !val.length;
+	    } else {
+	      for (key in val) {
+	        if (!hasProp.call(val, key)) continue;
+	        return false;
+	      }
+	      return true;
+	    }
+	  };
+
+	  isPlainObject = function(val) {
+	    var ctor, proto;
+	    return isObject(val) && (proto = Object.getPrototypeOf(val)) && (ctor = proto.constructor) && (typeof ctor === 'function') && (ctor instanceof ctor) && (Function.prototype.toString.call(ctor) === Function.prototype.toString.call(Object));
+	  };
+
+	  getValue = function(obj) {
+	    if (isFunction(obj.valueOf)) {
+	      return obj.valueOf();
+	    } else {
+	      return obj;
+	    }
+	  };
+
+	  Utility.assign = assign;
+
+	  Utility.isFunction = isFunction;
+
+	  Utility.isObject = isObject;
+
+	  Utility.isArray = isArray;
+
+	  Utility.isEmpty = isEmpty;
+
+	  Utility.isPlainObject = isPlainObject;
+
+	  Utility.getValue = getValue;
+
+	}).call(Utility);
+	return Utility;
+}
+
+var XMLDOMImplementation$1 = {exports: {}};
+
+var XMLDOMImplementation = XMLDOMImplementation$1.exports;
+
+var hasRequiredXMLDOMImplementation;
+
+function requireXMLDOMImplementation () {
+	if (hasRequiredXMLDOMImplementation) return XMLDOMImplementation$1.exports;
+	hasRequiredXMLDOMImplementation = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+
+	  XMLDOMImplementation$1.exports = (function() {
+	    function XMLDOMImplementation() {}
+
+	    XMLDOMImplementation.prototype.hasFeature = function(feature, version) {
+	      return true;
+	    };
+
+	    XMLDOMImplementation.prototype.createDocumentType = function(qualifiedName, publicId, systemId) {
+	      throw new Error("This DOM method is not implemented.");
+	    };
+
+	    XMLDOMImplementation.prototype.createDocument = function(namespaceURI, qualifiedName, doctype) {
+	      throw new Error("This DOM method is not implemented.");
+	    };
+
+	    XMLDOMImplementation.prototype.createHTMLDocument = function(title) {
+	      throw new Error("This DOM method is not implemented.");
+	    };
+
+	    XMLDOMImplementation.prototype.getFeature = function(feature, version) {
+	      throw new Error("This DOM method is not implemented.");
+	    };
+
+	    return XMLDOMImplementation;
+
+	  })();
+
+	}).call(XMLDOMImplementation);
+	return XMLDOMImplementation$1.exports;
+}
+
+var XMLDocument$1 = {exports: {}};
+
+var XMLDOMConfiguration$1 = {exports: {}};
+
+var XMLDOMErrorHandler$1 = {exports: {}};
+
+var XMLDOMErrorHandler = XMLDOMErrorHandler$1.exports;
+
+var hasRequiredXMLDOMErrorHandler;
+
+function requireXMLDOMErrorHandler () {
+	if (hasRequiredXMLDOMErrorHandler) return XMLDOMErrorHandler$1.exports;
+	hasRequiredXMLDOMErrorHandler = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+
+	  XMLDOMErrorHandler$1.exports = (function() {
+	    function XMLDOMErrorHandler() {}
+
+	    XMLDOMErrorHandler.prototype.handleError = function(error) {
+	      throw new Error(error);
+	    };
+
+	    return XMLDOMErrorHandler;
+
+	  })();
+
+	}).call(XMLDOMErrorHandler);
+	return XMLDOMErrorHandler$1.exports;
+}
+
+var XMLDOMStringList$1 = {exports: {}};
+
+var XMLDOMStringList = XMLDOMStringList$1.exports;
+
+var hasRequiredXMLDOMStringList;
+
+function requireXMLDOMStringList () {
+	if (hasRequiredXMLDOMStringList) return XMLDOMStringList$1.exports;
+	hasRequiredXMLDOMStringList = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+
+	  XMLDOMStringList$1.exports = (function() {
+	    function XMLDOMStringList(arr) {
+	      this.arr = arr || [];
+	    }
+
+	    Object.defineProperty(XMLDOMStringList.prototype, 'length', {
+	      get: function() {
+	        return this.arr.length;
+	      }
+	    });
+
+	    XMLDOMStringList.prototype.item = function(index) {
+	      return this.arr[index] || null;
+	    };
+
+	    XMLDOMStringList.prototype.contains = function(str) {
+	      return this.arr.indexOf(str) !== -1;
+	    };
+
+	    return XMLDOMStringList;
+
+	  })();
+
+	}).call(XMLDOMStringList);
+	return XMLDOMStringList$1.exports;
+}
+
+var XMLDOMConfiguration = XMLDOMConfiguration$1.exports;
+
+var hasRequiredXMLDOMConfiguration;
+
+function requireXMLDOMConfiguration () {
+	if (hasRequiredXMLDOMConfiguration) return XMLDOMConfiguration$1.exports;
+	hasRequiredXMLDOMConfiguration = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var XMLDOMErrorHandler, XMLDOMStringList;
+
+	  XMLDOMErrorHandler = requireXMLDOMErrorHandler();
+
+	  XMLDOMStringList = requireXMLDOMStringList();
+
+	  XMLDOMConfiguration$1.exports = (function() {
+	    function XMLDOMConfiguration() {
+	      this.defaultParams = {
+	        "canonical-form": false,
+	        "cdata-sections": false,
+	        "comments": false,
+	        "datatype-normalization": false,
+	        "element-content-whitespace": true,
+	        "entities": true,
+	        "error-handler": new XMLDOMErrorHandler(),
+	        "infoset": true,
+	        "validate-if-schema": false,
+	        "namespaces": true,
+	        "namespace-declarations": true,
+	        "normalize-characters": false,
+	        "schema-location": '',
+	        "schema-type": '',
+	        "split-cdata-sections": true,
+	        "validate": false,
+	        "well-formed": true
+	      };
+	      this.params = Object.create(this.defaultParams);
+	    }
+
+	    Object.defineProperty(XMLDOMConfiguration.prototype, 'parameterNames', {
+	      get: function() {
+	        return new XMLDOMStringList(Object.keys(this.defaultParams));
+	      }
+	    });
+
+	    XMLDOMConfiguration.prototype.getParameter = function(name) {
+	      if (this.params.hasOwnProperty(name)) {
+	        return this.params[name];
+	      } else {
+	        return null;
+	      }
+	    };
+
+	    XMLDOMConfiguration.prototype.canSetParameter = function(name, value) {
+	      return true;
+	    };
+
+	    XMLDOMConfiguration.prototype.setParameter = function(name, value) {
+	      if (value != null) {
+	        return this.params[name] = value;
+	      } else {
+	        return delete this.params[name];
+	      }
+	    };
+
+	    return XMLDOMConfiguration;
+
+	  })();
+
+	}).call(XMLDOMConfiguration);
+	return XMLDOMConfiguration$1.exports;
+}
+
+var XMLNode$1 = {exports: {}};
+
+var XMLElement$1 = {exports: {}};
+
+var NodeType$1 = {exports: {}};
+
+var NodeType = NodeType$1.exports;
+
+var hasRequiredNodeType;
+
+function requireNodeType () {
+	if (hasRequiredNodeType) return NodeType$1.exports;
+	hasRequiredNodeType = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  NodeType$1.exports = {
+	    Element: 1,
+	    Attribute: 2,
+	    Text: 3,
+	    CData: 4,
+	    EntityReference: 5,
+	    EntityDeclaration: 6,
+	    ProcessingInstruction: 7,
+	    Comment: 8,
+	    Document: 9,
+	    DocType: 10,
+	    DocumentFragment: 11,
+	    NotationDeclaration: 12,
+	    Declaration: 201,
+	    Raw: 202,
+	    AttributeDeclaration: 203,
+	    ElementDeclaration: 204,
+	    Dummy: 205
+	  };
+
+	}).call(NodeType);
+	return NodeType$1.exports;
+}
+
+var XMLAttribute$1 = {exports: {}};
+
+var XMLAttribute = XMLAttribute$1.exports;
+
+var hasRequiredXMLAttribute;
+
+function requireXMLAttribute () {
+	if (hasRequiredXMLAttribute) return XMLAttribute$1.exports;
+	hasRequiredXMLAttribute = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType;
+
+	  NodeType = requireNodeType();
+
+	  requireXMLNode();
+
+	  XMLAttribute$1.exports = (function() {
+	    function XMLAttribute(parent, name, value) {
+	      this.parent = parent;
+	      if (this.parent) {
+	        this.options = this.parent.options;
+	        this.stringify = this.parent.stringify;
+	      }
+	      if (name == null) {
+	        throw new Error("Missing attribute name. " + this.debugInfo(name));
+	      }
+	      this.name = this.stringify.name(name);
+	      this.value = this.stringify.attValue(value);
+	      this.type = NodeType.Attribute;
+	      this.isId = false;
+	      this.schemaTypeInfo = null;
+	    }
+
+	    Object.defineProperty(XMLAttribute.prototype, 'nodeType', {
+	      get: function() {
+	        return this.type;
+	      }
+	    });
+
+	    Object.defineProperty(XMLAttribute.prototype, 'ownerElement', {
+	      get: function() {
+	        return this.parent;
+	      }
+	    });
+
+	    Object.defineProperty(XMLAttribute.prototype, 'textContent', {
+	      get: function() {
+	        return this.value;
+	      },
+	      set: function(value) {
+	        return this.value = value || '';
+	      }
+	    });
+
+	    Object.defineProperty(XMLAttribute.prototype, 'namespaceURI', {
+	      get: function() {
+	        return '';
+	      }
+	    });
+
+	    Object.defineProperty(XMLAttribute.prototype, 'prefix', {
+	      get: function() {
+	        return '';
+	      }
+	    });
+
+	    Object.defineProperty(XMLAttribute.prototype, 'localName', {
+	      get: function() {
+	        return this.name;
+	      }
+	    });
+
+	    Object.defineProperty(XMLAttribute.prototype, 'specified', {
+	      get: function() {
+	        return true;
+	      }
+	    });
+
+	    XMLAttribute.prototype.clone = function() {
+	      return Object.create(this);
+	    };
+
+	    XMLAttribute.prototype.toString = function(options) {
+	      return this.options.writer.attribute(this, this.options.writer.filterOptions(options));
+	    };
+
+	    XMLAttribute.prototype.debugInfo = function(name) {
+	      name = name || this.name;
+	      if (name == null) {
+	        return "parent: <" + this.parent.name + ">";
+	      } else {
+	        return "attribute: {" + name + "}, parent: <" + this.parent.name + ">";
+	      }
+	    };
+
+	    XMLAttribute.prototype.isEqualNode = function(node) {
+	      if (node.namespaceURI !== this.namespaceURI) {
+	        return false;
+	      }
+	      if (node.prefix !== this.prefix) {
+	        return false;
+	      }
+	      if (node.localName !== this.localName) {
+	        return false;
+	      }
+	      if (node.value !== this.value) {
+	        return false;
+	      }
+	      return true;
+	    };
+
+	    return XMLAttribute;
+
+	  })();
+
+	}).call(XMLAttribute);
+	return XMLAttribute$1.exports;
+}
+
+var XMLNamedNodeMap$1 = {exports: {}};
+
+var XMLNamedNodeMap = XMLNamedNodeMap$1.exports;
+
+var hasRequiredXMLNamedNodeMap;
+
+function requireXMLNamedNodeMap () {
+	if (hasRequiredXMLNamedNodeMap) return XMLNamedNodeMap$1.exports;
+	hasRequiredXMLNamedNodeMap = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+
+	  XMLNamedNodeMap$1.exports = (function() {
+	    function XMLNamedNodeMap(nodes) {
+	      this.nodes = nodes;
+	    }
+
+	    Object.defineProperty(XMLNamedNodeMap.prototype, 'length', {
+	      get: function() {
+	        return Object.keys(this.nodes).length || 0;
+	      }
+	    });
+
+	    XMLNamedNodeMap.prototype.clone = function() {
+	      return this.nodes = null;
+	    };
+
+	    XMLNamedNodeMap.prototype.getNamedItem = function(name) {
+	      return this.nodes[name];
+	    };
+
+	    XMLNamedNodeMap.prototype.setNamedItem = function(node) {
+	      var oldNode;
+	      oldNode = this.nodes[node.nodeName];
+	      this.nodes[node.nodeName] = node;
+	      return oldNode || null;
+	    };
+
+	    XMLNamedNodeMap.prototype.removeNamedItem = function(name) {
+	      var oldNode;
+	      oldNode = this.nodes[name];
+	      delete this.nodes[name];
+	      return oldNode || null;
+	    };
+
+	    XMLNamedNodeMap.prototype.item = function(index) {
+	      return this.nodes[Object.keys(this.nodes)[index]] || null;
+	    };
+
+	    XMLNamedNodeMap.prototype.getNamedItemNS = function(namespaceURI, localName) {
+	      throw new Error("This DOM method is not implemented.");
+	    };
+
+	    XMLNamedNodeMap.prototype.setNamedItemNS = function(node) {
+	      throw new Error("This DOM method is not implemented.");
+	    };
+
+	    XMLNamedNodeMap.prototype.removeNamedItemNS = function(namespaceURI, localName) {
+	      throw new Error("This DOM method is not implemented.");
+	    };
+
+	    return XMLNamedNodeMap;
+
+	  })();
+
+	}).call(XMLNamedNodeMap);
+	return XMLNamedNodeMap$1.exports;
+}
+
+var XMLElement = XMLElement$1.exports;
+
+var hasRequiredXMLElement;
+
+function requireXMLElement () {
+	if (hasRequiredXMLElement) return XMLElement$1.exports;
+	hasRequiredXMLElement = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, XMLAttribute, XMLNamedNodeMap, XMLNode, getValue, isFunction, isObject, ref,
+	    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  ref = requireUtility(), isObject = ref.isObject, isFunction = ref.isFunction, getValue = ref.getValue;
+
+	  XMLNode = requireXMLNode();
+
+	  NodeType = requireNodeType();
+
+	  XMLAttribute = requireXMLAttribute();
+
+	  XMLNamedNodeMap = requireXMLNamedNodeMap();
+
+	  XMLElement$1.exports = (function(superClass) {
+	    extend(XMLElement, superClass);
+
+	    function XMLElement(parent, name, attributes) {
+	      var child, j, len, ref1;
+	      XMLElement.__super__.constructor.call(this, parent);
+	      if (name == null) {
+	        throw new Error("Missing element name. " + this.debugInfo());
+	      }
+	      this.name = this.stringify.name(name);
+	      this.type = NodeType.Element;
+	      this.attribs = {};
+	      this.schemaTypeInfo = null;
+	      if (attributes != null) {
+	        this.attribute(attributes);
+	      }
+	      if (parent.type === NodeType.Document) {
+	        this.isRoot = true;
+	        this.documentObject = parent;
+	        parent.rootObject = this;
+	        if (parent.children) {
+	          ref1 = parent.children;
+	          for (j = 0, len = ref1.length; j < len; j++) {
+	            child = ref1[j];
+	            if (child.type === NodeType.DocType) {
+	              child.name = this.name;
+	              break;
+	            }
+	          }
+	        }
+	      }
+	    }
+
+	    Object.defineProperty(XMLElement.prototype, 'tagName', {
+	      get: function() {
+	        return this.name;
+	      }
+	    });
+
+	    Object.defineProperty(XMLElement.prototype, 'namespaceURI', {
+	      get: function() {
+	        return '';
+	      }
+	    });
+
+	    Object.defineProperty(XMLElement.prototype, 'prefix', {
+	      get: function() {
+	        return '';
+	      }
+	    });
+
+	    Object.defineProperty(XMLElement.prototype, 'localName', {
+	      get: function() {
+	        return this.name;
+	      }
+	    });
+
+	    Object.defineProperty(XMLElement.prototype, 'id', {
+	      get: function() {
+	        throw new Error("This DOM method is not implemented." + this.debugInfo());
+	      }
+	    });
+
+	    Object.defineProperty(XMLElement.prototype, 'className', {
+	      get: function() {
+	        throw new Error("This DOM method is not implemented." + this.debugInfo());
+	      }
+	    });
+
+	    Object.defineProperty(XMLElement.prototype, 'classList', {
+	      get: function() {
+	        throw new Error("This DOM method is not implemented." + this.debugInfo());
+	      }
+	    });
+
+	    Object.defineProperty(XMLElement.prototype, 'attributes', {
+	      get: function() {
+	        if (!this.attributeMap || !this.attributeMap.nodes) {
+	          this.attributeMap = new XMLNamedNodeMap(this.attribs);
+	        }
+	        return this.attributeMap;
+	      }
+	    });
+
+	    XMLElement.prototype.clone = function() {
+	      var att, attName, clonedSelf, ref1;
+	      clonedSelf = Object.create(this);
+	      if (clonedSelf.isRoot) {
+	        clonedSelf.documentObject = null;
+	      }
+	      clonedSelf.attribs = {};
+	      ref1 = this.attribs;
+	      for (attName in ref1) {
+	        if (!hasProp.call(ref1, attName)) continue;
+	        att = ref1[attName];
+	        clonedSelf.attribs[attName] = att.clone();
+	      }
+	      clonedSelf.children = [];
+	      this.children.forEach(function(child) {
+	        var clonedChild;
+	        clonedChild = child.clone();
+	        clonedChild.parent = clonedSelf;
+	        return clonedSelf.children.push(clonedChild);
+	      });
+	      return clonedSelf;
+	    };
+
+	    XMLElement.prototype.attribute = function(name, value) {
+	      var attName, attValue;
+	      if (name != null) {
+	        name = getValue(name);
+	      }
+	      if (isObject(name)) {
+	        for (attName in name) {
+	          if (!hasProp.call(name, attName)) continue;
+	          attValue = name[attName];
+	          this.attribute(attName, attValue);
+	        }
+	      } else {
+	        if (isFunction(value)) {
+	          value = value.apply();
+	        }
+	        if (this.options.keepNullAttributes && (value == null)) {
+	          this.attribs[name] = new XMLAttribute(this, name, "");
+	        } else if (value != null) {
+	          this.attribs[name] = new XMLAttribute(this, name, value);
+	        }
+	      }
+	      return this;
+	    };
+
+	    XMLElement.prototype.removeAttribute = function(name) {
+	      var attName, j, len;
+	      if (name == null) {
+	        throw new Error("Missing attribute name. " + this.debugInfo());
+	      }
+	      name = getValue(name);
+	      if (Array.isArray(name)) {
+	        for (j = 0, len = name.length; j < len; j++) {
+	          attName = name[j];
+	          delete this.attribs[attName];
+	        }
+	      } else {
+	        delete this.attribs[name];
+	      }
+	      return this;
+	    };
+
+	    XMLElement.prototype.toString = function(options) {
+	      return this.options.writer.element(this, this.options.writer.filterOptions(options));
+	    };
+
+	    XMLElement.prototype.att = function(name, value) {
+	      return this.attribute(name, value);
+	    };
+
+	    XMLElement.prototype.a = function(name, value) {
+	      return this.attribute(name, value);
+	    };
+
+	    XMLElement.prototype.getAttribute = function(name) {
+	      if (this.attribs.hasOwnProperty(name)) {
+	        return this.attribs[name].value;
+	      } else {
+	        return null;
+	      }
+	    };
+
+	    XMLElement.prototype.setAttribute = function(name, value) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLElement.prototype.getAttributeNode = function(name) {
+	      if (this.attribs.hasOwnProperty(name)) {
+	        return this.attribs[name];
+	      } else {
+	        return null;
+	      }
+	    };
+
+	    XMLElement.prototype.setAttributeNode = function(newAttr) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLElement.prototype.removeAttributeNode = function(oldAttr) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLElement.prototype.getElementsByTagName = function(name) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLElement.prototype.getAttributeNS = function(namespaceURI, localName) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLElement.prototype.setAttributeNS = function(namespaceURI, qualifiedName, value) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLElement.prototype.removeAttributeNS = function(namespaceURI, localName) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLElement.prototype.getAttributeNodeNS = function(namespaceURI, localName) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLElement.prototype.setAttributeNodeNS = function(newAttr) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLElement.prototype.getElementsByTagNameNS = function(namespaceURI, localName) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLElement.prototype.hasAttribute = function(name) {
+	      return this.attribs.hasOwnProperty(name);
+	    };
+
+	    XMLElement.prototype.hasAttributeNS = function(namespaceURI, localName) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLElement.prototype.setIdAttribute = function(name, isId) {
+	      if (this.attribs.hasOwnProperty(name)) {
+	        return this.attribs[name].isId;
+	      } else {
+	        return isId;
+	      }
+	    };
+
+	    XMLElement.prototype.setIdAttributeNS = function(namespaceURI, localName, isId) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLElement.prototype.setIdAttributeNode = function(idAttr, isId) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLElement.prototype.getElementsByTagName = function(tagname) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLElement.prototype.getElementsByTagNameNS = function(namespaceURI, localName) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLElement.prototype.getElementsByClassName = function(classNames) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLElement.prototype.isEqualNode = function(node) {
+	      var i, j, ref1;
+	      if (!XMLElement.__super__.isEqualNode.apply(this, arguments).isEqualNode(node)) {
+	        return false;
+	      }
+	      if (node.namespaceURI !== this.namespaceURI) {
+	        return false;
+	      }
+	      if (node.prefix !== this.prefix) {
+	        return false;
+	      }
+	      if (node.localName !== this.localName) {
+	        return false;
+	      }
+	      if (node.attribs.length !== this.attribs.length) {
+	        return false;
+	      }
+	      for (i = j = 0, ref1 = this.attribs.length - 1; 0 <= ref1 ? j <= ref1 : j >= ref1; i = 0 <= ref1 ? ++j : --j) {
+	        if (!this.attribs[i].isEqualNode(node.attribs[i])) {
+	          return false;
+	        }
+	      }
+	      return true;
+	    };
+
+	    return XMLElement;
+
+	  })(XMLNode);
+
+	}).call(XMLElement);
+	return XMLElement$1.exports;
+}
+
+var XMLCData$1 = {exports: {}};
+
+var XMLCharacterData$1 = {exports: {}};
+
+var XMLCharacterData = XMLCharacterData$1.exports;
+
+var hasRequiredXMLCharacterData;
+
+function requireXMLCharacterData () {
+	if (hasRequiredXMLCharacterData) return XMLCharacterData$1.exports;
+	hasRequiredXMLCharacterData = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var XMLNode,
+	    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  XMLNode = requireXMLNode();
+
+	  XMLCharacterData$1.exports = (function(superClass) {
+	    extend(XMLCharacterData, superClass);
+
+	    function XMLCharacterData(parent) {
+	      XMLCharacterData.__super__.constructor.call(this, parent);
+	      this.value = '';
+	    }
+
+	    Object.defineProperty(XMLCharacterData.prototype, 'data', {
+	      get: function() {
+	        return this.value;
+	      },
+	      set: function(value) {
+	        return this.value = value || '';
+	      }
+	    });
+
+	    Object.defineProperty(XMLCharacterData.prototype, 'length', {
+	      get: function() {
+	        return this.value.length;
+	      }
+	    });
+
+	    Object.defineProperty(XMLCharacterData.prototype, 'textContent', {
+	      get: function() {
+	        return this.value;
+	      },
+	      set: function(value) {
+	        return this.value = value || '';
+	      }
+	    });
+
+	    XMLCharacterData.prototype.clone = function() {
+	      return Object.create(this);
+	    };
+
+	    XMLCharacterData.prototype.substringData = function(offset, count) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLCharacterData.prototype.appendData = function(arg) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLCharacterData.prototype.insertData = function(offset, arg) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLCharacterData.prototype.deleteData = function(offset, count) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLCharacterData.prototype.replaceData = function(offset, count, arg) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLCharacterData.prototype.isEqualNode = function(node) {
+	      if (!XMLCharacterData.__super__.isEqualNode.apply(this, arguments).isEqualNode(node)) {
+	        return false;
+	      }
+	      if (node.data !== this.data) {
+	        return false;
+	      }
+	      return true;
+	    };
+
+	    return XMLCharacterData;
+
+	  })(XMLNode);
+
+	}).call(XMLCharacterData);
+	return XMLCharacterData$1.exports;
+}
+
+var XMLCData = XMLCData$1.exports;
+
+var hasRequiredXMLCData;
+
+function requireXMLCData () {
+	if (hasRequiredXMLCData) return XMLCData$1.exports;
+	hasRequiredXMLCData = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, XMLCharacterData,
+	    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  NodeType = requireNodeType();
+
+	  XMLCharacterData = requireXMLCharacterData();
+
+	  XMLCData$1.exports = (function(superClass) {
+	    extend(XMLCData, superClass);
+
+	    function XMLCData(parent, text) {
+	      XMLCData.__super__.constructor.call(this, parent);
+	      if (text == null) {
+	        throw new Error("Missing CDATA text. " + this.debugInfo());
+	      }
+	      this.name = "#cdata-section";
+	      this.type = NodeType.CData;
+	      this.value = this.stringify.cdata(text);
+	    }
+
+	    XMLCData.prototype.clone = function() {
+	      return Object.create(this);
+	    };
+
+	    XMLCData.prototype.toString = function(options) {
+	      return this.options.writer.cdata(this, this.options.writer.filterOptions(options));
+	    };
+
+	    return XMLCData;
+
+	  })(XMLCharacterData);
+
+	}).call(XMLCData);
+	return XMLCData$1.exports;
+}
+
+var XMLComment$1 = {exports: {}};
+
+var XMLComment = XMLComment$1.exports;
+
+var hasRequiredXMLComment;
+
+function requireXMLComment () {
+	if (hasRequiredXMLComment) return XMLComment$1.exports;
+	hasRequiredXMLComment = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, XMLCharacterData, extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  NodeType = requireNodeType();
+
+	  XMLCharacterData = requireXMLCharacterData();
+
+	  XMLComment$1.exports = (function(superClass) {
+	    extend(XMLComment, superClass);
+
+	    function XMLComment(parent, text) {
+	      XMLComment.__super__.constructor.call(this, parent);
+	      if (text == null) {
+	        throw new Error("Missing comment text. " + this.debugInfo());
+	      }
+	      this.name = "#comment";
+	      this.type = NodeType.Comment;
+	      this.value = this.stringify.comment(text);
+	    }
+
+	    XMLComment.prototype.clone = function() {
+	      return Object.create(this);
+	    };
+
+	    XMLComment.prototype.toString = function(options) {
+	      return this.options.writer.comment(this, this.options.writer.filterOptions(options));
+	    };
+
+	    return XMLComment;
+
+	  })(XMLCharacterData);
+
+	}).call(XMLComment);
+	return XMLComment$1.exports;
+}
+
+var XMLDeclaration$1 = {exports: {}};
+
+var XMLDeclaration = XMLDeclaration$1.exports;
+
+var hasRequiredXMLDeclaration;
+
+function requireXMLDeclaration () {
+	if (hasRequiredXMLDeclaration) return XMLDeclaration$1.exports;
+	hasRequiredXMLDeclaration = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, XMLNode, isObject,
+	    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  isObject = requireUtility().isObject;
+
+	  XMLNode = requireXMLNode();
+
+	  NodeType = requireNodeType();
+
+	  XMLDeclaration$1.exports = (function(superClass) {
+	    extend(XMLDeclaration, superClass);
+
+	    function XMLDeclaration(parent, version, encoding, standalone) {
+	      var ref;
+	      XMLDeclaration.__super__.constructor.call(this, parent);
+	      if (isObject(version)) {
+	        ref = version, version = ref.version, encoding = ref.encoding, standalone = ref.standalone;
+	      }
+	      if (!version) {
+	        version = '1.0';
+	      }
+	      this.type = NodeType.Declaration;
+	      this.version = this.stringify.xmlVersion(version);
+	      if (encoding != null) {
+	        this.encoding = this.stringify.xmlEncoding(encoding);
+	      }
+	      if (standalone != null) {
+	        this.standalone = this.stringify.xmlStandalone(standalone);
+	      }
+	    }
+
+	    XMLDeclaration.prototype.toString = function(options) {
+	      return this.options.writer.declaration(this, this.options.writer.filterOptions(options));
+	    };
+
+	    return XMLDeclaration;
+
+	  })(XMLNode);
+
+	}).call(XMLDeclaration);
+	return XMLDeclaration$1.exports;
+}
+
+var XMLDocType$1 = {exports: {}};
+
+var XMLDTDAttList$1 = {exports: {}};
+
+var XMLDTDAttList = XMLDTDAttList$1.exports;
+
+var hasRequiredXMLDTDAttList;
+
+function requireXMLDTDAttList () {
+	if (hasRequiredXMLDTDAttList) return XMLDTDAttList$1.exports;
+	hasRequiredXMLDTDAttList = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, XMLNode,
+	    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  XMLNode = requireXMLNode();
+
+	  NodeType = requireNodeType();
+
+	  XMLDTDAttList$1.exports = (function(superClass) {
+	    extend(XMLDTDAttList, superClass);
+
+	    function XMLDTDAttList(parent, elementName, attributeName, attributeType, defaultValueType, defaultValue) {
+	      XMLDTDAttList.__super__.constructor.call(this, parent);
+	      if (elementName == null) {
+	        throw new Error("Missing DTD element name. " + this.debugInfo());
+	      }
+	      if (attributeName == null) {
+	        throw new Error("Missing DTD attribute name. " + this.debugInfo(elementName));
+	      }
+	      if (!attributeType) {
+	        throw new Error("Missing DTD attribute type. " + this.debugInfo(elementName));
+	      }
+	      if (!defaultValueType) {
+	        throw new Error("Missing DTD attribute default. " + this.debugInfo(elementName));
+	      }
+	      if (defaultValueType.indexOf('#') !== 0) {
+	        defaultValueType = '#' + defaultValueType;
+	      }
+	      if (!defaultValueType.match(/^(#REQUIRED|#IMPLIED|#FIXED|#DEFAULT)$/)) {
+	        throw new Error("Invalid default value type; expected: #REQUIRED, #IMPLIED, #FIXED or #DEFAULT. " + this.debugInfo(elementName));
+	      }
+	      if (defaultValue && !defaultValueType.match(/^(#FIXED|#DEFAULT)$/)) {
+	        throw new Error("Default value only applies to #FIXED or #DEFAULT. " + this.debugInfo(elementName));
+	      }
+	      this.elementName = this.stringify.name(elementName);
+	      this.type = NodeType.AttributeDeclaration;
+	      this.attributeName = this.stringify.name(attributeName);
+	      this.attributeType = this.stringify.dtdAttType(attributeType);
+	      if (defaultValue) {
+	        this.defaultValue = this.stringify.dtdAttDefault(defaultValue);
+	      }
+	      this.defaultValueType = defaultValueType;
+	    }
+
+	    XMLDTDAttList.prototype.toString = function(options) {
+	      return this.options.writer.dtdAttList(this, this.options.writer.filterOptions(options));
+	    };
+
+	    return XMLDTDAttList;
+
+	  })(XMLNode);
+
+	}).call(XMLDTDAttList);
+	return XMLDTDAttList$1.exports;
+}
+
+var XMLDTDEntity$1 = {exports: {}};
+
+var XMLDTDEntity = XMLDTDEntity$1.exports;
+
+var hasRequiredXMLDTDEntity;
+
+function requireXMLDTDEntity () {
+	if (hasRequiredXMLDTDEntity) return XMLDTDEntity$1.exports;
+	hasRequiredXMLDTDEntity = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, XMLNode, isObject,
+	    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  isObject = requireUtility().isObject;
+
+	  XMLNode = requireXMLNode();
+
+	  NodeType = requireNodeType();
+
+	  XMLDTDEntity$1.exports = (function(superClass) {
+	    extend(XMLDTDEntity, superClass);
+
+	    function XMLDTDEntity(parent, pe, name, value) {
+	      XMLDTDEntity.__super__.constructor.call(this, parent);
+	      if (name == null) {
+	        throw new Error("Missing DTD entity name. " + this.debugInfo(name));
+	      }
+	      if (value == null) {
+	        throw new Error("Missing DTD entity value. " + this.debugInfo(name));
+	      }
+	      this.pe = !!pe;
+	      this.name = this.stringify.name(name);
+	      this.type = NodeType.EntityDeclaration;
+	      if (!isObject(value)) {
+	        this.value = this.stringify.dtdEntityValue(value);
+	        this.internal = true;
+	      } else {
+	        if (!value.pubID && !value.sysID) {
+	          throw new Error("Public and/or system identifiers are required for an external entity. " + this.debugInfo(name));
+	        }
+	        if (value.pubID && !value.sysID) {
+	          throw new Error("System identifier is required for a public external entity. " + this.debugInfo(name));
+	        }
+	        this.internal = false;
+	        if (value.pubID != null) {
+	          this.pubID = this.stringify.dtdPubID(value.pubID);
+	        }
+	        if (value.sysID != null) {
+	          this.sysID = this.stringify.dtdSysID(value.sysID);
+	        }
+	        if (value.nData != null) {
+	          this.nData = this.stringify.dtdNData(value.nData);
+	        }
+	        if (this.pe && this.nData) {
+	          throw new Error("Notation declaration is not allowed in a parameter entity. " + this.debugInfo(name));
+	        }
+	      }
+	    }
+
+	    Object.defineProperty(XMLDTDEntity.prototype, 'publicId', {
+	      get: function() {
+	        return this.pubID;
+	      }
+	    });
+
+	    Object.defineProperty(XMLDTDEntity.prototype, 'systemId', {
+	      get: function() {
+	        return this.sysID;
+	      }
+	    });
+
+	    Object.defineProperty(XMLDTDEntity.prototype, 'notationName', {
+	      get: function() {
+	        return this.nData || null;
+	      }
+	    });
+
+	    Object.defineProperty(XMLDTDEntity.prototype, 'inputEncoding', {
+	      get: function() {
+	        return null;
+	      }
+	    });
+
+	    Object.defineProperty(XMLDTDEntity.prototype, 'xmlEncoding', {
+	      get: function() {
+	        return null;
+	      }
+	    });
+
+	    Object.defineProperty(XMLDTDEntity.prototype, 'xmlVersion', {
+	      get: function() {
+	        return null;
+	      }
+	    });
+
+	    XMLDTDEntity.prototype.toString = function(options) {
+	      return this.options.writer.dtdEntity(this, this.options.writer.filterOptions(options));
+	    };
+
+	    return XMLDTDEntity;
+
+	  })(XMLNode);
+
+	}).call(XMLDTDEntity);
+	return XMLDTDEntity$1.exports;
+}
+
+var XMLDTDElement$1 = {exports: {}};
+
+var XMLDTDElement = XMLDTDElement$1.exports;
+
+var hasRequiredXMLDTDElement;
+
+function requireXMLDTDElement () {
+	if (hasRequiredXMLDTDElement) return XMLDTDElement$1.exports;
+	hasRequiredXMLDTDElement = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, XMLNode,
+	    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  XMLNode = requireXMLNode();
+
+	  NodeType = requireNodeType();
+
+	  XMLDTDElement$1.exports = (function(superClass) {
+	    extend(XMLDTDElement, superClass);
+
+	    function XMLDTDElement(parent, name, value) {
+	      XMLDTDElement.__super__.constructor.call(this, parent);
+	      if (name == null) {
+	        throw new Error("Missing DTD element name. " + this.debugInfo());
+	      }
+	      if (!value) {
+	        value = '(#PCDATA)';
+	      }
+	      if (Array.isArray(value)) {
+	        value = '(' + value.join(',') + ')';
+	      }
+	      this.name = this.stringify.name(name);
+	      this.type = NodeType.ElementDeclaration;
+	      this.value = this.stringify.dtdElementValue(value);
+	    }
+
+	    XMLDTDElement.prototype.toString = function(options) {
+	      return this.options.writer.dtdElement(this, this.options.writer.filterOptions(options));
+	    };
+
+	    return XMLDTDElement;
+
+	  })(XMLNode);
+
+	}).call(XMLDTDElement);
+	return XMLDTDElement$1.exports;
+}
+
+var XMLDTDNotation$1 = {exports: {}};
+
+var XMLDTDNotation = XMLDTDNotation$1.exports;
+
+var hasRequiredXMLDTDNotation;
+
+function requireXMLDTDNotation () {
+	if (hasRequiredXMLDTDNotation) return XMLDTDNotation$1.exports;
+	hasRequiredXMLDTDNotation = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, XMLNode,
+	    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  XMLNode = requireXMLNode();
+
+	  NodeType = requireNodeType();
+
+	  XMLDTDNotation$1.exports = (function(superClass) {
+	    extend(XMLDTDNotation, superClass);
+
+	    function XMLDTDNotation(parent, name, value) {
+	      XMLDTDNotation.__super__.constructor.call(this, parent);
+	      if (name == null) {
+	        throw new Error("Missing DTD notation name. " + this.debugInfo(name));
+	      }
+	      if (!value.pubID && !value.sysID) {
+	        throw new Error("Public or system identifiers are required for an external entity. " + this.debugInfo(name));
+	      }
+	      this.name = this.stringify.name(name);
+	      this.type = NodeType.NotationDeclaration;
+	      if (value.pubID != null) {
+	        this.pubID = this.stringify.dtdPubID(value.pubID);
+	      }
+	      if (value.sysID != null) {
+	        this.sysID = this.stringify.dtdSysID(value.sysID);
+	      }
+	    }
+
+	    Object.defineProperty(XMLDTDNotation.prototype, 'publicId', {
+	      get: function() {
+	        return this.pubID;
+	      }
+	    });
+
+	    Object.defineProperty(XMLDTDNotation.prototype, 'systemId', {
+	      get: function() {
+	        return this.sysID;
+	      }
+	    });
+
+	    XMLDTDNotation.prototype.toString = function(options) {
+	      return this.options.writer.dtdNotation(this, this.options.writer.filterOptions(options));
+	    };
+
+	    return XMLDTDNotation;
+
+	  })(XMLNode);
+
+	}).call(XMLDTDNotation);
+	return XMLDTDNotation$1.exports;
+}
+
+var XMLDocType = XMLDocType$1.exports;
+
+var hasRequiredXMLDocType;
+
+function requireXMLDocType () {
+	if (hasRequiredXMLDocType) return XMLDocType$1.exports;
+	hasRequiredXMLDocType = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, XMLDTDAttList, XMLDTDElement, XMLDTDEntity, XMLDTDNotation, XMLNamedNodeMap, XMLNode, isObject,
+	    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  isObject = requireUtility().isObject;
+
+	  XMLNode = requireXMLNode();
+
+	  NodeType = requireNodeType();
+
+	  XMLDTDAttList = requireXMLDTDAttList();
+
+	  XMLDTDEntity = requireXMLDTDEntity();
+
+	  XMLDTDElement = requireXMLDTDElement();
+
+	  XMLDTDNotation = requireXMLDTDNotation();
+
+	  XMLNamedNodeMap = requireXMLNamedNodeMap();
+
+	  XMLDocType$1.exports = (function(superClass) {
+	    extend(XMLDocType, superClass);
+
+	    function XMLDocType(parent, pubID, sysID) {
+	      var child, i, len, ref, ref1, ref2;
+	      XMLDocType.__super__.constructor.call(this, parent);
+	      this.type = NodeType.DocType;
+	      if (parent.children) {
+	        ref = parent.children;
+	        for (i = 0, len = ref.length; i < len; i++) {
+	          child = ref[i];
+	          if (child.type === NodeType.Element) {
+	            this.name = child.name;
+	            break;
+	          }
+	        }
+	      }
+	      this.documentObject = parent;
+	      if (isObject(pubID)) {
+	        ref1 = pubID, pubID = ref1.pubID, sysID = ref1.sysID;
+	      }
+	      if (sysID == null) {
+	        ref2 = [pubID, sysID], sysID = ref2[0], pubID = ref2[1];
+	      }
+	      if (pubID != null) {
+	        this.pubID = this.stringify.dtdPubID(pubID);
+	      }
+	      if (sysID != null) {
+	        this.sysID = this.stringify.dtdSysID(sysID);
+	      }
+	    }
+
+	    Object.defineProperty(XMLDocType.prototype, 'entities', {
+	      get: function() {
+	        var child, i, len, nodes, ref;
+	        nodes = {};
+	        ref = this.children;
+	        for (i = 0, len = ref.length; i < len; i++) {
+	          child = ref[i];
+	          if ((child.type === NodeType.EntityDeclaration) && !child.pe) {
+	            nodes[child.name] = child;
+	          }
+	        }
+	        return new XMLNamedNodeMap(nodes);
+	      }
+	    });
+
+	    Object.defineProperty(XMLDocType.prototype, 'notations', {
+	      get: function() {
+	        var child, i, len, nodes, ref;
+	        nodes = {};
+	        ref = this.children;
+	        for (i = 0, len = ref.length; i < len; i++) {
+	          child = ref[i];
+	          if (child.type === NodeType.NotationDeclaration) {
+	            nodes[child.name] = child;
+	          }
+	        }
+	        return new XMLNamedNodeMap(nodes);
+	      }
+	    });
+
+	    Object.defineProperty(XMLDocType.prototype, 'publicId', {
+	      get: function() {
+	        return this.pubID;
+	      }
+	    });
+
+	    Object.defineProperty(XMLDocType.prototype, 'systemId', {
+	      get: function() {
+	        return this.sysID;
+	      }
+	    });
+
+	    Object.defineProperty(XMLDocType.prototype, 'internalSubset', {
+	      get: function() {
+	        throw new Error("This DOM method is not implemented." + this.debugInfo());
+	      }
+	    });
+
+	    XMLDocType.prototype.element = function(name, value) {
+	      var child;
+	      child = new XMLDTDElement(this, name, value);
+	      this.children.push(child);
+	      return this;
+	    };
+
+	    XMLDocType.prototype.attList = function(elementName, attributeName, attributeType, defaultValueType, defaultValue) {
+	      var child;
+	      child = new XMLDTDAttList(this, elementName, attributeName, attributeType, defaultValueType, defaultValue);
+	      this.children.push(child);
+	      return this;
+	    };
+
+	    XMLDocType.prototype.entity = function(name, value) {
+	      var child;
+	      child = new XMLDTDEntity(this, false, name, value);
+	      this.children.push(child);
+	      return this;
+	    };
+
+	    XMLDocType.prototype.pEntity = function(name, value) {
+	      var child;
+	      child = new XMLDTDEntity(this, true, name, value);
+	      this.children.push(child);
+	      return this;
+	    };
+
+	    XMLDocType.prototype.notation = function(name, value) {
+	      var child;
+	      child = new XMLDTDNotation(this, name, value);
+	      this.children.push(child);
+	      return this;
+	    };
+
+	    XMLDocType.prototype.toString = function(options) {
+	      return this.options.writer.docType(this, this.options.writer.filterOptions(options));
+	    };
+
+	    XMLDocType.prototype.ele = function(name, value) {
+	      return this.element(name, value);
+	    };
+
+	    XMLDocType.prototype.att = function(elementName, attributeName, attributeType, defaultValueType, defaultValue) {
+	      return this.attList(elementName, attributeName, attributeType, defaultValueType, defaultValue);
+	    };
+
+	    XMLDocType.prototype.ent = function(name, value) {
+	      return this.entity(name, value);
+	    };
+
+	    XMLDocType.prototype.pent = function(name, value) {
+	      return this.pEntity(name, value);
+	    };
+
+	    XMLDocType.prototype.not = function(name, value) {
+	      return this.notation(name, value);
+	    };
+
+	    XMLDocType.prototype.up = function() {
+	      return this.root() || this.documentObject;
+	    };
+
+	    XMLDocType.prototype.isEqualNode = function(node) {
+	      if (!XMLDocType.__super__.isEqualNode.apply(this, arguments).isEqualNode(node)) {
+	        return false;
+	      }
+	      if (node.name !== this.name) {
+	        return false;
+	      }
+	      if (node.publicId !== this.publicId) {
+	        return false;
+	      }
+	      if (node.systemId !== this.systemId) {
+	        return false;
+	      }
+	      return true;
+	    };
+
+	    return XMLDocType;
+
+	  })(XMLNode);
+
+	}).call(XMLDocType);
+	return XMLDocType$1.exports;
+}
+
+var XMLRaw$1 = {exports: {}};
+
+var XMLRaw = XMLRaw$1.exports;
+
+var hasRequiredXMLRaw;
+
+function requireXMLRaw () {
+	if (hasRequiredXMLRaw) return XMLRaw$1.exports;
+	hasRequiredXMLRaw = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, XMLNode, extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  NodeType = requireNodeType();
+
+	  XMLNode = requireXMLNode();
+
+	  XMLRaw$1.exports = (function(superClass) {
+	    extend(XMLRaw, superClass);
+
+	    function XMLRaw(parent, text) {
+	      XMLRaw.__super__.constructor.call(this, parent);
+	      if (text == null) {
+	        throw new Error("Missing raw text. " + this.debugInfo());
+	      }
+	      this.type = NodeType.Raw;
+	      this.value = this.stringify.raw(text);
+	    }
+
+	    XMLRaw.prototype.clone = function() {
+	      return Object.create(this);
+	    };
+
+	    XMLRaw.prototype.toString = function(options) {
+	      return this.options.writer.raw(this, this.options.writer.filterOptions(options));
+	    };
+
+	    return XMLRaw;
+
+	  })(XMLNode);
+
+	}).call(XMLRaw);
+	return XMLRaw$1.exports;
+}
+
+var XMLText$1 = {exports: {}};
+
+var XMLText = XMLText$1.exports;
+
+var hasRequiredXMLText;
+
+function requireXMLText () {
+	if (hasRequiredXMLText) return XMLText$1.exports;
+	hasRequiredXMLText = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, XMLCharacterData, extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  NodeType = requireNodeType();
+
+	  XMLCharacterData = requireXMLCharacterData();
+
+	  XMLText$1.exports = (function(superClass) {
+	    extend(XMLText, superClass);
+
+	    function XMLText(parent, text) {
+	      XMLText.__super__.constructor.call(this, parent);
+	      if (text == null) {
+	        throw new Error("Missing element text. " + this.debugInfo());
+	      }
+	      this.name = "#text";
+	      this.type = NodeType.Text;
+	      this.value = this.stringify.text(text);
+	    }
+
+	    Object.defineProperty(XMLText.prototype, 'isElementContentWhitespace', {
+	      get: function() {
+	        throw new Error("This DOM method is not implemented." + this.debugInfo());
+	      }
+	    });
+
+	    Object.defineProperty(XMLText.prototype, 'wholeText', {
+	      get: function() {
+	        var next, prev, str;
+	        str = '';
+	        prev = this.previousSibling;
+	        while (prev) {
+	          str = prev.data + str;
+	          prev = prev.previousSibling;
+	        }
+	        str += this.data;
+	        next = this.nextSibling;
+	        while (next) {
+	          str = str + next.data;
+	          next = next.nextSibling;
+	        }
+	        return str;
+	      }
+	    });
+
+	    XMLText.prototype.clone = function() {
+	      return Object.create(this);
+	    };
+
+	    XMLText.prototype.toString = function(options) {
+	      return this.options.writer.text(this, this.options.writer.filterOptions(options));
+	    };
+
+	    XMLText.prototype.splitText = function(offset) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLText.prototype.replaceWholeText = function(content) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    return XMLText;
+
+	  })(XMLCharacterData);
+
+	}).call(XMLText);
+	return XMLText$1.exports;
+}
+
+var XMLProcessingInstruction$1 = {exports: {}};
+
+var XMLProcessingInstruction = XMLProcessingInstruction$1.exports;
+
+var hasRequiredXMLProcessingInstruction;
+
+function requireXMLProcessingInstruction () {
+	if (hasRequiredXMLProcessingInstruction) return XMLProcessingInstruction$1.exports;
+	hasRequiredXMLProcessingInstruction = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, XMLCharacterData, extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  NodeType = requireNodeType();
+
+	  XMLCharacterData = requireXMLCharacterData();
+
+	  XMLProcessingInstruction$1.exports = (function(superClass) {
+	    extend(XMLProcessingInstruction, superClass);
+
+	    function XMLProcessingInstruction(parent, target, value) {
+	      XMLProcessingInstruction.__super__.constructor.call(this, parent);
+	      if (target == null) {
+	        throw new Error("Missing instruction target. " + this.debugInfo());
+	      }
+	      this.type = NodeType.ProcessingInstruction;
+	      this.target = this.stringify.insTarget(target);
+	      this.name = this.target;
+	      if (value) {
+	        this.value = this.stringify.insValue(value);
+	      }
+	    }
+
+	    XMLProcessingInstruction.prototype.clone = function() {
+	      return Object.create(this);
+	    };
+
+	    XMLProcessingInstruction.prototype.toString = function(options) {
+	      return this.options.writer.processingInstruction(this, this.options.writer.filterOptions(options));
+	    };
+
+	    XMLProcessingInstruction.prototype.isEqualNode = function(node) {
+	      if (!XMLProcessingInstruction.__super__.isEqualNode.apply(this, arguments).isEqualNode(node)) {
+	        return false;
+	      }
+	      if (node.target !== this.target) {
+	        return false;
+	      }
+	      return true;
+	    };
+
+	    return XMLProcessingInstruction;
+
+	  })(XMLCharacterData);
+
+	}).call(XMLProcessingInstruction);
+	return XMLProcessingInstruction$1.exports;
+}
+
+var XMLDummy$1 = {exports: {}};
+
+var XMLDummy = XMLDummy$1.exports;
+
+var hasRequiredXMLDummy;
+
+function requireXMLDummy () {
+	if (hasRequiredXMLDummy) return XMLDummy$1.exports;
+	hasRequiredXMLDummy = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, XMLNode,
+	    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  XMLNode = requireXMLNode();
+
+	  NodeType = requireNodeType();
+
+	  XMLDummy$1.exports = (function(superClass) {
+	    extend(XMLDummy, superClass);
+
+	    function XMLDummy(parent) {
+	      XMLDummy.__super__.constructor.call(this, parent);
+	      this.type = NodeType.Dummy;
+	    }
+
+	    XMLDummy.prototype.clone = function() {
+	      return Object.create(this);
+	    };
+
+	    XMLDummy.prototype.toString = function(options) {
+	      return '';
+	    };
+
+	    return XMLDummy;
+
+	  })(XMLNode);
+
+	}).call(XMLDummy);
+	return XMLDummy$1.exports;
+}
+
+var XMLNodeList$1 = {exports: {}};
+
+var XMLNodeList = XMLNodeList$1.exports;
+
+var hasRequiredXMLNodeList;
+
+function requireXMLNodeList () {
+	if (hasRequiredXMLNodeList) return XMLNodeList$1.exports;
+	hasRequiredXMLNodeList = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+
+	  XMLNodeList$1.exports = (function() {
+	    function XMLNodeList(nodes) {
+	      this.nodes = nodes;
+	    }
+
+	    Object.defineProperty(XMLNodeList.prototype, 'length', {
+	      get: function() {
+	        return this.nodes.length || 0;
+	      }
+	    });
+
+	    XMLNodeList.prototype.clone = function() {
+	      return this.nodes = null;
+	    };
+
+	    XMLNodeList.prototype.item = function(index) {
+	      return this.nodes[index] || null;
+	    };
+
+	    return XMLNodeList;
+
+	  })();
+
+	}).call(XMLNodeList);
+	return XMLNodeList$1.exports;
+}
+
+var DocumentPosition$1 = {exports: {}};
+
+var DocumentPosition = DocumentPosition$1.exports;
+
+var hasRequiredDocumentPosition;
+
+function requireDocumentPosition () {
+	if (hasRequiredDocumentPosition) return DocumentPosition$1.exports;
+	hasRequiredDocumentPosition = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  DocumentPosition$1.exports = {
+	    Disconnected: 1,
+	    Preceding: 2,
+	    Following: 4,
+	    Contains: 8,
+	    ContainedBy: 16,
+	    ImplementationSpecific: 32
+	  };
+
+	}).call(DocumentPosition);
+	return DocumentPosition$1.exports;
+}
+
+var XMLNode = XMLNode$1.exports;
+
+var hasRequiredXMLNode;
+
+function requireXMLNode () {
+	if (hasRequiredXMLNode) return XMLNode$1.exports;
+	hasRequiredXMLNode = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var DocumentPosition, NodeType, XMLCData, XMLComment, XMLDeclaration, XMLDocType, XMLDummy, XMLElement, XMLNodeList, XMLProcessingInstruction, XMLRaw, XMLText, getValue, isEmpty, isFunction, isObject, ref1,
+	    hasProp = {}.hasOwnProperty;
+
+	  ref1 = requireUtility(), isObject = ref1.isObject, isFunction = ref1.isFunction, isEmpty = ref1.isEmpty, getValue = ref1.getValue;
+
+	  XMLElement = null;
+
+	  XMLCData = null;
+
+	  XMLComment = null;
+
+	  XMLDeclaration = null;
+
+	  XMLDocType = null;
+
+	  XMLRaw = null;
+
+	  XMLText = null;
+
+	  XMLProcessingInstruction = null;
+
+	  XMLDummy = null;
+
+	  NodeType = null;
+
+	  XMLNodeList = null;
+
+	  DocumentPosition = null;
+
+	  XMLNode$1.exports = (function() {
+	    function XMLNode(parent1) {
+	      this.parent = parent1;
+	      if (this.parent) {
+	        this.options = this.parent.options;
+	        this.stringify = this.parent.stringify;
+	      }
+	      this.value = null;
+	      this.children = [];
+	      this.baseURI = null;
+	      if (!XMLElement) {
+	        XMLElement = requireXMLElement();
+	        XMLCData = requireXMLCData();
+	        XMLComment = requireXMLComment();
+	        XMLDeclaration = requireXMLDeclaration();
+	        XMLDocType = requireXMLDocType();
+	        XMLRaw = requireXMLRaw();
+	        XMLText = requireXMLText();
+	        XMLProcessingInstruction = requireXMLProcessingInstruction();
+	        XMLDummy = requireXMLDummy();
+	        NodeType = requireNodeType();
+	        XMLNodeList = requireXMLNodeList();
+	        requireXMLNamedNodeMap();
+	        DocumentPosition = requireDocumentPosition();
+	      }
+	    }
+
+	    Object.defineProperty(XMLNode.prototype, 'nodeName', {
+	      get: function() {
+	        return this.name;
+	      }
+	    });
+
+	    Object.defineProperty(XMLNode.prototype, 'nodeType', {
+	      get: function() {
+	        return this.type;
+	      }
+	    });
+
+	    Object.defineProperty(XMLNode.prototype, 'nodeValue', {
+	      get: function() {
+	        return this.value;
+	      }
+	    });
+
+	    Object.defineProperty(XMLNode.prototype, 'parentNode', {
+	      get: function() {
+	        return this.parent;
+	      }
+	    });
+
+	    Object.defineProperty(XMLNode.prototype, 'childNodes', {
+	      get: function() {
+	        if (!this.childNodeList || !this.childNodeList.nodes) {
+	          this.childNodeList = new XMLNodeList(this.children);
+	        }
+	        return this.childNodeList;
+	      }
+	    });
+
+	    Object.defineProperty(XMLNode.prototype, 'firstChild', {
+	      get: function() {
+	        return this.children[0] || null;
+	      }
+	    });
+
+	    Object.defineProperty(XMLNode.prototype, 'lastChild', {
+	      get: function() {
+	        return this.children[this.children.length - 1] || null;
+	      }
+	    });
+
+	    Object.defineProperty(XMLNode.prototype, 'previousSibling', {
+	      get: function() {
+	        var i;
+	        i = this.parent.children.indexOf(this);
+	        return this.parent.children[i - 1] || null;
+	      }
+	    });
+
+	    Object.defineProperty(XMLNode.prototype, 'nextSibling', {
+	      get: function() {
+	        var i;
+	        i = this.parent.children.indexOf(this);
+	        return this.parent.children[i + 1] || null;
+	      }
+	    });
+
+	    Object.defineProperty(XMLNode.prototype, 'ownerDocument', {
+	      get: function() {
+	        return this.document() || null;
+	      }
+	    });
+
+	    Object.defineProperty(XMLNode.prototype, 'textContent', {
+	      get: function() {
+	        var child, j, len, ref2, str;
+	        if (this.nodeType === NodeType.Element || this.nodeType === NodeType.DocumentFragment) {
+	          str = '';
+	          ref2 = this.children;
+	          for (j = 0, len = ref2.length; j < len; j++) {
+	            child = ref2[j];
+	            if (child.textContent) {
+	              str += child.textContent;
+	            }
+	          }
+	          return str;
+	        } else {
+	          return null;
+	        }
+	      },
+	      set: function(value) {
+	        throw new Error("This DOM method is not implemented." + this.debugInfo());
+	      }
+	    });
+
+	    XMLNode.prototype.setParent = function(parent) {
+	      var child, j, len, ref2, results;
+	      this.parent = parent;
+	      if (parent) {
+	        this.options = parent.options;
+	        this.stringify = parent.stringify;
+	      }
+	      ref2 = this.children;
+	      results = [];
+	      for (j = 0, len = ref2.length; j < len; j++) {
+	        child = ref2[j];
+	        results.push(child.setParent(this));
+	      }
+	      return results;
+	    };
+
+	    XMLNode.prototype.element = function(name, attributes, text) {
+	      var childNode, item, j, k, key, lastChild, len, len1, ref2, ref3, val;
+	      lastChild = null;
+	      if (attributes === null && (text == null)) {
+	        ref2 = [{}, null], attributes = ref2[0], text = ref2[1];
+	      }
+	      if (attributes == null) {
+	        attributes = {};
+	      }
+	      attributes = getValue(attributes);
+	      if (!isObject(attributes)) {
+	        ref3 = [attributes, text], text = ref3[0], attributes = ref3[1];
+	      }
+	      if (name != null) {
+	        name = getValue(name);
+	      }
+	      if (Array.isArray(name)) {
+	        for (j = 0, len = name.length; j < len; j++) {
+	          item = name[j];
+	          lastChild = this.element(item);
+	        }
+	      } else if (isFunction(name)) {
+	        lastChild = this.element(name.apply());
+	      } else if (isObject(name)) {
+	        for (key in name) {
+	          if (!hasProp.call(name, key)) continue;
+	          val = name[key];
+	          if (isFunction(val)) {
+	            val = val.apply();
+	          }
+	          if (!this.options.ignoreDecorators && this.stringify.convertAttKey && key.indexOf(this.stringify.convertAttKey) === 0) {
+	            lastChild = this.attribute(key.substr(this.stringify.convertAttKey.length), val);
+	          } else if (!this.options.separateArrayItems && Array.isArray(val) && isEmpty(val)) {
+	            lastChild = this.dummy();
+	          } else if (isObject(val) && isEmpty(val)) {
+	            lastChild = this.element(key);
+	          } else if (!this.options.keepNullNodes && (val == null)) {
+	            lastChild = this.dummy();
+	          } else if (!this.options.separateArrayItems && Array.isArray(val)) {
+	            for (k = 0, len1 = val.length; k < len1; k++) {
+	              item = val[k];
+	              childNode = {};
+	              childNode[key] = item;
+	              lastChild = this.element(childNode);
+	            }
+	          } else if (isObject(val)) {
+	            if (!this.options.ignoreDecorators && this.stringify.convertTextKey && key.indexOf(this.stringify.convertTextKey) === 0) {
+	              lastChild = this.element(val);
+	            } else {
+	              lastChild = this.element(key);
+	              lastChild.element(val);
+	            }
+	          } else {
+	            lastChild = this.element(key, val);
+	          }
+	        }
+	      } else if (!this.options.keepNullNodes && text === null) {
+	        lastChild = this.dummy();
+	      } else {
+	        if (!this.options.ignoreDecorators && this.stringify.convertTextKey && name.indexOf(this.stringify.convertTextKey) === 0) {
+	          lastChild = this.text(text);
+	        } else if (!this.options.ignoreDecorators && this.stringify.convertCDataKey && name.indexOf(this.stringify.convertCDataKey) === 0) {
+	          lastChild = this.cdata(text);
+	        } else if (!this.options.ignoreDecorators && this.stringify.convertCommentKey && name.indexOf(this.stringify.convertCommentKey) === 0) {
+	          lastChild = this.comment(text);
+	        } else if (!this.options.ignoreDecorators && this.stringify.convertRawKey && name.indexOf(this.stringify.convertRawKey) === 0) {
+	          lastChild = this.raw(text);
+	        } else if (!this.options.ignoreDecorators && this.stringify.convertPIKey && name.indexOf(this.stringify.convertPIKey) === 0) {
+	          lastChild = this.instruction(name.substr(this.stringify.convertPIKey.length), text);
+	        } else {
+	          lastChild = this.node(name, attributes, text);
+	        }
+	      }
+	      if (lastChild == null) {
+	        throw new Error("Could not create any elements with: " + name + ". " + this.debugInfo());
+	      }
+	      return lastChild;
+	    };
+
+	    XMLNode.prototype.insertBefore = function(name, attributes, text) {
+	      var child, i, newChild, refChild, removed;
+	      if (name != null ? name.type : void 0) {
+	        newChild = name;
+	        refChild = attributes;
+	        newChild.setParent(this);
+	        if (refChild) {
+	          i = children.indexOf(refChild);
+	          removed = children.splice(i);
+	          children.push(newChild);
+	          Array.prototype.push.apply(children, removed);
+	        } else {
+	          children.push(newChild);
+	        }
+	        return newChild;
+	      } else {
+	        if (this.isRoot) {
+	          throw new Error("Cannot insert elements at root level. " + this.debugInfo(name));
+	        }
+	        i = this.parent.children.indexOf(this);
+	        removed = this.parent.children.splice(i);
+	        child = this.parent.element(name, attributes, text);
+	        Array.prototype.push.apply(this.parent.children, removed);
+	        return child;
+	      }
+	    };
+
+	    XMLNode.prototype.insertAfter = function(name, attributes, text) {
+	      var child, i, removed;
+	      if (this.isRoot) {
+	        throw new Error("Cannot insert elements at root level. " + this.debugInfo(name));
+	      }
+	      i = this.parent.children.indexOf(this);
+	      removed = this.parent.children.splice(i + 1);
+	      child = this.parent.element(name, attributes, text);
+	      Array.prototype.push.apply(this.parent.children, removed);
+	      return child;
+	    };
+
+	    XMLNode.prototype.remove = function() {
+	      var i;
+	      if (this.isRoot) {
+	        throw new Error("Cannot remove the root element. " + this.debugInfo());
+	      }
+	      i = this.parent.children.indexOf(this);
+	      [].splice.apply(this.parent.children, [i, i - i + 1].concat([]));
+	      return this.parent;
+	    };
+
+	    XMLNode.prototype.node = function(name, attributes, text) {
+	      var child, ref2;
+	      if (name != null) {
+	        name = getValue(name);
+	      }
+	      attributes || (attributes = {});
+	      attributes = getValue(attributes);
+	      if (!isObject(attributes)) {
+	        ref2 = [attributes, text], text = ref2[0], attributes = ref2[1];
+	      }
+	      child = new XMLElement(this, name, attributes);
+	      if (text != null) {
+	        child.text(text);
+	      }
+	      this.children.push(child);
+	      return child;
+	    };
+
+	    XMLNode.prototype.text = function(value) {
+	      var child;
+	      if (isObject(value)) {
+	        this.element(value);
+	      }
+	      child = new XMLText(this, value);
+	      this.children.push(child);
+	      return this;
+	    };
+
+	    XMLNode.prototype.cdata = function(value) {
+	      var child;
+	      child = new XMLCData(this, value);
+	      this.children.push(child);
+	      return this;
+	    };
+
+	    XMLNode.prototype.comment = function(value) {
+	      var child;
+	      child = new XMLComment(this, value);
+	      this.children.push(child);
+	      return this;
+	    };
+
+	    XMLNode.prototype.commentBefore = function(value) {
+	      var i, removed;
+	      i = this.parent.children.indexOf(this);
+	      removed = this.parent.children.splice(i);
+	      this.parent.comment(value);
+	      Array.prototype.push.apply(this.parent.children, removed);
+	      return this;
+	    };
+
+	    XMLNode.prototype.commentAfter = function(value) {
+	      var i, removed;
+	      i = this.parent.children.indexOf(this);
+	      removed = this.parent.children.splice(i + 1);
+	      this.parent.comment(value);
+	      Array.prototype.push.apply(this.parent.children, removed);
+	      return this;
+	    };
+
+	    XMLNode.prototype.raw = function(value) {
+	      var child;
+	      child = new XMLRaw(this, value);
+	      this.children.push(child);
+	      return this;
+	    };
+
+	    XMLNode.prototype.dummy = function() {
+	      var child;
+	      child = new XMLDummy(this);
+	      return child;
+	    };
+
+	    XMLNode.prototype.instruction = function(target, value) {
+	      var insTarget, insValue, instruction, j, len;
+	      if (target != null) {
+	        target = getValue(target);
+	      }
+	      if (value != null) {
+	        value = getValue(value);
+	      }
+	      if (Array.isArray(target)) {
+	        for (j = 0, len = target.length; j < len; j++) {
+	          insTarget = target[j];
+	          this.instruction(insTarget);
+	        }
+	      } else if (isObject(target)) {
+	        for (insTarget in target) {
+	          if (!hasProp.call(target, insTarget)) continue;
+	          insValue = target[insTarget];
+	          this.instruction(insTarget, insValue);
+	        }
+	      } else {
+	        if (isFunction(value)) {
+	          value = value.apply();
+	        }
+	        instruction = new XMLProcessingInstruction(this, target, value);
+	        this.children.push(instruction);
+	      }
+	      return this;
+	    };
+
+	    XMLNode.prototype.instructionBefore = function(target, value) {
+	      var i, removed;
+	      i = this.parent.children.indexOf(this);
+	      removed = this.parent.children.splice(i);
+	      this.parent.instruction(target, value);
+	      Array.prototype.push.apply(this.parent.children, removed);
+	      return this;
+	    };
+
+	    XMLNode.prototype.instructionAfter = function(target, value) {
+	      var i, removed;
+	      i = this.parent.children.indexOf(this);
+	      removed = this.parent.children.splice(i + 1);
+	      this.parent.instruction(target, value);
+	      Array.prototype.push.apply(this.parent.children, removed);
+	      return this;
+	    };
+
+	    XMLNode.prototype.declaration = function(version, encoding, standalone) {
+	      var doc, xmldec;
+	      doc = this.document();
+	      xmldec = new XMLDeclaration(doc, version, encoding, standalone);
+	      if (doc.children.length === 0) {
+	        doc.children.unshift(xmldec);
+	      } else if (doc.children[0].type === NodeType.Declaration) {
+	        doc.children[0] = xmldec;
+	      } else {
+	        doc.children.unshift(xmldec);
+	      }
+	      return doc.root() || doc;
+	    };
+
+	    XMLNode.prototype.dtd = function(pubID, sysID) {
+	      var child, doc, doctype, i, j, k, len, len1, ref2, ref3;
+	      doc = this.document();
+	      doctype = new XMLDocType(doc, pubID, sysID);
+	      ref2 = doc.children;
+	      for (i = j = 0, len = ref2.length; j < len; i = ++j) {
+	        child = ref2[i];
+	        if (child.type === NodeType.DocType) {
+	          doc.children[i] = doctype;
+	          return doctype;
+	        }
+	      }
+	      ref3 = doc.children;
+	      for (i = k = 0, len1 = ref3.length; k < len1; i = ++k) {
+	        child = ref3[i];
+	        if (child.isRoot) {
+	          doc.children.splice(i, 0, doctype);
+	          return doctype;
+	        }
+	      }
+	      doc.children.push(doctype);
+	      return doctype;
+	    };
+
+	    XMLNode.prototype.up = function() {
+	      if (this.isRoot) {
+	        throw new Error("The root node has no parent. Use doc() if you need to get the document object.");
+	      }
+	      return this.parent;
+	    };
+
+	    XMLNode.prototype.root = function() {
+	      var node;
+	      node = this;
+	      while (node) {
+	        if (node.type === NodeType.Document) {
+	          return node.rootObject;
+	        } else if (node.isRoot) {
+	          return node;
+	        } else {
+	          node = node.parent;
+	        }
+	      }
+	    };
+
+	    XMLNode.prototype.document = function() {
+	      var node;
+	      node = this;
+	      while (node) {
+	        if (node.type === NodeType.Document) {
+	          return node;
+	        } else {
+	          node = node.parent;
+	        }
+	      }
+	    };
+
+	    XMLNode.prototype.end = function(options) {
+	      return this.document().end(options);
+	    };
+
+	    XMLNode.prototype.prev = function() {
+	      var i;
+	      i = this.parent.children.indexOf(this);
+	      if (i < 1) {
+	        throw new Error("Already at the first node. " + this.debugInfo());
+	      }
+	      return this.parent.children[i - 1];
+	    };
+
+	    XMLNode.prototype.next = function() {
+	      var i;
+	      i = this.parent.children.indexOf(this);
+	      if (i === -1 || i === this.parent.children.length - 1) {
+	        throw new Error("Already at the last node. " + this.debugInfo());
+	      }
+	      return this.parent.children[i + 1];
+	    };
+
+	    XMLNode.prototype.importDocument = function(doc) {
+	      var clonedRoot;
+	      clonedRoot = doc.root().clone();
+	      clonedRoot.parent = this;
+	      clonedRoot.isRoot = false;
+	      this.children.push(clonedRoot);
+	      return this;
+	    };
+
+	    XMLNode.prototype.debugInfo = function(name) {
+	      var ref2, ref3;
+	      name = name || this.name;
+	      if ((name == null) && !((ref2 = this.parent) != null ? ref2.name : void 0)) {
+	        return "";
+	      } else if (name == null) {
+	        return "parent: <" + this.parent.name + ">";
+	      } else if (!((ref3 = this.parent) != null ? ref3.name : void 0)) {
+	        return "node: <" + name + ">";
+	      } else {
+	        return "node: <" + name + ">, parent: <" + this.parent.name + ">";
+	      }
+	    };
+
+	    XMLNode.prototype.ele = function(name, attributes, text) {
+	      return this.element(name, attributes, text);
+	    };
+
+	    XMLNode.prototype.nod = function(name, attributes, text) {
+	      return this.node(name, attributes, text);
+	    };
+
+	    XMLNode.prototype.txt = function(value) {
+	      return this.text(value);
+	    };
+
+	    XMLNode.prototype.dat = function(value) {
+	      return this.cdata(value);
+	    };
+
+	    XMLNode.prototype.com = function(value) {
+	      return this.comment(value);
+	    };
+
+	    XMLNode.prototype.ins = function(target, value) {
+	      return this.instruction(target, value);
+	    };
+
+	    XMLNode.prototype.doc = function() {
+	      return this.document();
+	    };
+
+	    XMLNode.prototype.dec = function(version, encoding, standalone) {
+	      return this.declaration(version, encoding, standalone);
+	    };
+
+	    XMLNode.prototype.e = function(name, attributes, text) {
+	      return this.element(name, attributes, text);
+	    };
+
+	    XMLNode.prototype.n = function(name, attributes, text) {
+	      return this.node(name, attributes, text);
+	    };
+
+	    XMLNode.prototype.t = function(value) {
+	      return this.text(value);
+	    };
+
+	    XMLNode.prototype.d = function(value) {
+	      return this.cdata(value);
+	    };
+
+	    XMLNode.prototype.c = function(value) {
+	      return this.comment(value);
+	    };
+
+	    XMLNode.prototype.r = function(value) {
+	      return this.raw(value);
+	    };
+
+	    XMLNode.prototype.i = function(target, value) {
+	      return this.instruction(target, value);
+	    };
+
+	    XMLNode.prototype.u = function() {
+	      return this.up();
+	    };
+
+	    XMLNode.prototype.importXMLBuilder = function(doc) {
+	      return this.importDocument(doc);
+	    };
+
+	    XMLNode.prototype.replaceChild = function(newChild, oldChild) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLNode.prototype.removeChild = function(oldChild) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLNode.prototype.appendChild = function(newChild) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLNode.prototype.hasChildNodes = function() {
+	      return this.children.length !== 0;
+	    };
+
+	    XMLNode.prototype.cloneNode = function(deep) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLNode.prototype.normalize = function() {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLNode.prototype.isSupported = function(feature, version) {
+	      return true;
+	    };
+
+	    XMLNode.prototype.hasAttributes = function() {
+	      return this.attribs.length !== 0;
+	    };
+
+	    XMLNode.prototype.compareDocumentPosition = function(other) {
+	      var ref, res;
+	      ref = this;
+	      if (ref === other) {
+	        return 0;
+	      } else if (this.document() !== other.document()) {
+	        res = DocumentPosition.Disconnected | DocumentPosition.ImplementationSpecific;
+	        if (Math.random() < 0.5) {
+	          res |= DocumentPosition.Preceding;
+	        } else {
+	          res |= DocumentPosition.Following;
+	        }
+	        return res;
+	      } else if (ref.isAncestor(other)) {
+	        return DocumentPosition.Contains | DocumentPosition.Preceding;
+	      } else if (ref.isDescendant(other)) {
+	        return DocumentPosition.Contains | DocumentPosition.Following;
+	      } else if (ref.isPreceding(other)) {
+	        return DocumentPosition.Preceding;
+	      } else {
+	        return DocumentPosition.Following;
+	      }
+	    };
+
+	    XMLNode.prototype.isSameNode = function(other) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLNode.prototype.lookupPrefix = function(namespaceURI) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLNode.prototype.isDefaultNamespace = function(namespaceURI) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLNode.prototype.lookupNamespaceURI = function(prefix) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLNode.prototype.isEqualNode = function(node) {
+	      var i, j, ref2;
+	      if (node.nodeType !== this.nodeType) {
+	        return false;
+	      }
+	      if (node.children.length !== this.children.length) {
+	        return false;
+	      }
+	      for (i = j = 0, ref2 = this.children.length - 1; 0 <= ref2 ? j <= ref2 : j >= ref2; i = 0 <= ref2 ? ++j : --j) {
+	        if (!this.children[i].isEqualNode(node.children[i])) {
+	          return false;
+	        }
+	      }
+	      return true;
+	    };
+
+	    XMLNode.prototype.getFeature = function(feature, version) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLNode.prototype.setUserData = function(key, data, handler) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLNode.prototype.getUserData = function(key) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLNode.prototype.contains = function(other) {
+	      if (!other) {
+	        return false;
+	      }
+	      return other === this || this.isDescendant(other);
+	    };
+
+	    XMLNode.prototype.isDescendant = function(node) {
+	      var child, isDescendantChild, j, len, ref2;
+	      ref2 = this.children;
+	      for (j = 0, len = ref2.length; j < len; j++) {
+	        child = ref2[j];
+	        if (node === child) {
+	          return true;
+	        }
+	        isDescendantChild = child.isDescendant(node);
+	        if (isDescendantChild) {
+	          return true;
+	        }
+	      }
+	      return false;
+	    };
+
+	    XMLNode.prototype.isAncestor = function(node) {
+	      return node.isDescendant(this);
+	    };
+
+	    XMLNode.prototype.isPreceding = function(node) {
+	      var nodePos, thisPos;
+	      nodePos = this.treePosition(node);
+	      thisPos = this.treePosition(this);
+	      if (nodePos === -1 || thisPos === -1) {
+	        return false;
+	      } else {
+	        return nodePos < thisPos;
+	      }
+	    };
+
+	    XMLNode.prototype.isFollowing = function(node) {
+	      var nodePos, thisPos;
+	      nodePos = this.treePosition(node);
+	      thisPos = this.treePosition(this);
+	      if (nodePos === -1 || thisPos === -1) {
+	        return false;
+	      } else {
+	        return nodePos > thisPos;
+	      }
+	    };
+
+	    XMLNode.prototype.treePosition = function(node) {
+	      var found, pos;
+	      pos = 0;
+	      found = false;
+	      this.foreachTreeNode(this.document(), function(childNode) {
+	        pos++;
+	        if (!found && childNode === node) {
+	          return found = true;
+	        }
+	      });
+	      if (found) {
+	        return pos;
+	      } else {
+	        return -1;
+	      }
+	    };
+
+	    XMLNode.prototype.foreachTreeNode = function(node, func) {
+	      var child, j, len, ref2, res;
+	      node || (node = this.document());
+	      ref2 = node.children;
+	      for (j = 0, len = ref2.length; j < len; j++) {
+	        child = ref2[j];
+	        if (res = func(child)) {
+	          return res;
+	        } else {
+	          res = this.foreachTreeNode(child, func);
+	          if (res) {
+	            return res;
+	          }
+	        }
+	      }
+	    };
+
+	    return XMLNode;
+
+	  })();
+
+	}).call(XMLNode);
+	return XMLNode$1.exports;
+}
+
+var XMLStringifier$1 = {exports: {}};
+
+var XMLStringifier = XMLStringifier$1.exports;
+
+var hasRequiredXMLStringifier;
+
+function requireXMLStringifier () {
+	if (hasRequiredXMLStringifier) return XMLStringifier$1.exports;
+	hasRequiredXMLStringifier = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+	    hasProp = {}.hasOwnProperty;
+
+	  XMLStringifier$1.exports = (function() {
+	    function XMLStringifier(options) {
+	      this.assertLegalName = bind(this.assertLegalName, this);
+	      this.assertLegalChar = bind(this.assertLegalChar, this);
+	      var key, ref, value;
+	      options || (options = {});
+	      this.options = options;
+	      if (!this.options.version) {
+	        this.options.version = '1.0';
+	      }
+	      ref = options.stringify || {};
+	      for (key in ref) {
+	        if (!hasProp.call(ref, key)) continue;
+	        value = ref[key];
+	        this[key] = value;
+	      }
+	    }
+
+	    XMLStringifier.prototype.name = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      return this.assertLegalName('' + val || '');
+	    };
+
+	    XMLStringifier.prototype.text = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      return this.assertLegalChar(this.textEscape('' + val || ''));
+	    };
+
+	    XMLStringifier.prototype.cdata = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      val = '' + val || '';
+	      val = val.replace(']]>', ']]]]><![CDATA[>');
+	      return this.assertLegalChar(val);
+	    };
+
+	    XMLStringifier.prototype.comment = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      val = '' + val || '';
+	      if (val.match(/--/)) {
+	        throw new Error("Comment text cannot contain double-hypen: " + val);
+	      }
+	      return this.assertLegalChar(val);
+	    };
+
+	    XMLStringifier.prototype.raw = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      return '' + val || '';
+	    };
+
+	    XMLStringifier.prototype.attValue = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      return this.assertLegalChar(this.attEscape(val = '' + val || ''));
+	    };
+
+	    XMLStringifier.prototype.insTarget = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      return this.assertLegalChar('' + val || '');
+	    };
+
+	    XMLStringifier.prototype.insValue = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      val = '' + val || '';
+	      if (val.match(/\?>/)) {
+	        throw new Error("Invalid processing instruction value: " + val);
+	      }
+	      return this.assertLegalChar(val);
+	    };
+
+	    XMLStringifier.prototype.xmlVersion = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      val = '' + val || '';
+	      if (!val.match(/1\.[0-9]+/)) {
+	        throw new Error("Invalid version number: " + val);
+	      }
+	      return val;
+	    };
+
+	    XMLStringifier.prototype.xmlEncoding = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      val = '' + val || '';
+	      if (!val.match(/^[A-Za-z](?:[A-Za-z0-9._-])*$/)) {
+	        throw new Error("Invalid encoding: " + val);
+	      }
+	      return this.assertLegalChar(val);
+	    };
+
+	    XMLStringifier.prototype.xmlStandalone = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      if (val) {
+	        return "yes";
+	      } else {
+	        return "no";
+	      }
+	    };
+
+	    XMLStringifier.prototype.dtdPubID = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      return this.assertLegalChar('' + val || '');
+	    };
+
+	    XMLStringifier.prototype.dtdSysID = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      return this.assertLegalChar('' + val || '');
+	    };
+
+	    XMLStringifier.prototype.dtdElementValue = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      return this.assertLegalChar('' + val || '');
+	    };
+
+	    XMLStringifier.prototype.dtdAttType = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      return this.assertLegalChar('' + val || '');
+	    };
+
+	    XMLStringifier.prototype.dtdAttDefault = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      return this.assertLegalChar('' + val || '');
+	    };
+
+	    XMLStringifier.prototype.dtdEntityValue = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      return this.assertLegalChar('' + val || '');
+	    };
+
+	    XMLStringifier.prototype.dtdNData = function(val) {
+	      if (this.options.noValidation) {
+	        return val;
+	      }
+	      return this.assertLegalChar('' + val || '');
+	    };
+
+	    XMLStringifier.prototype.convertAttKey = '@';
+
+	    XMLStringifier.prototype.convertPIKey = '?';
+
+	    XMLStringifier.prototype.convertTextKey = '#text';
+
+	    XMLStringifier.prototype.convertCDataKey = '#cdata';
+
+	    XMLStringifier.prototype.convertCommentKey = '#comment';
+
+	    XMLStringifier.prototype.convertRawKey = '#raw';
+
+	    XMLStringifier.prototype.assertLegalChar = function(str) {
+	      var regex, res;
+	      if (this.options.noValidation) {
+	        return str;
+	      }
+	      regex = '';
+	      if (this.options.version === '1.0') {
+	        regex = /[\0-\x08\x0B\f\x0E-\x1F\uFFFE\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/;
+	        if (res = str.match(regex)) {
+	          throw new Error("Invalid character in string: " + str + " at index " + res.index);
+	        }
+	      } else if (this.options.version === '1.1') {
+	        regex = /[\0\uFFFE\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/;
+	        if (res = str.match(regex)) {
+	          throw new Error("Invalid character in string: " + str + " at index " + res.index);
+	        }
+	      }
+	      return str;
+	    };
+
+	    XMLStringifier.prototype.assertLegalName = function(str) {
+	      var regex;
+	      if (this.options.noValidation) {
+	        return str;
+	      }
+	      this.assertLegalChar(str);
+	      regex = /^([:A-Z_a-z\xC0-\xD6\xD8-\xF6\xF8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])([\x2D\.0-:A-Z_a-z\xB7\xC0-\xD6\xD8-\xF6\xF8-\u037D\u037F-\u1FFF\u200C\u200D\u203F\u2040\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])*$/;
+	      if (!str.match(regex)) {
+	        throw new Error("Invalid character in name");
+	      }
+	      return str;
+	    };
+
+	    XMLStringifier.prototype.textEscape = function(str) {
+	      var ampregex;
+	      if (this.options.noValidation) {
+	        return str;
+	      }
+	      ampregex = this.options.noDoubleEncoding ? /(?!&\S+;)&/g : /&/g;
+	      return str.replace(ampregex, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\r/g, '&#xD;');
+	    };
+
+	    XMLStringifier.prototype.attEscape = function(str) {
+	      var ampregex;
+	      if (this.options.noValidation) {
+	        return str;
+	      }
+	      ampregex = this.options.noDoubleEncoding ? /(?!&\S+;)&/g : /&/g;
+	      return str.replace(ampregex, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;').replace(/\t/g, '&#x9;').replace(/\n/g, '&#xA;').replace(/\r/g, '&#xD;');
+	    };
+
+	    return XMLStringifier;
+
+	  })();
+
+	}).call(XMLStringifier);
+	return XMLStringifier$1.exports;
+}
+
+var XMLStringWriter$1 = {exports: {}};
+
+var XMLWriterBase$1 = {exports: {}};
+
+var WriterState$1 = {exports: {}};
+
+var WriterState = WriterState$1.exports;
+
+var hasRequiredWriterState;
+
+function requireWriterState () {
+	if (hasRequiredWriterState) return WriterState$1.exports;
+	hasRequiredWriterState = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  WriterState$1.exports = {
+	    None: 0,
+	    OpenTag: 1,
+	    InsideTag: 2,
+	    CloseTag: 3
+	  };
+
+	}).call(WriterState);
+	return WriterState$1.exports;
+}
+
+var XMLWriterBase = XMLWriterBase$1.exports;
+
+var hasRequiredXMLWriterBase;
+
+function requireXMLWriterBase () {
+	if (hasRequiredXMLWriterBase) return XMLWriterBase$1.exports;
+	hasRequiredXMLWriterBase = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, WriterState, assign,
+	    hasProp = {}.hasOwnProperty;
+
+	  assign = requireUtility().assign;
+
+	  NodeType = requireNodeType();
+
+	  requireXMLDeclaration();
+
+	  requireXMLDocType();
+
+	  requireXMLCData();
+
+	  requireXMLComment();
+
+	  requireXMLElement();
+
+	  requireXMLRaw();
+
+	  requireXMLText();
+
+	  requireXMLProcessingInstruction();
+
+	  requireXMLDummy();
+
+	  requireXMLDTDAttList();
+
+	  requireXMLDTDElement();
+
+	  requireXMLDTDEntity();
+
+	  requireXMLDTDNotation();
+
+	  WriterState = requireWriterState();
+
+	  XMLWriterBase$1.exports = (function() {
+	    function XMLWriterBase(options) {
+	      var key, ref, value;
+	      options || (options = {});
+	      this.options = options;
+	      ref = options.writer || {};
+	      for (key in ref) {
+	        if (!hasProp.call(ref, key)) continue;
+	        value = ref[key];
+	        this["_" + key] = this[key];
+	        this[key] = value;
+	      }
+	    }
+
+	    XMLWriterBase.prototype.filterOptions = function(options) {
+	      var filteredOptions, ref, ref1, ref2, ref3, ref4, ref5, ref6;
+	      options || (options = {});
+	      options = assign({}, this.options, options);
+	      filteredOptions = {
+	        writer: this
+	      };
+	      filteredOptions.pretty = options.pretty || false;
+	      filteredOptions.allowEmpty = options.allowEmpty || false;
+	      filteredOptions.indent = (ref = options.indent) != null ? ref : '  ';
+	      filteredOptions.newline = (ref1 = options.newline) != null ? ref1 : '\n';
+	      filteredOptions.offset = (ref2 = options.offset) != null ? ref2 : 0;
+	      filteredOptions.dontPrettyTextNodes = (ref3 = (ref4 = options.dontPrettyTextNodes) != null ? ref4 : options.dontprettytextnodes) != null ? ref3 : 0;
+	      filteredOptions.spaceBeforeSlash = (ref5 = (ref6 = options.spaceBeforeSlash) != null ? ref6 : options.spacebeforeslash) != null ? ref5 : '';
+	      if (filteredOptions.spaceBeforeSlash === true) {
+	        filteredOptions.spaceBeforeSlash = ' ';
+	      }
+	      filteredOptions.suppressPrettyCount = 0;
+	      filteredOptions.user = {};
+	      filteredOptions.state = WriterState.None;
+	      return filteredOptions;
+	    };
+
+	    XMLWriterBase.prototype.indent = function(node, options, level) {
+	      var indentLevel;
+	      if (!options.pretty || options.suppressPrettyCount) {
+	        return '';
+	      } else if (options.pretty) {
+	        indentLevel = (level || 0) + options.offset + 1;
+	        if (indentLevel > 0) {
+	          return new Array(indentLevel).join(options.indent);
+	        }
+	      }
+	      return '';
+	    };
+
+	    XMLWriterBase.prototype.endline = function(node, options, level) {
+	      if (!options.pretty || options.suppressPrettyCount) {
+	        return '';
+	      } else {
+	        return options.newline;
+	      }
+	    };
+
+	    XMLWriterBase.prototype.attribute = function(att, options, level) {
+	      var r;
+	      this.openAttribute(att, options, level);
+	      r = ' ' + att.name + '="' + att.value + '"';
+	      this.closeAttribute(att, options, level);
+	      return r;
+	    };
+
+	    XMLWriterBase.prototype.cdata = function(node, options, level) {
+	      var r;
+	      this.openNode(node, options, level);
+	      options.state = WriterState.OpenTag;
+	      r = this.indent(node, options, level) + '<![CDATA[';
+	      options.state = WriterState.InsideTag;
+	      r += node.value;
+	      options.state = WriterState.CloseTag;
+	      r += ']]>' + this.endline(node, options, level);
+	      options.state = WriterState.None;
+	      this.closeNode(node, options, level);
+	      return r;
+	    };
+
+	    XMLWriterBase.prototype.comment = function(node, options, level) {
+	      var r;
+	      this.openNode(node, options, level);
+	      options.state = WriterState.OpenTag;
+	      r = this.indent(node, options, level) + '<!-- ';
+	      options.state = WriterState.InsideTag;
+	      r += node.value;
+	      options.state = WriterState.CloseTag;
+	      r += ' -->' + this.endline(node, options, level);
+	      options.state = WriterState.None;
+	      this.closeNode(node, options, level);
+	      return r;
+	    };
+
+	    XMLWriterBase.prototype.declaration = function(node, options, level) {
+	      var r;
+	      this.openNode(node, options, level);
+	      options.state = WriterState.OpenTag;
+	      r = this.indent(node, options, level) + '<?xml';
+	      options.state = WriterState.InsideTag;
+	      r += ' version="' + node.version + '"';
+	      if (node.encoding != null) {
+	        r += ' encoding="' + node.encoding + '"';
+	      }
+	      if (node.standalone != null) {
+	        r += ' standalone="' + node.standalone + '"';
+	      }
+	      options.state = WriterState.CloseTag;
+	      r += options.spaceBeforeSlash + '?>';
+	      r += this.endline(node, options, level);
+	      options.state = WriterState.None;
+	      this.closeNode(node, options, level);
+	      return r;
+	    };
+
+	    XMLWriterBase.prototype.docType = function(node, options, level) {
+	      var child, i, len, r, ref;
+	      level || (level = 0);
+	      this.openNode(node, options, level);
+	      options.state = WriterState.OpenTag;
+	      r = this.indent(node, options, level);
+	      r += '<!DOCTYPE ' + node.root().name;
+	      if (node.pubID && node.sysID) {
+	        r += ' PUBLIC "' + node.pubID + '" "' + node.sysID + '"';
+	      } else if (node.sysID) {
+	        r += ' SYSTEM "' + node.sysID + '"';
+	      }
+	      if (node.children.length > 0) {
+	        r += ' [';
+	        r += this.endline(node, options, level);
+	        options.state = WriterState.InsideTag;
+	        ref = node.children;
+	        for (i = 0, len = ref.length; i < len; i++) {
+	          child = ref[i];
+	          r += this.writeChildNode(child, options, level + 1);
+	        }
+	        options.state = WriterState.CloseTag;
+	        r += ']';
+	      }
+	      options.state = WriterState.CloseTag;
+	      r += options.spaceBeforeSlash + '>';
+	      r += this.endline(node, options, level);
+	      options.state = WriterState.None;
+	      this.closeNode(node, options, level);
+	      return r;
+	    };
+
+	    XMLWriterBase.prototype.element = function(node, options, level) {
+	      var att, child, childNodeCount, firstChildNode, i, j, len, len1, name, prettySuppressed, r, ref, ref1, ref2;
+	      level || (level = 0);
+	      prettySuppressed = false;
+	      r = '';
+	      this.openNode(node, options, level);
+	      options.state = WriterState.OpenTag;
+	      r += this.indent(node, options, level) + '<' + node.name;
+	      ref = node.attribs;
+	      for (name in ref) {
+	        if (!hasProp.call(ref, name)) continue;
+	        att = ref[name];
+	        r += this.attribute(att, options, level);
+	      }
+	      childNodeCount = node.children.length;
+	      firstChildNode = childNodeCount === 0 ? null : node.children[0];
+	      if (childNodeCount === 0 || node.children.every(function(e) {
+	        return (e.type === NodeType.Text || e.type === NodeType.Raw) && e.value === '';
+	      })) {
+	        if (options.allowEmpty) {
+	          r += '>';
+	          options.state = WriterState.CloseTag;
+	          r += '</' + node.name + '>' + this.endline(node, options, level);
+	        } else {
+	          options.state = WriterState.CloseTag;
+	          r += options.spaceBeforeSlash + '/>' + this.endline(node, options, level);
+	        }
+	      } else if (options.pretty && childNodeCount === 1 && (firstChildNode.type === NodeType.Text || firstChildNode.type === NodeType.Raw) && (firstChildNode.value != null)) {
+	        r += '>';
+	        options.state = WriterState.InsideTag;
+	        options.suppressPrettyCount++;
+	        prettySuppressed = true;
+	        r += this.writeChildNode(firstChildNode, options, level + 1);
+	        options.suppressPrettyCount--;
+	        prettySuppressed = false;
+	        options.state = WriterState.CloseTag;
+	        r += '</' + node.name + '>' + this.endline(node, options, level);
+	      } else {
+	        if (options.dontPrettyTextNodes) {
+	          ref1 = node.children;
+	          for (i = 0, len = ref1.length; i < len; i++) {
+	            child = ref1[i];
+	            if ((child.type === NodeType.Text || child.type === NodeType.Raw) && (child.value != null)) {
+	              options.suppressPrettyCount++;
+	              prettySuppressed = true;
+	              break;
+	            }
+	          }
+	        }
+	        r += '>' + this.endline(node, options, level);
+	        options.state = WriterState.InsideTag;
+	        ref2 = node.children;
+	        for (j = 0, len1 = ref2.length; j < len1; j++) {
+	          child = ref2[j];
+	          r += this.writeChildNode(child, options, level + 1);
+	        }
+	        options.state = WriterState.CloseTag;
+	        r += this.indent(node, options, level) + '</' + node.name + '>';
+	        if (prettySuppressed) {
+	          options.suppressPrettyCount--;
+	        }
+	        r += this.endline(node, options, level);
+	        options.state = WriterState.None;
+	      }
+	      this.closeNode(node, options, level);
+	      return r;
+	    };
+
+	    XMLWriterBase.prototype.writeChildNode = function(node, options, level) {
+	      switch (node.type) {
+	        case NodeType.CData:
+	          return this.cdata(node, options, level);
+	        case NodeType.Comment:
+	          return this.comment(node, options, level);
+	        case NodeType.Element:
+	          return this.element(node, options, level);
+	        case NodeType.Raw:
+	          return this.raw(node, options, level);
+	        case NodeType.Text:
+	          return this.text(node, options, level);
+	        case NodeType.ProcessingInstruction:
+	          return this.processingInstruction(node, options, level);
+	        case NodeType.Dummy:
+	          return '';
+	        case NodeType.Declaration:
+	          return this.declaration(node, options, level);
+	        case NodeType.DocType:
+	          return this.docType(node, options, level);
+	        case NodeType.AttributeDeclaration:
+	          return this.dtdAttList(node, options, level);
+	        case NodeType.ElementDeclaration:
+	          return this.dtdElement(node, options, level);
+	        case NodeType.EntityDeclaration:
+	          return this.dtdEntity(node, options, level);
+	        case NodeType.NotationDeclaration:
+	          return this.dtdNotation(node, options, level);
+	        default:
+	          throw new Error("Unknown XML node type: " + node.constructor.name);
+	      }
+	    };
+
+	    XMLWriterBase.prototype.processingInstruction = function(node, options, level) {
+	      var r;
+	      this.openNode(node, options, level);
+	      options.state = WriterState.OpenTag;
+	      r = this.indent(node, options, level) + '<?';
+	      options.state = WriterState.InsideTag;
+	      r += node.target;
+	      if (node.value) {
+	        r += ' ' + node.value;
+	      }
+	      options.state = WriterState.CloseTag;
+	      r += options.spaceBeforeSlash + '?>';
+	      r += this.endline(node, options, level);
+	      options.state = WriterState.None;
+	      this.closeNode(node, options, level);
+	      return r;
+	    };
+
+	    XMLWriterBase.prototype.raw = function(node, options, level) {
+	      var r;
+	      this.openNode(node, options, level);
+	      options.state = WriterState.OpenTag;
+	      r = this.indent(node, options, level);
+	      options.state = WriterState.InsideTag;
+	      r += node.value;
+	      options.state = WriterState.CloseTag;
+	      r += this.endline(node, options, level);
+	      options.state = WriterState.None;
+	      this.closeNode(node, options, level);
+	      return r;
+	    };
+
+	    XMLWriterBase.prototype.text = function(node, options, level) {
+	      var r;
+	      this.openNode(node, options, level);
+	      options.state = WriterState.OpenTag;
+	      r = this.indent(node, options, level);
+	      options.state = WriterState.InsideTag;
+	      r += node.value;
+	      options.state = WriterState.CloseTag;
+	      r += this.endline(node, options, level);
+	      options.state = WriterState.None;
+	      this.closeNode(node, options, level);
+	      return r;
+	    };
+
+	    XMLWriterBase.prototype.dtdAttList = function(node, options, level) {
+	      var r;
+	      this.openNode(node, options, level);
+	      options.state = WriterState.OpenTag;
+	      r = this.indent(node, options, level) + '<!ATTLIST';
+	      options.state = WriterState.InsideTag;
+	      r += ' ' + node.elementName + ' ' + node.attributeName + ' ' + node.attributeType;
+	      if (node.defaultValueType !== '#DEFAULT') {
+	        r += ' ' + node.defaultValueType;
+	      }
+	      if (node.defaultValue) {
+	        r += ' "' + node.defaultValue + '"';
+	      }
+	      options.state = WriterState.CloseTag;
+	      r += options.spaceBeforeSlash + '>' + this.endline(node, options, level);
+	      options.state = WriterState.None;
+	      this.closeNode(node, options, level);
+	      return r;
+	    };
+
+	    XMLWriterBase.prototype.dtdElement = function(node, options, level) {
+	      var r;
+	      this.openNode(node, options, level);
+	      options.state = WriterState.OpenTag;
+	      r = this.indent(node, options, level) + '<!ELEMENT';
+	      options.state = WriterState.InsideTag;
+	      r += ' ' + node.name + ' ' + node.value;
+	      options.state = WriterState.CloseTag;
+	      r += options.spaceBeforeSlash + '>' + this.endline(node, options, level);
+	      options.state = WriterState.None;
+	      this.closeNode(node, options, level);
+	      return r;
+	    };
+
+	    XMLWriterBase.prototype.dtdEntity = function(node, options, level) {
+	      var r;
+	      this.openNode(node, options, level);
+	      options.state = WriterState.OpenTag;
+	      r = this.indent(node, options, level) + '<!ENTITY';
+	      options.state = WriterState.InsideTag;
+	      if (node.pe) {
+	        r += ' %';
+	      }
+	      r += ' ' + node.name;
+	      if (node.value) {
+	        r += ' "' + node.value + '"';
+	      } else {
+	        if (node.pubID && node.sysID) {
+	          r += ' PUBLIC "' + node.pubID + '" "' + node.sysID + '"';
+	        } else if (node.sysID) {
+	          r += ' SYSTEM "' + node.sysID + '"';
+	        }
+	        if (node.nData) {
+	          r += ' NDATA ' + node.nData;
+	        }
+	      }
+	      options.state = WriterState.CloseTag;
+	      r += options.spaceBeforeSlash + '>' + this.endline(node, options, level);
+	      options.state = WriterState.None;
+	      this.closeNode(node, options, level);
+	      return r;
+	    };
+
+	    XMLWriterBase.prototype.dtdNotation = function(node, options, level) {
+	      var r;
+	      this.openNode(node, options, level);
+	      options.state = WriterState.OpenTag;
+	      r = this.indent(node, options, level) + '<!NOTATION';
+	      options.state = WriterState.InsideTag;
+	      r += ' ' + node.name;
+	      if (node.pubID && node.sysID) {
+	        r += ' PUBLIC "' + node.pubID + '" "' + node.sysID + '"';
+	      } else if (node.pubID) {
+	        r += ' PUBLIC "' + node.pubID + '"';
+	      } else if (node.sysID) {
+	        r += ' SYSTEM "' + node.sysID + '"';
+	      }
+	      options.state = WriterState.CloseTag;
+	      r += options.spaceBeforeSlash + '>' + this.endline(node, options, level);
+	      options.state = WriterState.None;
+	      this.closeNode(node, options, level);
+	      return r;
+	    };
+
+	    XMLWriterBase.prototype.openNode = function(node, options, level) {};
+
+	    XMLWriterBase.prototype.closeNode = function(node, options, level) {};
+
+	    XMLWriterBase.prototype.openAttribute = function(att, options, level) {};
+
+	    XMLWriterBase.prototype.closeAttribute = function(att, options, level) {};
+
+	    return XMLWriterBase;
+
+	  })();
+
+	}).call(XMLWriterBase);
+	return XMLWriterBase$1.exports;
+}
+
+var XMLStringWriter = XMLStringWriter$1.exports;
+
+var hasRequiredXMLStringWriter;
+
+function requireXMLStringWriter () {
+	if (hasRequiredXMLStringWriter) return XMLStringWriter$1.exports;
+	hasRequiredXMLStringWriter = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var XMLWriterBase,
+	    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  XMLWriterBase = requireXMLWriterBase();
+
+	  XMLStringWriter$1.exports = (function(superClass) {
+	    extend(XMLStringWriter, superClass);
+
+	    function XMLStringWriter(options) {
+	      XMLStringWriter.__super__.constructor.call(this, options);
+	    }
+
+	    XMLStringWriter.prototype.document = function(doc, options) {
+	      var child, i, len, r, ref;
+	      options = this.filterOptions(options);
+	      r = '';
+	      ref = doc.children;
+	      for (i = 0, len = ref.length; i < len; i++) {
+	        child = ref[i];
+	        r += this.writeChildNode(child, options, 0);
+	      }
+	      if (options.pretty && r.slice(-options.newline.length) === options.newline) {
+	        r = r.slice(0, -options.newline.length);
+	      }
+	      return r;
+	    };
+
+	    return XMLStringWriter;
+
+	  })(XMLWriterBase);
+
+	}).call(XMLStringWriter);
+	return XMLStringWriter$1.exports;
+}
+
+var XMLDocument = XMLDocument$1.exports;
+
+var hasRequiredXMLDocument;
+
+function requireXMLDocument () {
+	if (hasRequiredXMLDocument) return XMLDocument$1.exports;
+	hasRequiredXMLDocument = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, XMLDOMConfiguration, XMLDOMImplementation, XMLNode, XMLStringWriter, XMLStringifier, isPlainObject,
+	    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  isPlainObject = requireUtility().isPlainObject;
+
+	  XMLDOMImplementation = requireXMLDOMImplementation();
+
+	  XMLDOMConfiguration = requireXMLDOMConfiguration();
+
+	  XMLNode = requireXMLNode();
+
+	  NodeType = requireNodeType();
+
+	  XMLStringifier = requireXMLStringifier();
+
+	  XMLStringWriter = requireXMLStringWriter();
+
+	  XMLDocument$1.exports = (function(superClass) {
+	    extend(XMLDocument, superClass);
+
+	    function XMLDocument(options) {
+	      XMLDocument.__super__.constructor.call(this, null);
+	      this.name = "#document";
+	      this.type = NodeType.Document;
+	      this.documentURI = null;
+	      this.domConfig = new XMLDOMConfiguration();
+	      options || (options = {});
+	      if (!options.writer) {
+	        options.writer = new XMLStringWriter();
+	      }
+	      this.options = options;
+	      this.stringify = new XMLStringifier(options);
+	    }
+
+	    Object.defineProperty(XMLDocument.prototype, 'implementation', {
+	      value: new XMLDOMImplementation()
+	    });
+
+	    Object.defineProperty(XMLDocument.prototype, 'doctype', {
+	      get: function() {
+	        var child, i, len, ref;
+	        ref = this.children;
+	        for (i = 0, len = ref.length; i < len; i++) {
+	          child = ref[i];
+	          if (child.type === NodeType.DocType) {
+	            return child;
+	          }
+	        }
+	        return null;
+	      }
+	    });
+
+	    Object.defineProperty(XMLDocument.prototype, 'documentElement', {
+	      get: function() {
+	        return this.rootObject || null;
+	      }
+	    });
+
+	    Object.defineProperty(XMLDocument.prototype, 'inputEncoding', {
+	      get: function() {
+	        return null;
+	      }
+	    });
+
+	    Object.defineProperty(XMLDocument.prototype, 'strictErrorChecking', {
+	      get: function() {
+	        return false;
+	      }
+	    });
+
+	    Object.defineProperty(XMLDocument.prototype, 'xmlEncoding', {
+	      get: function() {
+	        if (this.children.length !== 0 && this.children[0].type === NodeType.Declaration) {
+	          return this.children[0].encoding;
+	        } else {
+	          return null;
+	        }
+	      }
+	    });
+
+	    Object.defineProperty(XMLDocument.prototype, 'xmlStandalone', {
+	      get: function() {
+	        if (this.children.length !== 0 && this.children[0].type === NodeType.Declaration) {
+	          return this.children[0].standalone === 'yes';
+	        } else {
+	          return false;
+	        }
+	      }
+	    });
+
+	    Object.defineProperty(XMLDocument.prototype, 'xmlVersion', {
+	      get: function() {
+	        if (this.children.length !== 0 && this.children[0].type === NodeType.Declaration) {
+	          return this.children[0].version;
+	        } else {
+	          return "1.0";
+	        }
+	      }
+	    });
+
+	    Object.defineProperty(XMLDocument.prototype, 'URL', {
+	      get: function() {
+	        return this.documentURI;
+	      }
+	    });
+
+	    Object.defineProperty(XMLDocument.prototype, 'origin', {
+	      get: function() {
+	        return null;
+	      }
+	    });
+
+	    Object.defineProperty(XMLDocument.prototype, 'compatMode', {
+	      get: function() {
+	        return null;
+	      }
+	    });
+
+	    Object.defineProperty(XMLDocument.prototype, 'characterSet', {
+	      get: function() {
+	        return null;
+	      }
+	    });
+
+	    Object.defineProperty(XMLDocument.prototype, 'contentType', {
+	      get: function() {
+	        return null;
+	      }
+	    });
+
+	    XMLDocument.prototype.end = function(writer) {
+	      var writerOptions;
+	      writerOptions = {};
+	      if (!writer) {
+	        writer = this.options.writer;
+	      } else if (isPlainObject(writer)) {
+	        writerOptions = writer;
+	        writer = this.options.writer;
+	      }
+	      return writer.document(this, writer.filterOptions(writerOptions));
+	    };
+
+	    XMLDocument.prototype.toString = function(options) {
+	      return this.options.writer.document(this, this.options.writer.filterOptions(options));
+	    };
+
+	    XMLDocument.prototype.createElement = function(tagName) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.createDocumentFragment = function() {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.createTextNode = function(data) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.createComment = function(data) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.createCDATASection = function(data) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.createProcessingInstruction = function(target, data) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.createAttribute = function(name) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.createEntityReference = function(name) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.getElementsByTagName = function(tagname) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.importNode = function(importedNode, deep) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.createElementNS = function(namespaceURI, qualifiedName) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.createAttributeNS = function(namespaceURI, qualifiedName) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.getElementsByTagNameNS = function(namespaceURI, localName) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.getElementById = function(elementId) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.adoptNode = function(source) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.normalizeDocument = function() {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.renameNode = function(node, namespaceURI, qualifiedName) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.getElementsByClassName = function(classNames) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.createEvent = function(eventInterface) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.createRange = function() {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.createNodeIterator = function(root, whatToShow, filter) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    XMLDocument.prototype.createTreeWalker = function(root, whatToShow, filter) {
+	      throw new Error("This DOM method is not implemented." + this.debugInfo());
+	    };
+
+	    return XMLDocument;
+
+	  })(XMLNode);
+
+	}).call(XMLDocument);
+	return XMLDocument$1.exports;
+}
+
+var XMLDocumentCB$1 = {exports: {}};
+
+var XMLDocumentCB = XMLDocumentCB$1.exports;
+
+var hasRequiredXMLDocumentCB;
+
+function requireXMLDocumentCB () {
+	if (hasRequiredXMLDocumentCB) return XMLDocumentCB$1.exports;
+	hasRequiredXMLDocumentCB = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, WriterState, XMLAttribute, XMLCData, XMLComment, XMLDTDAttList, XMLDTDElement, XMLDTDEntity, XMLDTDNotation, XMLDeclaration, XMLDocType, XMLDocument, XMLElement, XMLProcessingInstruction, XMLRaw, XMLStringWriter, XMLStringifier, XMLText, getValue, isFunction, isObject, isPlainObject, ref,
+	    hasProp = {}.hasOwnProperty;
+
+	  ref = requireUtility(), isObject = ref.isObject, isFunction = ref.isFunction, isPlainObject = ref.isPlainObject, getValue = ref.getValue;
+
+	  NodeType = requireNodeType();
+
+	  XMLDocument = requireXMLDocument();
+
+	  XMLElement = requireXMLElement();
+
+	  XMLCData = requireXMLCData();
+
+	  XMLComment = requireXMLComment();
+
+	  XMLRaw = requireXMLRaw();
+
+	  XMLText = requireXMLText();
+
+	  XMLProcessingInstruction = requireXMLProcessingInstruction();
+
+	  XMLDeclaration = requireXMLDeclaration();
+
+	  XMLDocType = requireXMLDocType();
+
+	  XMLDTDAttList = requireXMLDTDAttList();
+
+	  XMLDTDEntity = requireXMLDTDEntity();
+
+	  XMLDTDElement = requireXMLDTDElement();
+
+	  XMLDTDNotation = requireXMLDTDNotation();
+
+	  XMLAttribute = requireXMLAttribute();
+
+	  XMLStringifier = requireXMLStringifier();
+
+	  XMLStringWriter = requireXMLStringWriter();
+
+	  WriterState = requireWriterState();
+
+	  XMLDocumentCB$1.exports = (function() {
+	    function XMLDocumentCB(options, onData, onEnd) {
+	      var writerOptions;
+	      this.name = "?xml";
+	      this.type = NodeType.Document;
+	      options || (options = {});
+	      writerOptions = {};
+	      if (!options.writer) {
+	        options.writer = new XMLStringWriter();
+	      } else if (isPlainObject(options.writer)) {
+	        writerOptions = options.writer;
+	        options.writer = new XMLStringWriter();
+	      }
+	      this.options = options;
+	      this.writer = options.writer;
+	      this.writerOptions = this.writer.filterOptions(writerOptions);
+	      this.stringify = new XMLStringifier(options);
+	      this.onDataCallback = onData || function() {};
+	      this.onEndCallback = onEnd || function() {};
+	      this.currentNode = null;
+	      this.currentLevel = -1;
+	      this.openTags = {};
+	      this.documentStarted = false;
+	      this.documentCompleted = false;
+	      this.root = null;
+	    }
+
+	    XMLDocumentCB.prototype.createChildNode = function(node) {
+	      var att, attName, attributes, child, i, len, ref1, ref2;
+	      switch (node.type) {
+	        case NodeType.CData:
+	          this.cdata(node.value);
+	          break;
+	        case NodeType.Comment:
+	          this.comment(node.value);
+	          break;
+	        case NodeType.Element:
+	          attributes = {};
+	          ref1 = node.attribs;
+	          for (attName in ref1) {
+	            if (!hasProp.call(ref1, attName)) continue;
+	            att = ref1[attName];
+	            attributes[attName] = att.value;
+	          }
+	          this.node(node.name, attributes);
+	          break;
+	        case NodeType.Dummy:
+	          this.dummy();
+	          break;
+	        case NodeType.Raw:
+	          this.raw(node.value);
+	          break;
+	        case NodeType.Text:
+	          this.text(node.value);
+	          break;
+	        case NodeType.ProcessingInstruction:
+	          this.instruction(node.target, node.value);
+	          break;
+	        default:
+	          throw new Error("This XML node type is not supported in a JS object: " + node.constructor.name);
+	      }
+	      ref2 = node.children;
+	      for (i = 0, len = ref2.length; i < len; i++) {
+	        child = ref2[i];
+	        this.createChildNode(child);
+	        if (child.type === NodeType.Element) {
+	          this.up();
+	        }
+	      }
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.dummy = function() {
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.node = function(name, attributes, text) {
+	      var ref1;
+	      if (name == null) {
+	        throw new Error("Missing node name.");
+	      }
+	      if (this.root && this.currentLevel === -1) {
+	        throw new Error("Document can only have one root node. " + this.debugInfo(name));
+	      }
+	      this.openCurrent();
+	      name = getValue(name);
+	      if (attributes == null) {
+	        attributes = {};
+	      }
+	      attributes = getValue(attributes);
+	      if (!isObject(attributes)) {
+	        ref1 = [attributes, text], text = ref1[0], attributes = ref1[1];
+	      }
+	      this.currentNode = new XMLElement(this, name, attributes);
+	      this.currentNode.children = false;
+	      this.currentLevel++;
+	      this.openTags[this.currentLevel] = this.currentNode;
+	      if (text != null) {
+	        this.text(text);
+	      }
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.element = function(name, attributes, text) {
+	      var child, i, len, oldValidationFlag, ref1, root;
+	      if (this.currentNode && this.currentNode.type === NodeType.DocType) {
+	        this.dtdElement.apply(this, arguments);
+	      } else {
+	        if (Array.isArray(name) || isObject(name) || isFunction(name)) {
+	          oldValidationFlag = this.options.noValidation;
+	          this.options.noValidation = true;
+	          root = new XMLDocument(this.options).element('TEMP_ROOT');
+	          root.element(name);
+	          this.options.noValidation = oldValidationFlag;
+	          ref1 = root.children;
+	          for (i = 0, len = ref1.length; i < len; i++) {
+	            child = ref1[i];
+	            this.createChildNode(child);
+	            if (child.type === NodeType.Element) {
+	              this.up();
+	            }
+	          }
+	        } else {
+	          this.node(name, attributes, text);
+	        }
+	      }
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.attribute = function(name, value) {
+	      var attName, attValue;
+	      if (!this.currentNode || this.currentNode.children) {
+	        throw new Error("att() can only be used immediately after an ele() call in callback mode. " + this.debugInfo(name));
+	      }
+	      if (name != null) {
+	        name = getValue(name);
+	      }
+	      if (isObject(name)) {
+	        for (attName in name) {
+	          if (!hasProp.call(name, attName)) continue;
+	          attValue = name[attName];
+	          this.attribute(attName, attValue);
+	        }
+	      } else {
+	        if (isFunction(value)) {
+	          value = value.apply();
+	        }
+	        if (this.options.keepNullAttributes && (value == null)) {
+	          this.currentNode.attribs[name] = new XMLAttribute(this, name, "");
+	        } else if (value != null) {
+	          this.currentNode.attribs[name] = new XMLAttribute(this, name, value);
+	        }
+	      }
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.text = function(value) {
+	      var node;
+	      this.openCurrent();
+	      node = new XMLText(this, value);
+	      this.onData(this.writer.text(node, this.writerOptions, this.currentLevel + 1), this.currentLevel + 1);
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.cdata = function(value) {
+	      var node;
+	      this.openCurrent();
+	      node = new XMLCData(this, value);
+	      this.onData(this.writer.cdata(node, this.writerOptions, this.currentLevel + 1), this.currentLevel + 1);
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.comment = function(value) {
+	      var node;
+	      this.openCurrent();
+	      node = new XMLComment(this, value);
+	      this.onData(this.writer.comment(node, this.writerOptions, this.currentLevel + 1), this.currentLevel + 1);
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.raw = function(value) {
+	      var node;
+	      this.openCurrent();
+	      node = new XMLRaw(this, value);
+	      this.onData(this.writer.raw(node, this.writerOptions, this.currentLevel + 1), this.currentLevel + 1);
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.instruction = function(target, value) {
+	      var i, insTarget, insValue, len, node;
+	      this.openCurrent();
+	      if (target != null) {
+	        target = getValue(target);
+	      }
+	      if (value != null) {
+	        value = getValue(value);
+	      }
+	      if (Array.isArray(target)) {
+	        for (i = 0, len = target.length; i < len; i++) {
+	          insTarget = target[i];
+	          this.instruction(insTarget);
+	        }
+	      } else if (isObject(target)) {
+	        for (insTarget in target) {
+	          if (!hasProp.call(target, insTarget)) continue;
+	          insValue = target[insTarget];
+	          this.instruction(insTarget, insValue);
+	        }
+	      } else {
+	        if (isFunction(value)) {
+	          value = value.apply();
+	        }
+	        node = new XMLProcessingInstruction(this, target, value);
+	        this.onData(this.writer.processingInstruction(node, this.writerOptions, this.currentLevel + 1), this.currentLevel + 1);
+	      }
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.declaration = function(version, encoding, standalone) {
+	      var node;
+	      this.openCurrent();
+	      if (this.documentStarted) {
+	        throw new Error("declaration() must be the first node.");
+	      }
+	      node = new XMLDeclaration(this, version, encoding, standalone);
+	      this.onData(this.writer.declaration(node, this.writerOptions, this.currentLevel + 1), this.currentLevel + 1);
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.doctype = function(root, pubID, sysID) {
+	      this.openCurrent();
+	      if (root == null) {
+	        throw new Error("Missing root node name.");
+	      }
+	      if (this.root) {
+	        throw new Error("dtd() must come before the root node.");
+	      }
+	      this.currentNode = new XMLDocType(this, pubID, sysID);
+	      this.currentNode.rootNodeName = root;
+	      this.currentNode.children = false;
+	      this.currentLevel++;
+	      this.openTags[this.currentLevel] = this.currentNode;
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.dtdElement = function(name, value) {
+	      var node;
+	      this.openCurrent();
+	      node = new XMLDTDElement(this, name, value);
+	      this.onData(this.writer.dtdElement(node, this.writerOptions, this.currentLevel + 1), this.currentLevel + 1);
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.attList = function(elementName, attributeName, attributeType, defaultValueType, defaultValue) {
+	      var node;
+	      this.openCurrent();
+	      node = new XMLDTDAttList(this, elementName, attributeName, attributeType, defaultValueType, defaultValue);
+	      this.onData(this.writer.dtdAttList(node, this.writerOptions, this.currentLevel + 1), this.currentLevel + 1);
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.entity = function(name, value) {
+	      var node;
+	      this.openCurrent();
+	      node = new XMLDTDEntity(this, false, name, value);
+	      this.onData(this.writer.dtdEntity(node, this.writerOptions, this.currentLevel + 1), this.currentLevel + 1);
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.pEntity = function(name, value) {
+	      var node;
+	      this.openCurrent();
+	      node = new XMLDTDEntity(this, true, name, value);
+	      this.onData(this.writer.dtdEntity(node, this.writerOptions, this.currentLevel + 1), this.currentLevel + 1);
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.notation = function(name, value) {
+	      var node;
+	      this.openCurrent();
+	      node = new XMLDTDNotation(this, name, value);
+	      this.onData(this.writer.dtdNotation(node, this.writerOptions, this.currentLevel + 1), this.currentLevel + 1);
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.up = function() {
+	      if (this.currentLevel < 0) {
+	        throw new Error("The document node has no parent.");
+	      }
+	      if (this.currentNode) {
+	        if (this.currentNode.children) {
+	          this.closeNode(this.currentNode);
+	        } else {
+	          this.openNode(this.currentNode);
+	        }
+	        this.currentNode = null;
+	      } else {
+	        this.closeNode(this.openTags[this.currentLevel]);
+	      }
+	      delete this.openTags[this.currentLevel];
+	      this.currentLevel--;
+	      return this;
+	    };
+
+	    XMLDocumentCB.prototype.end = function() {
+	      while (this.currentLevel >= 0) {
+	        this.up();
+	      }
+	      return this.onEnd();
+	    };
+
+	    XMLDocumentCB.prototype.openCurrent = function() {
+	      if (this.currentNode) {
+	        this.currentNode.children = true;
+	        return this.openNode(this.currentNode);
+	      }
+	    };
+
+	    XMLDocumentCB.prototype.openNode = function(node) {
+	      var att, chunk, name, ref1;
+	      if (!node.isOpen) {
+	        if (!this.root && this.currentLevel === 0 && node.type === NodeType.Element) {
+	          this.root = node;
+	        }
+	        chunk = '';
+	        if (node.type === NodeType.Element) {
+	          this.writerOptions.state = WriterState.OpenTag;
+	          chunk = this.writer.indent(node, this.writerOptions, this.currentLevel) + '<' + node.name;
+	          ref1 = node.attribs;
+	          for (name in ref1) {
+	            if (!hasProp.call(ref1, name)) continue;
+	            att = ref1[name];
+	            chunk += this.writer.attribute(att, this.writerOptions, this.currentLevel);
+	          }
+	          chunk += (node.children ? '>' : '/>') + this.writer.endline(node, this.writerOptions, this.currentLevel);
+	          this.writerOptions.state = WriterState.InsideTag;
+	        } else {
+	          this.writerOptions.state = WriterState.OpenTag;
+	          chunk = this.writer.indent(node, this.writerOptions, this.currentLevel) + '<!DOCTYPE ' + node.rootNodeName;
+	          if (node.pubID && node.sysID) {
+	            chunk += ' PUBLIC "' + node.pubID + '" "' + node.sysID + '"';
+	          } else if (node.sysID) {
+	            chunk += ' SYSTEM "' + node.sysID + '"';
+	          }
+	          if (node.children) {
+	            chunk += ' [';
+	            this.writerOptions.state = WriterState.InsideTag;
+	          } else {
+	            this.writerOptions.state = WriterState.CloseTag;
+	            chunk += '>';
+	          }
+	          chunk += this.writer.endline(node, this.writerOptions, this.currentLevel);
+	        }
+	        this.onData(chunk, this.currentLevel);
+	        return node.isOpen = true;
+	      }
+	    };
+
+	    XMLDocumentCB.prototype.closeNode = function(node) {
+	      var chunk;
+	      if (!node.isClosed) {
+	        chunk = '';
+	        this.writerOptions.state = WriterState.CloseTag;
+	        if (node.type === NodeType.Element) {
+	          chunk = this.writer.indent(node, this.writerOptions, this.currentLevel) + '</' + node.name + '>' + this.writer.endline(node, this.writerOptions, this.currentLevel);
+	        } else {
+	          chunk = this.writer.indent(node, this.writerOptions, this.currentLevel) + ']>' + this.writer.endline(node, this.writerOptions, this.currentLevel);
+	        }
+	        this.writerOptions.state = WriterState.None;
+	        this.onData(chunk, this.currentLevel);
+	        return node.isClosed = true;
+	      }
+	    };
+
+	    XMLDocumentCB.prototype.onData = function(chunk, level) {
+	      this.documentStarted = true;
+	      return this.onDataCallback(chunk, level + 1);
+	    };
+
+	    XMLDocumentCB.prototype.onEnd = function() {
+	      this.documentCompleted = true;
+	      return this.onEndCallback();
+	    };
+
+	    XMLDocumentCB.prototype.debugInfo = function(name) {
+	      if (name == null) {
+	        return "";
+	      } else {
+	        return "node: <" + name + ">";
+	      }
+	    };
+
+	    XMLDocumentCB.prototype.ele = function() {
+	      return this.element.apply(this, arguments);
+	    };
+
+	    XMLDocumentCB.prototype.nod = function(name, attributes, text) {
+	      return this.node(name, attributes, text);
+	    };
+
+	    XMLDocumentCB.prototype.txt = function(value) {
+	      return this.text(value);
+	    };
+
+	    XMLDocumentCB.prototype.dat = function(value) {
+	      return this.cdata(value);
+	    };
+
+	    XMLDocumentCB.prototype.com = function(value) {
+	      return this.comment(value);
+	    };
+
+	    XMLDocumentCB.prototype.ins = function(target, value) {
+	      return this.instruction(target, value);
+	    };
+
+	    XMLDocumentCB.prototype.dec = function(version, encoding, standalone) {
+	      return this.declaration(version, encoding, standalone);
+	    };
+
+	    XMLDocumentCB.prototype.dtd = function(root, pubID, sysID) {
+	      return this.doctype(root, pubID, sysID);
+	    };
+
+	    XMLDocumentCB.prototype.e = function(name, attributes, text) {
+	      return this.element(name, attributes, text);
+	    };
+
+	    XMLDocumentCB.prototype.n = function(name, attributes, text) {
+	      return this.node(name, attributes, text);
+	    };
+
+	    XMLDocumentCB.prototype.t = function(value) {
+	      return this.text(value);
+	    };
+
+	    XMLDocumentCB.prototype.d = function(value) {
+	      return this.cdata(value);
+	    };
+
+	    XMLDocumentCB.prototype.c = function(value) {
+	      return this.comment(value);
+	    };
+
+	    XMLDocumentCB.prototype.r = function(value) {
+	      return this.raw(value);
+	    };
+
+	    XMLDocumentCB.prototype.i = function(target, value) {
+	      return this.instruction(target, value);
+	    };
+
+	    XMLDocumentCB.prototype.att = function() {
+	      if (this.currentNode && this.currentNode.type === NodeType.DocType) {
+	        return this.attList.apply(this, arguments);
+	      } else {
+	        return this.attribute.apply(this, arguments);
+	      }
+	    };
+
+	    XMLDocumentCB.prototype.a = function() {
+	      if (this.currentNode && this.currentNode.type === NodeType.DocType) {
+	        return this.attList.apply(this, arguments);
+	      } else {
+	        return this.attribute.apply(this, arguments);
+	      }
+	    };
+
+	    XMLDocumentCB.prototype.ent = function(name, value) {
+	      return this.entity(name, value);
+	    };
+
+	    XMLDocumentCB.prototype.pent = function(name, value) {
+	      return this.pEntity(name, value);
+	    };
+
+	    XMLDocumentCB.prototype.not = function(name, value) {
+	      return this.notation(name, value);
+	    };
+
+	    return XMLDocumentCB;
+
+	  })();
+
+	}).call(XMLDocumentCB);
+	return XMLDocumentCB$1.exports;
+}
+
+var XMLStreamWriter$1 = {exports: {}};
+
+var XMLStreamWriter = XMLStreamWriter$1.exports;
+
+var hasRequiredXMLStreamWriter;
+
+function requireXMLStreamWriter () {
+	if (hasRequiredXMLStreamWriter) return XMLStreamWriter$1.exports;
+	hasRequiredXMLStreamWriter = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, WriterState, XMLWriterBase,
+	    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  NodeType = requireNodeType();
+
+	  XMLWriterBase = requireXMLWriterBase();
+
+	  WriterState = requireWriterState();
+
+	  XMLStreamWriter$1.exports = (function(superClass) {
+	    extend(XMLStreamWriter, superClass);
+
+	    function XMLStreamWriter(stream, options) {
+	      this.stream = stream;
+	      XMLStreamWriter.__super__.constructor.call(this, options);
+	    }
+
+	    XMLStreamWriter.prototype.endline = function(node, options, level) {
+	      if (node.isLastRootNode && options.state === WriterState.CloseTag) {
+	        return '';
+	      } else {
+	        return XMLStreamWriter.__super__.endline.call(this, node, options, level);
+	      }
+	    };
+
+	    XMLStreamWriter.prototype.document = function(doc, options) {
+	      var child, i, j, k, len, len1, ref, ref1, results;
+	      ref = doc.children;
+	      for (i = j = 0, len = ref.length; j < len; i = ++j) {
+	        child = ref[i];
+	        child.isLastRootNode = i === doc.children.length - 1;
+	      }
+	      options = this.filterOptions(options);
+	      ref1 = doc.children;
+	      results = [];
+	      for (k = 0, len1 = ref1.length; k < len1; k++) {
+	        child = ref1[k];
+	        results.push(this.writeChildNode(child, options, 0));
+	      }
+	      return results;
+	    };
+
+	    XMLStreamWriter.prototype.attribute = function(att, options, level) {
+	      return this.stream.write(XMLStreamWriter.__super__.attribute.call(this, att, options, level));
+	    };
+
+	    XMLStreamWriter.prototype.cdata = function(node, options, level) {
+	      return this.stream.write(XMLStreamWriter.__super__.cdata.call(this, node, options, level));
+	    };
+
+	    XMLStreamWriter.prototype.comment = function(node, options, level) {
+	      return this.stream.write(XMLStreamWriter.__super__.comment.call(this, node, options, level));
+	    };
+
+	    XMLStreamWriter.prototype.declaration = function(node, options, level) {
+	      return this.stream.write(XMLStreamWriter.__super__.declaration.call(this, node, options, level));
+	    };
+
+	    XMLStreamWriter.prototype.docType = function(node, options, level) {
+	      var child, j, len, ref;
+	      level || (level = 0);
+	      this.openNode(node, options, level);
+	      options.state = WriterState.OpenTag;
+	      this.stream.write(this.indent(node, options, level));
+	      this.stream.write('<!DOCTYPE ' + node.root().name);
+	      if (node.pubID && node.sysID) {
+	        this.stream.write(' PUBLIC "' + node.pubID + '" "' + node.sysID + '"');
+	      } else if (node.sysID) {
+	        this.stream.write(' SYSTEM "' + node.sysID + '"');
+	      }
+	      if (node.children.length > 0) {
+	        this.stream.write(' [');
+	        this.stream.write(this.endline(node, options, level));
+	        options.state = WriterState.InsideTag;
+	        ref = node.children;
+	        for (j = 0, len = ref.length; j < len; j++) {
+	          child = ref[j];
+	          this.writeChildNode(child, options, level + 1);
+	        }
+	        options.state = WriterState.CloseTag;
+	        this.stream.write(']');
+	      }
+	      options.state = WriterState.CloseTag;
+	      this.stream.write(options.spaceBeforeSlash + '>');
+	      this.stream.write(this.endline(node, options, level));
+	      options.state = WriterState.None;
+	      return this.closeNode(node, options, level);
+	    };
+
+	    XMLStreamWriter.prototype.element = function(node, options, level) {
+	      var att, child, childNodeCount, firstChildNode, j, len, name, ref, ref1;
+	      level || (level = 0);
+	      this.openNode(node, options, level);
+	      options.state = WriterState.OpenTag;
+	      this.stream.write(this.indent(node, options, level) + '<' + node.name);
+	      ref = node.attribs;
+	      for (name in ref) {
+	        if (!hasProp.call(ref, name)) continue;
+	        att = ref[name];
+	        this.attribute(att, options, level);
+	      }
+	      childNodeCount = node.children.length;
+	      firstChildNode = childNodeCount === 0 ? null : node.children[0];
+	      if (childNodeCount === 0 || node.children.every(function(e) {
+	        return (e.type === NodeType.Text || e.type === NodeType.Raw) && e.value === '';
+	      })) {
+	        if (options.allowEmpty) {
+	          this.stream.write('>');
+	          options.state = WriterState.CloseTag;
+	          this.stream.write('</' + node.name + '>');
+	        } else {
+	          options.state = WriterState.CloseTag;
+	          this.stream.write(options.spaceBeforeSlash + '/>');
+	        }
+	      } else if (options.pretty && childNodeCount === 1 && (firstChildNode.type === NodeType.Text || firstChildNode.type === NodeType.Raw) && (firstChildNode.value != null)) {
+	        this.stream.write('>');
+	        options.state = WriterState.InsideTag;
+	        options.suppressPrettyCount++;
+	        this.writeChildNode(firstChildNode, options, level + 1);
+	        options.suppressPrettyCount--;
+	        options.state = WriterState.CloseTag;
+	        this.stream.write('</' + node.name + '>');
+	      } else {
+	        this.stream.write('>' + this.endline(node, options, level));
+	        options.state = WriterState.InsideTag;
+	        ref1 = node.children;
+	        for (j = 0, len = ref1.length; j < len; j++) {
+	          child = ref1[j];
+	          this.writeChildNode(child, options, level + 1);
+	        }
+	        options.state = WriterState.CloseTag;
+	        this.stream.write(this.indent(node, options, level) + '</' + node.name + '>');
+	      }
+	      this.stream.write(this.endline(node, options, level));
+	      options.state = WriterState.None;
+	      return this.closeNode(node, options, level);
+	    };
+
+	    XMLStreamWriter.prototype.processingInstruction = function(node, options, level) {
+	      return this.stream.write(XMLStreamWriter.__super__.processingInstruction.call(this, node, options, level));
+	    };
+
+	    XMLStreamWriter.prototype.raw = function(node, options, level) {
+	      return this.stream.write(XMLStreamWriter.__super__.raw.call(this, node, options, level));
+	    };
+
+	    XMLStreamWriter.prototype.text = function(node, options, level) {
+	      return this.stream.write(XMLStreamWriter.__super__.text.call(this, node, options, level));
+	    };
+
+	    XMLStreamWriter.prototype.dtdAttList = function(node, options, level) {
+	      return this.stream.write(XMLStreamWriter.__super__.dtdAttList.call(this, node, options, level));
+	    };
+
+	    XMLStreamWriter.prototype.dtdElement = function(node, options, level) {
+	      return this.stream.write(XMLStreamWriter.__super__.dtdElement.call(this, node, options, level));
+	    };
+
+	    XMLStreamWriter.prototype.dtdEntity = function(node, options, level) {
+	      return this.stream.write(XMLStreamWriter.__super__.dtdEntity.call(this, node, options, level));
+	    };
+
+	    XMLStreamWriter.prototype.dtdNotation = function(node, options, level) {
+	      return this.stream.write(XMLStreamWriter.__super__.dtdNotation.call(this, node, options, level));
+	    };
+
+	    return XMLStreamWriter;
+
+	  })(XMLWriterBase);
+
+	}).call(XMLStreamWriter);
+	return XMLStreamWriter$1.exports;
+}
+
+var hasRequiredLib$1;
+
+function requireLib$1 () {
+	if (hasRequiredLib$1) return lib$1;
+	hasRequiredLib$1 = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var NodeType, WriterState, XMLDOMImplementation, XMLDocument, XMLDocumentCB, XMLStreamWriter, XMLStringWriter, assign, isFunction, ref;
+
+	  ref = requireUtility(), assign = ref.assign, isFunction = ref.isFunction;
+
+	  XMLDOMImplementation = requireXMLDOMImplementation();
+
+	  XMLDocument = requireXMLDocument();
+
+	  XMLDocumentCB = requireXMLDocumentCB();
+
+	  XMLStringWriter = requireXMLStringWriter();
+
+	  XMLStreamWriter = requireXMLStreamWriter();
+
+	  NodeType = requireNodeType();
+
+	  WriterState = requireWriterState();
+
+	  lib$1.create = function(name, xmldec, doctype, options) {
+	    var doc, root;
+	    if (name == null) {
+	      throw new Error("Root element needs a name.");
+	    }
+	    options = assign({}, xmldec, doctype, options);
+	    doc = new XMLDocument(options);
+	    root = doc.element(name);
+	    if (!options.headless) {
+	      doc.declaration(options);
+	      if ((options.pubID != null) || (options.sysID != null)) {
+	        doc.dtd(options);
+	      }
+	    }
+	    return root;
+	  };
+
+	  lib$1.begin = function(options, onData, onEnd) {
+	    var ref1;
+	    if (isFunction(options)) {
+	      ref1 = [options, onData], onData = ref1[0], onEnd = ref1[1];
+	      options = {};
+	    }
+	    if (onData) {
+	      return new XMLDocumentCB(options, onData, onEnd);
+	    } else {
+	      return new XMLDocument(options);
+	    }
+	  };
+
+	  lib$1.stringWriter = function(options) {
+	    return new XMLStringWriter(options);
+	  };
+
+	  lib$1.streamWriter = function(stream, options) {
+	    return new XMLStreamWriter(stream, options);
+	  };
+
+	  lib$1.implementation = new XMLDOMImplementation();
+
+	  lib$1.nodeType = NodeType;
+
+	  lib$1.writerState = WriterState;
+
+	}).call(lib$1);
+	return lib$1;
+}
+
+var hasRequiredBuilder;
+
+function requireBuilder () {
+	if (hasRequiredBuilder) return builder;
+	hasRequiredBuilder = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var builder$1, defaults, escapeCDATA, requiresCDATA, wrapCDATA,
+	    hasProp = {}.hasOwnProperty;
+
+	  builder$1 = requireLib$1();
+
+	  defaults = requireDefaults().defaults;
+
+	  requiresCDATA = function(entry) {
+	    return typeof entry === "string" && (entry.indexOf('&') >= 0 || entry.indexOf('>') >= 0 || entry.indexOf('<') >= 0);
+	  };
+
+	  wrapCDATA = function(entry) {
+	    return "<![CDATA[" + (escapeCDATA(entry)) + "]]>";
+	  };
+
+	  escapeCDATA = function(entry) {
+	    return entry.replace(']]>', ']]]]><![CDATA[>');
+	  };
+
+	  builder.Builder = (function() {
+	    function Builder(opts) {
+	      var key, ref, value;
+	      this.options = {};
+	      ref = defaults["0.2"];
+	      for (key in ref) {
+	        if (!hasProp.call(ref, key)) continue;
+	        value = ref[key];
+	        this.options[key] = value;
+	      }
+	      for (key in opts) {
+	        if (!hasProp.call(opts, key)) continue;
+	        value = opts[key];
+	        this.options[key] = value;
+	      }
+	    }
+
+	    Builder.prototype.buildObject = function(rootObj) {
+	      var attrkey, charkey, render, rootElement, rootName;
+	      attrkey = this.options.attrkey;
+	      charkey = this.options.charkey;
+	      if ((Object.keys(rootObj).length === 1) && (this.options.rootName === defaults['0.2'].rootName)) {
+	        rootName = Object.keys(rootObj)[0];
+	        rootObj = rootObj[rootName];
+	      } else {
+	        rootName = this.options.rootName;
+	      }
+	      render = (function(_this) {
+	        return function(element, obj) {
+	          var attr, child, entry, index, key, value;
+	          if (typeof obj !== 'object') {
+	            if (_this.options.cdata && requiresCDATA(obj)) {
+	              element.raw(wrapCDATA(obj));
+	            } else {
+	              element.txt(obj);
+	            }
+	          } else if (Array.isArray(obj)) {
+	            for (index in obj) {
+	              if (!hasProp.call(obj, index)) continue;
+	              child = obj[index];
+	              for (key in child) {
+	                entry = child[key];
+	                element = render(element.ele(key), entry).up();
+	              }
+	            }
+	          } else {
+	            for (key in obj) {
+	              if (!hasProp.call(obj, key)) continue;
+	              child = obj[key];
+	              if (key === attrkey) {
+	                if (typeof child === "object") {
+	                  for (attr in child) {
+	                    value = child[attr];
+	                    element = element.att(attr, value);
+	                  }
+	                }
+	              } else if (key === charkey) {
+	                if (_this.options.cdata && requiresCDATA(child)) {
+	                  element = element.raw(wrapCDATA(child));
+	                } else {
+	                  element = element.txt(child);
+	                }
+	              } else if (Array.isArray(child)) {
+	                for (index in child) {
+	                  if (!hasProp.call(child, index)) continue;
+	                  entry = child[index];
+	                  if (typeof entry === 'string') {
+	                    if (_this.options.cdata && requiresCDATA(entry)) {
+	                      element = element.ele(key).raw(wrapCDATA(entry)).up();
+	                    } else {
+	                      element = element.ele(key, entry).up();
+	                    }
+	                  } else {
+	                    element = render(element.ele(key), entry).up();
+	                  }
+	                }
+	              } else if (typeof child === "object") {
+	                element = render(element.ele(key), child).up();
+	              } else {
+	                if (typeof child === 'string' && _this.options.cdata && requiresCDATA(child)) {
+	                  element = element.ele(key).raw(wrapCDATA(child)).up();
+	                } else {
+	                  if (child == null) {
+	                    child = '';
+	                  }
+	                  element = element.ele(key, child.toString()).up();
+	                }
+	              }
+	            }
+	          }
+	          return element;
+	        };
+	      })(this);
+	      rootElement = builder$1.create(rootName, this.options.xmldec, this.options.doctype, {
+	        headless: this.options.headless,
+	        allowSurrogateChars: this.options.allowSurrogateChars
+	      });
+	      return render(rootElement, rootObj).end(this.options.renderOpts);
+	    };
+
+	    return Builder;
+
+	  })();
+
+	}).call(builder);
+	return builder;
+}
+
+var parser$1 = {};
+
+var sax = {};
+
+var hasRequiredSax;
+
+function requireSax () {
+	if (hasRequiredSax) return sax;
+	hasRequiredSax = 1;
+	(function (exports) {
+(function (sax) { // wrapper for non-node envs
+		  sax.parser = function (strict, opt) { return new SAXParser(strict, opt) };
+		  sax.SAXParser = SAXParser;
+		  sax.SAXStream = SAXStream;
+		  sax.createStream = createStream;
+
+		  // When we pass the MAX_BUFFER_LENGTH position, start checking for buffer overruns.
+		  // When we check, schedule the next check for MAX_BUFFER_LENGTH - (max(buffer lengths)),
+		  // since that's the earliest that a buffer overrun could occur.  This way, checks are
+		  // as rare as required, but as often as necessary to ensure never crossing this bound.
+		  // Furthermore, buffers are only tested at most once per write(), so passing a very
+		  // large string into write() might have undesirable effects, but this is manageable by
+		  // the caller, so it is assumed to be safe.  Thus, a call to write() may, in the extreme
+		  // edge case, result in creating at most one complete copy of the string passed in.
+		  // Set to Infinity to have unlimited buffers.
+		  sax.MAX_BUFFER_LENGTH = 64 * 1024;
+
+		  var buffers = [
+		    'comment', 'sgmlDecl', 'textNode', 'tagName', 'doctype',
+		    'procInstName', 'procInstBody', 'entity', 'attribName',
+		    'attribValue', 'cdata', 'script'
+		  ];
+
+		  sax.EVENTS = [
+		    'text',
+		    'processinginstruction',
+		    'sgmldeclaration',
+		    'doctype',
+		    'comment',
+		    'opentagstart',
+		    'attribute',
+		    'opentag',
+		    'closetag',
+		    'opencdata',
+		    'cdata',
+		    'closecdata',
+		    'error',
+		    'end',
+		    'ready',
+		    'script',
+		    'opennamespace',
+		    'closenamespace'
+		  ];
+
+		  function SAXParser (strict, opt) {
+		    if (!(this instanceof SAXParser)) {
+		      return new SAXParser(strict, opt)
+		    }
+
+		    var parser = this;
+		    clearBuffers(parser);
+		    parser.q = parser.c = '';
+		    parser.bufferCheckPosition = sax.MAX_BUFFER_LENGTH;
+		    parser.opt = opt || {};
+		    parser.opt.lowercase = parser.opt.lowercase || parser.opt.lowercasetags;
+		    parser.looseCase = parser.opt.lowercase ? 'toLowerCase' : 'toUpperCase';
+		    parser.tags = [];
+		    parser.closed = parser.closedRoot = parser.sawRoot = false;
+		    parser.tag = parser.error = null;
+		    parser.strict = !!strict;
+		    parser.noscript = !!(strict || parser.opt.noscript);
+		    parser.state = S.BEGIN;
+		    parser.strictEntities = parser.opt.strictEntities;
+		    parser.ENTITIES = parser.strictEntities ? Object.create(sax.XML_ENTITIES) : Object.create(sax.ENTITIES);
+		    parser.attribList = [];
+
+		    // namespaces form a prototype chain.
+		    // it always points at the current tag,
+		    // which protos to its parent tag.
+		    if (parser.opt.xmlns) {
+		      parser.ns = Object.create(rootNS);
+		    }
+
+		    // disallow unquoted attribute values if not otherwise configured
+		    // and strict mode is true
+		    if (parser.opt.unquotedAttributeValues === undefined) {
+		      parser.opt.unquotedAttributeValues = !strict;
+		    }
+
+		    // mostly just for error reporting
+		    parser.trackPosition = parser.opt.position !== false;
+		    if (parser.trackPosition) {
+		      parser.position = parser.line = parser.column = 0;
+		    }
+		    emit(parser, 'onready');
+		  }
+
+		  if (!Object.create) {
+		    Object.create = function (o) {
+		      function F () {}
+		      F.prototype = o;
+		      var newf = new F();
+		      return newf
+		    };
+		  }
+
+		  if (!Object.keys) {
+		    Object.keys = function (o) {
+		      var a = [];
+		      for (var i in o) if (o.hasOwnProperty(i)) a.push(i);
+		      return a
+		    };
+		  }
+
+		  function checkBufferLength (parser) {
+		    var maxAllowed = Math.max(sax.MAX_BUFFER_LENGTH, 10);
+		    var maxActual = 0;
+		    for (var i = 0, l = buffers.length; i < l; i++) {
+		      var len = parser[buffers[i]].length;
+		      if (len > maxAllowed) {
+		        // Text/cdata nodes can get big, and since they're buffered,
+		        // we can get here under normal conditions.
+		        // Avoid issues by emitting the text node now,
+		        // so at least it won't get any bigger.
+		        switch (buffers[i]) {
+		          case 'textNode':
+		            closeText(parser);
+		            break
+
+		          case 'cdata':
+		            emitNode(parser, 'oncdata', parser.cdata);
+		            parser.cdata = '';
+		            break
+
+		          case 'script':
+		            emitNode(parser, 'onscript', parser.script);
+		            parser.script = '';
+		            break
+
+		          default:
+		            error(parser, 'Max buffer length exceeded: ' + buffers[i]);
+		        }
+		      }
+		      maxActual = Math.max(maxActual, len);
+		    }
+		    // schedule the next check for the earliest possible buffer overrun.
+		    var m = sax.MAX_BUFFER_LENGTH - maxActual;
+		    parser.bufferCheckPosition = m + parser.position;
+		  }
+
+		  function clearBuffers (parser) {
+		    for (var i = 0, l = buffers.length; i < l; i++) {
+		      parser[buffers[i]] = '';
+		    }
+		  }
+
+		  function flushBuffers (parser) {
+		    closeText(parser);
+		    if (parser.cdata !== '') {
+		      emitNode(parser, 'oncdata', parser.cdata);
+		      parser.cdata = '';
+		    }
+		    if (parser.script !== '') {
+		      emitNode(parser, 'onscript', parser.script);
+		      parser.script = '';
+		    }
+		  }
+
+		  SAXParser.prototype = {
+		    end: function () { end(this); },
+		    write: write,
+		    resume: function () { this.error = null; return this },
+		    close: function () { return this.write(null) },
+		    flush: function () { flushBuffers(this); }
+		  };
+
+		  var Stream;
+		  try {
+		    Stream = require('stream').Stream;
+		  } catch (ex) {
+		    Stream = function () {};
+		  }
+		  if (!Stream) Stream = function () {};
+
+		  var streamWraps = sax.EVENTS.filter(function (ev) {
+		    return ev !== 'error' && ev !== 'end'
+		  });
+
+		  function createStream (strict, opt) {
+		    return new SAXStream(strict, opt)
+		  }
+
+		  function SAXStream (strict, opt) {
+		    if (!(this instanceof SAXStream)) {
+		      return new SAXStream(strict, opt)
+		    }
+
+		    Stream.apply(this);
+
+		    this._parser = new SAXParser(strict, opt);
+		    this.writable = true;
+		    this.readable = true;
+
+		    var me = this;
+
+		    this._parser.onend = function () {
+		      me.emit('end');
+		    };
+
+		    this._parser.onerror = function (er) {
+		      me.emit('error', er);
+
+		      // if didn't throw, then means error was handled.
+		      // go ahead and clear error, so we can write again.
+		      me._parser.error = null;
+		    };
+
+		    this._decoder = null;
+
+		    streamWraps.forEach(function (ev) {
+		      Object.defineProperty(me, 'on' + ev, {
+		        get: function () {
+		          return me._parser['on' + ev]
+		        },
+		        set: function (h) {
+		          if (!h) {
+		            me.removeAllListeners(ev);
+		            me._parser['on' + ev] = h;
+		            return h
+		          }
+		          me.on(ev, h);
+		        },
+		        enumerable: true,
+		        configurable: false
+		      });
+		    });
+		  }
+
+		  SAXStream.prototype = Object.create(Stream.prototype, {
+		    constructor: {
+		      value: SAXStream
+		    }
+		  });
+
+		  SAXStream.prototype.write = function (data) {
+		    if (typeof Buffer === 'function' &&
+		      typeof Buffer.isBuffer === 'function' &&
+		      Buffer.isBuffer(data)) {
+		      if (!this._decoder) {
+		        var SD = require$$6.StringDecoder;
+		        this._decoder = new SD('utf8');
+		      }
+		      data = this._decoder.write(data);
+		    }
+
+		    this._parser.write(data.toString());
+		    this.emit('data', data);
+		    return true
+		  };
+
+		  SAXStream.prototype.end = function (chunk) {
+		    if (chunk && chunk.length) {
+		      this.write(chunk);
+		    }
+		    this._parser.end();
+		    return true
+		  };
+
+		  SAXStream.prototype.on = function (ev, handler) {
+		    var me = this;
+		    if (!me._parser['on' + ev] && streamWraps.indexOf(ev) !== -1) {
+		      me._parser['on' + ev] = function () {
+		        var args = arguments.length === 1 ? [arguments[0]] : Array.apply(null, arguments);
+		        args.splice(0, 0, ev);
+		        me.emit.apply(me, args);
+		      };
+		    }
+
+		    return Stream.prototype.on.call(me, ev, handler)
+		  };
+
+		  // this really needs to be replaced with character classes.
+		  // XML allows all manner of ridiculous numbers and digits.
+		  var CDATA = '[CDATA[';
+		  var DOCTYPE = 'DOCTYPE';
+		  var XML_NAMESPACE = 'http://www.w3.org/XML/1998/namespace';
+		  var XMLNS_NAMESPACE = 'http://www.w3.org/2000/xmlns/';
+		  var rootNS = { xml: XML_NAMESPACE, xmlns: XMLNS_NAMESPACE };
+
+		  // http://www.w3.org/TR/REC-xml/#NT-NameStartChar
+		  // This implementation works on strings, a single character at a time
+		  // as such, it cannot ever support astral-plane characters (10000-EFFFF)
+		  // without a significant breaking change to either this  parser, or the
+		  // JavaScript language.  Implementation of an emoji-capable xml parser
+		  // is left as an exercise for the reader.
+		  var nameStart = /[:_A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/;
+
+		  var nameBody = /[:_A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u00B7\u0300-\u036F\u203F-\u2040.\d-]/;
+
+		  var entityStart = /[#:_A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/;
+		  var entityBody = /[#:_A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u00B7\u0300-\u036F\u203F-\u2040.\d-]/;
+
+		  function isWhitespace (c) {
+		    return c === ' ' || c === '\n' || c === '\r' || c === '\t'
+		  }
+
+		  function isQuote (c) {
+		    return c === '"' || c === '\''
+		  }
+
+		  function isAttribEnd (c) {
+		    return c === '>' || isWhitespace(c)
+		  }
+
+		  function isMatch (regex, c) {
+		    return regex.test(c)
+		  }
+
+		  function notMatch (regex, c) {
+		    return !isMatch(regex, c)
+		  }
+
+		  var S = 0;
+		  sax.STATE = {
+		    BEGIN: S++, // leading byte order mark or whitespace
+		    BEGIN_WHITESPACE: S++, // leading whitespace
+		    TEXT: S++, // general stuff
+		    TEXT_ENTITY: S++, // &amp and such.
+		    OPEN_WAKA: S++, // <
+		    SGML_DECL: S++, // <!BLARG
+		    SGML_DECL_QUOTED: S++, // <!BLARG foo "bar
+		    DOCTYPE: S++, // <!DOCTYPE
+		    DOCTYPE_QUOTED: S++, // <!DOCTYPE "//blah
+		    DOCTYPE_DTD: S++, // <!DOCTYPE "//blah" [ ...
+		    DOCTYPE_DTD_QUOTED: S++, // <!DOCTYPE "//blah" [ "foo
+		    COMMENT_STARTING: S++, // <!-
+		    COMMENT: S++, // <!--
+		    COMMENT_ENDING: S++, // <!-- blah -
+		    COMMENT_ENDED: S++, // <!-- blah --
+		    CDATA: S++, // <![CDATA[ something
+		    CDATA_ENDING: S++, // ]
+		    CDATA_ENDING_2: S++, // ]]
+		    PROC_INST: S++, // <?hi
+		    PROC_INST_BODY: S++, // <?hi there
+		    PROC_INST_ENDING: S++, // <?hi "there" ?
+		    OPEN_TAG: S++, // <strong
+		    OPEN_TAG_SLASH: S++, // <strong /
+		    ATTRIB: S++, // <a
+		    ATTRIB_NAME: S++, // <a foo
+		    ATTRIB_NAME_SAW_WHITE: S++, // <a foo _
+		    ATTRIB_VALUE: S++, // <a foo=
+		    ATTRIB_VALUE_QUOTED: S++, // <a foo="bar
+		    ATTRIB_VALUE_CLOSED: S++, // <a foo="bar"
+		    ATTRIB_VALUE_UNQUOTED: S++, // <a foo=bar
+		    ATTRIB_VALUE_ENTITY_Q: S++, // <foo bar="&quot;"
+		    ATTRIB_VALUE_ENTITY_U: S++, // <foo bar=&quot
+		    CLOSE_TAG: S++, // </a
+		    CLOSE_TAG_SAW_WHITE: S++, // </a   >
+		    SCRIPT: S++, // <script> ...
+		    SCRIPT_ENDING: S++ // <script> ... <
+		  };
+
+		  sax.XML_ENTITIES = {
+		    'amp': '&',
+		    'gt': '>',
+		    'lt': '<',
+		    'quot': '"',
+		    'apos': "'"
+		  };
+
+		  sax.ENTITIES = {
+		    'amp': '&',
+		    'gt': '>',
+		    'lt': '<',
+		    'quot': '"',
+		    'apos': "'",
+		    'AElig': 198,
+		    'Aacute': 193,
+		    'Acirc': 194,
+		    'Agrave': 192,
+		    'Aring': 197,
+		    'Atilde': 195,
+		    'Auml': 196,
+		    'Ccedil': 199,
+		    'ETH': 208,
+		    'Eacute': 201,
+		    'Ecirc': 202,
+		    'Egrave': 200,
+		    'Euml': 203,
+		    'Iacute': 205,
+		    'Icirc': 206,
+		    'Igrave': 204,
+		    'Iuml': 207,
+		    'Ntilde': 209,
+		    'Oacute': 211,
+		    'Ocirc': 212,
+		    'Ograve': 210,
+		    'Oslash': 216,
+		    'Otilde': 213,
+		    'Ouml': 214,
+		    'THORN': 222,
+		    'Uacute': 218,
+		    'Ucirc': 219,
+		    'Ugrave': 217,
+		    'Uuml': 220,
+		    'Yacute': 221,
+		    'aacute': 225,
+		    'acirc': 226,
+		    'aelig': 230,
+		    'agrave': 224,
+		    'aring': 229,
+		    'atilde': 227,
+		    'auml': 228,
+		    'ccedil': 231,
+		    'eacute': 233,
+		    'ecirc': 234,
+		    'egrave': 232,
+		    'eth': 240,
+		    'euml': 235,
+		    'iacute': 237,
+		    'icirc': 238,
+		    'igrave': 236,
+		    'iuml': 239,
+		    'ntilde': 241,
+		    'oacute': 243,
+		    'ocirc': 244,
+		    'ograve': 242,
+		    'oslash': 248,
+		    'otilde': 245,
+		    'ouml': 246,
+		    'szlig': 223,
+		    'thorn': 254,
+		    'uacute': 250,
+		    'ucirc': 251,
+		    'ugrave': 249,
+		    'uuml': 252,
+		    'yacute': 253,
+		    'yuml': 255,
+		    'copy': 169,
+		    'reg': 174,
+		    'nbsp': 160,
+		    'iexcl': 161,
+		    'cent': 162,
+		    'pound': 163,
+		    'curren': 164,
+		    'yen': 165,
+		    'brvbar': 166,
+		    'sect': 167,
+		    'uml': 168,
+		    'ordf': 170,
+		    'laquo': 171,
+		    'not': 172,
+		    'shy': 173,
+		    'macr': 175,
+		    'deg': 176,
+		    'plusmn': 177,
+		    'sup1': 185,
+		    'sup2': 178,
+		    'sup3': 179,
+		    'acute': 180,
+		    'micro': 181,
+		    'para': 182,
+		    'middot': 183,
+		    'cedil': 184,
+		    'ordm': 186,
+		    'raquo': 187,
+		    'frac14': 188,
+		    'frac12': 189,
+		    'frac34': 190,
+		    'iquest': 191,
+		    'times': 215,
+		    'divide': 247,
+		    'OElig': 338,
+		    'oelig': 339,
+		    'Scaron': 352,
+		    'scaron': 353,
+		    'Yuml': 376,
+		    'fnof': 402,
+		    'circ': 710,
+		    'tilde': 732,
+		    'Alpha': 913,
+		    'Beta': 914,
+		    'Gamma': 915,
+		    'Delta': 916,
+		    'Epsilon': 917,
+		    'Zeta': 918,
+		    'Eta': 919,
+		    'Theta': 920,
+		    'Iota': 921,
+		    'Kappa': 922,
+		    'Lambda': 923,
+		    'Mu': 924,
+		    'Nu': 925,
+		    'Xi': 926,
+		    'Omicron': 927,
+		    'Pi': 928,
+		    'Rho': 929,
+		    'Sigma': 931,
+		    'Tau': 932,
+		    'Upsilon': 933,
+		    'Phi': 934,
+		    'Chi': 935,
+		    'Psi': 936,
+		    'Omega': 937,
+		    'alpha': 945,
+		    'beta': 946,
+		    'gamma': 947,
+		    'delta': 948,
+		    'epsilon': 949,
+		    'zeta': 950,
+		    'eta': 951,
+		    'theta': 952,
+		    'iota': 953,
+		    'kappa': 954,
+		    'lambda': 955,
+		    'mu': 956,
+		    'nu': 957,
+		    'xi': 958,
+		    'omicron': 959,
+		    'pi': 960,
+		    'rho': 961,
+		    'sigmaf': 962,
+		    'sigma': 963,
+		    'tau': 964,
+		    'upsilon': 965,
+		    'phi': 966,
+		    'chi': 967,
+		    'psi': 968,
+		    'omega': 969,
+		    'thetasym': 977,
+		    'upsih': 978,
+		    'piv': 982,
+		    'ensp': 8194,
+		    'emsp': 8195,
+		    'thinsp': 8201,
+		    'zwnj': 8204,
+		    'zwj': 8205,
+		    'lrm': 8206,
+		    'rlm': 8207,
+		    'ndash': 8211,
+		    'mdash': 8212,
+		    'lsquo': 8216,
+		    'rsquo': 8217,
+		    'sbquo': 8218,
+		    'ldquo': 8220,
+		    'rdquo': 8221,
+		    'bdquo': 8222,
+		    'dagger': 8224,
+		    'Dagger': 8225,
+		    'bull': 8226,
+		    'hellip': 8230,
+		    'permil': 8240,
+		    'prime': 8242,
+		    'Prime': 8243,
+		    'lsaquo': 8249,
+		    'rsaquo': 8250,
+		    'oline': 8254,
+		    'frasl': 8260,
+		    'euro': 8364,
+		    'image': 8465,
+		    'weierp': 8472,
+		    'real': 8476,
+		    'trade': 8482,
+		    'alefsym': 8501,
+		    'larr': 8592,
+		    'uarr': 8593,
+		    'rarr': 8594,
+		    'darr': 8595,
+		    'harr': 8596,
+		    'crarr': 8629,
+		    'lArr': 8656,
+		    'uArr': 8657,
+		    'rArr': 8658,
+		    'dArr': 8659,
+		    'hArr': 8660,
+		    'forall': 8704,
+		    'part': 8706,
+		    'exist': 8707,
+		    'empty': 8709,
+		    'nabla': 8711,
+		    'isin': 8712,
+		    'notin': 8713,
+		    'ni': 8715,
+		    'prod': 8719,
+		    'sum': 8721,
+		    'minus': 8722,
+		    'lowast': 8727,
+		    'radic': 8730,
+		    'prop': 8733,
+		    'infin': 8734,
+		    'ang': 8736,
+		    'and': 8743,
+		    'or': 8744,
+		    'cap': 8745,
+		    'cup': 8746,
+		    'int': 8747,
+		    'there4': 8756,
+		    'sim': 8764,
+		    'cong': 8773,
+		    'asymp': 8776,
+		    'ne': 8800,
+		    'equiv': 8801,
+		    'le': 8804,
+		    'ge': 8805,
+		    'sub': 8834,
+		    'sup': 8835,
+		    'nsub': 8836,
+		    'sube': 8838,
+		    'supe': 8839,
+		    'oplus': 8853,
+		    'otimes': 8855,
+		    'perp': 8869,
+		    'sdot': 8901,
+		    'lceil': 8968,
+		    'rceil': 8969,
+		    'lfloor': 8970,
+		    'rfloor': 8971,
+		    'lang': 9001,
+		    'rang': 9002,
+		    'loz': 9674,
+		    'spades': 9824,
+		    'clubs': 9827,
+		    'hearts': 9829,
+		    'diams': 9830
+		  };
+
+		  Object.keys(sax.ENTITIES).forEach(function (key) {
+		    var e = sax.ENTITIES[key];
+		    var s = typeof e === 'number' ? String.fromCharCode(e) : e;
+		    sax.ENTITIES[key] = s;
+		  });
+
+		  for (var s in sax.STATE) {
+		    sax.STATE[sax.STATE[s]] = s;
+		  }
+
+		  // shorthand
+		  S = sax.STATE;
+
+		  function emit (parser, event, data) {
+		    parser[event] && parser[event](data);
+		  }
+
+		  function emitNode (parser, nodeType, data) {
+		    if (parser.textNode) closeText(parser);
+		    emit(parser, nodeType, data);
+		  }
+
+		  function closeText (parser) {
+		    parser.textNode = textopts(parser.opt, parser.textNode);
+		    if (parser.textNode) emit(parser, 'ontext', parser.textNode);
+		    parser.textNode = '';
+		  }
+
+		  function textopts (opt, text) {
+		    if (opt.trim) text = text.trim();
+		    if (opt.normalize) text = text.replace(/\s+/g, ' ');
+		    return text
+		  }
+
+		  function error (parser, er) {
+		    closeText(parser);
+		    if (parser.trackPosition) {
+		      er += '\nLine: ' + parser.line +
+		        '\nColumn: ' + parser.column +
+		        '\nChar: ' + parser.c;
+		    }
+		    er = new Error(er);
+		    parser.error = er;
+		    emit(parser, 'onerror', er);
+		    return parser
+		  }
+
+		  function end (parser) {
+		    if (parser.sawRoot && !parser.closedRoot) strictFail(parser, 'Unclosed root tag');
+		    if ((parser.state !== S.BEGIN) &&
+		      (parser.state !== S.BEGIN_WHITESPACE) &&
+		      (parser.state !== S.TEXT)) {
+		      error(parser, 'Unexpected end');
+		    }
+		    closeText(parser);
+		    parser.c = '';
+		    parser.closed = true;
+		    emit(parser, 'onend');
+		    SAXParser.call(parser, parser.strict, parser.opt);
+		    return parser
+		  }
+
+		  function strictFail (parser, message) {
+		    if (typeof parser !== 'object' || !(parser instanceof SAXParser)) {
+		      throw new Error('bad call to strictFail')
+		    }
+		    if (parser.strict) {
+		      error(parser, message);
+		    }
+		  }
+
+		  function newTag (parser) {
+		    if (!parser.strict) parser.tagName = parser.tagName[parser.looseCase]();
+		    var parent = parser.tags[parser.tags.length - 1] || parser;
+		    var tag = parser.tag = { name: parser.tagName, attributes: {} };
+
+		    // will be overridden if tag contails an xmlns="foo" or xmlns:foo="bar"
+		    if (parser.opt.xmlns) {
+		      tag.ns = parent.ns;
+		    }
+		    parser.attribList.length = 0;
+		    emitNode(parser, 'onopentagstart', tag);
+		  }
+
+		  function qname (name, attribute) {
+		    var i = name.indexOf(':');
+		    var qualName = i < 0 ? [ '', name ] : name.split(':');
+		    var prefix = qualName[0];
+		    var local = qualName[1];
+
+		    // <x "xmlns"="http://foo">
+		    if (attribute && name === 'xmlns') {
+		      prefix = 'xmlns';
+		      local = '';
+		    }
+
+		    return { prefix: prefix, local: local }
+		  }
+
+		  function attrib (parser) {
+		    if (!parser.strict) {
+		      parser.attribName = parser.attribName[parser.looseCase]();
+		    }
+
+		    if (parser.attribList.indexOf(parser.attribName) !== -1 ||
+		      parser.tag.attributes.hasOwnProperty(parser.attribName)) {
+		      parser.attribName = parser.attribValue = '';
+		      return
+		    }
+
+		    if (parser.opt.xmlns) {
+		      var qn = qname(parser.attribName, true);
+		      var prefix = qn.prefix;
+		      var local = qn.local;
+
+		      if (prefix === 'xmlns') {
+		        // namespace binding attribute. push the binding into scope
+		        if (local === 'xml' && parser.attribValue !== XML_NAMESPACE) {
+		          strictFail(parser,
+		            'xml: prefix must be bound to ' + XML_NAMESPACE + '\n' +
+		            'Actual: ' + parser.attribValue);
+		        } else if (local === 'xmlns' && parser.attribValue !== XMLNS_NAMESPACE) {
+		          strictFail(parser,
+		            'xmlns: prefix must be bound to ' + XMLNS_NAMESPACE + '\n' +
+		            'Actual: ' + parser.attribValue);
+		        } else {
+		          var tag = parser.tag;
+		          var parent = parser.tags[parser.tags.length - 1] || parser;
+		          if (tag.ns === parent.ns) {
+		            tag.ns = Object.create(parent.ns);
+		          }
+		          tag.ns[local] = parser.attribValue;
+		        }
+		      }
+
+		      // defer onattribute events until all attributes have been seen
+		      // so any new bindings can take effect. preserve attribute order
+		      // so deferred events can be emitted in document order
+		      parser.attribList.push([parser.attribName, parser.attribValue]);
+		    } else {
+		      // in non-xmlns mode, we can emit the event right away
+		      parser.tag.attributes[parser.attribName] = parser.attribValue;
+		      emitNode(parser, 'onattribute', {
+		        name: parser.attribName,
+		        value: parser.attribValue
+		      });
+		    }
+
+		    parser.attribName = parser.attribValue = '';
+		  }
+
+		  function openTag (parser, selfClosing) {
+		    if (parser.opt.xmlns) {
+		      // emit namespace binding events
+		      var tag = parser.tag;
+
+		      // add namespace info to tag
+		      var qn = qname(parser.tagName);
+		      tag.prefix = qn.prefix;
+		      tag.local = qn.local;
+		      tag.uri = tag.ns[qn.prefix] || '';
+
+		      if (tag.prefix && !tag.uri) {
+		        strictFail(parser, 'Unbound namespace prefix: ' +
+		          JSON.stringify(parser.tagName));
+		        tag.uri = qn.prefix;
+		      }
+
+		      var parent = parser.tags[parser.tags.length - 1] || parser;
+		      if (tag.ns && parent.ns !== tag.ns) {
+		        Object.keys(tag.ns).forEach(function (p) {
+		          emitNode(parser, 'onopennamespace', {
+		            prefix: p,
+		            uri: tag.ns[p]
+		          });
+		        });
+		      }
+
+		      // handle deferred onattribute events
+		      // Note: do not apply default ns to attributes:
+		      //   http://www.w3.org/TR/REC-xml-names/#defaulting
+		      for (var i = 0, l = parser.attribList.length; i < l; i++) {
+		        var nv = parser.attribList[i];
+		        var name = nv[0];
+		        var value = nv[1];
+		        var qualName = qname(name, true);
+		        var prefix = qualName.prefix;
+		        var local = qualName.local;
+		        var uri = prefix === '' ? '' : (tag.ns[prefix] || '');
+		        var a = {
+		          name: name,
+		          value: value,
+		          prefix: prefix,
+		          local: local,
+		          uri: uri
+		        };
+
+		        // if there's any attributes with an undefined namespace,
+		        // then fail on them now.
+		        if (prefix && prefix !== 'xmlns' && !uri) {
+		          strictFail(parser, 'Unbound namespace prefix: ' +
+		            JSON.stringify(prefix));
+		          a.uri = prefix;
+		        }
+		        parser.tag.attributes[name] = a;
+		        emitNode(parser, 'onattribute', a);
+		      }
+		      parser.attribList.length = 0;
+		    }
+
+		    parser.tag.isSelfClosing = !!selfClosing;
+
+		    // process the tag
+		    parser.sawRoot = true;
+		    parser.tags.push(parser.tag);
+		    emitNode(parser, 'onopentag', parser.tag);
+		    if (!selfClosing) {
+		      // special case for <script> in non-strict mode.
+		      if (!parser.noscript && parser.tagName.toLowerCase() === 'script') {
+		        parser.state = S.SCRIPT;
+		      } else {
+		        parser.state = S.TEXT;
+		      }
+		      parser.tag = null;
+		      parser.tagName = '';
+		    }
+		    parser.attribName = parser.attribValue = '';
+		    parser.attribList.length = 0;
+		  }
+
+		  function closeTag (parser) {
+		    if (!parser.tagName) {
+		      strictFail(parser, 'Weird empty close tag.');
+		      parser.textNode += '</>';
+		      parser.state = S.TEXT;
+		      return
+		    }
+
+		    if (parser.script) {
+		      if (parser.tagName !== 'script') {
+		        parser.script += '</' + parser.tagName + '>';
+		        parser.tagName = '';
+		        parser.state = S.SCRIPT;
+		        return
+		      }
+		      emitNode(parser, 'onscript', parser.script);
+		      parser.script = '';
+		    }
+
+		    // first make sure that the closing tag actually exists.
+		    // <a><b></c></b></a> will close everything, otherwise.
+		    var t = parser.tags.length;
+		    var tagName = parser.tagName;
+		    if (!parser.strict) {
+		      tagName = tagName[parser.looseCase]();
+		    }
+		    var closeTo = tagName;
+		    while (t--) {
+		      var close = parser.tags[t];
+		      if (close.name !== closeTo) {
+		        // fail the first time in strict mode
+		        strictFail(parser, 'Unexpected close tag');
+		      } else {
+		        break
+		      }
+		    }
+
+		    // didn't find it.  we already failed for strict, so just abort.
+		    if (t < 0) {
+		      strictFail(parser, 'Unmatched closing tag: ' + parser.tagName);
+		      parser.textNode += '</' + parser.tagName + '>';
+		      parser.state = S.TEXT;
+		      return
+		    }
+		    parser.tagName = tagName;
+		    var s = parser.tags.length;
+		    while (s-- > t) {
+		      var tag = parser.tag = parser.tags.pop();
+		      parser.tagName = parser.tag.name;
+		      emitNode(parser, 'onclosetag', parser.tagName);
+
+		      var x = {};
+		      for (var i in tag.ns) {
+		        x[i] = tag.ns[i];
+		      }
+
+		      var parent = parser.tags[parser.tags.length - 1] || parser;
+		      if (parser.opt.xmlns && tag.ns !== parent.ns) {
+		        // remove namespace bindings introduced by tag
+		        Object.keys(tag.ns).forEach(function (p) {
+		          var n = tag.ns[p];
+		          emitNode(parser, 'onclosenamespace', { prefix: p, uri: n });
+		        });
+		      }
+		    }
+		    if (t === 0) parser.closedRoot = true;
+		    parser.tagName = parser.attribValue = parser.attribName = '';
+		    parser.attribList.length = 0;
+		    parser.state = S.TEXT;
+		  }
+
+		  function parseEntity (parser) {
+		    var entity = parser.entity;
+		    var entityLC = entity.toLowerCase();
+		    var num;
+		    var numStr = '';
+
+		    if (parser.ENTITIES[entity]) {
+		      return parser.ENTITIES[entity]
+		    }
+		    if (parser.ENTITIES[entityLC]) {
+		      return parser.ENTITIES[entityLC]
+		    }
+		    entity = entityLC;
+		    if (entity.charAt(0) === '#') {
+		      if (entity.charAt(1) === 'x') {
+		        entity = entity.slice(2);
+		        num = parseInt(entity, 16);
+		        numStr = num.toString(16);
+		      } else {
+		        entity = entity.slice(1);
+		        num = parseInt(entity, 10);
+		        numStr = num.toString(10);
+		      }
+		    }
+		    entity = entity.replace(/^0+/, '');
+		    if (isNaN(num) || numStr.toLowerCase() !== entity) {
+		      strictFail(parser, 'Invalid character entity');
+		      return '&' + parser.entity + ';'
+		    }
+
+		    return String.fromCodePoint(num)
+		  }
+
+		  function beginWhiteSpace (parser, c) {
+		    if (c === '<') {
+		      parser.state = S.OPEN_WAKA;
+		      parser.startTagPosition = parser.position;
+		    } else if (!isWhitespace(c)) {
+		      // have to process this as a text node.
+		      // weird, but happens.
+		      strictFail(parser, 'Non-whitespace before first tag.');
+		      parser.textNode = c;
+		      parser.state = S.TEXT;
+		    }
+		  }
+
+		  function charAt (chunk, i) {
+		    var result = '';
+		    if (i < chunk.length) {
+		      result = chunk.charAt(i);
+		    }
+		    return result
+		  }
+
+		  function write (chunk) {
+		    var parser = this;
+		    if (this.error) {
+		      throw this.error
+		    }
+		    if (parser.closed) {
+		      return error(parser,
+		        'Cannot write after close. Assign an onready handler.')
+		    }
+		    if (chunk === null) {
+		      return end(parser)
+		    }
+		    if (typeof chunk === 'object') {
+		      chunk = chunk.toString();
+		    }
+		    var i = 0;
+		    var c = '';
+		    while (true) {
+		      c = charAt(chunk, i++);
+		      parser.c = c;
+
+		      if (!c) {
+		        break
+		      }
+
+		      if (parser.trackPosition) {
+		        parser.position++;
+		        if (c === '\n') {
+		          parser.line++;
+		          parser.column = 0;
+		        } else {
+		          parser.column++;
+		        }
+		      }
+
+		      switch (parser.state) {
+		        case S.BEGIN:
+		          parser.state = S.BEGIN_WHITESPACE;
+		          if (c === '\uFEFF') {
+		            continue
+		          }
+		          beginWhiteSpace(parser, c);
+		          continue
+
+		        case S.BEGIN_WHITESPACE:
+		          beginWhiteSpace(parser, c);
+		          continue
+
+		        case S.TEXT:
+		          if (parser.sawRoot && !parser.closedRoot) {
+		            var starti = i - 1;
+		            while (c && c !== '<' && c !== '&') {
+		              c = charAt(chunk, i++);
+		              if (c && parser.trackPosition) {
+		                parser.position++;
+		                if (c === '\n') {
+		                  parser.line++;
+		                  parser.column = 0;
+		                } else {
+		                  parser.column++;
+		                }
+		              }
+		            }
+		            parser.textNode += chunk.substring(starti, i - 1);
+		          }
+		          if (c === '<' && !(parser.sawRoot && parser.closedRoot && !parser.strict)) {
+		            parser.state = S.OPEN_WAKA;
+		            parser.startTagPosition = parser.position;
+		          } else {
+		            if (!isWhitespace(c) && (!parser.sawRoot || parser.closedRoot)) {
+		              strictFail(parser, 'Text data outside of root node.');
+		            }
+		            if (c === '&') {
+		              parser.state = S.TEXT_ENTITY;
+		            } else {
+		              parser.textNode += c;
+		            }
+		          }
+		          continue
+
+		        case S.SCRIPT:
+		          // only non-strict
+		          if (c === '<') {
+		            parser.state = S.SCRIPT_ENDING;
+		          } else {
+		            parser.script += c;
+		          }
+		          continue
+
+		        case S.SCRIPT_ENDING:
+		          if (c === '/') {
+		            parser.state = S.CLOSE_TAG;
+		          } else {
+		            parser.script += '<' + c;
+		            parser.state = S.SCRIPT;
+		          }
+		          continue
+
+		        case S.OPEN_WAKA:
+		          // either a /, ?, !, or text is coming next.
+		          if (c === '!') {
+		            parser.state = S.SGML_DECL;
+		            parser.sgmlDecl = '';
+		          } else if (isWhitespace(c)) ; else if (isMatch(nameStart, c)) {
+		            parser.state = S.OPEN_TAG;
+		            parser.tagName = c;
+		          } else if (c === '/') {
+		            parser.state = S.CLOSE_TAG;
+		            parser.tagName = '';
+		          } else if (c === '?') {
+		            parser.state = S.PROC_INST;
+		            parser.procInstName = parser.procInstBody = '';
+		          } else {
+		            strictFail(parser, 'Unencoded <');
+		            // if there was some whitespace, then add that in.
+		            if (parser.startTagPosition + 1 < parser.position) {
+		              var pad = parser.position - parser.startTagPosition;
+		              c = new Array(pad).join(' ') + c;
+		            }
+		            parser.textNode += '<' + c;
+		            parser.state = S.TEXT;
+		          }
+		          continue
+
+		        case S.SGML_DECL:
+		          if (parser.sgmlDecl + c === '--') {
+		            parser.state = S.COMMENT;
+		            parser.comment = '';
+		            parser.sgmlDecl = '';
+		            continue;
+		          }
+
+		          if (parser.doctype && parser.doctype !== true && parser.sgmlDecl) {
+		            parser.state = S.DOCTYPE_DTD;
+		            parser.doctype += '<!' + parser.sgmlDecl + c;
+		            parser.sgmlDecl = '';
+		          } else if ((parser.sgmlDecl + c).toUpperCase() === CDATA) {
+		            emitNode(parser, 'onopencdata');
+		            parser.state = S.CDATA;
+		            parser.sgmlDecl = '';
+		            parser.cdata = '';
+		          } else if ((parser.sgmlDecl + c).toUpperCase() === DOCTYPE) {
+		            parser.state = S.DOCTYPE;
+		            if (parser.doctype || parser.sawRoot) {
+		              strictFail(parser,
+		                'Inappropriately located doctype declaration');
+		            }
+		            parser.doctype = '';
+		            parser.sgmlDecl = '';
+		          } else if (c === '>') {
+		            emitNode(parser, 'onsgmldeclaration', parser.sgmlDecl);
+		            parser.sgmlDecl = '';
+		            parser.state = S.TEXT;
+		          } else if (isQuote(c)) {
+		            parser.state = S.SGML_DECL_QUOTED;
+		            parser.sgmlDecl += c;
+		          } else {
+		            parser.sgmlDecl += c;
+		          }
+		          continue
+
+		        case S.SGML_DECL_QUOTED:
+		          if (c === parser.q) {
+		            parser.state = S.SGML_DECL;
+		            parser.q = '';
+		          }
+		          parser.sgmlDecl += c;
+		          continue
+
+		        case S.DOCTYPE:
+		          if (c === '>') {
+		            parser.state = S.TEXT;
+		            emitNode(parser, 'ondoctype', parser.doctype);
+		            parser.doctype = true; // just remember that we saw it.
+		          } else {
+		            parser.doctype += c;
+		            if (c === '[') {
+		              parser.state = S.DOCTYPE_DTD;
+		            } else if (isQuote(c)) {
+		              parser.state = S.DOCTYPE_QUOTED;
+		              parser.q = c;
+		            }
+		          }
+		          continue
+
+		        case S.DOCTYPE_QUOTED:
+		          parser.doctype += c;
+		          if (c === parser.q) {
+		            parser.q = '';
+		            parser.state = S.DOCTYPE;
+		          }
+		          continue
+
+		        case S.DOCTYPE_DTD:
+		          if (c === ']') {
+		            parser.doctype += c;
+		            parser.state = S.DOCTYPE;
+		          } else if (c === '<') {
+		            parser.state = S.OPEN_WAKA;
+		            parser.startTagPosition = parser.position;
+		          } else if (isQuote(c)) {
+		            parser.doctype += c;
+		            parser.state = S.DOCTYPE_DTD_QUOTED;
+		            parser.q = c;
+		          } else {
+		            parser.doctype += c;
+		          }
+		          continue
+
+		        case S.DOCTYPE_DTD_QUOTED:
+		          parser.doctype += c;
+		          if (c === parser.q) {
+		            parser.state = S.DOCTYPE_DTD;
+		            parser.q = '';
+		          }
+		          continue
+
+		        case S.COMMENT:
+		          if (c === '-') {
+		            parser.state = S.COMMENT_ENDING;
+		          } else {
+		            parser.comment += c;
+		          }
+		          continue
+
+		        case S.COMMENT_ENDING:
+		          if (c === '-') {
+		            parser.state = S.COMMENT_ENDED;
+		            parser.comment = textopts(parser.opt, parser.comment);
+		            if (parser.comment) {
+		              emitNode(parser, 'oncomment', parser.comment);
+		            }
+		            parser.comment = '';
+		          } else {
+		            parser.comment += '-' + c;
+		            parser.state = S.COMMENT;
+		          }
+		          continue
+
+		        case S.COMMENT_ENDED:
+		          if (c !== '>') {
+		            strictFail(parser, 'Malformed comment');
+		            // allow <!-- blah -- bloo --> in non-strict mode,
+		            // which is a comment of " blah -- bloo "
+		            parser.comment += '--' + c;
+		            parser.state = S.COMMENT;
+		          } else if (parser.doctype && parser.doctype !== true) {
+		            parser.state = S.DOCTYPE_DTD;
+		          } else {
+		            parser.state = S.TEXT;
+		          }
+		          continue
+
+		        case S.CDATA:
+		          if (c === ']') {
+		            parser.state = S.CDATA_ENDING;
+		          } else {
+		            parser.cdata += c;
+		          }
+		          continue
+
+		        case S.CDATA_ENDING:
+		          if (c === ']') {
+		            parser.state = S.CDATA_ENDING_2;
+		          } else {
+		            parser.cdata += ']' + c;
+		            parser.state = S.CDATA;
+		          }
+		          continue
+
+		        case S.CDATA_ENDING_2:
+		          if (c === '>') {
+		            if (parser.cdata) {
+		              emitNode(parser, 'oncdata', parser.cdata);
+		            }
+		            emitNode(parser, 'onclosecdata');
+		            parser.cdata = '';
+		            parser.state = S.TEXT;
+		          } else if (c === ']') {
+		            parser.cdata += ']';
+		          } else {
+		            parser.cdata += ']]' + c;
+		            parser.state = S.CDATA;
+		          }
+		          continue
+
+		        case S.PROC_INST:
+		          if (c === '?') {
+		            parser.state = S.PROC_INST_ENDING;
+		          } else if (isWhitespace(c)) {
+		            parser.state = S.PROC_INST_BODY;
+		          } else {
+		            parser.procInstName += c;
+		          }
+		          continue
+
+		        case S.PROC_INST_BODY:
+		          if (!parser.procInstBody && isWhitespace(c)) {
+		            continue
+		          } else if (c === '?') {
+		            parser.state = S.PROC_INST_ENDING;
+		          } else {
+		            parser.procInstBody += c;
+		          }
+		          continue
+
+		        case S.PROC_INST_ENDING:
+		          if (c === '>') {
+		            emitNode(parser, 'onprocessinginstruction', {
+		              name: parser.procInstName,
+		              body: parser.procInstBody
+		            });
+		            parser.procInstName = parser.procInstBody = '';
+		            parser.state = S.TEXT;
+		          } else {
+		            parser.procInstBody += '?' + c;
+		            parser.state = S.PROC_INST_BODY;
+		          }
+		          continue
+
+		        case S.OPEN_TAG:
+		          if (isMatch(nameBody, c)) {
+		            parser.tagName += c;
+		          } else {
+		            newTag(parser);
+		            if (c === '>') {
+		              openTag(parser);
+		            } else if (c === '/') {
+		              parser.state = S.OPEN_TAG_SLASH;
+		            } else {
+		              if (!isWhitespace(c)) {
+		                strictFail(parser, 'Invalid character in tag name');
+		              }
+		              parser.state = S.ATTRIB;
+		            }
+		          }
+		          continue
+
+		        case S.OPEN_TAG_SLASH:
+		          if (c === '>') {
+		            openTag(parser, true);
+		            closeTag(parser);
+		          } else {
+		            strictFail(parser, 'Forward-slash in opening tag not followed by >');
+		            parser.state = S.ATTRIB;
+		          }
+		          continue
+
+		        case S.ATTRIB:
+		          // haven't read the attribute name yet.
+		          if (isWhitespace(c)) {
+		            continue
+		          } else if (c === '>') {
+		            openTag(parser);
+		          } else if (c === '/') {
+		            parser.state = S.OPEN_TAG_SLASH;
+		          } else if (isMatch(nameStart, c)) {
+		            parser.attribName = c;
+		            parser.attribValue = '';
+		            parser.state = S.ATTRIB_NAME;
+		          } else {
+		            strictFail(parser, 'Invalid attribute name');
+		          }
+		          continue
+
+		        case S.ATTRIB_NAME:
+		          if (c === '=') {
+		            parser.state = S.ATTRIB_VALUE;
+		          } else if (c === '>') {
+		            strictFail(parser, 'Attribute without value');
+		            parser.attribValue = parser.attribName;
+		            attrib(parser);
+		            openTag(parser);
+		          } else if (isWhitespace(c)) {
+		            parser.state = S.ATTRIB_NAME_SAW_WHITE;
+		          } else if (isMatch(nameBody, c)) {
+		            parser.attribName += c;
+		          } else {
+		            strictFail(parser, 'Invalid attribute name');
+		          }
+		          continue
+
+		        case S.ATTRIB_NAME_SAW_WHITE:
+		          if (c === '=') {
+		            parser.state = S.ATTRIB_VALUE;
+		          } else if (isWhitespace(c)) {
+		            continue
+		          } else {
+		            strictFail(parser, 'Attribute without value');
+		            parser.tag.attributes[parser.attribName] = '';
+		            parser.attribValue = '';
+		            emitNode(parser, 'onattribute', {
+		              name: parser.attribName,
+		              value: ''
+		            });
+		            parser.attribName = '';
+		            if (c === '>') {
+		              openTag(parser);
+		            } else if (isMatch(nameStart, c)) {
+		              parser.attribName = c;
+		              parser.state = S.ATTRIB_NAME;
+		            } else {
+		              strictFail(parser, 'Invalid attribute name');
+		              parser.state = S.ATTRIB;
+		            }
+		          }
+		          continue
+
+		        case S.ATTRIB_VALUE:
+		          if (isWhitespace(c)) {
+		            continue
+		          } else if (isQuote(c)) {
+		            parser.q = c;
+		            parser.state = S.ATTRIB_VALUE_QUOTED;
+		          } else {
+		            if (!parser.opt.unquotedAttributeValues) {
+		              error(parser, 'Unquoted attribute value');
+		            }
+		            parser.state = S.ATTRIB_VALUE_UNQUOTED;
+		            parser.attribValue = c;
+		          }
+		          continue
+
+		        case S.ATTRIB_VALUE_QUOTED:
+		          if (c !== parser.q) {
+		            if (c === '&') {
+		              parser.state = S.ATTRIB_VALUE_ENTITY_Q;
+		            } else {
+		              parser.attribValue += c;
+		            }
+		            continue
+		          }
+		          attrib(parser);
+		          parser.q = '';
+		          parser.state = S.ATTRIB_VALUE_CLOSED;
+		          continue
+
+		        case S.ATTRIB_VALUE_CLOSED:
+		          if (isWhitespace(c)) {
+		            parser.state = S.ATTRIB;
+		          } else if (c === '>') {
+		            openTag(parser);
+		          } else if (c === '/') {
+		            parser.state = S.OPEN_TAG_SLASH;
+		          } else if (isMatch(nameStart, c)) {
+		            strictFail(parser, 'No whitespace between attributes');
+		            parser.attribName = c;
+		            parser.attribValue = '';
+		            parser.state = S.ATTRIB_NAME;
+		          } else {
+		            strictFail(parser, 'Invalid attribute name');
+		          }
+		          continue
+
+		        case S.ATTRIB_VALUE_UNQUOTED:
+		          if (!isAttribEnd(c)) {
+		            if (c === '&') {
+		              parser.state = S.ATTRIB_VALUE_ENTITY_U;
+		            } else {
+		              parser.attribValue += c;
+		            }
+		            continue
+		          }
+		          attrib(parser);
+		          if (c === '>') {
+		            openTag(parser);
+		          } else {
+		            parser.state = S.ATTRIB;
+		          }
+		          continue
+
+		        case S.CLOSE_TAG:
+		          if (!parser.tagName) {
+		            if (isWhitespace(c)) {
+		              continue
+		            } else if (notMatch(nameStart, c)) {
+		              if (parser.script) {
+		                parser.script += '</' + c;
+		                parser.state = S.SCRIPT;
+		              } else {
+		                strictFail(parser, 'Invalid tagname in closing tag.');
+		              }
+		            } else {
+		              parser.tagName = c;
+		            }
+		          } else if (c === '>') {
+		            closeTag(parser);
+		          } else if (isMatch(nameBody, c)) {
+		            parser.tagName += c;
+		          } else if (parser.script) {
+		            parser.script += '</' + parser.tagName;
+		            parser.tagName = '';
+		            parser.state = S.SCRIPT;
+		          } else {
+		            if (!isWhitespace(c)) {
+		              strictFail(parser, 'Invalid tagname in closing tag');
+		            }
+		            parser.state = S.CLOSE_TAG_SAW_WHITE;
+		          }
+		          continue
+
+		        case S.CLOSE_TAG_SAW_WHITE:
+		          if (isWhitespace(c)) {
+		            continue
+		          }
+		          if (c === '>') {
+		            closeTag(parser);
+		          } else {
+		            strictFail(parser, 'Invalid characters in closing tag');
+		          }
+		          continue
+
+		        case S.TEXT_ENTITY:
+		        case S.ATTRIB_VALUE_ENTITY_Q:
+		        case S.ATTRIB_VALUE_ENTITY_U:
+		          var returnState;
+		          var buffer;
+		          switch (parser.state) {
+		            case S.TEXT_ENTITY:
+		              returnState = S.TEXT;
+		              buffer = 'textNode';
+		              break
+
+		            case S.ATTRIB_VALUE_ENTITY_Q:
+		              returnState = S.ATTRIB_VALUE_QUOTED;
+		              buffer = 'attribValue';
+		              break
+
+		            case S.ATTRIB_VALUE_ENTITY_U:
+		              returnState = S.ATTRIB_VALUE_UNQUOTED;
+		              buffer = 'attribValue';
+		              break
+		          }
+
+		          if (c === ';') {
+		            var parsedEntity = parseEntity(parser);
+		            if (parser.opt.unparsedEntities && !Object.values(sax.XML_ENTITIES).includes(parsedEntity)) {
+		              parser.entity = '';
+		              parser.state = returnState;
+		              parser.write(parsedEntity);
+		            } else {
+		              parser[buffer] += parsedEntity;
+		              parser.entity = '';
+		              parser.state = returnState;
+		            }
+		          } else if (isMatch(parser.entity.length ? entityBody : entityStart, c)) {
+		            parser.entity += c;
+		          } else {
+		            strictFail(parser, 'Invalid character in entity name');
+		            parser[buffer] += '&' + parser.entity + c;
+		            parser.entity = '';
+		            parser.state = returnState;
+		          }
+
+		          continue
+
+		        default: /* istanbul ignore next */ {
+		          throw new Error(parser, 'Unknown state: ' + parser.state)
+		        }
+		      }
+		    } // while
+
+		    if (parser.position >= parser.bufferCheckPosition) {
+		      checkBufferLength(parser);
+		    }
+		    return parser
+		  }
+
+		  /*! http://mths.be/fromcodepoint v0.1.0 by @mathias */
+		  /* istanbul ignore next */
+		  if (!String.fromCodePoint) {
+		    (function () {
+		      var stringFromCharCode = String.fromCharCode;
+		      var floor = Math.floor;
+		      var fromCodePoint = function () {
+		        var MAX_SIZE = 0x4000;
+		        var codeUnits = [];
+		        var highSurrogate;
+		        var lowSurrogate;
+		        var index = -1;
+		        var length = arguments.length;
+		        if (!length) {
+		          return ''
+		        }
+		        var result = '';
+		        while (++index < length) {
+		          var codePoint = Number(arguments[index]);
+		          if (
+		            !isFinite(codePoint) || // `NaN`, `+Infinity`, or `-Infinity`
+		            codePoint < 0 || // not a valid Unicode code point
+		            codePoint > 0x10FFFF || // not a valid Unicode code point
+		            floor(codePoint) !== codePoint // not an integer
+		          ) {
+		            throw RangeError('Invalid code point: ' + codePoint)
+		          }
+		          if (codePoint <= 0xFFFF) { // BMP code point
+		            codeUnits.push(codePoint);
+		          } else { // Astral code point; split in surrogate halves
+		            // http://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
+		            codePoint -= 0x10000;
+		            highSurrogate = (codePoint >> 10) + 0xD800;
+		            lowSurrogate = (codePoint % 0x400) + 0xDC00;
+		            codeUnits.push(highSurrogate, lowSurrogate);
+		          }
+		          if (index + 1 === length || codeUnits.length > MAX_SIZE) {
+		            result += stringFromCharCode.apply(null, codeUnits);
+		            codeUnits.length = 0;
+		          }
+		        }
+		        return result
+		      };
+		      /* istanbul ignore next */
+		      if (Object.defineProperty) {
+		        Object.defineProperty(String, 'fromCodePoint', {
+		          value: fromCodePoint,
+		          configurable: true,
+		          writable: true
+		        });
+		      } else {
+		        String.fromCodePoint = fromCodePoint;
+		      }
+		    }());
+		  }
+		})(exports); 
+	} (sax));
+	return sax;
+}
+
+var bom = {};
+
+var hasRequiredBom;
+
+function requireBom () {
+	if (hasRequiredBom) return bom;
+	hasRequiredBom = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  bom.stripBOM = function(str) {
+	    if (str[0] === '\uFEFF') {
+	      return str.substring(1);
+	    } else {
+	      return str;
+	    }
+	  };
+
+	}).call(bom);
+	return bom;
+}
+
+var processors = {};
+
+var hasRequiredProcessors;
+
+function requireProcessors () {
+	if (hasRequiredProcessors) return processors;
+	hasRequiredProcessors = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var prefixMatch;
+
+	  prefixMatch = new RegExp(/(?!xmlns)^.*:/);
+
+	  processors.normalize = function(str) {
+	    return str.toLowerCase();
+	  };
+
+	  processors.firstCharLowerCase = function(str) {
+	    return str.charAt(0).toLowerCase() + str.slice(1);
+	  };
+
+	  processors.stripPrefix = function(str) {
+	    return str.replace(prefixMatch, '');
+	  };
+
+	  processors.parseNumbers = function(str) {
+	    if (!isNaN(str)) {
+	      str = str % 1 === 0 ? parseInt(str, 10) : parseFloat(str);
+	    }
+	    return str;
+	  };
+
+	  processors.parseBooleans = function(str) {
+	    if (/^(?:true|false)$/i.test(str)) {
+	      str = str.toLowerCase() === 'true';
+	    }
+	    return str;
+	  };
+
+	}).call(processors);
+	return processors;
+}
+
+var hasRequiredParser$1;
+
+function requireParser$1 () {
+	if (hasRequiredParser$1) return parser$1;
+	hasRequiredParser$1 = 1;
+	(function (exports) {
+		// Generated by CoffeeScript 1.12.7
+		(function() {
+		  var bom, defaults, events, isEmpty, processItem, processors, sax, setImmediate,
+		    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+		    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+		    hasProp = {}.hasOwnProperty;
+
+		  sax = requireSax();
+
+		  events = require$$4;
+
+		  bom = requireBom();
+
+		  processors = requireProcessors();
+
+		  setImmediate = require$$6$1.setImmediate;
+
+		  defaults = requireDefaults().defaults;
+
+		  isEmpty = function(thing) {
+		    return typeof thing === "object" && (thing != null) && Object.keys(thing).length === 0;
+		  };
+
+		  processItem = function(processors, item, key) {
+		    var i, len, process;
+		    for (i = 0, len = processors.length; i < len; i++) {
+		      process = processors[i];
+		      item = process(item, key);
+		    }
+		    return item;
+		  };
+
+		  exports.Parser = (function(superClass) {
+		    extend(Parser, superClass);
+
+		    function Parser(opts) {
+		      this.parseStringPromise = bind(this.parseStringPromise, this);
+		      this.parseString = bind(this.parseString, this);
+		      this.reset = bind(this.reset, this);
+		      this.assignOrPush = bind(this.assignOrPush, this);
+		      this.processAsync = bind(this.processAsync, this);
+		      var key, ref, value;
+		      if (!(this instanceof exports.Parser)) {
+		        return new exports.Parser(opts);
+		      }
+		      this.options = {};
+		      ref = defaults["0.2"];
+		      for (key in ref) {
+		        if (!hasProp.call(ref, key)) continue;
+		        value = ref[key];
+		        this.options[key] = value;
+		      }
+		      for (key in opts) {
+		        if (!hasProp.call(opts, key)) continue;
+		        value = opts[key];
+		        this.options[key] = value;
+		      }
+		      if (this.options.xmlns) {
+		        this.options.xmlnskey = this.options.attrkey + "ns";
+		      }
+		      if (this.options.normalizeTags) {
+		        if (!this.options.tagNameProcessors) {
+		          this.options.tagNameProcessors = [];
+		        }
+		        this.options.tagNameProcessors.unshift(processors.normalize);
+		      }
+		      this.reset();
+		    }
+
+		    Parser.prototype.processAsync = function() {
+		      var chunk, err;
+		      try {
+		        if (this.remaining.length <= this.options.chunkSize) {
+		          chunk = this.remaining;
+		          this.remaining = '';
+		          this.saxParser = this.saxParser.write(chunk);
+		          return this.saxParser.close();
+		        } else {
+		          chunk = this.remaining.substr(0, this.options.chunkSize);
+		          this.remaining = this.remaining.substr(this.options.chunkSize, this.remaining.length);
+		          this.saxParser = this.saxParser.write(chunk);
+		          return setImmediate(this.processAsync);
+		        }
+		      } catch (error1) {
+		        err = error1;
+		        if (!this.saxParser.errThrown) {
+		          this.saxParser.errThrown = true;
+		          return this.emit(err);
+		        }
+		      }
+		    };
+
+		    Parser.prototype.assignOrPush = function(obj, key, newValue) {
+		      if (!(key in obj)) {
+		        if (!this.options.explicitArray) {
+		          return obj[key] = newValue;
+		        } else {
+		          return obj[key] = [newValue];
+		        }
+		      } else {
+		        if (!(obj[key] instanceof Array)) {
+		          obj[key] = [obj[key]];
+		        }
+		        return obj[key].push(newValue);
+		      }
+		    };
+
+		    Parser.prototype.reset = function() {
+		      var attrkey, charkey, ontext, stack;
+		      this.removeAllListeners();
+		      this.saxParser = sax.parser(this.options.strict, {
+		        trim: false,
+		        normalize: false,
+		        xmlns: this.options.xmlns
+		      });
+		      this.saxParser.errThrown = false;
+		      this.saxParser.onerror = (function(_this) {
+		        return function(error) {
+		          _this.saxParser.resume();
+		          if (!_this.saxParser.errThrown) {
+		            _this.saxParser.errThrown = true;
+		            return _this.emit("error", error);
+		          }
+		        };
+		      })(this);
+		      this.saxParser.onend = (function(_this) {
+		        return function() {
+		          if (!_this.saxParser.ended) {
+		            _this.saxParser.ended = true;
+		            return _this.emit("end", _this.resultObject);
+		          }
+		        };
+		      })(this);
+		      this.saxParser.ended = false;
+		      this.EXPLICIT_CHARKEY = this.options.explicitCharkey;
+		      this.resultObject = null;
+		      stack = [];
+		      attrkey = this.options.attrkey;
+		      charkey = this.options.charkey;
+		      this.saxParser.onopentag = (function(_this) {
+		        return function(node) {
+		          var key, newValue, obj, processedKey, ref;
+		          obj = Object.create(null);
+		          obj[charkey] = "";
+		          if (!_this.options.ignoreAttrs) {
+		            ref = node.attributes;
+		            for (key in ref) {
+		              if (!hasProp.call(ref, key)) continue;
+		              if (!(attrkey in obj) && !_this.options.mergeAttrs) {
+		                obj[attrkey] = Object.create(null);
+		              }
+		              newValue = _this.options.attrValueProcessors ? processItem(_this.options.attrValueProcessors, node.attributes[key], key) : node.attributes[key];
+		              processedKey = _this.options.attrNameProcessors ? processItem(_this.options.attrNameProcessors, key) : key;
+		              if (_this.options.mergeAttrs) {
+		                _this.assignOrPush(obj, processedKey, newValue);
+		              } else {
+		                obj[attrkey][processedKey] = newValue;
+		              }
+		            }
+		          }
+		          obj["#name"] = _this.options.tagNameProcessors ? processItem(_this.options.tagNameProcessors, node.name) : node.name;
+		          if (_this.options.xmlns) {
+		            obj[_this.options.xmlnskey] = {
+		              uri: node.uri,
+		              local: node.local
+		            };
+		          }
+		          return stack.push(obj);
+		        };
+		      })(this);
+		      this.saxParser.onclosetag = (function(_this) {
+		        return function() {
+		          var cdata, emptyStr, key, node, nodeName, obj, objClone, old, s, xpath;
+		          obj = stack.pop();
+		          nodeName = obj["#name"];
+		          if (!_this.options.explicitChildren || !_this.options.preserveChildrenOrder) {
+		            delete obj["#name"];
+		          }
+		          if (obj.cdata === true) {
+		            cdata = obj.cdata;
+		            delete obj.cdata;
+		          }
+		          s = stack[stack.length - 1];
+		          if (obj[charkey].match(/^\s*$/) && !cdata) {
+		            emptyStr = obj[charkey];
+		            delete obj[charkey];
+		          } else {
+		            if (_this.options.trim) {
+		              obj[charkey] = obj[charkey].trim();
+		            }
+		            if (_this.options.normalize) {
+		              obj[charkey] = obj[charkey].replace(/\s{2,}/g, " ").trim();
+		            }
+		            obj[charkey] = _this.options.valueProcessors ? processItem(_this.options.valueProcessors, obj[charkey], nodeName) : obj[charkey];
+		            if (Object.keys(obj).length === 1 && charkey in obj && !_this.EXPLICIT_CHARKEY) {
+		              obj = obj[charkey];
+		            }
+		          }
+		          if (isEmpty(obj)) {
+		            if (typeof _this.options.emptyTag === 'function') {
+		              obj = _this.options.emptyTag();
+		            } else {
+		              obj = _this.options.emptyTag !== '' ? _this.options.emptyTag : emptyStr;
+		            }
+		          }
+		          if (_this.options.validator != null) {
+		            xpath = "/" + ((function() {
+		              var i, len, results;
+		              results = [];
+		              for (i = 0, len = stack.length; i < len; i++) {
+		                node = stack[i];
+		                results.push(node["#name"]);
+		              }
+		              return results;
+		            })()).concat(nodeName).join("/");
+		            (function() {
+		              var err;
+		              try {
+		                return obj = _this.options.validator(xpath, s && s[nodeName], obj);
+		              } catch (error1) {
+		                err = error1;
+		                return _this.emit("error", err);
+		              }
+		            })();
+		          }
+		          if (_this.options.explicitChildren && !_this.options.mergeAttrs && typeof obj === 'object') {
+		            if (!_this.options.preserveChildrenOrder) {
+		              node = Object.create(null);
+		              if (_this.options.attrkey in obj) {
+		                node[_this.options.attrkey] = obj[_this.options.attrkey];
+		                delete obj[_this.options.attrkey];
+		              }
+		              if (!_this.options.charsAsChildren && _this.options.charkey in obj) {
+		                node[_this.options.charkey] = obj[_this.options.charkey];
+		                delete obj[_this.options.charkey];
+		              }
+		              if (Object.getOwnPropertyNames(obj).length > 0) {
+		                node[_this.options.childkey] = obj;
+		              }
+		              obj = node;
+		            } else if (s) {
+		              s[_this.options.childkey] = s[_this.options.childkey] || [];
+		              objClone = Object.create(null);
+		              for (key in obj) {
+		                if (!hasProp.call(obj, key)) continue;
+		                objClone[key] = obj[key];
+		              }
+		              s[_this.options.childkey].push(objClone);
+		              delete obj["#name"];
+		              if (Object.keys(obj).length === 1 && charkey in obj && !_this.EXPLICIT_CHARKEY) {
+		                obj = obj[charkey];
+		              }
+		            }
+		          }
+		          if (stack.length > 0) {
+		            return _this.assignOrPush(s, nodeName, obj);
+		          } else {
+		            if (_this.options.explicitRoot) {
+		              old = obj;
+		              obj = Object.create(null);
+		              obj[nodeName] = old;
+		            }
+		            _this.resultObject = obj;
+		            _this.saxParser.ended = true;
+		            return _this.emit("end", _this.resultObject);
+		          }
+		        };
+		      })(this);
+		      ontext = (function(_this) {
+		        return function(text) {
+		          var charChild, s;
+		          s = stack[stack.length - 1];
+		          if (s) {
+		            s[charkey] += text;
+		            if (_this.options.explicitChildren && _this.options.preserveChildrenOrder && _this.options.charsAsChildren && (_this.options.includeWhiteChars || text.replace(/\\n/g, '').trim() !== '')) {
+		              s[_this.options.childkey] = s[_this.options.childkey] || [];
+		              charChild = {
+		                '#name': '__text__'
+		              };
+		              charChild[charkey] = text;
+		              if (_this.options.normalize) {
+		                charChild[charkey] = charChild[charkey].replace(/\s{2,}/g, " ").trim();
+		              }
+		              s[_this.options.childkey].push(charChild);
+		            }
+		            return s;
+		          }
+		        };
+		      })(this);
+		      this.saxParser.ontext = ontext;
+		      return this.saxParser.oncdata = (function(_this) {
+		        return function(text) {
+		          var s;
+		          s = ontext(text);
+		          if (s) {
+		            return s.cdata = true;
+		          }
+		        };
+		      })();
+		    };
+
+		    Parser.prototype.parseString = function(str, cb) {
+		      var err;
+		      if ((cb != null) && typeof cb === "function") {
+		        this.on("end", function(result) {
+		          this.reset();
+		          return cb(null, result);
+		        });
+		        this.on("error", function(err) {
+		          this.reset();
+		          return cb(err);
+		        });
+		      }
+		      try {
+		        str = str.toString();
+		        if (str.trim() === '') {
+		          this.emit("end", null);
+		          return true;
+		        }
+		        str = bom.stripBOM(str);
+		        if (this.options.async) {
+		          this.remaining = str;
+		          setImmediate(this.processAsync);
+		          return this.saxParser;
+		        }
+		        return this.saxParser.write(str).close();
+		      } catch (error1) {
+		        err = error1;
+		        if (!(this.saxParser.errThrown || this.saxParser.ended)) {
+		          this.emit('error', err);
+		          return this.saxParser.errThrown = true;
+		        } else if (this.saxParser.ended) {
+		          throw err;
+		        }
+		      }
+		    };
+
+		    Parser.prototype.parseStringPromise = function(str) {
+		      return new Promise((function(_this) {
+		        return function(resolve, reject) {
+		          return _this.parseString(str, function(err, value) {
+		            if (err) {
+		              return reject(err);
+		            } else {
+		              return resolve(value);
+		            }
+		          });
+		        };
+		      })(this));
+		    };
+
+		    return Parser;
+
+		  })(events);
+
+		  exports.parseString = function(str, a, b) {
+		    var cb, options, parser;
+		    if (b != null) {
+		      if (typeof b === 'function') {
+		        cb = b;
+		      }
+		      if (typeof a === 'object') {
+		        options = a;
+		      }
+		    } else {
+		      if (typeof a === 'function') {
+		        cb = a;
+		      }
+		      options = {};
+		    }
+		    parser = new exports.Parser(options);
+		    return parser.parseString(str, cb);
+		  };
+
+		  exports.parseStringPromise = function(str, a) {
+		    var options, parser;
+		    if (typeof a === 'object') {
+		      options = a;
+		    }
+		    parser = new exports.Parser(options);
+		    return parser.parseStringPromise(str);
+		  };
+
+		}).call(parser$1); 
+	} (parser$1));
+	return parser$1;
+}
+
+var hasRequiredXml2js;
+
+function requireXml2js () {
+	if (hasRequiredXml2js) return xml2js;
+	hasRequiredXml2js = 1;
+	// Generated by CoffeeScript 1.12.7
+	(function() {
+	  var builder, defaults, parser, processors,
+	    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	    hasProp = {}.hasOwnProperty;
+
+	  defaults = requireDefaults();
+
+	  builder = requireBuilder();
+
+	  parser = requireParser$1();
+
+	  processors = requireProcessors();
+
+	  xml2js.defaults = defaults.defaults;
+
+	  xml2js.processors = processors;
+
+	  xml2js.ValidationError = (function(superClass) {
+	    extend(ValidationError, superClass);
+
+	    function ValidationError(message) {
+	      this.message = message;
+	    }
+
+	    return ValidationError;
+
+	  })(Error);
+
+	  xml2js.Builder = builder.Builder;
+
+	  xml2js.Parser = parser.Parser;
+
+	  xml2js.parseString = parser.parseString;
+
+	  xml2js.parseStringPromise = parser.parseStringPromise;
+
+	}).call(xml2js);
+	return xml2js;
+}
+
+var fields = {exports: {}};
+
+var hasRequiredFields;
+
+function requireFields () {
+	if (hasRequiredFields) return fields.exports;
+	hasRequiredFields = 1;
+	const fields$1 = fields.exports = {};
+
+	fields$1.feed = [
+	  ['author', 'creator'],
+	  ['dc:publisher', 'publisher'],
+	  ['dc:creator', 'creator'],
+	  ['dc:source', 'source'],
+	  ['dc:title', 'title'],
+	  ['dc:type', 'type'],
+	  'title',
+	  'description',
+	  'author',
+	  'pubDate',
+	  'webMaster',
+	  'managingEditor',
+	  'generator',
+	  'link',
+	  'language',
+	  'copyright',
+	  'lastBuildDate',
+	  'docs',
+	  'generator',
+	  'ttl',
+	  'rating',
+	  'skipHours',
+	  'skipDays',
+	];
+
+	fields$1.item = [
+	  ['author', 'creator'],
+	  ['dc:creator', 'creator'],
+	  ['dc:date', 'date'],
+	  ['dc:language', 'language'],
+	  ['dc:rights', 'rights'],
+	  ['dc:source', 'source'],
+	  ['dc:title', 'title'],
+	  'title',
+	  'link',
+	  'pubDate',
+	  'author',
+	  'summary',
+	  ['content:encoded', 'content:encoded', {includeSnippet: true}],
+	  'enclosure',
+	  'dc:creator',
+	  'dc:date',
+	  'comments',
+	];
+
+	var mapItunesField = function(f) {
+	  return ['itunes:' + f, f];
+	};
+
+	fields$1.podcastFeed = ([
+	  'author',
+	  'subtitle',
+	  'summary',
+	  'explicit'
+	]).map(mapItunesField);
+
+	fields$1.podcastItem = ([
+	  'author',
+	  'subtitle',
+	  'summary',
+	  'explicit',
+	  'duration',
+	  'image',
+	  'episode',
+	  'image',
+	  'season',
+	  'keywords',
+	  'episodeType'
+	]).map(mapItunesField);
+	return fields.exports;
+}
+
+var utils = {exports: {}};
+
+var lib = {};
+
+var decode = {};
+
+var Aacute$1 = "Á";
+var aacute$1 = "á";
+var Abreve = "Ă";
+var abreve = "ă";
+var ac = "∾";
+var acd = "∿";
+var acE = "∾̳";
+var Acirc$1 = "Â";
+var acirc$1 = "â";
+var acute$1 = "´";
+var Acy = "А";
+var acy = "а";
+var AElig$1 = "Æ";
+var aelig$1 = "æ";
+var af = "⁡";
+var Afr = "𝔄";
+var afr = "𝔞";
+var Agrave$1 = "À";
+var agrave$1 = "à";
+var alefsym = "ℵ";
+var aleph = "ℵ";
+var Alpha = "Α";
+var alpha = "α";
+var Amacr = "Ā";
+var amacr = "ā";
+var amalg = "⨿";
+var amp$2 = "&";
+var AMP$1 = "&";
+var andand = "⩕";
+var And = "⩓";
+var and = "∧";
+var andd = "⩜";
+var andslope = "⩘";
+var andv = "⩚";
+var ang = "∠";
+var ange = "⦤";
+var angle = "∠";
+var angmsdaa = "⦨";
+var angmsdab = "⦩";
+var angmsdac = "⦪";
+var angmsdad = "⦫";
+var angmsdae = "⦬";
+var angmsdaf = "⦭";
+var angmsdag = "⦮";
+var angmsdah = "⦯";
+var angmsd = "∡";
+var angrt = "∟";
+var angrtvb = "⊾";
+var angrtvbd = "⦝";
+var angsph = "∢";
+var angst = "Å";
+var angzarr = "⍼";
+var Aogon = "Ą";
+var aogon = "ą";
+var Aopf = "𝔸";
+var aopf = "𝕒";
+var apacir = "⩯";
+var ap = "≈";
+var apE = "⩰";
+var ape = "≊";
+var apid = "≋";
+var apos$1 = "'";
+var ApplyFunction = "⁡";
+var approx = "≈";
+var approxeq = "≊";
+var Aring$1 = "Å";
+var aring$1 = "å";
+var Ascr = "𝒜";
+var ascr = "𝒶";
+var Assign = "≔";
+var ast = "*";
+var asymp = "≈";
+var asympeq = "≍";
+var Atilde$1 = "Ã";
+var atilde$1 = "ã";
+var Auml$1 = "Ä";
+var auml$1 = "ä";
+var awconint = "∳";
+var awint = "⨑";
+var backcong = "≌";
+var backepsilon = "϶";
+var backprime = "‵";
+var backsim = "∽";
+var backsimeq = "⋍";
+var Backslash = "∖";
+var Barv = "⫧";
+var barvee = "⊽";
+var barwed = "⌅";
+var Barwed = "⌆";
+var barwedge = "⌅";
+var bbrk = "⎵";
+var bbrktbrk = "⎶";
+var bcong = "≌";
+var Bcy = "Б";
+var bcy = "б";
+var bdquo = "„";
+var becaus = "∵";
+var because = "∵";
+var Because = "∵";
+var bemptyv = "⦰";
+var bepsi = "϶";
+var bernou = "ℬ";
+var Bernoullis = "ℬ";
+var Beta = "Β";
+var beta = "β";
+var beth = "ℶ";
+var between = "≬";
+var Bfr = "𝔅";
+var bfr = "𝔟";
+var bigcap = "⋂";
+var bigcirc = "◯";
+var bigcup = "⋃";
+var bigodot = "⨀";
+var bigoplus = "⨁";
+var bigotimes = "⨂";
+var bigsqcup = "⨆";
+var bigstar = "★";
+var bigtriangledown = "▽";
+var bigtriangleup = "△";
+var biguplus = "⨄";
+var bigvee = "⋁";
+var bigwedge = "⋀";
+var bkarow = "⤍";
+var blacklozenge = "⧫";
+var blacksquare = "▪";
+var blacktriangle = "▴";
+var blacktriangledown = "▾";
+var blacktriangleleft = "◂";
+var blacktriangleright = "▸";
+var blank = "␣";
+var blk12 = "▒";
+var blk14 = "░";
+var blk34 = "▓";
+var block = "█";
+var bne = "=⃥";
+var bnequiv = "≡⃥";
+var bNot = "⫭";
+var bnot = "⌐";
+var Bopf = "𝔹";
+var bopf = "𝕓";
+var bot = "⊥";
+var bottom = "⊥";
+var bowtie = "⋈";
+var boxbox = "⧉";
+var boxdl = "┐";
+var boxdL = "╕";
+var boxDl = "╖";
+var boxDL = "╗";
+var boxdr = "┌";
+var boxdR = "╒";
+var boxDr = "╓";
+var boxDR = "╔";
+var boxh = "─";
+var boxH = "═";
+var boxhd = "┬";
+var boxHd = "╤";
+var boxhD = "╥";
+var boxHD = "╦";
+var boxhu = "┴";
+var boxHu = "╧";
+var boxhU = "╨";
+var boxHU = "╩";
+var boxminus = "⊟";
+var boxplus = "⊞";
+var boxtimes = "⊠";
+var boxul = "┘";
+var boxuL = "╛";
+var boxUl = "╜";
+var boxUL = "╝";
+var boxur = "└";
+var boxuR = "╘";
+var boxUr = "╙";
+var boxUR = "╚";
+var boxv = "│";
+var boxV = "║";
+var boxvh = "┼";
+var boxvH = "╪";
+var boxVh = "╫";
+var boxVH = "╬";
+var boxvl = "┤";
+var boxvL = "╡";
+var boxVl = "╢";
+var boxVL = "╣";
+var boxvr = "├";
+var boxvR = "╞";
+var boxVr = "╟";
+var boxVR = "╠";
+var bprime = "‵";
+var breve = "˘";
+var Breve = "˘";
+var brvbar$1 = "¦";
+var bscr = "𝒷";
+var Bscr = "ℬ";
+var bsemi = "⁏";
+var bsim = "∽";
+var bsime = "⋍";
+var bsolb = "⧅";
+var bsol = "\\";
+var bsolhsub = "⟈";
+var bull = "•";
+var bullet = "•";
+var bump = "≎";
+var bumpE = "⪮";
+var bumpe = "≏";
+var Bumpeq = "≎";
+var bumpeq = "≏";
+var Cacute = "Ć";
+var cacute = "ć";
+var capand = "⩄";
+var capbrcup = "⩉";
+var capcap = "⩋";
+var cap = "∩";
+var Cap = "⋒";
+var capcup = "⩇";
+var capdot = "⩀";
+var CapitalDifferentialD = "ⅅ";
+var caps = "∩︀";
+var caret = "⁁";
+var caron = "ˇ";
+var Cayleys = "ℭ";
+var ccaps = "⩍";
+var Ccaron = "Č";
+var ccaron = "č";
+var Ccedil$1 = "Ç";
+var ccedil$1 = "ç";
+var Ccirc = "Ĉ";
+var ccirc = "ĉ";
+var Cconint = "∰";
+var ccups = "⩌";
+var ccupssm = "⩐";
+var Cdot = "Ċ";
+var cdot = "ċ";
+var cedil$1 = "¸";
+var Cedilla = "¸";
+var cemptyv = "⦲";
+var cent$1 = "¢";
+var centerdot = "·";
+var CenterDot = "·";
+var cfr = "𝔠";
+var Cfr = "ℭ";
+var CHcy = "Ч";
+var chcy = "ч";
+var check = "✓";
+var checkmark = "✓";
+var Chi = "Χ";
+var chi = "χ";
+var circ = "ˆ";
+var circeq = "≗";
+var circlearrowleft = "↺";
+var circlearrowright = "↻";
+var circledast = "⊛";
+var circledcirc = "⊚";
+var circleddash = "⊝";
+var CircleDot = "⊙";
+var circledR = "®";
+var circledS = "Ⓢ";
+var CircleMinus = "⊖";
+var CirclePlus = "⊕";
+var CircleTimes = "⊗";
+var cir = "○";
+var cirE = "⧃";
+var cire = "≗";
+var cirfnint = "⨐";
+var cirmid = "⫯";
+var cirscir = "⧂";
+var ClockwiseContourIntegral = "∲";
+var CloseCurlyDoubleQuote = "”";
+var CloseCurlyQuote = "’";
+var clubs = "♣";
+var clubsuit = "♣";
+var colon = ":";
+var Colon = "∷";
+var Colone = "⩴";
+var colone = "≔";
+var coloneq = "≔";
+var comma = ",";
+var commat = "@";
+var comp = "∁";
+var compfn = "∘";
+var complement = "∁";
+var complexes = "ℂ";
+var cong = "≅";
+var congdot = "⩭";
+var Congruent = "≡";
+var conint = "∮";
+var Conint = "∯";
+var ContourIntegral = "∮";
+var copf = "𝕔";
+var Copf = "ℂ";
+var coprod = "∐";
+var Coproduct = "∐";
+var copy$1 = "©";
+var COPY$1 = "©";
+var copysr = "℗";
+var CounterClockwiseContourIntegral = "∳";
+var crarr = "↵";
+var cross = "✗";
+var Cross = "⨯";
+var Cscr = "𝒞";
+var cscr = "𝒸";
+var csub = "⫏";
+var csube = "⫑";
+var csup = "⫐";
+var csupe = "⫒";
+var ctdot = "⋯";
+var cudarrl = "⤸";
+var cudarrr = "⤵";
+var cuepr = "⋞";
+var cuesc = "⋟";
+var cularr = "↶";
+var cularrp = "⤽";
+var cupbrcap = "⩈";
+var cupcap = "⩆";
+var CupCap = "≍";
+var cup = "∪";
+var Cup = "⋓";
+var cupcup = "⩊";
+var cupdot = "⊍";
+var cupor = "⩅";
+var cups = "∪︀";
+var curarr = "↷";
+var curarrm = "⤼";
+var curlyeqprec = "⋞";
+var curlyeqsucc = "⋟";
+var curlyvee = "⋎";
+var curlywedge = "⋏";
+var curren$1 = "¤";
+var curvearrowleft = "↶";
+var curvearrowright = "↷";
+var cuvee = "⋎";
+var cuwed = "⋏";
+var cwconint = "∲";
+var cwint = "∱";
+var cylcty = "⌭";
+var dagger = "†";
+var Dagger = "‡";
+var daleth = "ℸ";
+var darr = "↓";
+var Darr = "↡";
+var dArr = "⇓";
+var dash = "‐";
+var Dashv = "⫤";
+var dashv = "⊣";
+var dbkarow = "⤏";
+var dblac = "˝";
+var Dcaron = "Ď";
+var dcaron = "ď";
+var Dcy = "Д";
+var dcy = "д";
+var ddagger = "‡";
+var ddarr = "⇊";
+var DD = "ⅅ";
+var dd = "ⅆ";
+var DDotrahd = "⤑";
+var ddotseq = "⩷";
+var deg$1 = "°";
+var Del = "∇";
+var Delta = "Δ";
+var delta = "δ";
+var demptyv = "⦱";
+var dfisht = "⥿";
+var Dfr = "𝔇";
+var dfr = "𝔡";
+var dHar = "⥥";
+var dharl = "⇃";
+var dharr = "⇂";
+var DiacriticalAcute = "´";
+var DiacriticalDot = "˙";
+var DiacriticalDoubleAcute = "˝";
+var DiacriticalGrave = "`";
+var DiacriticalTilde = "˜";
+var diam = "⋄";
+var diamond = "⋄";
+var Diamond = "⋄";
+var diamondsuit = "♦";
+var diams = "♦";
+var die = "¨";
+var DifferentialD = "ⅆ";
+var digamma = "ϝ";
+var disin = "⋲";
+var div = "÷";
+var divide$1 = "÷";
+var divideontimes = "⋇";
+var divonx = "⋇";
+var DJcy = "Ђ";
+var djcy = "ђ";
+var dlcorn = "⌞";
+var dlcrop = "⌍";
+var dollar = "$";
+var Dopf = "𝔻";
+var dopf = "𝕕";
+var Dot = "¨";
+var dot = "˙";
+var DotDot = "⃜";
+var doteq = "≐";
+var doteqdot = "≑";
+var DotEqual = "≐";
+var dotminus = "∸";
+var dotplus = "∔";
+var dotsquare = "⊡";
+var doublebarwedge = "⌆";
+var DoubleContourIntegral = "∯";
+var DoubleDot = "¨";
+var DoubleDownArrow = "⇓";
+var DoubleLeftArrow = "⇐";
+var DoubleLeftRightArrow = "⇔";
+var DoubleLeftTee = "⫤";
+var DoubleLongLeftArrow = "⟸";
+var DoubleLongLeftRightArrow = "⟺";
+var DoubleLongRightArrow = "⟹";
+var DoubleRightArrow = "⇒";
+var DoubleRightTee = "⊨";
+var DoubleUpArrow = "⇑";
+var DoubleUpDownArrow = "⇕";
+var DoubleVerticalBar = "∥";
+var DownArrowBar = "⤓";
+var downarrow = "↓";
+var DownArrow = "↓";
+var Downarrow = "⇓";
+var DownArrowUpArrow = "⇵";
+var DownBreve = "̑";
+var downdownarrows = "⇊";
+var downharpoonleft = "⇃";
+var downharpoonright = "⇂";
+var DownLeftRightVector = "⥐";
+var DownLeftTeeVector = "⥞";
+var DownLeftVectorBar = "⥖";
+var DownLeftVector = "↽";
+var DownRightTeeVector = "⥟";
+var DownRightVectorBar = "⥗";
+var DownRightVector = "⇁";
+var DownTeeArrow = "↧";
+var DownTee = "⊤";
+var drbkarow = "⤐";
+var drcorn = "⌟";
+var drcrop = "⌌";
+var Dscr = "𝒟";
+var dscr = "𝒹";
+var DScy = "Ѕ";
+var dscy = "ѕ";
+var dsol = "⧶";
+var Dstrok = "Đ";
+var dstrok = "đ";
+var dtdot = "⋱";
+var dtri = "▿";
+var dtrif = "▾";
+var duarr = "⇵";
+var duhar = "⥯";
+var dwangle = "⦦";
+var DZcy = "Џ";
+var dzcy = "џ";
+var dzigrarr = "⟿";
+var Eacute$1 = "É";
+var eacute$1 = "é";
+var easter = "⩮";
+var Ecaron = "Ě";
+var ecaron = "ě";
+var Ecirc$1 = "Ê";
+var ecirc$1 = "ê";
+var ecir = "≖";
+var ecolon = "≕";
+var Ecy = "Э";
+var ecy = "э";
+var eDDot = "⩷";
+var Edot = "Ė";
+var edot = "ė";
+var eDot = "≑";
+var ee = "ⅇ";
+var efDot = "≒";
+var Efr = "𝔈";
+var efr = "𝔢";
+var eg = "⪚";
+var Egrave$1 = "È";
+var egrave$1 = "è";
+var egs = "⪖";
+var egsdot = "⪘";
+var el = "⪙";
+var Element = "∈";
+var elinters = "⏧";
+var ell = "ℓ";
+var els = "⪕";
+var elsdot = "⪗";
+var Emacr = "Ē";
+var emacr = "ē";
+var empty = "∅";
+var emptyset = "∅";
+var EmptySmallSquare = "◻";
+var emptyv = "∅";
+var EmptyVerySmallSquare = "▫";
+var emsp13 = " ";
+var emsp14 = " ";
+var emsp = " ";
+var ENG = "Ŋ";
+var eng = "ŋ";
+var ensp = " ";
+var Eogon = "Ę";
+var eogon = "ę";
+var Eopf = "𝔼";
+var eopf = "𝕖";
+var epar = "⋕";
+var eparsl = "⧣";
+var eplus = "⩱";
+var epsi = "ε";
+var Epsilon = "Ε";
+var epsilon = "ε";
+var epsiv = "ϵ";
+var eqcirc = "≖";
+var eqcolon = "≕";
+var eqsim = "≂";
+var eqslantgtr = "⪖";
+var eqslantless = "⪕";
+var Equal = "⩵";
+var equals = "=";
+var EqualTilde = "≂";
+var equest = "≟";
+var Equilibrium = "⇌";
+var equiv = "≡";
+var equivDD = "⩸";
+var eqvparsl = "⧥";
+var erarr = "⥱";
+var erDot = "≓";
+var escr = "ℯ";
+var Escr = "ℰ";
+var esdot = "≐";
+var Esim = "⩳";
+var esim = "≂";
+var Eta = "Η";
+var eta = "η";
+var ETH$1 = "Ð";
+var eth$1 = "ð";
+var Euml$1 = "Ë";
+var euml$1 = "ë";
+var euro = "€";
+var excl = "!";
+var exist = "∃";
+var Exists = "∃";
+var expectation = "ℰ";
+var exponentiale = "ⅇ";
+var ExponentialE = "ⅇ";
+var fallingdotseq = "≒";
+var Fcy = "Ф";
+var fcy = "ф";
+var female = "♀";
+var ffilig = "ﬃ";
+var fflig = "ﬀ";
+var ffllig = "ﬄ";
+var Ffr = "𝔉";
+var ffr = "𝔣";
+var filig = "ﬁ";
+var FilledSmallSquare = "◼";
+var FilledVerySmallSquare = "▪";
+var fjlig = "fj";
+var flat = "♭";
+var fllig = "ﬂ";
+var fltns = "▱";
+var fnof = "ƒ";
+var Fopf = "𝔽";
+var fopf = "𝕗";
+var forall = "∀";
+var ForAll = "∀";
+var fork = "⋔";
+var forkv = "⫙";
+var Fouriertrf = "ℱ";
+var fpartint = "⨍";
+var frac12$1 = "½";
+var frac13 = "⅓";
+var frac14$1 = "¼";
+var frac15 = "⅕";
+var frac16 = "⅙";
+var frac18 = "⅛";
+var frac23 = "⅔";
+var frac25 = "⅖";
+var frac34$1 = "¾";
+var frac35 = "⅗";
+var frac38 = "⅜";
+var frac45 = "⅘";
+var frac56 = "⅚";
+var frac58 = "⅝";
+var frac78 = "⅞";
+var frasl = "⁄";
+var frown = "⌢";
+var fscr = "𝒻";
+var Fscr = "ℱ";
+var gacute = "ǵ";
+var Gamma = "Γ";
+var gamma = "γ";
+var Gammad = "Ϝ";
+var gammad = "ϝ";
+var gap = "⪆";
+var Gbreve = "Ğ";
+var gbreve = "ğ";
+var Gcedil = "Ģ";
+var Gcirc = "Ĝ";
+var gcirc = "ĝ";
+var Gcy = "Г";
+var gcy = "г";
+var Gdot = "Ġ";
+var gdot = "ġ";
+var ge = "≥";
+var gE = "≧";
+var gEl = "⪌";
+var gel = "⋛";
+var geq = "≥";
+var geqq = "≧";
+var geqslant = "⩾";
+var gescc = "⪩";
+var ges = "⩾";
+var gesdot = "⪀";
+var gesdoto = "⪂";
+var gesdotol = "⪄";
+var gesl = "⋛︀";
+var gesles = "⪔";
+var Gfr = "𝔊";
+var gfr = "𝔤";
+var gg = "≫";
+var Gg = "⋙";
+var ggg = "⋙";
+var gimel = "ℷ";
+var GJcy = "Ѓ";
+var gjcy = "ѓ";
+var gla = "⪥";
+var gl = "≷";
+var glE = "⪒";
+var glj = "⪤";
+var gnap = "⪊";
+var gnapprox = "⪊";
+var gne = "⪈";
+var gnE = "≩";
+var gneq = "⪈";
+var gneqq = "≩";
+var gnsim = "⋧";
+var Gopf = "𝔾";
+var gopf = "𝕘";
+var grave = "`";
+var GreaterEqual = "≥";
+var GreaterEqualLess = "⋛";
+var GreaterFullEqual = "≧";
+var GreaterGreater = "⪢";
+var GreaterLess = "≷";
+var GreaterSlantEqual = "⩾";
+var GreaterTilde = "≳";
+var Gscr = "𝒢";
+var gscr = "ℊ";
+var gsim = "≳";
+var gsime = "⪎";
+var gsiml = "⪐";
+var gtcc = "⪧";
+var gtcir = "⩺";
+var gt$2 = ">";
+var GT$1 = ">";
+var Gt = "≫";
+var gtdot = "⋗";
+var gtlPar = "⦕";
+var gtquest = "⩼";
+var gtrapprox = "⪆";
+var gtrarr = "⥸";
+var gtrdot = "⋗";
+var gtreqless = "⋛";
+var gtreqqless = "⪌";
+var gtrless = "≷";
+var gtrsim = "≳";
+var gvertneqq = "≩︀";
+var gvnE = "≩︀";
+var Hacek = "ˇ";
+var hairsp = " ";
+var half = "½";
+var hamilt = "ℋ";
+var HARDcy = "Ъ";
+var hardcy = "ъ";
+var harrcir = "⥈";
+var harr = "↔";
+var hArr = "⇔";
+var harrw = "↭";
+var Hat = "^";
+var hbar = "ℏ";
+var Hcirc = "Ĥ";
+var hcirc = "ĥ";
+var hearts = "♥";
+var heartsuit = "♥";
+var hellip = "…";
+var hercon = "⊹";
+var hfr = "𝔥";
+var Hfr = "ℌ";
+var HilbertSpace = "ℋ";
+var hksearow = "⤥";
+var hkswarow = "⤦";
+var hoarr = "⇿";
+var homtht = "∻";
+var hookleftarrow = "↩";
+var hookrightarrow = "↪";
+var hopf = "𝕙";
+var Hopf = "ℍ";
+var horbar = "―";
+var HorizontalLine = "─";
+var hscr = "𝒽";
+var Hscr = "ℋ";
+var hslash = "ℏ";
+var Hstrok = "Ħ";
+var hstrok = "ħ";
+var HumpDownHump = "≎";
+var HumpEqual = "≏";
+var hybull = "⁃";
+var hyphen = "‐";
+var Iacute$1 = "Í";
+var iacute$1 = "í";
+var ic = "⁣";
+var Icirc$1 = "Î";
+var icirc$1 = "î";
+var Icy = "И";
+var icy = "и";
+var Idot = "İ";
+var IEcy = "Е";
+var iecy = "е";
+var iexcl$1 = "¡";
+var iff = "⇔";
+var ifr = "𝔦";
+var Ifr = "ℑ";
+var Igrave$1 = "Ì";
+var igrave$1 = "ì";
+var ii = "ⅈ";
+var iiiint = "⨌";
+var iiint = "∭";
+var iinfin = "⧜";
+var iiota = "℩";
+var IJlig = "Ĳ";
+var ijlig = "ĳ";
+var Imacr = "Ī";
+var imacr = "ī";
+var image = "ℑ";
+var ImaginaryI = "ⅈ";
+var imagline = "ℐ";
+var imagpart = "ℑ";
+var imath = "ı";
+var Im = "ℑ";
+var imof = "⊷";
+var imped = "Ƶ";
+var Implies = "⇒";
+var incare = "℅";
+var infin = "∞";
+var infintie = "⧝";
+var inodot = "ı";
+var intcal = "⊺";
+var int = "∫";
+var Int = "∬";
+var integers = "ℤ";
+var Integral = "∫";
+var intercal = "⊺";
+var Intersection = "⋂";
+var intlarhk = "⨗";
+var intprod = "⨼";
+var InvisibleComma = "⁣";
+var InvisibleTimes = "⁢";
+var IOcy = "Ё";
+var iocy = "ё";
+var Iogon = "Į";
+var iogon = "į";
+var Iopf = "𝕀";
+var iopf = "𝕚";
+var Iota = "Ι";
+var iota = "ι";
+var iprod = "⨼";
+var iquest$1 = "¿";
+var iscr = "𝒾";
+var Iscr = "ℐ";
+var isin = "∈";
+var isindot = "⋵";
+var isinE = "⋹";
+var isins = "⋴";
+var isinsv = "⋳";
+var isinv = "∈";
+var it = "⁢";
+var Itilde = "Ĩ";
+var itilde = "ĩ";
+var Iukcy = "І";
+var iukcy = "і";
+var Iuml$1 = "Ï";
+var iuml$1 = "ï";
+var Jcirc = "Ĵ";
+var jcirc = "ĵ";
+var Jcy = "Й";
+var jcy = "й";
+var Jfr = "𝔍";
+var jfr = "𝔧";
+var jmath = "ȷ";
+var Jopf = "𝕁";
+var jopf = "𝕛";
+var Jscr = "𝒥";
+var jscr = "𝒿";
+var Jsercy = "Ј";
+var jsercy = "ј";
+var Jukcy = "Є";
+var jukcy = "є";
+var Kappa = "Κ";
+var kappa = "κ";
+var kappav = "ϰ";
+var Kcedil = "Ķ";
+var kcedil = "ķ";
+var Kcy = "К";
+var kcy = "к";
+var Kfr = "𝔎";
+var kfr = "𝔨";
+var kgreen = "ĸ";
+var KHcy = "Х";
+var khcy = "х";
+var KJcy = "Ќ";
+var kjcy = "ќ";
+var Kopf = "𝕂";
+var kopf = "𝕜";
+var Kscr = "𝒦";
+var kscr = "𝓀";
+var lAarr = "⇚";
+var Lacute = "Ĺ";
+var lacute = "ĺ";
+var laemptyv = "⦴";
+var lagran = "ℒ";
+var Lambda = "Λ";
+var lambda = "λ";
+var lang = "⟨";
+var Lang = "⟪";
+var langd = "⦑";
+var langle = "⟨";
+var lap = "⪅";
+var Laplacetrf = "ℒ";
+var laquo$1 = "«";
+var larrb = "⇤";
+var larrbfs = "⤟";
+var larr = "←";
+var Larr = "↞";
+var lArr = "⇐";
+var larrfs = "⤝";
+var larrhk = "↩";
+var larrlp = "↫";
+var larrpl = "⤹";
+var larrsim = "⥳";
+var larrtl = "↢";
+var latail = "⤙";
+var lAtail = "⤛";
+var lat = "⪫";
+var late = "⪭";
+var lates = "⪭︀";
+var lbarr = "⤌";
+var lBarr = "⤎";
+var lbbrk = "❲";
+var lbrace = "{";
+var lbrack = "[";
+var lbrke = "⦋";
+var lbrksld = "⦏";
+var lbrkslu = "⦍";
+var Lcaron = "Ľ";
+var lcaron = "ľ";
+var Lcedil = "Ļ";
+var lcedil = "ļ";
+var lceil = "⌈";
+var lcub = "{";
+var Lcy = "Л";
+var lcy = "л";
+var ldca = "⤶";
+var ldquo = "“";
+var ldquor = "„";
+var ldrdhar = "⥧";
+var ldrushar = "⥋";
+var ldsh = "↲";
+var le = "≤";
+var lE = "≦";
+var LeftAngleBracket = "⟨";
+var LeftArrowBar = "⇤";
+var leftarrow = "←";
+var LeftArrow = "←";
+var Leftarrow = "⇐";
+var LeftArrowRightArrow = "⇆";
+var leftarrowtail = "↢";
+var LeftCeiling = "⌈";
+var LeftDoubleBracket = "⟦";
+var LeftDownTeeVector = "⥡";
+var LeftDownVectorBar = "⥙";
+var LeftDownVector = "⇃";
+var LeftFloor = "⌊";
+var leftharpoondown = "↽";
+var leftharpoonup = "↼";
+var leftleftarrows = "⇇";
+var leftrightarrow = "↔";
+var LeftRightArrow = "↔";
+var Leftrightarrow = "⇔";
+var leftrightarrows = "⇆";
+var leftrightharpoons = "⇋";
+var leftrightsquigarrow = "↭";
+var LeftRightVector = "⥎";
+var LeftTeeArrow = "↤";
+var LeftTee = "⊣";
+var LeftTeeVector = "⥚";
+var leftthreetimes = "⋋";
+var LeftTriangleBar = "⧏";
+var LeftTriangle = "⊲";
+var LeftTriangleEqual = "⊴";
+var LeftUpDownVector = "⥑";
+var LeftUpTeeVector = "⥠";
+var LeftUpVectorBar = "⥘";
+var LeftUpVector = "↿";
+var LeftVectorBar = "⥒";
+var LeftVector = "↼";
+var lEg = "⪋";
+var leg = "⋚";
+var leq = "≤";
+var leqq = "≦";
+var leqslant = "⩽";
+var lescc = "⪨";
+var les = "⩽";
+var lesdot = "⩿";
+var lesdoto = "⪁";
+var lesdotor = "⪃";
+var lesg = "⋚︀";
+var lesges = "⪓";
+var lessapprox = "⪅";
+var lessdot = "⋖";
+var lesseqgtr = "⋚";
+var lesseqqgtr = "⪋";
+var LessEqualGreater = "⋚";
+var LessFullEqual = "≦";
+var LessGreater = "≶";
+var lessgtr = "≶";
+var LessLess = "⪡";
+var lesssim = "≲";
+var LessSlantEqual = "⩽";
+var LessTilde = "≲";
+var lfisht = "⥼";
+var lfloor = "⌊";
+var Lfr = "𝔏";
+var lfr = "𝔩";
+var lg = "≶";
+var lgE = "⪑";
+var lHar = "⥢";
+var lhard = "↽";
+var lharu = "↼";
+var lharul = "⥪";
+var lhblk = "▄";
+var LJcy = "Љ";
+var ljcy = "љ";
+var llarr = "⇇";
+var ll = "≪";
+var Ll = "⋘";
+var llcorner = "⌞";
+var Lleftarrow = "⇚";
+var llhard = "⥫";
+var lltri = "◺";
+var Lmidot = "Ŀ";
+var lmidot = "ŀ";
+var lmoustache = "⎰";
+var lmoust = "⎰";
+var lnap = "⪉";
+var lnapprox = "⪉";
+var lne = "⪇";
+var lnE = "≨";
+var lneq = "⪇";
+var lneqq = "≨";
+var lnsim = "⋦";
+var loang = "⟬";
+var loarr = "⇽";
+var lobrk = "⟦";
+var longleftarrow = "⟵";
+var LongLeftArrow = "⟵";
+var Longleftarrow = "⟸";
+var longleftrightarrow = "⟷";
+var LongLeftRightArrow = "⟷";
+var Longleftrightarrow = "⟺";
+var longmapsto = "⟼";
+var longrightarrow = "⟶";
+var LongRightArrow = "⟶";
+var Longrightarrow = "⟹";
+var looparrowleft = "↫";
+var looparrowright = "↬";
+var lopar = "⦅";
+var Lopf = "𝕃";
+var lopf = "𝕝";
+var loplus = "⨭";
+var lotimes = "⨴";
+var lowast = "∗";
+var lowbar = "_";
+var LowerLeftArrow = "↙";
+var LowerRightArrow = "↘";
+var loz = "◊";
+var lozenge = "◊";
+var lozf = "⧫";
+var lpar = "(";
+var lparlt = "⦓";
+var lrarr = "⇆";
+var lrcorner = "⌟";
+var lrhar = "⇋";
+var lrhard = "⥭";
+var lrm = "‎";
+var lrtri = "⊿";
+var lsaquo = "‹";
+var lscr = "𝓁";
+var Lscr = "ℒ";
+var lsh = "↰";
+var Lsh = "↰";
+var lsim = "≲";
+var lsime = "⪍";
+var lsimg = "⪏";
+var lsqb = "[";
+var lsquo = "‘";
+var lsquor = "‚";
+var Lstrok = "Ł";
+var lstrok = "ł";
+var ltcc = "⪦";
+var ltcir = "⩹";
+var lt$2 = "<";
+var LT$1 = "<";
+var Lt = "≪";
+var ltdot = "⋖";
+var lthree = "⋋";
+var ltimes = "⋉";
+var ltlarr = "⥶";
+var ltquest = "⩻";
+var ltri = "◃";
+var ltrie = "⊴";
+var ltrif = "◂";
+var ltrPar = "⦖";
+var lurdshar = "⥊";
+var luruhar = "⥦";
+var lvertneqq = "≨︀";
+var lvnE = "≨︀";
+var macr$1 = "¯";
+var male = "♂";
+var malt = "✠";
+var maltese = "✠";
+var map = "↦";
+var mapsto = "↦";
+var mapstodown = "↧";
+var mapstoleft = "↤";
+var mapstoup = "↥";
+var marker = "▮";
+var mcomma = "⨩";
+var Mcy = "М";
+var mcy = "м";
+var mdash = "—";
+var mDDot = "∺";
+var measuredangle = "∡";
+var MediumSpace = " ";
+var Mellintrf = "ℳ";
+var Mfr = "𝔐";
+var mfr = "𝔪";
+var mho = "℧";
+var micro$1 = "µ";
+var midast = "*";
+var midcir = "⫰";
+var mid = "∣";
+var middot$1 = "·";
+var minusb = "⊟";
+var minus = "−";
+var minusd = "∸";
+var minusdu = "⨪";
+var MinusPlus = "∓";
+var mlcp = "⫛";
+var mldr = "…";
+var mnplus = "∓";
+var models = "⊧";
+var Mopf = "𝕄";
+var mopf = "𝕞";
+var mp = "∓";
+var mscr = "𝓂";
+var Mscr = "ℳ";
+var mstpos = "∾";
+var Mu = "Μ";
+var mu = "μ";
+var multimap = "⊸";
+var mumap = "⊸";
+var nabla = "∇";
+var Nacute = "Ń";
+var nacute = "ń";
+var nang = "∠⃒";
+var nap = "≉";
+var napE = "⩰̸";
+var napid = "≋̸";
+var napos = "ŉ";
+var napprox = "≉";
+var natural = "♮";
+var naturals = "ℕ";
+var natur = "♮";
+var nbsp$1 = " ";
+var nbump = "≎̸";
+var nbumpe = "≏̸";
+var ncap = "⩃";
+var Ncaron = "Ň";
+var ncaron = "ň";
+var Ncedil = "Ņ";
+var ncedil = "ņ";
+var ncong = "≇";
+var ncongdot = "⩭̸";
+var ncup = "⩂";
+var Ncy = "Н";
+var ncy = "н";
+var ndash = "–";
+var nearhk = "⤤";
+var nearr = "↗";
+var neArr = "⇗";
+var nearrow = "↗";
+var ne = "≠";
+var nedot = "≐̸";
+var NegativeMediumSpace = "​";
+var NegativeThickSpace = "​";
+var NegativeThinSpace = "​";
+var NegativeVeryThinSpace = "​";
+var nequiv = "≢";
+var nesear = "⤨";
+var nesim = "≂̸";
+var NestedGreaterGreater = "≫";
+var NestedLessLess = "≪";
+var NewLine = "\n";
+var nexist = "∄";
+var nexists = "∄";
+var Nfr = "𝔑";
+var nfr = "𝔫";
+var ngE = "≧̸";
+var nge = "≱";
+var ngeq = "≱";
+var ngeqq = "≧̸";
+var ngeqslant = "⩾̸";
+var nges = "⩾̸";
+var nGg = "⋙̸";
+var ngsim = "≵";
+var nGt = "≫⃒";
+var ngt = "≯";
+var ngtr = "≯";
+var nGtv = "≫̸";
+var nharr = "↮";
+var nhArr = "⇎";
+var nhpar = "⫲";
+var ni = "∋";
+var nis = "⋼";
+var nisd = "⋺";
+var niv = "∋";
+var NJcy = "Њ";
+var njcy = "њ";
+var nlarr = "↚";
+var nlArr = "⇍";
+var nldr = "‥";
+var nlE = "≦̸";
+var nle = "≰";
+var nleftarrow = "↚";
+var nLeftarrow = "⇍";
+var nleftrightarrow = "↮";
+var nLeftrightarrow = "⇎";
+var nleq = "≰";
+var nleqq = "≦̸";
+var nleqslant = "⩽̸";
+var nles = "⩽̸";
+var nless = "≮";
+var nLl = "⋘̸";
+var nlsim = "≴";
+var nLt = "≪⃒";
+var nlt = "≮";
+var nltri = "⋪";
+var nltrie = "⋬";
+var nLtv = "≪̸";
+var nmid = "∤";
+var NoBreak = "⁠";
+var NonBreakingSpace = " ";
+var nopf = "𝕟";
+var Nopf = "ℕ";
+var Not = "⫬";
+var not$1 = "¬";
+var NotCongruent = "≢";
+var NotCupCap = "≭";
+var NotDoubleVerticalBar = "∦";
+var NotElement = "∉";
+var NotEqual = "≠";
+var NotEqualTilde = "≂̸";
+var NotExists = "∄";
+var NotGreater = "≯";
+var NotGreaterEqual = "≱";
+var NotGreaterFullEqual = "≧̸";
+var NotGreaterGreater = "≫̸";
+var NotGreaterLess = "≹";
+var NotGreaterSlantEqual = "⩾̸";
+var NotGreaterTilde = "≵";
+var NotHumpDownHump = "≎̸";
+var NotHumpEqual = "≏̸";
+var notin = "∉";
+var notindot = "⋵̸";
+var notinE = "⋹̸";
+var notinva = "∉";
+var notinvb = "⋷";
+var notinvc = "⋶";
+var NotLeftTriangleBar = "⧏̸";
+var NotLeftTriangle = "⋪";
+var NotLeftTriangleEqual = "⋬";
+var NotLess = "≮";
+var NotLessEqual = "≰";
+var NotLessGreater = "≸";
+var NotLessLess = "≪̸";
+var NotLessSlantEqual = "⩽̸";
+var NotLessTilde = "≴";
+var NotNestedGreaterGreater = "⪢̸";
+var NotNestedLessLess = "⪡̸";
+var notni = "∌";
+var notniva = "∌";
+var notnivb = "⋾";
+var notnivc = "⋽";
+var NotPrecedes = "⊀";
+var NotPrecedesEqual = "⪯̸";
+var NotPrecedesSlantEqual = "⋠";
+var NotReverseElement = "∌";
+var NotRightTriangleBar = "⧐̸";
+var NotRightTriangle = "⋫";
+var NotRightTriangleEqual = "⋭";
+var NotSquareSubset = "⊏̸";
+var NotSquareSubsetEqual = "⋢";
+var NotSquareSuperset = "⊐̸";
+var NotSquareSupersetEqual = "⋣";
+var NotSubset = "⊂⃒";
+var NotSubsetEqual = "⊈";
+var NotSucceeds = "⊁";
+var NotSucceedsEqual = "⪰̸";
+var NotSucceedsSlantEqual = "⋡";
+var NotSucceedsTilde = "≿̸";
+var NotSuperset = "⊃⃒";
+var NotSupersetEqual = "⊉";
+var NotTilde = "≁";
+var NotTildeEqual = "≄";
+var NotTildeFullEqual = "≇";
+var NotTildeTilde = "≉";
+var NotVerticalBar = "∤";
+var nparallel = "∦";
+var npar = "∦";
+var nparsl = "⫽⃥";
+var npart = "∂̸";
+var npolint = "⨔";
+var npr = "⊀";
+var nprcue = "⋠";
+var nprec = "⊀";
+var npreceq = "⪯̸";
+var npre = "⪯̸";
+var nrarrc = "⤳̸";
+var nrarr = "↛";
+var nrArr = "⇏";
+var nrarrw = "↝̸";
+var nrightarrow = "↛";
+var nRightarrow = "⇏";
+var nrtri = "⋫";
+var nrtrie = "⋭";
+var nsc = "⊁";
+var nsccue = "⋡";
+var nsce = "⪰̸";
+var Nscr = "𝒩";
+var nscr = "𝓃";
+var nshortmid = "∤";
+var nshortparallel = "∦";
+var nsim = "≁";
+var nsime = "≄";
+var nsimeq = "≄";
+var nsmid = "∤";
+var nspar = "∦";
+var nsqsube = "⋢";
+var nsqsupe = "⋣";
+var nsub = "⊄";
+var nsubE = "⫅̸";
+var nsube = "⊈";
+var nsubset = "⊂⃒";
+var nsubseteq = "⊈";
+var nsubseteqq = "⫅̸";
+var nsucc = "⊁";
+var nsucceq = "⪰̸";
+var nsup = "⊅";
+var nsupE = "⫆̸";
+var nsupe = "⊉";
+var nsupset = "⊃⃒";
+var nsupseteq = "⊉";
+var nsupseteqq = "⫆̸";
+var ntgl = "≹";
+var Ntilde$1 = "Ñ";
+var ntilde$1 = "ñ";
+var ntlg = "≸";
+var ntriangleleft = "⋪";
+var ntrianglelefteq = "⋬";
+var ntriangleright = "⋫";
+var ntrianglerighteq = "⋭";
+var Nu = "Ν";
+var nu = "ν";
+var num = "#";
+var numero = "№";
+var numsp = " ";
+var nvap = "≍⃒";
+var nvdash = "⊬";
+var nvDash = "⊭";
+var nVdash = "⊮";
+var nVDash = "⊯";
+var nvge = "≥⃒";
+var nvgt = ">⃒";
+var nvHarr = "⤄";
+var nvinfin = "⧞";
+var nvlArr = "⤂";
+var nvle = "≤⃒";
+var nvlt = "<⃒";
+var nvltrie = "⊴⃒";
+var nvrArr = "⤃";
+var nvrtrie = "⊵⃒";
+var nvsim = "∼⃒";
+var nwarhk = "⤣";
+var nwarr = "↖";
+var nwArr = "⇖";
+var nwarrow = "↖";
+var nwnear = "⤧";
+var Oacute$1 = "Ó";
+var oacute$1 = "ó";
+var oast = "⊛";
+var Ocirc$1 = "Ô";
+var ocirc$1 = "ô";
+var ocir = "⊚";
+var Ocy = "О";
+var ocy = "о";
+var odash = "⊝";
+var Odblac = "Ő";
+var odblac = "ő";
+var odiv = "⨸";
+var odot = "⊙";
+var odsold = "⦼";
+var OElig = "Œ";
+var oelig = "œ";
+var ofcir = "⦿";
+var Ofr = "𝔒";
+var ofr = "𝔬";
+var ogon = "˛";
+var Ograve$1 = "Ò";
+var ograve$1 = "ò";
+var ogt = "⧁";
+var ohbar = "⦵";
+var ohm = "Ω";
+var oint = "∮";
+var olarr = "↺";
+var olcir = "⦾";
+var olcross = "⦻";
+var oline = "‾";
+var olt = "⧀";
+var Omacr = "Ō";
+var omacr = "ō";
+var Omega = "Ω";
+var omega = "ω";
+var Omicron = "Ο";
+var omicron = "ο";
+var omid = "⦶";
+var ominus = "⊖";
+var Oopf = "𝕆";
+var oopf = "𝕠";
+var opar = "⦷";
+var OpenCurlyDoubleQuote = "“";
+var OpenCurlyQuote = "‘";
+var operp = "⦹";
+var oplus = "⊕";
+var orarr = "↻";
+var Or = "⩔";
+var or = "∨";
+var ord = "⩝";
+var order = "ℴ";
+var orderof = "ℴ";
+var ordf$1 = "ª";
+var ordm$1 = "º";
+var origof = "⊶";
+var oror = "⩖";
+var orslope = "⩗";
+var orv = "⩛";
+var oS = "Ⓢ";
+var Oscr = "𝒪";
+var oscr = "ℴ";
+var Oslash$1 = "Ø";
+var oslash$1 = "ø";
+var osol = "⊘";
+var Otilde$1 = "Õ";
+var otilde$1 = "õ";
+var otimesas = "⨶";
+var Otimes = "⨷";
+var otimes = "⊗";
+var Ouml$1 = "Ö";
+var ouml$1 = "ö";
+var ovbar = "⌽";
+var OverBar = "‾";
+var OverBrace = "⏞";
+var OverBracket = "⎴";
+var OverParenthesis = "⏜";
+var para$1 = "¶";
+var parallel = "∥";
+var par = "∥";
+var parsim = "⫳";
+var parsl = "⫽";
+var part = "∂";
+var PartialD = "∂";
+var Pcy = "П";
+var pcy = "п";
+var percnt = "%";
+var period = ".";
+var permil = "‰";
+var perp = "⊥";
+var pertenk = "‱";
+var Pfr = "𝔓";
+var pfr = "𝔭";
+var Phi = "Φ";
+var phi = "φ";
+var phiv = "ϕ";
+var phmmat = "ℳ";
+var phone = "☎";
+var Pi = "Π";
+var pi = "π";
+var pitchfork = "⋔";
+var piv = "ϖ";
+var planck = "ℏ";
+var planckh = "ℎ";
+var plankv = "ℏ";
+var plusacir = "⨣";
+var plusb = "⊞";
+var pluscir = "⨢";
+var plus = "+";
+var plusdo = "∔";
+var plusdu = "⨥";
+var pluse = "⩲";
+var PlusMinus = "±";
+var plusmn$1 = "±";
+var plussim = "⨦";
+var plustwo = "⨧";
+var pm = "±";
+var Poincareplane = "ℌ";
+var pointint = "⨕";
+var popf = "𝕡";
+var Popf = "ℙ";
+var pound$1 = "£";
+var prap = "⪷";
+var Pr = "⪻";
+var pr = "≺";
+var prcue = "≼";
+var precapprox = "⪷";
+var prec = "≺";
+var preccurlyeq = "≼";
+var Precedes = "≺";
+var PrecedesEqual = "⪯";
+var PrecedesSlantEqual = "≼";
+var PrecedesTilde = "≾";
+var preceq = "⪯";
+var precnapprox = "⪹";
+var precneqq = "⪵";
+var precnsim = "⋨";
+var pre = "⪯";
+var prE = "⪳";
+var precsim = "≾";
+var prime = "′";
+var Prime = "″";
+var primes = "ℙ";
+var prnap = "⪹";
+var prnE = "⪵";
+var prnsim = "⋨";
+var prod = "∏";
+var Product = "∏";
+var profalar = "⌮";
+var profline = "⌒";
+var profsurf = "⌓";
+var prop = "∝";
+var Proportional = "∝";
+var Proportion = "∷";
+var propto = "∝";
+var prsim = "≾";
+var prurel = "⊰";
+var Pscr = "𝒫";
+var pscr = "𝓅";
+var Psi = "Ψ";
+var psi = "ψ";
+var puncsp = " ";
+var Qfr = "𝔔";
+var qfr = "𝔮";
+var qint = "⨌";
+var qopf = "𝕢";
+var Qopf = "ℚ";
+var qprime = "⁗";
+var Qscr = "𝒬";
+var qscr = "𝓆";
+var quaternions = "ℍ";
+var quatint = "⨖";
+var quest = "?";
+var questeq = "≟";
+var quot$2 = "\"";
+var QUOT$1 = "\"";
+var rAarr = "⇛";
+var race = "∽̱";
+var Racute = "Ŕ";
+var racute = "ŕ";
+var radic = "√";
+var raemptyv = "⦳";
+var rang = "⟩";
+var Rang = "⟫";
+var rangd = "⦒";
+var range = "⦥";
+var rangle = "⟩";
+var raquo$1 = "»";
+var rarrap = "⥵";
+var rarrb = "⇥";
+var rarrbfs = "⤠";
+var rarrc = "⤳";
+var rarr = "→";
+var Rarr = "↠";
+var rArr = "⇒";
+var rarrfs = "⤞";
+var rarrhk = "↪";
+var rarrlp = "↬";
+var rarrpl = "⥅";
+var rarrsim = "⥴";
+var Rarrtl = "⤖";
+var rarrtl = "↣";
+var rarrw = "↝";
+var ratail = "⤚";
+var rAtail = "⤜";
+var ratio = "∶";
+var rationals = "ℚ";
+var rbarr = "⤍";
+var rBarr = "⤏";
+var RBarr = "⤐";
+var rbbrk = "❳";
+var rbrace = "}";
+var rbrack = "]";
+var rbrke = "⦌";
+var rbrksld = "⦎";
+var rbrkslu = "⦐";
+var Rcaron = "Ř";
+var rcaron = "ř";
+var Rcedil = "Ŗ";
+var rcedil = "ŗ";
+var rceil = "⌉";
+var rcub = "}";
+var Rcy = "Р";
+var rcy = "р";
+var rdca = "⤷";
+var rdldhar = "⥩";
+var rdquo = "”";
+var rdquor = "”";
+var rdsh = "↳";
+var real = "ℜ";
+var realine = "ℛ";
+var realpart = "ℜ";
+var reals = "ℝ";
+var Re = "ℜ";
+var rect = "▭";
+var reg$1 = "®";
+var REG$1 = "®";
+var ReverseElement = "∋";
+var ReverseEquilibrium = "⇋";
+var ReverseUpEquilibrium = "⥯";
+var rfisht = "⥽";
+var rfloor = "⌋";
+var rfr = "𝔯";
+var Rfr = "ℜ";
+var rHar = "⥤";
+var rhard = "⇁";
+var rharu = "⇀";
+var rharul = "⥬";
+var Rho = "Ρ";
+var rho = "ρ";
+var rhov = "ϱ";
+var RightAngleBracket = "⟩";
+var RightArrowBar = "⇥";
+var rightarrow = "→";
+var RightArrow = "→";
+var Rightarrow = "⇒";
+var RightArrowLeftArrow = "⇄";
+var rightarrowtail = "↣";
+var RightCeiling = "⌉";
+var RightDoubleBracket = "⟧";
+var RightDownTeeVector = "⥝";
+var RightDownVectorBar = "⥕";
+var RightDownVector = "⇂";
+var RightFloor = "⌋";
+var rightharpoondown = "⇁";
+var rightharpoonup = "⇀";
+var rightleftarrows = "⇄";
+var rightleftharpoons = "⇌";
+var rightrightarrows = "⇉";
+var rightsquigarrow = "↝";
+var RightTeeArrow = "↦";
+var RightTee = "⊢";
+var RightTeeVector = "⥛";
+var rightthreetimes = "⋌";
+var RightTriangleBar = "⧐";
+var RightTriangle = "⊳";
+var RightTriangleEqual = "⊵";
+var RightUpDownVector = "⥏";
+var RightUpTeeVector = "⥜";
+var RightUpVectorBar = "⥔";
+var RightUpVector = "↾";
+var RightVectorBar = "⥓";
+var RightVector = "⇀";
+var ring = "˚";
+var risingdotseq = "≓";
+var rlarr = "⇄";
+var rlhar = "⇌";
+var rlm = "‏";
+var rmoustache = "⎱";
+var rmoust = "⎱";
+var rnmid = "⫮";
+var roang = "⟭";
+var roarr = "⇾";
+var robrk = "⟧";
+var ropar = "⦆";
+var ropf = "𝕣";
+var Ropf = "ℝ";
+var roplus = "⨮";
+var rotimes = "⨵";
+var RoundImplies = "⥰";
+var rpar = ")";
+var rpargt = "⦔";
+var rppolint = "⨒";
+var rrarr = "⇉";
+var Rrightarrow = "⇛";
+var rsaquo = "›";
+var rscr = "𝓇";
+var Rscr = "ℛ";
+var rsh = "↱";
+var Rsh = "↱";
+var rsqb = "]";
+var rsquo = "’";
+var rsquor = "’";
+var rthree = "⋌";
+var rtimes = "⋊";
+var rtri = "▹";
+var rtrie = "⊵";
+var rtrif = "▸";
+var rtriltri = "⧎";
+var RuleDelayed = "⧴";
+var ruluhar = "⥨";
+var rx = "℞";
+var Sacute = "Ś";
+var sacute = "ś";
+var sbquo = "‚";
+var scap = "⪸";
+var Scaron = "Š";
+var scaron = "š";
+var Sc = "⪼";
+var sc = "≻";
+var sccue = "≽";
+var sce = "⪰";
+var scE = "⪴";
+var Scedil = "Ş";
+var scedil = "ş";
+var Scirc = "Ŝ";
+var scirc = "ŝ";
+var scnap = "⪺";
+var scnE = "⪶";
+var scnsim = "⋩";
+var scpolint = "⨓";
+var scsim = "≿";
+var Scy = "С";
+var scy = "с";
+var sdotb = "⊡";
+var sdot = "⋅";
+var sdote = "⩦";
+var searhk = "⤥";
+var searr = "↘";
+var seArr = "⇘";
+var searrow = "↘";
+var sect$1 = "§";
+var semi = ";";
+var seswar = "⤩";
+var setminus = "∖";
+var setmn = "∖";
+var sext = "✶";
+var Sfr = "𝔖";
+var sfr = "𝔰";
+var sfrown = "⌢";
+var sharp = "♯";
+var SHCHcy = "Щ";
+var shchcy = "щ";
+var SHcy = "Ш";
+var shcy = "ш";
+var ShortDownArrow = "↓";
+var ShortLeftArrow = "←";
+var shortmid = "∣";
+var shortparallel = "∥";
+var ShortRightArrow = "→";
+var ShortUpArrow = "↑";
+var shy$1 = "­";
+var Sigma = "Σ";
+var sigma = "σ";
+var sigmaf = "ς";
+var sigmav = "ς";
+var sim = "∼";
+var simdot = "⩪";
+var sime = "≃";
+var simeq = "≃";
+var simg = "⪞";
+var simgE = "⪠";
+var siml = "⪝";
+var simlE = "⪟";
+var simne = "≆";
+var simplus = "⨤";
+var simrarr = "⥲";
+var slarr = "←";
+var SmallCircle = "∘";
+var smallsetminus = "∖";
+var smashp = "⨳";
+var smeparsl = "⧤";
+var smid = "∣";
+var smile = "⌣";
+var smt = "⪪";
+var smte = "⪬";
+var smtes = "⪬︀";
+var SOFTcy = "Ь";
+var softcy = "ь";
+var solbar = "⌿";
+var solb = "⧄";
+var sol = "/";
+var Sopf = "𝕊";
+var sopf = "𝕤";
+var spades = "♠";
+var spadesuit = "♠";
+var spar = "∥";
+var sqcap = "⊓";
+var sqcaps = "⊓︀";
+var sqcup = "⊔";
+var sqcups = "⊔︀";
+var Sqrt = "√";
+var sqsub = "⊏";
+var sqsube = "⊑";
+var sqsubset = "⊏";
+var sqsubseteq = "⊑";
+var sqsup = "⊐";
+var sqsupe = "⊒";
+var sqsupset = "⊐";
+var sqsupseteq = "⊒";
+var square = "□";
+var Square = "□";
+var SquareIntersection = "⊓";
+var SquareSubset = "⊏";
+var SquareSubsetEqual = "⊑";
+var SquareSuperset = "⊐";
+var SquareSupersetEqual = "⊒";
+var SquareUnion = "⊔";
+var squarf = "▪";
+var squ = "□";
+var squf = "▪";
+var srarr = "→";
+var Sscr = "𝒮";
+var sscr = "𝓈";
+var ssetmn = "∖";
+var ssmile = "⌣";
+var sstarf = "⋆";
+var Star = "⋆";
+var star = "☆";
+var starf = "★";
+var straightepsilon = "ϵ";
+var straightphi = "ϕ";
+var strns = "¯";
+var sub = "⊂";
+var Sub = "⋐";
+var subdot = "⪽";
+var subE = "⫅";
+var sube = "⊆";
+var subedot = "⫃";
+var submult = "⫁";
+var subnE = "⫋";
+var subne = "⊊";
+var subplus = "⪿";
+var subrarr = "⥹";
+var subset = "⊂";
+var Subset = "⋐";
+var subseteq = "⊆";
+var subseteqq = "⫅";
+var SubsetEqual = "⊆";
+var subsetneq = "⊊";
+var subsetneqq = "⫋";
+var subsim = "⫇";
+var subsub = "⫕";
+var subsup = "⫓";
+var succapprox = "⪸";
+var succ = "≻";
+var succcurlyeq = "≽";
+var Succeeds = "≻";
+var SucceedsEqual = "⪰";
+var SucceedsSlantEqual = "≽";
+var SucceedsTilde = "≿";
+var succeq = "⪰";
+var succnapprox = "⪺";
+var succneqq = "⪶";
+var succnsim = "⋩";
+var succsim = "≿";
+var SuchThat = "∋";
+var sum = "∑";
+var Sum = "∑";
+var sung = "♪";
+var sup1$1 = "¹";
+var sup2$1 = "²";
+var sup3$1 = "³";
+var sup = "⊃";
+var Sup = "⋑";
+var supdot = "⪾";
+var supdsub = "⫘";
+var supE = "⫆";
+var supe = "⊇";
+var supedot = "⫄";
+var Superset = "⊃";
+var SupersetEqual = "⊇";
+var suphsol = "⟉";
+var suphsub = "⫗";
+var suplarr = "⥻";
+var supmult = "⫂";
+var supnE = "⫌";
+var supne = "⊋";
+var supplus = "⫀";
+var supset = "⊃";
+var Supset = "⋑";
+var supseteq = "⊇";
+var supseteqq = "⫆";
+var supsetneq = "⊋";
+var supsetneqq = "⫌";
+var supsim = "⫈";
+var supsub = "⫔";
+var supsup = "⫖";
+var swarhk = "⤦";
+var swarr = "↙";
+var swArr = "⇙";
+var swarrow = "↙";
+var swnwar = "⤪";
+var szlig$1 = "ß";
+var Tab = "\t";
+var target = "⌖";
+var Tau = "Τ";
+var tau = "τ";
+var tbrk = "⎴";
+var Tcaron = "Ť";
+var tcaron = "ť";
+var Tcedil = "Ţ";
+var tcedil = "ţ";
+var Tcy = "Т";
+var tcy = "т";
+var tdot = "⃛";
+var telrec = "⌕";
+var Tfr = "𝔗";
+var tfr = "𝔱";
+var there4 = "∴";
+var therefore = "∴";
+var Therefore = "∴";
+var Theta = "Θ";
+var theta = "θ";
+var thetasym = "ϑ";
+var thetav = "ϑ";
+var thickapprox = "≈";
+var thicksim = "∼";
+var ThickSpace = "  ";
+var ThinSpace = " ";
+var thinsp = " ";
+var thkap = "≈";
+var thksim = "∼";
+var THORN$1 = "Þ";
+var thorn$1 = "þ";
+var tilde = "˜";
+var Tilde = "∼";
+var TildeEqual = "≃";
+var TildeFullEqual = "≅";
+var TildeTilde = "≈";
+var timesbar = "⨱";
+var timesb = "⊠";
+var times$1 = "×";
+var timesd = "⨰";
+var tint = "∭";
+var toea = "⤨";
+var topbot = "⌶";
+var topcir = "⫱";
+var top = "⊤";
+var Topf = "𝕋";
+var topf = "𝕥";
+var topfork = "⫚";
+var tosa = "⤩";
+var tprime = "‴";
+var trade = "™";
+var TRADE = "™";
+var triangle = "▵";
+var triangledown = "▿";
+var triangleleft = "◃";
+var trianglelefteq = "⊴";
+var triangleq = "≜";
+var triangleright = "▹";
+var trianglerighteq = "⊵";
+var tridot = "◬";
+var trie = "≜";
+var triminus = "⨺";
+var TripleDot = "⃛";
+var triplus = "⨹";
+var trisb = "⧍";
+var tritime = "⨻";
+var trpezium = "⏢";
+var Tscr = "𝒯";
+var tscr = "𝓉";
+var TScy = "Ц";
+var tscy = "ц";
+var TSHcy = "Ћ";
+var tshcy = "ћ";
+var Tstrok = "Ŧ";
+var tstrok = "ŧ";
+var twixt = "≬";
+var twoheadleftarrow = "↞";
+var twoheadrightarrow = "↠";
+var Uacute$1 = "Ú";
+var uacute$1 = "ú";
+var uarr = "↑";
+var Uarr = "↟";
+var uArr = "⇑";
+var Uarrocir = "⥉";
+var Ubrcy = "Ў";
+var ubrcy = "ў";
+var Ubreve = "Ŭ";
+var ubreve = "ŭ";
+var Ucirc$1 = "Û";
+var ucirc$1 = "û";
+var Ucy = "У";
+var ucy = "у";
+var udarr = "⇅";
+var Udblac = "Ű";
+var udblac = "ű";
+var udhar = "⥮";
+var ufisht = "⥾";
+var Ufr = "𝔘";
+var ufr = "𝔲";
+var Ugrave$1 = "Ù";
+var ugrave$1 = "ù";
+var uHar = "⥣";
+var uharl = "↿";
+var uharr = "↾";
+var uhblk = "▀";
+var ulcorn = "⌜";
+var ulcorner = "⌜";
+var ulcrop = "⌏";
+var ultri = "◸";
+var Umacr = "Ū";
+var umacr = "ū";
+var uml$1 = "¨";
+var UnderBar = "_";
+var UnderBrace = "⏟";
+var UnderBracket = "⎵";
+var UnderParenthesis = "⏝";
+var Union = "⋃";
+var UnionPlus = "⊎";
+var Uogon = "Ų";
+var uogon = "ų";
+var Uopf = "𝕌";
+var uopf = "𝕦";
+var UpArrowBar = "⤒";
+var uparrow = "↑";
+var UpArrow = "↑";
+var Uparrow = "⇑";
+var UpArrowDownArrow = "⇅";
+var updownarrow = "↕";
+var UpDownArrow = "↕";
+var Updownarrow = "⇕";
+var UpEquilibrium = "⥮";
+var upharpoonleft = "↿";
+var upharpoonright = "↾";
+var uplus = "⊎";
+var UpperLeftArrow = "↖";
+var UpperRightArrow = "↗";
+var upsi = "υ";
+var Upsi = "ϒ";
+var upsih = "ϒ";
+var Upsilon = "Υ";
+var upsilon = "υ";
+var UpTeeArrow = "↥";
+var UpTee = "⊥";
+var upuparrows = "⇈";
+var urcorn = "⌝";
+var urcorner = "⌝";
+var urcrop = "⌎";
+var Uring = "Ů";
+var uring = "ů";
+var urtri = "◹";
+var Uscr = "𝒰";
+var uscr = "𝓊";
+var utdot = "⋰";
+var Utilde = "Ũ";
+var utilde = "ũ";
+var utri = "▵";
+var utrif = "▴";
+var uuarr = "⇈";
+var Uuml$1 = "Ü";
+var uuml$1 = "ü";
+var uwangle = "⦧";
+var vangrt = "⦜";
+var varepsilon = "ϵ";
+var varkappa = "ϰ";
+var varnothing = "∅";
+var varphi = "ϕ";
+var varpi = "ϖ";
+var varpropto = "∝";
+var varr = "↕";
+var vArr = "⇕";
+var varrho = "ϱ";
+var varsigma = "ς";
+var varsubsetneq = "⊊︀";
+var varsubsetneqq = "⫋︀";
+var varsupsetneq = "⊋︀";
+var varsupsetneqq = "⫌︀";
+var vartheta = "ϑ";
+var vartriangleleft = "⊲";
+var vartriangleright = "⊳";
+var vBar = "⫨";
+var Vbar = "⫫";
+var vBarv = "⫩";
+var Vcy = "В";
+var vcy = "в";
+var vdash = "⊢";
+var vDash = "⊨";
+var Vdash = "⊩";
+var VDash = "⊫";
+var Vdashl = "⫦";
+var veebar = "⊻";
+var vee = "∨";
+var Vee = "⋁";
+var veeeq = "≚";
+var vellip = "⋮";
+var verbar = "|";
+var Verbar = "‖";
+var vert = "|";
+var Vert = "‖";
+var VerticalBar = "∣";
+var VerticalLine = "|";
+var VerticalSeparator = "❘";
+var VerticalTilde = "≀";
+var VeryThinSpace = " ";
+var Vfr = "𝔙";
+var vfr = "𝔳";
+var vltri = "⊲";
+var vnsub = "⊂⃒";
+var vnsup = "⊃⃒";
+var Vopf = "𝕍";
+var vopf = "𝕧";
+var vprop = "∝";
+var vrtri = "⊳";
+var Vscr = "𝒱";
+var vscr = "𝓋";
+var vsubnE = "⫋︀";
+var vsubne = "⊊︀";
+var vsupnE = "⫌︀";
+var vsupne = "⊋︀";
+var Vvdash = "⊪";
+var vzigzag = "⦚";
+var Wcirc = "Ŵ";
+var wcirc = "ŵ";
+var wedbar = "⩟";
+var wedge = "∧";
+var Wedge = "⋀";
+var wedgeq = "≙";
+var weierp = "℘";
+var Wfr = "𝔚";
+var wfr = "𝔴";
+var Wopf = "𝕎";
+var wopf = "𝕨";
+var wp = "℘";
+var wr = "≀";
+var wreath = "≀";
+var Wscr = "𝒲";
+var wscr = "𝓌";
+var xcap = "⋂";
+var xcirc = "◯";
+var xcup = "⋃";
+var xdtri = "▽";
+var Xfr = "𝔛";
+var xfr = "𝔵";
+var xharr = "⟷";
+var xhArr = "⟺";
+var Xi = "Ξ";
+var xi = "ξ";
+var xlarr = "⟵";
+var xlArr = "⟸";
+var xmap = "⟼";
+var xnis = "⋻";
+var xodot = "⨀";
+var Xopf = "𝕏";
+var xopf = "𝕩";
+var xoplus = "⨁";
+var xotime = "⨂";
+var xrarr = "⟶";
+var xrArr = "⟹";
+var Xscr = "𝒳";
+var xscr = "𝓍";
+var xsqcup = "⨆";
+var xuplus = "⨄";
+var xutri = "△";
+var xvee = "⋁";
+var xwedge = "⋀";
+var Yacute$1 = "Ý";
+var yacute$1 = "ý";
+var YAcy = "Я";
+var yacy = "я";
+var Ycirc = "Ŷ";
+var ycirc = "ŷ";
+var Ycy = "Ы";
+var ycy = "ы";
+var yen$1 = "¥";
+var Yfr = "𝔜";
+var yfr = "𝔶";
+var YIcy = "Ї";
+var yicy = "ї";
+var Yopf = "𝕐";
+var yopf = "𝕪";
+var Yscr = "𝒴";
+var yscr = "𝓎";
+var YUcy = "Ю";
+var yucy = "ю";
+var yuml$1 = "ÿ";
+var Yuml = "Ÿ";
+var Zacute = "Ź";
+var zacute = "ź";
+var Zcaron = "Ž";
+var zcaron = "ž";
+var Zcy = "З";
+var zcy = "з";
+var Zdot = "Ż";
+var zdot = "ż";
+var zeetrf = "ℨ";
+var ZeroWidthSpace = "​";
+var Zeta = "Ζ";
+var zeta = "ζ";
+var zfr = "𝔷";
+var Zfr = "ℨ";
+var ZHcy = "Ж";
+var zhcy = "ж";
+var zigrarr = "⇝";
+var zopf = "𝕫";
+var Zopf = "ℤ";
+var Zscr = "𝒵";
+var zscr = "𝓏";
+var zwj = "‍";
+var zwnj = "‌";
+var require$$1$1 = {
+	Aacute: Aacute$1,
+	aacute: aacute$1,
+	Abreve: Abreve,
+	abreve: abreve,
+	ac: ac,
+	acd: acd,
+	acE: acE,
+	Acirc: Acirc$1,
+	acirc: acirc$1,
+	acute: acute$1,
+	Acy: Acy,
+	acy: acy,
+	AElig: AElig$1,
+	aelig: aelig$1,
+	af: af,
+	Afr: Afr,
+	afr: afr,
+	Agrave: Agrave$1,
+	agrave: agrave$1,
+	alefsym: alefsym,
+	aleph: aleph,
+	Alpha: Alpha,
+	alpha: alpha,
+	Amacr: Amacr,
+	amacr: amacr,
+	amalg: amalg,
+	amp: amp$2,
+	AMP: AMP$1,
+	andand: andand,
+	And: And,
+	and: and,
+	andd: andd,
+	andslope: andslope,
+	andv: andv,
+	ang: ang,
+	ange: ange,
+	angle: angle,
+	angmsdaa: angmsdaa,
+	angmsdab: angmsdab,
+	angmsdac: angmsdac,
+	angmsdad: angmsdad,
+	angmsdae: angmsdae,
+	angmsdaf: angmsdaf,
+	angmsdag: angmsdag,
+	angmsdah: angmsdah,
+	angmsd: angmsd,
+	angrt: angrt,
+	angrtvb: angrtvb,
+	angrtvbd: angrtvbd,
+	angsph: angsph,
+	angst: angst,
+	angzarr: angzarr,
+	Aogon: Aogon,
+	aogon: aogon,
+	Aopf: Aopf,
+	aopf: aopf,
+	apacir: apacir,
+	ap: ap,
+	apE: apE,
+	ape: ape,
+	apid: apid,
+	apos: apos$1,
+	ApplyFunction: ApplyFunction,
+	approx: approx,
+	approxeq: approxeq,
+	Aring: Aring$1,
+	aring: aring$1,
+	Ascr: Ascr,
+	ascr: ascr,
+	Assign: Assign,
+	ast: ast,
+	asymp: asymp,
+	asympeq: asympeq,
+	Atilde: Atilde$1,
+	atilde: atilde$1,
+	Auml: Auml$1,
+	auml: auml$1,
+	awconint: awconint,
+	awint: awint,
+	backcong: backcong,
+	backepsilon: backepsilon,
+	backprime: backprime,
+	backsim: backsim,
+	backsimeq: backsimeq,
+	Backslash: Backslash,
+	Barv: Barv,
+	barvee: barvee,
+	barwed: barwed,
+	Barwed: Barwed,
+	barwedge: barwedge,
+	bbrk: bbrk,
+	bbrktbrk: bbrktbrk,
+	bcong: bcong,
+	Bcy: Bcy,
+	bcy: bcy,
+	bdquo: bdquo,
+	becaus: becaus,
+	because: because,
+	Because: Because,
+	bemptyv: bemptyv,
+	bepsi: bepsi,
+	bernou: bernou,
+	Bernoullis: Bernoullis,
+	Beta: Beta,
+	beta: beta,
+	beth: beth,
+	between: between,
+	Bfr: Bfr,
+	bfr: bfr,
+	bigcap: bigcap,
+	bigcirc: bigcirc,
+	bigcup: bigcup,
+	bigodot: bigodot,
+	bigoplus: bigoplus,
+	bigotimes: bigotimes,
+	bigsqcup: bigsqcup,
+	bigstar: bigstar,
+	bigtriangledown: bigtriangledown,
+	bigtriangleup: bigtriangleup,
+	biguplus: biguplus,
+	bigvee: bigvee,
+	bigwedge: bigwedge,
+	bkarow: bkarow,
+	blacklozenge: blacklozenge,
+	blacksquare: blacksquare,
+	blacktriangle: blacktriangle,
+	blacktriangledown: blacktriangledown,
+	blacktriangleleft: blacktriangleleft,
+	blacktriangleright: blacktriangleright,
+	blank: blank,
+	blk12: blk12,
+	blk14: blk14,
+	blk34: blk34,
+	block: block,
+	bne: bne,
+	bnequiv: bnequiv,
+	bNot: bNot,
+	bnot: bnot,
+	Bopf: Bopf,
+	bopf: bopf,
+	bot: bot,
+	bottom: bottom,
+	bowtie: bowtie,
+	boxbox: boxbox,
+	boxdl: boxdl,
+	boxdL: boxdL,
+	boxDl: boxDl,
+	boxDL: boxDL,
+	boxdr: boxdr,
+	boxdR: boxdR,
+	boxDr: boxDr,
+	boxDR: boxDR,
+	boxh: boxh,
+	boxH: boxH,
+	boxhd: boxhd,
+	boxHd: boxHd,
+	boxhD: boxhD,
+	boxHD: boxHD,
+	boxhu: boxhu,
+	boxHu: boxHu,
+	boxhU: boxhU,
+	boxHU: boxHU,
+	boxminus: boxminus,
+	boxplus: boxplus,
+	boxtimes: boxtimes,
+	boxul: boxul,
+	boxuL: boxuL,
+	boxUl: boxUl,
+	boxUL: boxUL,
+	boxur: boxur,
+	boxuR: boxuR,
+	boxUr: boxUr,
+	boxUR: boxUR,
+	boxv: boxv,
+	boxV: boxV,
+	boxvh: boxvh,
+	boxvH: boxvH,
+	boxVh: boxVh,
+	boxVH: boxVH,
+	boxvl: boxvl,
+	boxvL: boxvL,
+	boxVl: boxVl,
+	boxVL: boxVL,
+	boxvr: boxvr,
+	boxvR: boxvR,
+	boxVr: boxVr,
+	boxVR: boxVR,
+	bprime: bprime,
+	breve: breve,
+	Breve: Breve,
+	brvbar: brvbar$1,
+	bscr: bscr,
+	Bscr: Bscr,
+	bsemi: bsemi,
+	bsim: bsim,
+	bsime: bsime,
+	bsolb: bsolb,
+	bsol: bsol,
+	bsolhsub: bsolhsub,
+	bull: bull,
+	bullet: bullet,
+	bump: bump,
+	bumpE: bumpE,
+	bumpe: bumpe,
+	Bumpeq: Bumpeq,
+	bumpeq: bumpeq,
+	Cacute: Cacute,
+	cacute: cacute,
+	capand: capand,
+	capbrcup: capbrcup,
+	capcap: capcap,
+	cap: cap,
+	Cap: Cap,
+	capcup: capcup,
+	capdot: capdot,
+	CapitalDifferentialD: CapitalDifferentialD,
+	caps: caps,
+	caret: caret,
+	caron: caron,
+	Cayleys: Cayleys,
+	ccaps: ccaps,
+	Ccaron: Ccaron,
+	ccaron: ccaron,
+	Ccedil: Ccedil$1,
+	ccedil: ccedil$1,
+	Ccirc: Ccirc,
+	ccirc: ccirc,
+	Cconint: Cconint,
+	ccups: ccups,
+	ccupssm: ccupssm,
+	Cdot: Cdot,
+	cdot: cdot,
+	cedil: cedil$1,
+	Cedilla: Cedilla,
+	cemptyv: cemptyv,
+	cent: cent$1,
+	centerdot: centerdot,
+	CenterDot: CenterDot,
+	cfr: cfr,
+	Cfr: Cfr,
+	CHcy: CHcy,
+	chcy: chcy,
+	check: check,
+	checkmark: checkmark,
+	Chi: Chi,
+	chi: chi,
+	circ: circ,
+	circeq: circeq,
+	circlearrowleft: circlearrowleft,
+	circlearrowright: circlearrowright,
+	circledast: circledast,
+	circledcirc: circledcirc,
+	circleddash: circleddash,
+	CircleDot: CircleDot,
+	circledR: circledR,
+	circledS: circledS,
+	CircleMinus: CircleMinus,
+	CirclePlus: CirclePlus,
+	CircleTimes: CircleTimes,
+	cir: cir,
+	cirE: cirE,
+	cire: cire,
+	cirfnint: cirfnint,
+	cirmid: cirmid,
+	cirscir: cirscir,
+	ClockwiseContourIntegral: ClockwiseContourIntegral,
+	CloseCurlyDoubleQuote: CloseCurlyDoubleQuote,
+	CloseCurlyQuote: CloseCurlyQuote,
+	clubs: clubs,
+	clubsuit: clubsuit,
+	colon: colon,
+	Colon: Colon,
+	Colone: Colone,
+	colone: colone,
+	coloneq: coloneq,
+	comma: comma,
+	commat: commat,
+	comp: comp,
+	compfn: compfn,
+	complement: complement,
+	complexes: complexes,
+	cong: cong,
+	congdot: congdot,
+	Congruent: Congruent,
+	conint: conint,
+	Conint: Conint,
+	ContourIntegral: ContourIntegral,
+	copf: copf,
+	Copf: Copf,
+	coprod: coprod,
+	Coproduct: Coproduct,
+	copy: copy$1,
+	COPY: COPY$1,
+	copysr: copysr,
+	CounterClockwiseContourIntegral: CounterClockwiseContourIntegral,
+	crarr: crarr,
+	cross: cross,
+	Cross: Cross,
+	Cscr: Cscr,
+	cscr: cscr,
+	csub: csub,
+	csube: csube,
+	csup: csup,
+	csupe: csupe,
+	ctdot: ctdot,
+	cudarrl: cudarrl,
+	cudarrr: cudarrr,
+	cuepr: cuepr,
+	cuesc: cuesc,
+	cularr: cularr,
+	cularrp: cularrp,
+	cupbrcap: cupbrcap,
+	cupcap: cupcap,
+	CupCap: CupCap,
+	cup: cup,
+	Cup: Cup,
+	cupcup: cupcup,
+	cupdot: cupdot,
+	cupor: cupor,
+	cups: cups,
+	curarr: curarr,
+	curarrm: curarrm,
+	curlyeqprec: curlyeqprec,
+	curlyeqsucc: curlyeqsucc,
+	curlyvee: curlyvee,
+	curlywedge: curlywedge,
+	curren: curren$1,
+	curvearrowleft: curvearrowleft,
+	curvearrowright: curvearrowright,
+	cuvee: cuvee,
+	cuwed: cuwed,
+	cwconint: cwconint,
+	cwint: cwint,
+	cylcty: cylcty,
+	dagger: dagger,
+	Dagger: Dagger,
+	daleth: daleth,
+	darr: darr,
+	Darr: Darr,
+	dArr: dArr,
+	dash: dash,
+	Dashv: Dashv,
+	dashv: dashv,
+	dbkarow: dbkarow,
+	dblac: dblac,
+	Dcaron: Dcaron,
+	dcaron: dcaron,
+	Dcy: Dcy,
+	dcy: dcy,
+	ddagger: ddagger,
+	ddarr: ddarr,
+	DD: DD,
+	dd: dd,
+	DDotrahd: DDotrahd,
+	ddotseq: ddotseq,
+	deg: deg$1,
+	Del: Del,
+	Delta: Delta,
+	delta: delta,
+	demptyv: demptyv,
+	dfisht: dfisht,
+	Dfr: Dfr,
+	dfr: dfr,
+	dHar: dHar,
+	dharl: dharl,
+	dharr: dharr,
+	DiacriticalAcute: DiacriticalAcute,
+	DiacriticalDot: DiacriticalDot,
+	DiacriticalDoubleAcute: DiacriticalDoubleAcute,
+	DiacriticalGrave: DiacriticalGrave,
+	DiacriticalTilde: DiacriticalTilde,
+	diam: diam,
+	diamond: diamond,
+	Diamond: Diamond,
+	diamondsuit: diamondsuit,
+	diams: diams,
+	die: die,
+	DifferentialD: DifferentialD,
+	digamma: digamma,
+	disin: disin,
+	div: div,
+	divide: divide$1,
+	divideontimes: divideontimes,
+	divonx: divonx,
+	DJcy: DJcy,
+	djcy: djcy,
+	dlcorn: dlcorn,
+	dlcrop: dlcrop,
+	dollar: dollar,
+	Dopf: Dopf,
+	dopf: dopf,
+	Dot: Dot,
+	dot: dot,
+	DotDot: DotDot,
+	doteq: doteq,
+	doteqdot: doteqdot,
+	DotEqual: DotEqual,
+	dotminus: dotminus,
+	dotplus: dotplus,
+	dotsquare: dotsquare,
+	doublebarwedge: doublebarwedge,
+	DoubleContourIntegral: DoubleContourIntegral,
+	DoubleDot: DoubleDot,
+	DoubleDownArrow: DoubleDownArrow,
+	DoubleLeftArrow: DoubleLeftArrow,
+	DoubleLeftRightArrow: DoubleLeftRightArrow,
+	DoubleLeftTee: DoubleLeftTee,
+	DoubleLongLeftArrow: DoubleLongLeftArrow,
+	DoubleLongLeftRightArrow: DoubleLongLeftRightArrow,
+	DoubleLongRightArrow: DoubleLongRightArrow,
+	DoubleRightArrow: DoubleRightArrow,
+	DoubleRightTee: DoubleRightTee,
+	DoubleUpArrow: DoubleUpArrow,
+	DoubleUpDownArrow: DoubleUpDownArrow,
+	DoubleVerticalBar: DoubleVerticalBar,
+	DownArrowBar: DownArrowBar,
+	downarrow: downarrow,
+	DownArrow: DownArrow,
+	Downarrow: Downarrow,
+	DownArrowUpArrow: DownArrowUpArrow,
+	DownBreve: DownBreve,
+	downdownarrows: downdownarrows,
+	downharpoonleft: downharpoonleft,
+	downharpoonright: downharpoonright,
+	DownLeftRightVector: DownLeftRightVector,
+	DownLeftTeeVector: DownLeftTeeVector,
+	DownLeftVectorBar: DownLeftVectorBar,
+	DownLeftVector: DownLeftVector,
+	DownRightTeeVector: DownRightTeeVector,
+	DownRightVectorBar: DownRightVectorBar,
+	DownRightVector: DownRightVector,
+	DownTeeArrow: DownTeeArrow,
+	DownTee: DownTee,
+	drbkarow: drbkarow,
+	drcorn: drcorn,
+	drcrop: drcrop,
+	Dscr: Dscr,
+	dscr: dscr,
+	DScy: DScy,
+	dscy: dscy,
+	dsol: dsol,
+	Dstrok: Dstrok,
+	dstrok: dstrok,
+	dtdot: dtdot,
+	dtri: dtri,
+	dtrif: dtrif,
+	duarr: duarr,
+	duhar: duhar,
+	dwangle: dwangle,
+	DZcy: DZcy,
+	dzcy: dzcy,
+	dzigrarr: dzigrarr,
+	Eacute: Eacute$1,
+	eacute: eacute$1,
+	easter: easter,
+	Ecaron: Ecaron,
+	ecaron: ecaron,
+	Ecirc: Ecirc$1,
+	ecirc: ecirc$1,
+	ecir: ecir,
+	ecolon: ecolon,
+	Ecy: Ecy,
+	ecy: ecy,
+	eDDot: eDDot,
+	Edot: Edot,
+	edot: edot,
+	eDot: eDot,
+	ee: ee,
+	efDot: efDot,
+	Efr: Efr,
+	efr: efr,
+	eg: eg,
+	Egrave: Egrave$1,
+	egrave: egrave$1,
+	egs: egs,
+	egsdot: egsdot,
+	el: el,
+	Element: Element,
+	elinters: elinters,
+	ell: ell,
+	els: els,
+	elsdot: elsdot,
+	Emacr: Emacr,
+	emacr: emacr,
+	empty: empty,
+	emptyset: emptyset,
+	EmptySmallSquare: EmptySmallSquare,
+	emptyv: emptyv,
+	EmptyVerySmallSquare: EmptyVerySmallSquare,
+	emsp13: emsp13,
+	emsp14: emsp14,
+	emsp: emsp,
+	ENG: ENG,
+	eng: eng,
+	ensp: ensp,
+	Eogon: Eogon,
+	eogon: eogon,
+	Eopf: Eopf,
+	eopf: eopf,
+	epar: epar,
+	eparsl: eparsl,
+	eplus: eplus,
+	epsi: epsi,
+	Epsilon: Epsilon,
+	epsilon: epsilon,
+	epsiv: epsiv,
+	eqcirc: eqcirc,
+	eqcolon: eqcolon,
+	eqsim: eqsim,
+	eqslantgtr: eqslantgtr,
+	eqslantless: eqslantless,
+	Equal: Equal,
+	equals: equals,
+	EqualTilde: EqualTilde,
+	equest: equest,
+	Equilibrium: Equilibrium,
+	equiv: equiv,
+	equivDD: equivDD,
+	eqvparsl: eqvparsl,
+	erarr: erarr,
+	erDot: erDot,
+	escr: escr,
+	Escr: Escr,
+	esdot: esdot,
+	Esim: Esim,
+	esim: esim,
+	Eta: Eta,
+	eta: eta,
+	ETH: ETH$1,
+	eth: eth$1,
+	Euml: Euml$1,
+	euml: euml$1,
+	euro: euro,
+	excl: excl,
+	exist: exist,
+	Exists: Exists,
+	expectation: expectation,
+	exponentiale: exponentiale,
+	ExponentialE: ExponentialE,
+	fallingdotseq: fallingdotseq,
+	Fcy: Fcy,
+	fcy: fcy,
+	female: female,
+	ffilig: ffilig,
+	fflig: fflig,
+	ffllig: ffllig,
+	Ffr: Ffr,
+	ffr: ffr,
+	filig: filig,
+	FilledSmallSquare: FilledSmallSquare,
+	FilledVerySmallSquare: FilledVerySmallSquare,
+	fjlig: fjlig,
+	flat: flat,
+	fllig: fllig,
+	fltns: fltns,
+	fnof: fnof,
+	Fopf: Fopf,
+	fopf: fopf,
+	forall: forall,
+	ForAll: ForAll,
+	fork: fork,
+	forkv: forkv,
+	Fouriertrf: Fouriertrf,
+	fpartint: fpartint,
+	frac12: frac12$1,
+	frac13: frac13,
+	frac14: frac14$1,
+	frac15: frac15,
+	frac16: frac16,
+	frac18: frac18,
+	frac23: frac23,
+	frac25: frac25,
+	frac34: frac34$1,
+	frac35: frac35,
+	frac38: frac38,
+	frac45: frac45,
+	frac56: frac56,
+	frac58: frac58,
+	frac78: frac78,
+	frasl: frasl,
+	frown: frown,
+	fscr: fscr,
+	Fscr: Fscr,
+	gacute: gacute,
+	Gamma: Gamma,
+	gamma: gamma,
+	Gammad: Gammad,
+	gammad: gammad,
+	gap: gap,
+	Gbreve: Gbreve,
+	gbreve: gbreve,
+	Gcedil: Gcedil,
+	Gcirc: Gcirc,
+	gcirc: gcirc,
+	Gcy: Gcy,
+	gcy: gcy,
+	Gdot: Gdot,
+	gdot: gdot,
+	ge: ge,
+	gE: gE,
+	gEl: gEl,
+	gel: gel,
+	geq: geq,
+	geqq: geqq,
+	geqslant: geqslant,
+	gescc: gescc,
+	ges: ges,
+	gesdot: gesdot,
+	gesdoto: gesdoto,
+	gesdotol: gesdotol,
+	gesl: gesl,
+	gesles: gesles,
+	Gfr: Gfr,
+	gfr: gfr,
+	gg: gg,
+	Gg: Gg,
+	ggg: ggg,
+	gimel: gimel,
+	GJcy: GJcy,
+	gjcy: gjcy,
+	gla: gla,
+	gl: gl,
+	glE: glE,
+	glj: glj,
+	gnap: gnap,
+	gnapprox: gnapprox,
+	gne: gne,
+	gnE: gnE,
+	gneq: gneq,
+	gneqq: gneqq,
+	gnsim: gnsim,
+	Gopf: Gopf,
+	gopf: gopf,
+	grave: grave,
+	GreaterEqual: GreaterEqual,
+	GreaterEqualLess: GreaterEqualLess,
+	GreaterFullEqual: GreaterFullEqual,
+	GreaterGreater: GreaterGreater,
+	GreaterLess: GreaterLess,
+	GreaterSlantEqual: GreaterSlantEqual,
+	GreaterTilde: GreaterTilde,
+	Gscr: Gscr,
+	gscr: gscr,
+	gsim: gsim,
+	gsime: gsime,
+	gsiml: gsiml,
+	gtcc: gtcc,
+	gtcir: gtcir,
+	gt: gt$2,
+	GT: GT$1,
+	Gt: Gt,
+	gtdot: gtdot,
+	gtlPar: gtlPar,
+	gtquest: gtquest,
+	gtrapprox: gtrapprox,
+	gtrarr: gtrarr,
+	gtrdot: gtrdot,
+	gtreqless: gtreqless,
+	gtreqqless: gtreqqless,
+	gtrless: gtrless,
+	gtrsim: gtrsim,
+	gvertneqq: gvertneqq,
+	gvnE: gvnE,
+	Hacek: Hacek,
+	hairsp: hairsp,
+	half: half,
+	hamilt: hamilt,
+	HARDcy: HARDcy,
+	hardcy: hardcy,
+	harrcir: harrcir,
+	harr: harr,
+	hArr: hArr,
+	harrw: harrw,
+	Hat: Hat,
+	hbar: hbar,
+	Hcirc: Hcirc,
+	hcirc: hcirc,
+	hearts: hearts,
+	heartsuit: heartsuit,
+	hellip: hellip,
+	hercon: hercon,
+	hfr: hfr,
+	Hfr: Hfr,
+	HilbertSpace: HilbertSpace,
+	hksearow: hksearow,
+	hkswarow: hkswarow,
+	hoarr: hoarr,
+	homtht: homtht,
+	hookleftarrow: hookleftarrow,
+	hookrightarrow: hookrightarrow,
+	hopf: hopf,
+	Hopf: Hopf,
+	horbar: horbar,
+	HorizontalLine: HorizontalLine,
+	hscr: hscr,
+	Hscr: Hscr,
+	hslash: hslash,
+	Hstrok: Hstrok,
+	hstrok: hstrok,
+	HumpDownHump: HumpDownHump,
+	HumpEqual: HumpEqual,
+	hybull: hybull,
+	hyphen: hyphen,
+	Iacute: Iacute$1,
+	iacute: iacute$1,
+	ic: ic,
+	Icirc: Icirc$1,
+	icirc: icirc$1,
+	Icy: Icy,
+	icy: icy,
+	Idot: Idot,
+	IEcy: IEcy,
+	iecy: iecy,
+	iexcl: iexcl$1,
+	iff: iff,
+	ifr: ifr,
+	Ifr: Ifr,
+	Igrave: Igrave$1,
+	igrave: igrave$1,
+	ii: ii,
+	iiiint: iiiint,
+	iiint: iiint,
+	iinfin: iinfin,
+	iiota: iiota,
+	IJlig: IJlig,
+	ijlig: ijlig,
+	Imacr: Imacr,
+	imacr: imacr,
+	image: image,
+	ImaginaryI: ImaginaryI,
+	imagline: imagline,
+	imagpart: imagpart,
+	imath: imath,
+	Im: Im,
+	imof: imof,
+	imped: imped,
+	Implies: Implies,
+	incare: incare,
+	"in": "∈",
+	infin: infin,
+	infintie: infintie,
+	inodot: inodot,
+	intcal: intcal,
+	int: int,
+	Int: Int,
+	integers: integers,
+	Integral: Integral,
+	intercal: intercal,
+	Intersection: Intersection,
+	intlarhk: intlarhk,
+	intprod: intprod,
+	InvisibleComma: InvisibleComma,
+	InvisibleTimes: InvisibleTimes,
+	IOcy: IOcy,
+	iocy: iocy,
+	Iogon: Iogon,
+	iogon: iogon,
+	Iopf: Iopf,
+	iopf: iopf,
+	Iota: Iota,
+	iota: iota,
+	iprod: iprod,
+	iquest: iquest$1,
+	iscr: iscr,
+	Iscr: Iscr,
+	isin: isin,
+	isindot: isindot,
+	isinE: isinE,
+	isins: isins,
+	isinsv: isinsv,
+	isinv: isinv,
+	it: it,
+	Itilde: Itilde,
+	itilde: itilde,
+	Iukcy: Iukcy,
+	iukcy: iukcy,
+	Iuml: Iuml$1,
+	iuml: iuml$1,
+	Jcirc: Jcirc,
+	jcirc: jcirc,
+	Jcy: Jcy,
+	jcy: jcy,
+	Jfr: Jfr,
+	jfr: jfr,
+	jmath: jmath,
+	Jopf: Jopf,
+	jopf: jopf,
+	Jscr: Jscr,
+	jscr: jscr,
+	Jsercy: Jsercy,
+	jsercy: jsercy,
+	Jukcy: Jukcy,
+	jukcy: jukcy,
+	Kappa: Kappa,
+	kappa: kappa,
+	kappav: kappav,
+	Kcedil: Kcedil,
+	kcedil: kcedil,
+	Kcy: Kcy,
+	kcy: kcy,
+	Kfr: Kfr,
+	kfr: kfr,
+	kgreen: kgreen,
+	KHcy: KHcy,
+	khcy: khcy,
+	KJcy: KJcy,
+	kjcy: kjcy,
+	Kopf: Kopf,
+	kopf: kopf,
+	Kscr: Kscr,
+	kscr: kscr,
+	lAarr: lAarr,
+	Lacute: Lacute,
+	lacute: lacute,
+	laemptyv: laemptyv,
+	lagran: lagran,
+	Lambda: Lambda,
+	lambda: lambda,
+	lang: lang,
+	Lang: Lang,
+	langd: langd,
+	langle: langle,
+	lap: lap,
+	Laplacetrf: Laplacetrf,
+	laquo: laquo$1,
+	larrb: larrb,
+	larrbfs: larrbfs,
+	larr: larr,
+	Larr: Larr,
+	lArr: lArr,
+	larrfs: larrfs,
+	larrhk: larrhk,
+	larrlp: larrlp,
+	larrpl: larrpl,
+	larrsim: larrsim,
+	larrtl: larrtl,
+	latail: latail,
+	lAtail: lAtail,
+	lat: lat,
+	late: late,
+	lates: lates,
+	lbarr: lbarr,
+	lBarr: lBarr,
+	lbbrk: lbbrk,
+	lbrace: lbrace,
+	lbrack: lbrack,
+	lbrke: lbrke,
+	lbrksld: lbrksld,
+	lbrkslu: lbrkslu,
+	Lcaron: Lcaron,
+	lcaron: lcaron,
+	Lcedil: Lcedil,
+	lcedil: lcedil,
+	lceil: lceil,
+	lcub: lcub,
+	Lcy: Lcy,
+	lcy: lcy,
+	ldca: ldca,
+	ldquo: ldquo,
+	ldquor: ldquor,
+	ldrdhar: ldrdhar,
+	ldrushar: ldrushar,
+	ldsh: ldsh,
+	le: le,
+	lE: lE,
+	LeftAngleBracket: LeftAngleBracket,
+	LeftArrowBar: LeftArrowBar,
+	leftarrow: leftarrow,
+	LeftArrow: LeftArrow,
+	Leftarrow: Leftarrow,
+	LeftArrowRightArrow: LeftArrowRightArrow,
+	leftarrowtail: leftarrowtail,
+	LeftCeiling: LeftCeiling,
+	LeftDoubleBracket: LeftDoubleBracket,
+	LeftDownTeeVector: LeftDownTeeVector,
+	LeftDownVectorBar: LeftDownVectorBar,
+	LeftDownVector: LeftDownVector,
+	LeftFloor: LeftFloor,
+	leftharpoondown: leftharpoondown,
+	leftharpoonup: leftharpoonup,
+	leftleftarrows: leftleftarrows,
+	leftrightarrow: leftrightarrow,
+	LeftRightArrow: LeftRightArrow,
+	Leftrightarrow: Leftrightarrow,
+	leftrightarrows: leftrightarrows,
+	leftrightharpoons: leftrightharpoons,
+	leftrightsquigarrow: leftrightsquigarrow,
+	LeftRightVector: LeftRightVector,
+	LeftTeeArrow: LeftTeeArrow,
+	LeftTee: LeftTee,
+	LeftTeeVector: LeftTeeVector,
+	leftthreetimes: leftthreetimes,
+	LeftTriangleBar: LeftTriangleBar,
+	LeftTriangle: LeftTriangle,
+	LeftTriangleEqual: LeftTriangleEqual,
+	LeftUpDownVector: LeftUpDownVector,
+	LeftUpTeeVector: LeftUpTeeVector,
+	LeftUpVectorBar: LeftUpVectorBar,
+	LeftUpVector: LeftUpVector,
+	LeftVectorBar: LeftVectorBar,
+	LeftVector: LeftVector,
+	lEg: lEg,
+	leg: leg,
+	leq: leq,
+	leqq: leqq,
+	leqslant: leqslant,
+	lescc: lescc,
+	les: les,
+	lesdot: lesdot,
+	lesdoto: lesdoto,
+	lesdotor: lesdotor,
+	lesg: lesg,
+	lesges: lesges,
+	lessapprox: lessapprox,
+	lessdot: lessdot,
+	lesseqgtr: lesseqgtr,
+	lesseqqgtr: lesseqqgtr,
+	LessEqualGreater: LessEqualGreater,
+	LessFullEqual: LessFullEqual,
+	LessGreater: LessGreater,
+	lessgtr: lessgtr,
+	LessLess: LessLess,
+	lesssim: lesssim,
+	LessSlantEqual: LessSlantEqual,
+	LessTilde: LessTilde,
+	lfisht: lfisht,
+	lfloor: lfloor,
+	Lfr: Lfr,
+	lfr: lfr,
+	lg: lg,
+	lgE: lgE,
+	lHar: lHar,
+	lhard: lhard,
+	lharu: lharu,
+	lharul: lharul,
+	lhblk: lhblk,
+	LJcy: LJcy,
+	ljcy: ljcy,
+	llarr: llarr,
+	ll: ll,
+	Ll: Ll,
+	llcorner: llcorner,
+	Lleftarrow: Lleftarrow,
+	llhard: llhard,
+	lltri: lltri,
+	Lmidot: Lmidot,
+	lmidot: lmidot,
+	lmoustache: lmoustache,
+	lmoust: lmoust,
+	lnap: lnap,
+	lnapprox: lnapprox,
+	lne: lne,
+	lnE: lnE,
+	lneq: lneq,
+	lneqq: lneqq,
+	lnsim: lnsim,
+	loang: loang,
+	loarr: loarr,
+	lobrk: lobrk,
+	longleftarrow: longleftarrow,
+	LongLeftArrow: LongLeftArrow,
+	Longleftarrow: Longleftarrow,
+	longleftrightarrow: longleftrightarrow,
+	LongLeftRightArrow: LongLeftRightArrow,
+	Longleftrightarrow: Longleftrightarrow,
+	longmapsto: longmapsto,
+	longrightarrow: longrightarrow,
+	LongRightArrow: LongRightArrow,
+	Longrightarrow: Longrightarrow,
+	looparrowleft: looparrowleft,
+	looparrowright: looparrowright,
+	lopar: lopar,
+	Lopf: Lopf,
+	lopf: lopf,
+	loplus: loplus,
+	lotimes: lotimes,
+	lowast: lowast,
+	lowbar: lowbar,
+	LowerLeftArrow: LowerLeftArrow,
+	LowerRightArrow: LowerRightArrow,
+	loz: loz,
+	lozenge: lozenge,
+	lozf: lozf,
+	lpar: lpar,
+	lparlt: lparlt,
+	lrarr: lrarr,
+	lrcorner: lrcorner,
+	lrhar: lrhar,
+	lrhard: lrhard,
+	lrm: lrm,
+	lrtri: lrtri,
+	lsaquo: lsaquo,
+	lscr: lscr,
+	Lscr: Lscr,
+	lsh: lsh,
+	Lsh: Lsh,
+	lsim: lsim,
+	lsime: lsime,
+	lsimg: lsimg,
+	lsqb: lsqb,
+	lsquo: lsquo,
+	lsquor: lsquor,
+	Lstrok: Lstrok,
+	lstrok: lstrok,
+	ltcc: ltcc,
+	ltcir: ltcir,
+	lt: lt$2,
+	LT: LT$1,
+	Lt: Lt,
+	ltdot: ltdot,
+	lthree: lthree,
+	ltimes: ltimes,
+	ltlarr: ltlarr,
+	ltquest: ltquest,
+	ltri: ltri,
+	ltrie: ltrie,
+	ltrif: ltrif,
+	ltrPar: ltrPar,
+	lurdshar: lurdshar,
+	luruhar: luruhar,
+	lvertneqq: lvertneqq,
+	lvnE: lvnE,
+	macr: macr$1,
+	male: male,
+	malt: malt,
+	maltese: maltese,
+	"Map": "⤅",
+	map: map,
+	mapsto: mapsto,
+	mapstodown: mapstodown,
+	mapstoleft: mapstoleft,
+	mapstoup: mapstoup,
+	marker: marker,
+	mcomma: mcomma,
+	Mcy: Mcy,
+	mcy: mcy,
+	mdash: mdash,
+	mDDot: mDDot,
+	measuredangle: measuredangle,
+	MediumSpace: MediumSpace,
+	Mellintrf: Mellintrf,
+	Mfr: Mfr,
+	mfr: mfr,
+	mho: mho,
+	micro: micro$1,
+	midast: midast,
+	midcir: midcir,
+	mid: mid,
+	middot: middot$1,
+	minusb: minusb,
+	minus: minus,
+	minusd: minusd,
+	minusdu: minusdu,
+	MinusPlus: MinusPlus,
+	mlcp: mlcp,
+	mldr: mldr,
+	mnplus: mnplus,
+	models: models,
+	Mopf: Mopf,
+	mopf: mopf,
+	mp: mp,
+	mscr: mscr,
+	Mscr: Mscr,
+	mstpos: mstpos,
+	Mu: Mu,
+	mu: mu,
+	multimap: multimap,
+	mumap: mumap,
+	nabla: nabla,
+	Nacute: Nacute,
+	nacute: nacute,
+	nang: nang,
+	nap: nap,
+	napE: napE,
+	napid: napid,
+	napos: napos,
+	napprox: napprox,
+	natural: natural,
+	naturals: naturals,
+	natur: natur,
+	nbsp: nbsp$1,
+	nbump: nbump,
+	nbumpe: nbumpe,
+	ncap: ncap,
+	Ncaron: Ncaron,
+	ncaron: ncaron,
+	Ncedil: Ncedil,
+	ncedil: ncedil,
+	ncong: ncong,
+	ncongdot: ncongdot,
+	ncup: ncup,
+	Ncy: Ncy,
+	ncy: ncy,
+	ndash: ndash,
+	nearhk: nearhk,
+	nearr: nearr,
+	neArr: neArr,
+	nearrow: nearrow,
+	ne: ne,
+	nedot: nedot,
+	NegativeMediumSpace: NegativeMediumSpace,
+	NegativeThickSpace: NegativeThickSpace,
+	NegativeThinSpace: NegativeThinSpace,
+	NegativeVeryThinSpace: NegativeVeryThinSpace,
+	nequiv: nequiv,
+	nesear: nesear,
+	nesim: nesim,
+	NestedGreaterGreater: NestedGreaterGreater,
+	NestedLessLess: NestedLessLess,
+	NewLine: NewLine,
+	nexist: nexist,
+	nexists: nexists,
+	Nfr: Nfr,
+	nfr: nfr,
+	ngE: ngE,
+	nge: nge,
+	ngeq: ngeq,
+	ngeqq: ngeqq,
+	ngeqslant: ngeqslant,
+	nges: nges,
+	nGg: nGg,
+	ngsim: ngsim,
+	nGt: nGt,
+	ngt: ngt,
+	ngtr: ngtr,
+	nGtv: nGtv,
+	nharr: nharr,
+	nhArr: nhArr,
+	nhpar: nhpar,
+	ni: ni,
+	nis: nis,
+	nisd: nisd,
+	niv: niv,
+	NJcy: NJcy,
+	njcy: njcy,
+	nlarr: nlarr,
+	nlArr: nlArr,
+	nldr: nldr,
+	nlE: nlE,
+	nle: nle,
+	nleftarrow: nleftarrow,
+	nLeftarrow: nLeftarrow,
+	nleftrightarrow: nleftrightarrow,
+	nLeftrightarrow: nLeftrightarrow,
+	nleq: nleq,
+	nleqq: nleqq,
+	nleqslant: nleqslant,
+	nles: nles,
+	nless: nless,
+	nLl: nLl,
+	nlsim: nlsim,
+	nLt: nLt,
+	nlt: nlt,
+	nltri: nltri,
+	nltrie: nltrie,
+	nLtv: nLtv,
+	nmid: nmid,
+	NoBreak: NoBreak,
+	NonBreakingSpace: NonBreakingSpace,
+	nopf: nopf,
+	Nopf: Nopf,
+	Not: Not,
+	not: not$1,
+	NotCongruent: NotCongruent,
+	NotCupCap: NotCupCap,
+	NotDoubleVerticalBar: NotDoubleVerticalBar,
+	NotElement: NotElement,
+	NotEqual: NotEqual,
+	NotEqualTilde: NotEqualTilde,
+	NotExists: NotExists,
+	NotGreater: NotGreater,
+	NotGreaterEqual: NotGreaterEqual,
+	NotGreaterFullEqual: NotGreaterFullEqual,
+	NotGreaterGreater: NotGreaterGreater,
+	NotGreaterLess: NotGreaterLess,
+	NotGreaterSlantEqual: NotGreaterSlantEqual,
+	NotGreaterTilde: NotGreaterTilde,
+	NotHumpDownHump: NotHumpDownHump,
+	NotHumpEqual: NotHumpEqual,
+	notin: notin,
+	notindot: notindot,
+	notinE: notinE,
+	notinva: notinva,
+	notinvb: notinvb,
+	notinvc: notinvc,
+	NotLeftTriangleBar: NotLeftTriangleBar,
+	NotLeftTriangle: NotLeftTriangle,
+	NotLeftTriangleEqual: NotLeftTriangleEqual,
+	NotLess: NotLess,
+	NotLessEqual: NotLessEqual,
+	NotLessGreater: NotLessGreater,
+	NotLessLess: NotLessLess,
+	NotLessSlantEqual: NotLessSlantEqual,
+	NotLessTilde: NotLessTilde,
+	NotNestedGreaterGreater: NotNestedGreaterGreater,
+	NotNestedLessLess: NotNestedLessLess,
+	notni: notni,
+	notniva: notniva,
+	notnivb: notnivb,
+	notnivc: notnivc,
+	NotPrecedes: NotPrecedes,
+	NotPrecedesEqual: NotPrecedesEqual,
+	NotPrecedesSlantEqual: NotPrecedesSlantEqual,
+	NotReverseElement: NotReverseElement,
+	NotRightTriangleBar: NotRightTriangleBar,
+	NotRightTriangle: NotRightTriangle,
+	NotRightTriangleEqual: NotRightTriangleEqual,
+	NotSquareSubset: NotSquareSubset,
+	NotSquareSubsetEqual: NotSquareSubsetEqual,
+	NotSquareSuperset: NotSquareSuperset,
+	NotSquareSupersetEqual: NotSquareSupersetEqual,
+	NotSubset: NotSubset,
+	NotSubsetEqual: NotSubsetEqual,
+	NotSucceeds: NotSucceeds,
+	NotSucceedsEqual: NotSucceedsEqual,
+	NotSucceedsSlantEqual: NotSucceedsSlantEqual,
+	NotSucceedsTilde: NotSucceedsTilde,
+	NotSuperset: NotSuperset,
+	NotSupersetEqual: NotSupersetEqual,
+	NotTilde: NotTilde,
+	NotTildeEqual: NotTildeEqual,
+	NotTildeFullEqual: NotTildeFullEqual,
+	NotTildeTilde: NotTildeTilde,
+	NotVerticalBar: NotVerticalBar,
+	nparallel: nparallel,
+	npar: npar,
+	nparsl: nparsl,
+	npart: npart,
+	npolint: npolint,
+	npr: npr,
+	nprcue: nprcue,
+	nprec: nprec,
+	npreceq: npreceq,
+	npre: npre,
+	nrarrc: nrarrc,
+	nrarr: nrarr,
+	nrArr: nrArr,
+	nrarrw: nrarrw,
+	nrightarrow: nrightarrow,
+	nRightarrow: nRightarrow,
+	nrtri: nrtri,
+	nrtrie: nrtrie,
+	nsc: nsc,
+	nsccue: nsccue,
+	nsce: nsce,
+	Nscr: Nscr,
+	nscr: nscr,
+	nshortmid: nshortmid,
+	nshortparallel: nshortparallel,
+	nsim: nsim,
+	nsime: nsime,
+	nsimeq: nsimeq,
+	nsmid: nsmid,
+	nspar: nspar,
+	nsqsube: nsqsube,
+	nsqsupe: nsqsupe,
+	nsub: nsub,
+	nsubE: nsubE,
+	nsube: nsube,
+	nsubset: nsubset,
+	nsubseteq: nsubseteq,
+	nsubseteqq: nsubseteqq,
+	nsucc: nsucc,
+	nsucceq: nsucceq,
+	nsup: nsup,
+	nsupE: nsupE,
+	nsupe: nsupe,
+	nsupset: nsupset,
+	nsupseteq: nsupseteq,
+	nsupseteqq: nsupseteqq,
+	ntgl: ntgl,
+	Ntilde: Ntilde$1,
+	ntilde: ntilde$1,
+	ntlg: ntlg,
+	ntriangleleft: ntriangleleft,
+	ntrianglelefteq: ntrianglelefteq,
+	ntriangleright: ntriangleright,
+	ntrianglerighteq: ntrianglerighteq,
+	Nu: Nu,
+	nu: nu,
+	num: num,
+	numero: numero,
+	numsp: numsp,
+	nvap: nvap,
+	nvdash: nvdash,
+	nvDash: nvDash,
+	nVdash: nVdash,
+	nVDash: nVDash,
+	nvge: nvge,
+	nvgt: nvgt,
+	nvHarr: nvHarr,
+	nvinfin: nvinfin,
+	nvlArr: nvlArr,
+	nvle: nvle,
+	nvlt: nvlt,
+	nvltrie: nvltrie,
+	nvrArr: nvrArr,
+	nvrtrie: nvrtrie,
+	nvsim: nvsim,
+	nwarhk: nwarhk,
+	nwarr: nwarr,
+	nwArr: nwArr,
+	nwarrow: nwarrow,
+	nwnear: nwnear,
+	Oacute: Oacute$1,
+	oacute: oacute$1,
+	oast: oast,
+	Ocirc: Ocirc$1,
+	ocirc: ocirc$1,
+	ocir: ocir,
+	Ocy: Ocy,
+	ocy: ocy,
+	odash: odash,
+	Odblac: Odblac,
+	odblac: odblac,
+	odiv: odiv,
+	odot: odot,
+	odsold: odsold,
+	OElig: OElig,
+	oelig: oelig,
+	ofcir: ofcir,
+	Ofr: Ofr,
+	ofr: ofr,
+	ogon: ogon,
+	Ograve: Ograve$1,
+	ograve: ograve$1,
+	ogt: ogt,
+	ohbar: ohbar,
+	ohm: ohm,
+	oint: oint,
+	olarr: olarr,
+	olcir: olcir,
+	olcross: olcross,
+	oline: oline,
+	olt: olt,
+	Omacr: Omacr,
+	omacr: omacr,
+	Omega: Omega,
+	omega: omega,
+	Omicron: Omicron,
+	omicron: omicron,
+	omid: omid,
+	ominus: ominus,
+	Oopf: Oopf,
+	oopf: oopf,
+	opar: opar,
+	OpenCurlyDoubleQuote: OpenCurlyDoubleQuote,
+	OpenCurlyQuote: OpenCurlyQuote,
+	operp: operp,
+	oplus: oplus,
+	orarr: orarr,
+	Or: Or,
+	or: or,
+	ord: ord,
+	order: order,
+	orderof: orderof,
+	ordf: ordf$1,
+	ordm: ordm$1,
+	origof: origof,
+	oror: oror,
+	orslope: orslope,
+	orv: orv,
+	oS: oS,
+	Oscr: Oscr,
+	oscr: oscr,
+	Oslash: Oslash$1,
+	oslash: oslash$1,
+	osol: osol,
+	Otilde: Otilde$1,
+	otilde: otilde$1,
+	otimesas: otimesas,
+	Otimes: Otimes,
+	otimes: otimes,
+	Ouml: Ouml$1,
+	ouml: ouml$1,
+	ovbar: ovbar,
+	OverBar: OverBar,
+	OverBrace: OverBrace,
+	OverBracket: OverBracket,
+	OverParenthesis: OverParenthesis,
+	para: para$1,
+	parallel: parallel,
+	par: par,
+	parsim: parsim,
+	parsl: parsl,
+	part: part,
+	PartialD: PartialD,
+	Pcy: Pcy,
+	pcy: pcy,
+	percnt: percnt,
+	period: period,
+	permil: permil,
+	perp: perp,
+	pertenk: pertenk,
+	Pfr: Pfr,
+	pfr: pfr,
+	Phi: Phi,
+	phi: phi,
+	phiv: phiv,
+	phmmat: phmmat,
+	phone: phone,
+	Pi: Pi,
+	pi: pi,
+	pitchfork: pitchfork,
+	piv: piv,
+	planck: planck,
+	planckh: planckh,
+	plankv: plankv,
+	plusacir: plusacir,
+	plusb: plusb,
+	pluscir: pluscir,
+	plus: plus,
+	plusdo: plusdo,
+	plusdu: plusdu,
+	pluse: pluse,
+	PlusMinus: PlusMinus,
+	plusmn: plusmn$1,
+	plussim: plussim,
+	plustwo: plustwo,
+	pm: pm,
+	Poincareplane: Poincareplane,
+	pointint: pointint,
+	popf: popf,
+	Popf: Popf,
+	pound: pound$1,
+	prap: prap,
+	Pr: Pr,
+	pr: pr,
+	prcue: prcue,
+	precapprox: precapprox,
+	prec: prec,
+	preccurlyeq: preccurlyeq,
+	Precedes: Precedes,
+	PrecedesEqual: PrecedesEqual,
+	PrecedesSlantEqual: PrecedesSlantEqual,
+	PrecedesTilde: PrecedesTilde,
+	preceq: preceq,
+	precnapprox: precnapprox,
+	precneqq: precneqq,
+	precnsim: precnsim,
+	pre: pre,
+	prE: prE,
+	precsim: precsim,
+	prime: prime,
+	Prime: Prime,
+	primes: primes,
+	prnap: prnap,
+	prnE: prnE,
+	prnsim: prnsim,
+	prod: prod,
+	Product: Product,
+	profalar: profalar,
+	profline: profline,
+	profsurf: profsurf,
+	prop: prop,
+	Proportional: Proportional,
+	Proportion: Proportion,
+	propto: propto,
+	prsim: prsim,
+	prurel: prurel,
+	Pscr: Pscr,
+	pscr: pscr,
+	Psi: Psi,
+	psi: psi,
+	puncsp: puncsp,
+	Qfr: Qfr,
+	qfr: qfr,
+	qint: qint,
+	qopf: qopf,
+	Qopf: Qopf,
+	qprime: qprime,
+	Qscr: Qscr,
+	qscr: qscr,
+	quaternions: quaternions,
+	quatint: quatint,
+	quest: quest,
+	questeq: questeq,
+	quot: quot$2,
+	QUOT: QUOT$1,
+	rAarr: rAarr,
+	race: race,
+	Racute: Racute,
+	racute: racute,
+	radic: radic,
+	raemptyv: raemptyv,
+	rang: rang,
+	Rang: Rang,
+	rangd: rangd,
+	range: range,
+	rangle: rangle,
+	raquo: raquo$1,
+	rarrap: rarrap,
+	rarrb: rarrb,
+	rarrbfs: rarrbfs,
+	rarrc: rarrc,
+	rarr: rarr,
+	Rarr: Rarr,
+	rArr: rArr,
+	rarrfs: rarrfs,
+	rarrhk: rarrhk,
+	rarrlp: rarrlp,
+	rarrpl: rarrpl,
+	rarrsim: rarrsim,
+	Rarrtl: Rarrtl,
+	rarrtl: rarrtl,
+	rarrw: rarrw,
+	ratail: ratail,
+	rAtail: rAtail,
+	ratio: ratio,
+	rationals: rationals,
+	rbarr: rbarr,
+	rBarr: rBarr,
+	RBarr: RBarr,
+	rbbrk: rbbrk,
+	rbrace: rbrace,
+	rbrack: rbrack,
+	rbrke: rbrke,
+	rbrksld: rbrksld,
+	rbrkslu: rbrkslu,
+	Rcaron: Rcaron,
+	rcaron: rcaron,
+	Rcedil: Rcedil,
+	rcedil: rcedil,
+	rceil: rceil,
+	rcub: rcub,
+	Rcy: Rcy,
+	rcy: rcy,
+	rdca: rdca,
+	rdldhar: rdldhar,
+	rdquo: rdquo,
+	rdquor: rdquor,
+	rdsh: rdsh,
+	real: real,
+	realine: realine,
+	realpart: realpart,
+	reals: reals,
+	Re: Re,
+	rect: rect,
+	reg: reg$1,
+	REG: REG$1,
+	ReverseElement: ReverseElement,
+	ReverseEquilibrium: ReverseEquilibrium,
+	ReverseUpEquilibrium: ReverseUpEquilibrium,
+	rfisht: rfisht,
+	rfloor: rfloor,
+	rfr: rfr,
+	Rfr: Rfr,
+	rHar: rHar,
+	rhard: rhard,
+	rharu: rharu,
+	rharul: rharul,
+	Rho: Rho,
+	rho: rho,
+	rhov: rhov,
+	RightAngleBracket: RightAngleBracket,
+	RightArrowBar: RightArrowBar,
+	rightarrow: rightarrow,
+	RightArrow: RightArrow,
+	Rightarrow: Rightarrow,
+	RightArrowLeftArrow: RightArrowLeftArrow,
+	rightarrowtail: rightarrowtail,
+	RightCeiling: RightCeiling,
+	RightDoubleBracket: RightDoubleBracket,
+	RightDownTeeVector: RightDownTeeVector,
+	RightDownVectorBar: RightDownVectorBar,
+	RightDownVector: RightDownVector,
+	RightFloor: RightFloor,
+	rightharpoondown: rightharpoondown,
+	rightharpoonup: rightharpoonup,
+	rightleftarrows: rightleftarrows,
+	rightleftharpoons: rightleftharpoons,
+	rightrightarrows: rightrightarrows,
+	rightsquigarrow: rightsquigarrow,
+	RightTeeArrow: RightTeeArrow,
+	RightTee: RightTee,
+	RightTeeVector: RightTeeVector,
+	rightthreetimes: rightthreetimes,
+	RightTriangleBar: RightTriangleBar,
+	RightTriangle: RightTriangle,
+	RightTriangleEqual: RightTriangleEqual,
+	RightUpDownVector: RightUpDownVector,
+	RightUpTeeVector: RightUpTeeVector,
+	RightUpVectorBar: RightUpVectorBar,
+	RightUpVector: RightUpVector,
+	RightVectorBar: RightVectorBar,
+	RightVector: RightVector,
+	ring: ring,
+	risingdotseq: risingdotseq,
+	rlarr: rlarr,
+	rlhar: rlhar,
+	rlm: rlm,
+	rmoustache: rmoustache,
+	rmoust: rmoust,
+	rnmid: rnmid,
+	roang: roang,
+	roarr: roarr,
+	robrk: robrk,
+	ropar: ropar,
+	ropf: ropf,
+	Ropf: Ropf,
+	roplus: roplus,
+	rotimes: rotimes,
+	RoundImplies: RoundImplies,
+	rpar: rpar,
+	rpargt: rpargt,
+	rppolint: rppolint,
+	rrarr: rrarr,
+	Rrightarrow: Rrightarrow,
+	rsaquo: rsaquo,
+	rscr: rscr,
+	Rscr: Rscr,
+	rsh: rsh,
+	Rsh: Rsh,
+	rsqb: rsqb,
+	rsquo: rsquo,
+	rsquor: rsquor,
+	rthree: rthree,
+	rtimes: rtimes,
+	rtri: rtri,
+	rtrie: rtrie,
+	rtrif: rtrif,
+	rtriltri: rtriltri,
+	RuleDelayed: RuleDelayed,
+	ruluhar: ruluhar,
+	rx: rx,
+	Sacute: Sacute,
+	sacute: sacute,
+	sbquo: sbquo,
+	scap: scap,
+	Scaron: Scaron,
+	scaron: scaron,
+	Sc: Sc,
+	sc: sc,
+	sccue: sccue,
+	sce: sce,
+	scE: scE,
+	Scedil: Scedil,
+	scedil: scedil,
+	Scirc: Scirc,
+	scirc: scirc,
+	scnap: scnap,
+	scnE: scnE,
+	scnsim: scnsim,
+	scpolint: scpolint,
+	scsim: scsim,
+	Scy: Scy,
+	scy: scy,
+	sdotb: sdotb,
+	sdot: sdot,
+	sdote: sdote,
+	searhk: searhk,
+	searr: searr,
+	seArr: seArr,
+	searrow: searrow,
+	sect: sect$1,
+	semi: semi,
+	seswar: seswar,
+	setminus: setminus,
+	setmn: setmn,
+	sext: sext,
+	Sfr: Sfr,
+	sfr: sfr,
+	sfrown: sfrown,
+	sharp: sharp,
+	SHCHcy: SHCHcy,
+	shchcy: shchcy,
+	SHcy: SHcy,
+	shcy: shcy,
+	ShortDownArrow: ShortDownArrow,
+	ShortLeftArrow: ShortLeftArrow,
+	shortmid: shortmid,
+	shortparallel: shortparallel,
+	ShortRightArrow: ShortRightArrow,
+	ShortUpArrow: ShortUpArrow,
+	shy: shy$1,
+	Sigma: Sigma,
+	sigma: sigma,
+	sigmaf: sigmaf,
+	sigmav: sigmav,
+	sim: sim,
+	simdot: simdot,
+	sime: sime,
+	simeq: simeq,
+	simg: simg,
+	simgE: simgE,
+	siml: siml,
+	simlE: simlE,
+	simne: simne,
+	simplus: simplus,
+	simrarr: simrarr,
+	slarr: slarr,
+	SmallCircle: SmallCircle,
+	smallsetminus: smallsetminus,
+	smashp: smashp,
+	smeparsl: smeparsl,
+	smid: smid,
+	smile: smile,
+	smt: smt,
+	smte: smte,
+	smtes: smtes,
+	SOFTcy: SOFTcy,
+	softcy: softcy,
+	solbar: solbar,
+	solb: solb,
+	sol: sol,
+	Sopf: Sopf,
+	sopf: sopf,
+	spades: spades,
+	spadesuit: spadesuit,
+	spar: spar,
+	sqcap: sqcap,
+	sqcaps: sqcaps,
+	sqcup: sqcup,
+	sqcups: sqcups,
+	Sqrt: Sqrt,
+	sqsub: sqsub,
+	sqsube: sqsube,
+	sqsubset: sqsubset,
+	sqsubseteq: sqsubseteq,
+	sqsup: sqsup,
+	sqsupe: sqsupe,
+	sqsupset: sqsupset,
+	sqsupseteq: sqsupseteq,
+	square: square,
+	Square: Square,
+	SquareIntersection: SquareIntersection,
+	SquareSubset: SquareSubset,
+	SquareSubsetEqual: SquareSubsetEqual,
+	SquareSuperset: SquareSuperset,
+	SquareSupersetEqual: SquareSupersetEqual,
+	SquareUnion: SquareUnion,
+	squarf: squarf,
+	squ: squ,
+	squf: squf,
+	srarr: srarr,
+	Sscr: Sscr,
+	sscr: sscr,
+	ssetmn: ssetmn,
+	ssmile: ssmile,
+	sstarf: sstarf,
+	Star: Star,
+	star: star,
+	starf: starf,
+	straightepsilon: straightepsilon,
+	straightphi: straightphi,
+	strns: strns,
+	sub: sub,
+	Sub: Sub,
+	subdot: subdot,
+	subE: subE,
+	sube: sube,
+	subedot: subedot,
+	submult: submult,
+	subnE: subnE,
+	subne: subne,
+	subplus: subplus,
+	subrarr: subrarr,
+	subset: subset,
+	Subset: Subset,
+	subseteq: subseteq,
+	subseteqq: subseteqq,
+	SubsetEqual: SubsetEqual,
+	subsetneq: subsetneq,
+	subsetneqq: subsetneqq,
+	subsim: subsim,
+	subsub: subsub,
+	subsup: subsup,
+	succapprox: succapprox,
+	succ: succ,
+	succcurlyeq: succcurlyeq,
+	Succeeds: Succeeds,
+	SucceedsEqual: SucceedsEqual,
+	SucceedsSlantEqual: SucceedsSlantEqual,
+	SucceedsTilde: SucceedsTilde,
+	succeq: succeq,
+	succnapprox: succnapprox,
+	succneqq: succneqq,
+	succnsim: succnsim,
+	succsim: succsim,
+	SuchThat: SuchThat,
+	sum: sum,
+	Sum: Sum,
+	sung: sung,
+	sup1: sup1$1,
+	sup2: sup2$1,
+	sup3: sup3$1,
+	sup: sup,
+	Sup: Sup,
+	supdot: supdot,
+	supdsub: supdsub,
+	supE: supE,
+	supe: supe,
+	supedot: supedot,
+	Superset: Superset,
+	SupersetEqual: SupersetEqual,
+	suphsol: suphsol,
+	suphsub: suphsub,
+	suplarr: suplarr,
+	supmult: supmult,
+	supnE: supnE,
+	supne: supne,
+	supplus: supplus,
+	supset: supset,
+	Supset: Supset,
+	supseteq: supseteq,
+	supseteqq: supseteqq,
+	supsetneq: supsetneq,
+	supsetneqq: supsetneqq,
+	supsim: supsim,
+	supsub: supsub,
+	supsup: supsup,
+	swarhk: swarhk,
+	swarr: swarr,
+	swArr: swArr,
+	swarrow: swarrow,
+	swnwar: swnwar,
+	szlig: szlig$1,
+	Tab: Tab,
+	target: target,
+	Tau: Tau,
+	tau: tau,
+	tbrk: tbrk,
+	Tcaron: Tcaron,
+	tcaron: tcaron,
+	Tcedil: Tcedil,
+	tcedil: tcedil,
+	Tcy: Tcy,
+	tcy: tcy,
+	tdot: tdot,
+	telrec: telrec,
+	Tfr: Tfr,
+	tfr: tfr,
+	there4: there4,
+	therefore: therefore,
+	Therefore: Therefore,
+	Theta: Theta,
+	theta: theta,
+	thetasym: thetasym,
+	thetav: thetav,
+	thickapprox: thickapprox,
+	thicksim: thicksim,
+	ThickSpace: ThickSpace,
+	ThinSpace: ThinSpace,
+	thinsp: thinsp,
+	thkap: thkap,
+	thksim: thksim,
+	THORN: THORN$1,
+	thorn: thorn$1,
+	tilde: tilde,
+	Tilde: Tilde,
+	TildeEqual: TildeEqual,
+	TildeFullEqual: TildeFullEqual,
+	TildeTilde: TildeTilde,
+	timesbar: timesbar,
+	timesb: timesb,
+	times: times$1,
+	timesd: timesd,
+	tint: tint,
+	toea: toea,
+	topbot: topbot,
+	topcir: topcir,
+	top: top,
+	Topf: Topf,
+	topf: topf,
+	topfork: topfork,
+	tosa: tosa,
+	tprime: tprime,
+	trade: trade,
+	TRADE: TRADE,
+	triangle: triangle,
+	triangledown: triangledown,
+	triangleleft: triangleleft,
+	trianglelefteq: trianglelefteq,
+	triangleq: triangleq,
+	triangleright: triangleright,
+	trianglerighteq: trianglerighteq,
+	tridot: tridot,
+	trie: trie,
+	triminus: triminus,
+	TripleDot: TripleDot,
+	triplus: triplus,
+	trisb: trisb,
+	tritime: tritime,
+	trpezium: trpezium,
+	Tscr: Tscr,
+	tscr: tscr,
+	TScy: TScy,
+	tscy: tscy,
+	TSHcy: TSHcy,
+	tshcy: tshcy,
+	Tstrok: Tstrok,
+	tstrok: tstrok,
+	twixt: twixt,
+	twoheadleftarrow: twoheadleftarrow,
+	twoheadrightarrow: twoheadrightarrow,
+	Uacute: Uacute$1,
+	uacute: uacute$1,
+	uarr: uarr,
+	Uarr: Uarr,
+	uArr: uArr,
+	Uarrocir: Uarrocir,
+	Ubrcy: Ubrcy,
+	ubrcy: ubrcy,
+	Ubreve: Ubreve,
+	ubreve: ubreve,
+	Ucirc: Ucirc$1,
+	ucirc: ucirc$1,
+	Ucy: Ucy,
+	ucy: ucy,
+	udarr: udarr,
+	Udblac: Udblac,
+	udblac: udblac,
+	udhar: udhar,
+	ufisht: ufisht,
+	Ufr: Ufr,
+	ufr: ufr,
+	Ugrave: Ugrave$1,
+	ugrave: ugrave$1,
+	uHar: uHar,
+	uharl: uharl,
+	uharr: uharr,
+	uhblk: uhblk,
+	ulcorn: ulcorn,
+	ulcorner: ulcorner,
+	ulcrop: ulcrop,
+	ultri: ultri,
+	Umacr: Umacr,
+	umacr: umacr,
+	uml: uml$1,
+	UnderBar: UnderBar,
+	UnderBrace: UnderBrace,
+	UnderBracket: UnderBracket,
+	UnderParenthesis: UnderParenthesis,
+	Union: Union,
+	UnionPlus: UnionPlus,
+	Uogon: Uogon,
+	uogon: uogon,
+	Uopf: Uopf,
+	uopf: uopf,
+	UpArrowBar: UpArrowBar,
+	uparrow: uparrow,
+	UpArrow: UpArrow,
+	Uparrow: Uparrow,
+	UpArrowDownArrow: UpArrowDownArrow,
+	updownarrow: updownarrow,
+	UpDownArrow: UpDownArrow,
+	Updownarrow: Updownarrow,
+	UpEquilibrium: UpEquilibrium,
+	upharpoonleft: upharpoonleft,
+	upharpoonright: upharpoonright,
+	uplus: uplus,
+	UpperLeftArrow: UpperLeftArrow,
+	UpperRightArrow: UpperRightArrow,
+	upsi: upsi,
+	Upsi: Upsi,
+	upsih: upsih,
+	Upsilon: Upsilon,
+	upsilon: upsilon,
+	UpTeeArrow: UpTeeArrow,
+	UpTee: UpTee,
+	upuparrows: upuparrows,
+	urcorn: urcorn,
+	urcorner: urcorner,
+	urcrop: urcrop,
+	Uring: Uring,
+	uring: uring,
+	urtri: urtri,
+	Uscr: Uscr,
+	uscr: uscr,
+	utdot: utdot,
+	Utilde: Utilde,
+	utilde: utilde,
+	utri: utri,
+	utrif: utrif,
+	uuarr: uuarr,
+	Uuml: Uuml$1,
+	uuml: uuml$1,
+	uwangle: uwangle,
+	vangrt: vangrt,
+	varepsilon: varepsilon,
+	varkappa: varkappa,
+	varnothing: varnothing,
+	varphi: varphi,
+	varpi: varpi,
+	varpropto: varpropto,
+	varr: varr,
+	vArr: vArr,
+	varrho: varrho,
+	varsigma: varsigma,
+	varsubsetneq: varsubsetneq,
+	varsubsetneqq: varsubsetneqq,
+	varsupsetneq: varsupsetneq,
+	varsupsetneqq: varsupsetneqq,
+	vartheta: vartheta,
+	vartriangleleft: vartriangleleft,
+	vartriangleright: vartriangleright,
+	vBar: vBar,
+	Vbar: Vbar,
+	vBarv: vBarv,
+	Vcy: Vcy,
+	vcy: vcy,
+	vdash: vdash,
+	vDash: vDash,
+	Vdash: Vdash,
+	VDash: VDash,
+	Vdashl: Vdashl,
+	veebar: veebar,
+	vee: vee,
+	Vee: Vee,
+	veeeq: veeeq,
+	vellip: vellip,
+	verbar: verbar,
+	Verbar: Verbar,
+	vert: vert,
+	Vert: Vert,
+	VerticalBar: VerticalBar,
+	VerticalLine: VerticalLine,
+	VerticalSeparator: VerticalSeparator,
+	VerticalTilde: VerticalTilde,
+	VeryThinSpace: VeryThinSpace,
+	Vfr: Vfr,
+	vfr: vfr,
+	vltri: vltri,
+	vnsub: vnsub,
+	vnsup: vnsup,
+	Vopf: Vopf,
+	vopf: vopf,
+	vprop: vprop,
+	vrtri: vrtri,
+	Vscr: Vscr,
+	vscr: vscr,
+	vsubnE: vsubnE,
+	vsubne: vsubne,
+	vsupnE: vsupnE,
+	vsupne: vsupne,
+	Vvdash: Vvdash,
+	vzigzag: vzigzag,
+	Wcirc: Wcirc,
+	wcirc: wcirc,
+	wedbar: wedbar,
+	wedge: wedge,
+	Wedge: Wedge,
+	wedgeq: wedgeq,
+	weierp: weierp,
+	Wfr: Wfr,
+	wfr: wfr,
+	Wopf: Wopf,
+	wopf: wopf,
+	wp: wp,
+	wr: wr,
+	wreath: wreath,
+	Wscr: Wscr,
+	wscr: wscr,
+	xcap: xcap,
+	xcirc: xcirc,
+	xcup: xcup,
+	xdtri: xdtri,
+	Xfr: Xfr,
+	xfr: xfr,
+	xharr: xharr,
+	xhArr: xhArr,
+	Xi: Xi,
+	xi: xi,
+	xlarr: xlarr,
+	xlArr: xlArr,
+	xmap: xmap,
+	xnis: xnis,
+	xodot: xodot,
+	Xopf: Xopf,
+	xopf: xopf,
+	xoplus: xoplus,
+	xotime: xotime,
+	xrarr: xrarr,
+	xrArr: xrArr,
+	Xscr: Xscr,
+	xscr: xscr,
+	xsqcup: xsqcup,
+	xuplus: xuplus,
+	xutri: xutri,
+	xvee: xvee,
+	xwedge: xwedge,
+	Yacute: Yacute$1,
+	yacute: yacute$1,
+	YAcy: YAcy,
+	yacy: yacy,
+	Ycirc: Ycirc,
+	ycirc: ycirc,
+	Ycy: Ycy,
+	ycy: ycy,
+	yen: yen$1,
+	Yfr: Yfr,
+	yfr: yfr,
+	YIcy: YIcy,
+	yicy: yicy,
+	Yopf: Yopf,
+	yopf: yopf,
+	Yscr: Yscr,
+	yscr: yscr,
+	YUcy: YUcy,
+	yucy: yucy,
+	yuml: yuml$1,
+	Yuml: Yuml,
+	Zacute: Zacute,
+	zacute: zacute,
+	Zcaron: Zcaron,
+	zcaron: zcaron,
+	Zcy: Zcy,
+	zcy: zcy,
+	Zdot: Zdot,
+	zdot: zdot,
+	zeetrf: zeetrf,
+	ZeroWidthSpace: ZeroWidthSpace,
+	Zeta: Zeta,
+	zeta: zeta,
+	zfr: zfr,
+	Zfr: Zfr,
+	ZHcy: ZHcy,
+	zhcy: zhcy,
+	zigrarr: zigrarr,
+	zopf: zopf,
+	Zopf: Zopf,
+	Zscr: Zscr,
+	zscr: zscr,
+	zwj: zwj,
+	zwnj: zwnj
+};
+
+var Aacute = "Á";
+var aacute = "á";
+var Acirc = "Â";
+var acirc = "â";
+var acute = "´";
+var AElig = "Æ";
+var aelig = "æ";
+var Agrave = "À";
+var agrave = "à";
+var amp$1 = "&";
+var AMP = "&";
+var Aring = "Å";
+var aring = "å";
+var Atilde = "Ã";
+var atilde = "ã";
+var Auml = "Ä";
+var auml = "ä";
+var brvbar = "¦";
+var Ccedil = "Ç";
+var ccedil = "ç";
+var cedil = "¸";
+var cent = "¢";
+var copy = "©";
+var COPY = "©";
+var curren = "¤";
+var deg = "°";
+var divide = "÷";
+var Eacute = "É";
+var eacute = "é";
+var Ecirc = "Ê";
+var ecirc = "ê";
+var Egrave = "È";
+var egrave = "è";
+var ETH = "Ð";
+var eth = "ð";
+var Euml = "Ë";
+var euml = "ë";
+var frac12 = "½";
+var frac14 = "¼";
+var frac34 = "¾";
+var gt$1 = ">";
+var GT = ">";
+var Iacute = "Í";
+var iacute = "í";
+var Icirc = "Î";
+var icirc = "î";
+var iexcl = "¡";
+var Igrave = "Ì";
+var igrave = "ì";
+var iquest = "¿";
+var Iuml = "Ï";
+var iuml = "ï";
+var laquo = "«";
+var lt$1 = "<";
+var LT = "<";
+var macr = "¯";
+var micro = "µ";
+var middot = "·";
+var nbsp = " ";
+var not = "¬";
+var Ntilde = "Ñ";
+var ntilde = "ñ";
+var Oacute = "Ó";
+var oacute = "ó";
+var Ocirc = "Ô";
+var ocirc = "ô";
+var Ograve = "Ò";
+var ograve = "ò";
+var ordf = "ª";
+var ordm = "º";
+var Oslash = "Ø";
+var oslash = "ø";
+var Otilde = "Õ";
+var otilde = "õ";
+var Ouml = "Ö";
+var ouml = "ö";
+var para = "¶";
+var plusmn = "±";
+var pound = "£";
+var quot$1 = "\"";
+var QUOT = "\"";
+var raquo = "»";
+var reg = "®";
+var REG = "®";
+var sect = "§";
+var shy = "­";
+var sup1 = "¹";
+var sup2 = "²";
+var sup3 = "³";
+var szlig = "ß";
+var THORN = "Þ";
+var thorn = "þ";
+var times = "×";
+var Uacute = "Ú";
+var uacute = "ú";
+var Ucirc = "Û";
+var ucirc = "û";
+var Ugrave = "Ù";
+var ugrave = "ù";
+var uml = "¨";
+var Uuml = "Ü";
+var uuml = "ü";
+var Yacute = "Ý";
+var yacute = "ý";
+var yen = "¥";
+var yuml = "ÿ";
+var require$$1 = {
+	Aacute: Aacute,
+	aacute: aacute,
+	Acirc: Acirc,
+	acirc: acirc,
+	acute: acute,
+	AElig: AElig,
+	aelig: aelig,
+	Agrave: Agrave,
+	agrave: agrave,
+	amp: amp$1,
+	AMP: AMP,
+	Aring: Aring,
+	aring: aring,
+	Atilde: Atilde,
+	atilde: atilde,
+	Auml: Auml,
+	auml: auml,
+	brvbar: brvbar,
+	Ccedil: Ccedil,
+	ccedil: ccedil,
+	cedil: cedil,
+	cent: cent,
+	copy: copy,
+	COPY: COPY,
+	curren: curren,
+	deg: deg,
+	divide: divide,
+	Eacute: Eacute,
+	eacute: eacute,
+	Ecirc: Ecirc,
+	ecirc: ecirc,
+	Egrave: Egrave,
+	egrave: egrave,
+	ETH: ETH,
+	eth: eth,
+	Euml: Euml,
+	euml: euml,
+	frac12: frac12,
+	frac14: frac14,
+	frac34: frac34,
+	gt: gt$1,
+	GT: GT,
+	Iacute: Iacute,
+	iacute: iacute,
+	Icirc: Icirc,
+	icirc: icirc,
+	iexcl: iexcl,
+	Igrave: Igrave,
+	igrave: igrave,
+	iquest: iquest,
+	Iuml: Iuml,
+	iuml: iuml,
+	laquo: laquo,
+	lt: lt$1,
+	LT: LT,
+	macr: macr,
+	micro: micro,
+	middot: middot,
+	nbsp: nbsp,
+	not: not,
+	Ntilde: Ntilde,
+	ntilde: ntilde,
+	Oacute: Oacute,
+	oacute: oacute,
+	Ocirc: Ocirc,
+	ocirc: ocirc,
+	Ograve: Ograve,
+	ograve: ograve,
+	ordf: ordf,
+	ordm: ordm,
+	Oslash: Oslash,
+	oslash: oslash,
+	Otilde: Otilde,
+	otilde: otilde,
+	Ouml: Ouml,
+	ouml: ouml,
+	para: para,
+	plusmn: plusmn,
+	pound: pound,
+	quot: quot$1,
+	QUOT: QUOT,
+	raquo: raquo,
+	reg: reg,
+	REG: REG,
+	sect: sect,
+	shy: shy,
+	sup1: sup1,
+	sup2: sup2,
+	sup3: sup3,
+	szlig: szlig,
+	THORN: THORN,
+	thorn: thorn,
+	times: times,
+	Uacute: Uacute,
+	uacute: uacute,
+	Ucirc: Ucirc,
+	ucirc: ucirc,
+	Ugrave: Ugrave,
+	ugrave: ugrave,
+	uml: uml,
+	Uuml: Uuml,
+	uuml: uuml,
+	Yacute: Yacute,
+	yacute: yacute,
+	yen: yen,
+	yuml: yuml
+};
+
+var amp = "&";
+var apos = "'";
+var gt = ">";
+var lt = "<";
+var quot = "\"";
+var require$$0$1 = {
+	amp: amp,
+	apos: apos,
+	gt: gt,
+	lt: lt,
+	quot: quot
+};
+
+var decode_codepoint = {};
+
+var require$$0 = {
+	"0": 65533,
+	"128": 8364,
+	"130": 8218,
+	"131": 402,
+	"132": 8222,
+	"133": 8230,
+	"134": 8224,
+	"135": 8225,
+	"136": 710,
+	"137": 8240,
+	"138": 352,
+	"139": 8249,
+	"140": 338,
+	"142": 381,
+	"145": 8216,
+	"146": 8217,
+	"147": 8220,
+	"148": 8221,
+	"149": 8226,
+	"150": 8211,
+	"151": 8212,
+	"152": 732,
+	"153": 8482,
+	"154": 353,
+	"155": 8250,
+	"156": 339,
+	"158": 382,
+	"159": 376
+};
+
+var hasRequiredDecode_codepoint;
+
+function requireDecode_codepoint () {
+	if (hasRequiredDecode_codepoint) return decode_codepoint;
+	hasRequiredDecode_codepoint = 1;
+	var __importDefault = (decode_codepoint && decode_codepoint.__importDefault) || function (mod) {
+	    return (mod && mod.__esModule) ? mod : { "default": mod };
+	};
+	Object.defineProperty(decode_codepoint, "__esModule", { value: true });
+	var decode_json_1 = __importDefault(require$$0);
+	// Adapted from https://github.com/mathiasbynens/he/blob/master/src/he.js#L94-L119
+	var fromCodePoint = 
+	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+	String.fromCodePoint ||
+	    function (codePoint) {
+	        var output = "";
+	        if (codePoint > 0xffff) {
+	            codePoint -= 0x10000;
+	            output += String.fromCharCode(((codePoint >>> 10) & 0x3ff) | 0xd800);
+	            codePoint = 0xdc00 | (codePoint & 0x3ff);
+	        }
+	        output += String.fromCharCode(codePoint);
+	        return output;
+	    };
+	function decodeCodePoint(codePoint) {
+	    if ((codePoint >= 0xd800 && codePoint <= 0xdfff) || codePoint > 0x10ffff) {
+	        return "\uFFFD";
+	    }
+	    if (codePoint in decode_json_1.default) {
+	        codePoint = decode_json_1.default[codePoint];
+	    }
+	    return fromCodePoint(codePoint);
+	}
+	decode_codepoint.default = decodeCodePoint;
+	return decode_codepoint;
+}
+
+var hasRequiredDecode;
+
+function requireDecode () {
+	if (hasRequiredDecode) return decode;
+	hasRequiredDecode = 1;
+	var __importDefault = (decode && decode.__importDefault) || function (mod) {
+	    return (mod && mod.__esModule) ? mod : { "default": mod };
+	};
+	Object.defineProperty(decode, "__esModule", { value: true });
+	decode.decodeHTML = decode.decodeHTMLStrict = decode.decodeXML = void 0;
+	var entities_json_1 = __importDefault(require$$1$1);
+	var legacy_json_1 = __importDefault(require$$1);
+	var xml_json_1 = __importDefault(require$$0$1);
+	var decode_codepoint_1 = __importDefault(/*@__PURE__*/ requireDecode_codepoint());
+	var strictEntityRe = /&(?:[a-zA-Z0-9]+|#[xX][\da-fA-F]+|#\d+);/g;
+	decode.decodeXML = getStrictDecoder(xml_json_1.default);
+	decode.decodeHTMLStrict = getStrictDecoder(entities_json_1.default);
+	function getStrictDecoder(map) {
+	    var replace = getReplacer(map);
+	    return function (str) { return String(str).replace(strictEntityRe, replace); };
+	}
+	var sorter = function (a, b) { return (a < b ? 1 : -1); };
+	decode.decodeHTML = (function () {
+	    var legacy = Object.keys(legacy_json_1.default).sort(sorter);
+	    var keys = Object.keys(entities_json_1.default).sort(sorter);
+	    for (var i = 0, j = 0; i < keys.length; i++) {
+	        if (legacy[j] === keys[i]) {
+	            keys[i] += ";?";
+	            j++;
+	        }
+	        else {
+	            keys[i] += ";";
+	        }
+	    }
+	    var re = new RegExp("&(?:" + keys.join("|") + "|#[xX][\\da-fA-F]+;?|#\\d+;?)", "g");
+	    var replace = getReplacer(entities_json_1.default);
+	    function replacer(str) {
+	        if (str.substr(-1) !== ";")
+	            str += ";";
+	        return replace(str);
+	    }
+	    // TODO consider creating a merged map
+	    return function (str) { return String(str).replace(re, replacer); };
+	})();
+	function getReplacer(map) {
+	    return function replace(str) {
+	        if (str.charAt(1) === "#") {
+	            var secondChar = str.charAt(2);
+	            if (secondChar === "X" || secondChar === "x") {
+	                return decode_codepoint_1.default(parseInt(str.substr(3), 16));
+	            }
+	            return decode_codepoint_1.default(parseInt(str.substr(2), 10));
+	        }
+	        // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+	        return map[str.slice(1, -1)] || str;
+	    };
+	}
+	return decode;
+}
+
+var encode = {};
+
+var hasRequiredEncode;
+
+function requireEncode () {
+	if (hasRequiredEncode) return encode;
+	hasRequiredEncode = 1;
+	var __importDefault = (encode && encode.__importDefault) || function (mod) {
+	    return (mod && mod.__esModule) ? mod : { "default": mod };
+	};
+	Object.defineProperty(encode, "__esModule", { value: true });
+	encode.escapeUTF8 = encode.escape = encode.encodeNonAsciiHTML = encode.encodeHTML = encode.encodeXML = void 0;
+	var xml_json_1 = __importDefault(require$$0$1);
+	var inverseXML = getInverseObj(xml_json_1.default);
+	var xmlReplacer = getInverseReplacer(inverseXML);
+	/**
+	 * Encodes all non-ASCII characters, as well as characters not valid in XML
+	 * documents using XML entities.
+	 *
+	 * If a character has no equivalent entity, a
+	 * numeric hexadecimal reference (eg. `&#xfc;`) will be used.
+	 */
+	encode.encodeXML = getASCIIEncoder(inverseXML);
+	var entities_json_1 = __importDefault(require$$1$1);
+	var inverseHTML = getInverseObj(entities_json_1.default);
+	var htmlReplacer = getInverseReplacer(inverseHTML);
+	/**
+	 * Encodes all entities and non-ASCII characters in the input.
+	 *
+	 * This includes characters that are valid ASCII characters in HTML documents.
+	 * For example `#` will be encoded as `&num;`. To get a more compact output,
+	 * consider using the `encodeNonAsciiHTML` function.
+	 *
+	 * If a character has no equivalent entity, a
+	 * numeric hexadecimal reference (eg. `&#xfc;`) will be used.
+	 */
+	encode.encodeHTML = getInverse(inverseHTML, htmlReplacer);
+	/**
+	 * Encodes all non-ASCII characters, as well as characters not valid in HTML
+	 * documents using HTML entities.
+	 *
+	 * If a character has no equivalent entity, a
+	 * numeric hexadecimal reference (eg. `&#xfc;`) will be used.
+	 */
+	encode.encodeNonAsciiHTML = getASCIIEncoder(inverseHTML);
+	function getInverseObj(obj) {
+	    return Object.keys(obj)
+	        .sort()
+	        .reduce(function (inverse, name) {
+	        inverse[obj[name]] = "&" + name + ";";
+	        return inverse;
+	    }, {});
+	}
+	function getInverseReplacer(inverse) {
+	    var single = [];
+	    var multiple = [];
+	    for (var _i = 0, _a = Object.keys(inverse); _i < _a.length; _i++) {
+	        var k = _a[_i];
+	        if (k.length === 1) {
+	            // Add value to single array
+	            single.push("\\" + k);
+	        }
+	        else {
+	            // Add value to multiple array
+	            multiple.push(k);
+	        }
+	    }
+	    // Add ranges to single characters.
+	    single.sort();
+	    for (var start = 0; start < single.length - 1; start++) {
+	        // Find the end of a run of characters
+	        var end = start;
+	        while (end < single.length - 1 &&
+	            single[end].charCodeAt(1) + 1 === single[end + 1].charCodeAt(1)) {
+	            end += 1;
+	        }
+	        var count = 1 + end - start;
+	        // We want to replace at least three characters
+	        if (count < 3)
+	            continue;
+	        single.splice(start, count, single[start] + "-" + single[end]);
+	    }
+	    multiple.unshift("[" + single.join("") + "]");
+	    return new RegExp(multiple.join("|"), "g");
+	}
+	// /[^\0-\x7F]/gu
+	var reNonASCII = /(?:[\x80-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])/g;
+	var getCodePoint = 
+	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+	String.prototype.codePointAt != null
+	    ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+	        function (str) { return str.codePointAt(0); }
+	    : // http://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
+	        function (c) {
+	            return (c.charCodeAt(0) - 0xd800) * 0x400 +
+	                c.charCodeAt(1) -
+	                0xdc00 +
+	                0x10000;
+	        };
+	function singleCharReplacer(c) {
+	    return "&#x" + (c.length > 1 ? getCodePoint(c) : c.charCodeAt(0))
+	        .toString(16)
+	        .toUpperCase() + ";";
+	}
+	function getInverse(inverse, re) {
+	    return function (data) {
+	        return data
+	            .replace(re, function (name) { return inverse[name]; })
+	            .replace(reNonASCII, singleCharReplacer);
+	    };
+	}
+	var reEscapeChars = new RegExp(xmlReplacer.source + "|" + reNonASCII.source, "g");
+	/**
+	 * Encodes all non-ASCII characters, as well as characters not valid in XML
+	 * documents using numeric hexadecimal reference (eg. `&#xfc;`).
+	 *
+	 * Have a look at `escapeUTF8` if you want a more concise output at the expense
+	 * of reduced transportability.
+	 *
+	 * @param data String to escape.
+	 */
+	function escape(data) {
+	    return data.replace(reEscapeChars, singleCharReplacer);
+	}
+	encode.escape = escape;
+	/**
+	 * Encodes all characters not valid in XML documents using numeric hexadecimal
+	 * reference (eg. `&#xfc;`).
+	 *
+	 * Note that the output will be character-set dependent.
+	 *
+	 * @param data String to escape.
+	 */
+	function escapeUTF8(data) {
+	    return data.replace(xmlReplacer, singleCharReplacer);
+	}
+	encode.escapeUTF8 = escapeUTF8;
+	function getASCIIEncoder(obj) {
+	    return function (data) {
+	        return data.replace(reEscapeChars, function (c) { return obj[c] || singleCharReplacer(c); });
+	    };
+	}
+	return encode;
+}
+
+var hasRequiredLib;
+
+function requireLib () {
+	if (hasRequiredLib) return lib;
+	hasRequiredLib = 1;
+	(function (exports) {
+		Object.defineProperty(exports, "__esModule", { value: true });
+		exports.decodeXMLStrict = exports.decodeHTML5Strict = exports.decodeHTML4Strict = exports.decodeHTML5 = exports.decodeHTML4 = exports.decodeHTMLStrict = exports.decodeHTML = exports.decodeXML = exports.encodeHTML5 = exports.encodeHTML4 = exports.escapeUTF8 = exports.escape = exports.encodeNonAsciiHTML = exports.encodeHTML = exports.encodeXML = exports.encode = exports.decodeStrict = exports.decode = void 0;
+		var decode_1 = /*@__PURE__*/ requireDecode();
+		var encode_1 = /*@__PURE__*/ requireEncode();
+		/**
+		 * Decodes a string with entities.
+		 *
+		 * @param data String to decode.
+		 * @param level Optional level to decode at. 0 = XML, 1 = HTML. Default is 0.
+		 * @deprecated Use `decodeXML` or `decodeHTML` directly.
+		 */
+		function decode(data, level) {
+		    return (!level || level <= 0 ? decode_1.decodeXML : decode_1.decodeHTML)(data);
+		}
+		exports.decode = decode;
+		/**
+		 * Decodes a string with entities. Does not allow missing trailing semicolons for entities.
+		 *
+		 * @param data String to decode.
+		 * @param level Optional level to decode at. 0 = XML, 1 = HTML. Default is 0.
+		 * @deprecated Use `decodeHTMLStrict` or `decodeXML` directly.
+		 */
+		function decodeStrict(data, level) {
+		    return (!level || level <= 0 ? decode_1.decodeXML : decode_1.decodeHTMLStrict)(data);
+		}
+		exports.decodeStrict = decodeStrict;
+		/**
+		 * Encodes a string with entities.
+		 *
+		 * @param data String to encode.
+		 * @param level Optional level to encode at. 0 = XML, 1 = HTML. Default is 0.
+		 * @deprecated Use `encodeHTML`, `encodeXML` or `encodeNonAsciiHTML` directly.
+		 */
+		function encode(data, level) {
+		    return (!level || level <= 0 ? encode_1.encodeXML : encode_1.encodeHTML)(data);
+		}
+		exports.encode = encode;
+		var encode_2 = /*@__PURE__*/ requireEncode();
+		Object.defineProperty(exports, "encodeXML", { enumerable: true, get: function () { return encode_2.encodeXML; } });
+		Object.defineProperty(exports, "encodeHTML", { enumerable: true, get: function () { return encode_2.encodeHTML; } });
+		Object.defineProperty(exports, "encodeNonAsciiHTML", { enumerable: true, get: function () { return encode_2.encodeNonAsciiHTML; } });
+		Object.defineProperty(exports, "escape", { enumerable: true, get: function () { return encode_2.escape; } });
+		Object.defineProperty(exports, "escapeUTF8", { enumerable: true, get: function () { return encode_2.escapeUTF8; } });
+		// Legacy aliases (deprecated)
+		Object.defineProperty(exports, "encodeHTML4", { enumerable: true, get: function () { return encode_2.encodeHTML; } });
+		Object.defineProperty(exports, "encodeHTML5", { enumerable: true, get: function () { return encode_2.encodeHTML; } });
+		var decode_2 = /*@__PURE__*/ requireDecode();
+		Object.defineProperty(exports, "decodeXML", { enumerable: true, get: function () { return decode_2.decodeXML; } });
+		Object.defineProperty(exports, "decodeHTML", { enumerable: true, get: function () { return decode_2.decodeHTML; } });
+		Object.defineProperty(exports, "decodeHTMLStrict", { enumerable: true, get: function () { return decode_2.decodeHTMLStrict; } });
+		// Legacy aliases (deprecated)
+		Object.defineProperty(exports, "decodeHTML4", { enumerable: true, get: function () { return decode_2.decodeHTML; } });
+		Object.defineProperty(exports, "decodeHTML5", { enumerable: true, get: function () { return decode_2.decodeHTML; } });
+		Object.defineProperty(exports, "decodeHTML4Strict", { enumerable: true, get: function () { return decode_2.decodeHTMLStrict; } });
+		Object.defineProperty(exports, "decodeHTML5Strict", { enumerable: true, get: function () { return decode_2.decodeHTMLStrict; } });
+		Object.defineProperty(exports, "decodeXMLStrict", { enumerable: true, get: function () { return decode_2.decodeXML; } }); 
+	} (lib));
+	return lib;
+}
+
+var hasRequiredUtils;
+
+function requireUtils () {
+	if (hasRequiredUtils) return utils.exports;
+	hasRequiredUtils = 1;
+	const utils$1 = utils.exports = {};
+	const entities = /*@__PURE__*/ requireLib();
+	const xml2js = requireXml2js();
+
+	utils$1.stripHtml = function(str) {
+	  str = str.replace(/([^\n])<\/?(h|br|p|ul|ol|li|blockquote|section|table|tr|div)(?:.|\n)*?>([^\n])/gm, '$1\n$3');
+	  str = str.replace(/<(?:.|\n)*?>/gm, '');
+	  return str;
+	};
+
+	utils$1.getSnippet = function(str) {
+	  return entities.decodeHTML(utils$1.stripHtml(str)).trim();
+	};
+
+	utils$1.getLink = function(links, rel, fallbackIdx) {
+	  if (!links) return;
+	  for (let i = 0; i < links.length; ++i) {
+	    if (links[i].$.rel === rel) return links[i].$.href;
+	  }
+	  if (links[fallbackIdx]) return links[fallbackIdx].$.href;
+	};
+
+	utils$1.getContent = function(content) {
+	  if (typeof content._ === 'string') {
+	    return content._;
+	  } else if (typeof content === 'object') {
+	    let builder = new xml2js.Builder({headless: true, explicitRoot: true, rootName: 'div', renderOpts: {pretty: false}});
+	    return builder.buildObject(content);
+	  } else {
+	    return content;
+	  }
+	};
+
+	utils$1.copyFromXML = function(xml, dest, fields) {
+	  fields.forEach(function(f) {
+	    let from = f;
+	    let to = f;
+	    let options = {};
+	    if (Array.isArray(f)) {
+	      from = f[0];
+	      to = f[1];
+	      if (f.length > 2) {
+	        options = f[2];
+	      }
+	    }
+	    const { keepArray, includeSnippet } = options;
+	    if (xml[from] !== undefined){
+	      dest[to] = keepArray ? xml[from] : xml[from][0];
+	    }
+	    if (dest[to] && typeof dest[to]._ === 'string') {
+	      dest[to]=dest[to]._;
+	    }
+	    if (includeSnippet && dest[to] && typeof dest[to] === 'string') {
+	      dest[to + 'Snippet'] = utils$1.getSnippet(dest[to]);
+	    }
+	  });
+	};
+
+	utils$1.maybePromisify = function(callback, promise) {
+	  if (!callback) return promise;
+	  return promise.then(
+	    data => setTimeout(() => callback(null, data)),
+	    err => setTimeout(() => callback(err))
+	  );
+	};
+
+	const DEFAULT_ENCODING = 'utf8';
+	const ENCODING_REGEX = /(encoding|charset)\s*=\s*(\S+)/;
+	const SUPPORTED_ENCODINGS = ['ascii', 'utf8', 'utf16le', 'ucs2', 'base64', 'latin1', 'binary', 'hex'];
+	const ENCODING_ALIASES = {
+	  'utf-8': 'utf8',
+	  'iso-8859-1': 'latin1',
+	};
+
+	utils$1.getEncodingFromContentType = function(contentType) {
+	  contentType = contentType || '';
+	  let match = contentType.match(ENCODING_REGEX);
+	  let encoding = (match || [])[2] || '';
+	  encoding = encoding.toLowerCase();
+	  encoding = ENCODING_ALIASES[encoding] || encoding;
+	  if (!encoding || SUPPORTED_ENCODINGS.indexOf(encoding) === -1) {
+	    encoding = DEFAULT_ENCODING;
+	  }
+	  return encoding;
+	};
+	return utils.exports;
+}
+
+var parser;
+var hasRequiredParser;
+
+function requireParser () {
+	if (hasRequiredParser) return parser;
+	hasRequiredParser = 1;
+	const http = require$$2;
+	const https = require$$1$3;
+	const xml2js = requireXml2js();
+	const url = require$$1$7;
+
+	const fields = requireFields();
+	const utils = requireUtils();
+
+	const DEFAULT_HEADERS = {
+	  'User-Agent': 'rss-parser',
+	  'Accept': 'application/rss+xml',
+	};
+	const DEFAULT_MAX_REDIRECTS = 5;
+	const DEFAULT_TIMEOUT = 60000;
+
+	class Parser {
+	  constructor(options={}) {
+	    options.headers = options.headers || {};
+	    options.xml2js = options.xml2js || {};
+	    options.customFields = options.customFields || {};
+	    options.customFields.item = options.customFields.item || [];
+	    options.customFields.feed = options.customFields.feed || [];
+	    options.requestOptions = options.requestOptions || {};
+	    if (!options.maxRedirects) options.maxRedirects = DEFAULT_MAX_REDIRECTS;
+	    if (!options.timeout) options.timeout = DEFAULT_TIMEOUT;
+	    this.options = options;
+	    this.xmlParser = new xml2js.Parser(this.options.xml2js);
+	  }
+
+	  parseString(xml, callback) {
+	    let prom = new Promise((resolve, reject) => {
+	      this.xmlParser.parseString(xml, (err, result) => {
+	        if (err) return reject(err);
+	        if (!result) {
+	          return reject(new Error('Unable to parse XML.'));
+	        }
+	        let feed = null;
+	        if (result.feed) {
+	          feed = this.buildAtomFeed(result);
+	        } else if (result.rss && result.rss.$ && result.rss.$.version && result.rss.$.version.match(/^2/)) {
+	          feed = this.buildRSS2(result);
+	        } else if (result['rdf:RDF']) {
+	          feed = this.buildRSS1(result);
+	        } else if (result.rss && result.rss.$ && result.rss.$.version && result.rss.$.version.match(/0\.9/)) {
+	          feed = this.buildRSS0_9(result);
+	        } else if (result.rss && this.options.defaultRSS) {
+	          switch(this.options.defaultRSS) {
+	            case 0.9:
+	              feed = this.buildRSS0_9(result);
+	              break;
+	            case 1:
+	              feed = this.buildRSS1(result);
+	              break;
+	            case 2:
+	              feed = this.buildRSS2(result);
+	              break;
+	            default:
+	              return reject(new Error("default RSS version not recognized."))
+	          }
+	        } else {
+	          return reject(new Error("Feed not recognized as RSS 1 or 2."))
+	        }
+	        resolve(feed);
+	      });
+	    });
+	    prom = utils.maybePromisify(callback, prom);
+	    return prom;
+	  }
+
+	  parseURL(feedUrl, callback, redirectCount=0) {
+	    let xml = '';
+	    let get = feedUrl.indexOf('https') === 0 ? https.get : http.get;
+	    let urlParts = url.parse(feedUrl);
+	    let headers = Object.assign({}, DEFAULT_HEADERS, this.options.headers);
+	    let timeout = null;
+	    let prom = new Promise((resolve, reject) => {
+	      const requestOpts = Object.assign({headers}, urlParts, this.options.requestOptions);
+	      let req = get(requestOpts, (res) => {
+	        if (this.options.maxRedirects && res.statusCode >= 300 && res.statusCode < 400 && res.headers['location']) {
+	          if (redirectCount === this.options.maxRedirects) {
+	            return reject(new Error("Too many redirects"));
+	          } else {
+	            const newLocation = url.resolve(feedUrl, res.headers['location']);
+	            return this.parseURL(newLocation, null, redirectCount + 1).then(resolve, reject);
+	          }
+	        } else if (res.statusCode >= 300) {
+	          return reject(new Error("Status code " + res.statusCode))
+	        }
+	        let encoding = utils.getEncodingFromContentType(res.headers['content-type']);
+	        res.setEncoding(encoding);
+	        res.on('data', (chunk) => {
+	          xml += chunk;
+	        });
+	        res.on('end', () => {
+	          return this.parseString(xml).then(resolve, reject);
+	        });
+	      });
+	      req.on('error', reject);
+	      timeout = setTimeout(() => {
+	        return reject(new Error("Request timed out after " + this.options.timeout + "ms"));
+	      }, this.options.timeout);
+	    }).then(data => {
+	      clearTimeout(timeout);
+	      return Promise.resolve(data);
+	    }, e => {
+	      clearTimeout(timeout);
+	      return Promise.reject(e);
+	    });
+	    prom = utils.maybePromisify(callback, prom);
+	    return prom;
+	  }
+
+	  buildAtomFeed(xmlObj) {
+	    let feed = {items: []};
+	    utils.copyFromXML(xmlObj.feed, feed, this.options.customFields.feed);
+	    if (xmlObj.feed.link) {
+	      feed.link = utils.getLink(xmlObj.feed.link, 'alternate', 0);
+	      feed.feedUrl = utils.getLink(xmlObj.feed.link, 'self', 1);
+	    }
+	    if (xmlObj.feed.title) {
+	      let title = xmlObj.feed.title[0] || '';
+	      if (title._) title = title._;
+	      if (title) feed.title = title;
+	    }
+	    if (xmlObj.feed.updated) {
+	      feed.lastBuildDate = xmlObj.feed.updated[0];
+	    }
+	    feed.items = (xmlObj.feed.entry || []).map(entry => this.parseItemAtom(entry));
+	    return feed;
+	  }
+
+	  parseItemAtom(entry) {
+	    let item = {};
+	    utils.copyFromXML(entry, item, this.options.customFields.item);
+	    if (entry.title) {
+	      let title = entry.title[0] || '';
+	      if (title._) title = title._;
+	      if (title) item.title = title;
+	    }
+	    if (entry.link && entry.link.length) {
+	      item.link = utils.getLink(entry.link, 'alternate', 0);
+	    }
+	    if (entry.published && entry.published.length && entry.published[0].length) item.pubDate = new Date(entry.published[0]).toISOString();
+	    if (!item.pubDate && entry.updated && entry.updated.length && entry.updated[0].length) item.pubDate = new Date(entry.updated[0]).toISOString();
+	    if (entry.author && entry.author.length && entry.author[0].name && entry.author[0].name.length) item.author = entry.author[0].name[0];
+	    if (entry.content && entry.content.length) {
+	      item.content = utils.getContent(entry.content[0]);
+	      item.contentSnippet = utils.getSnippet(item.content);
+	    }
+	    if (entry.summary && entry.summary.length) {
+	      item.summary = utils.getContent(entry.summary[0]);
+	    }
+	    if (entry.id) {
+	      item.id = entry.id[0];
+	    }
+	    this.setISODate(item);
+	    return item;
+	  }
+
+	  buildRSS0_9(xmlObj) {
+	    var channel = xmlObj.rss.channel[0];
+	    var items = channel.item;
+	    return this.buildRSS(channel, items);
+	  }
+
+	  buildRSS1(xmlObj) {
+	    xmlObj = xmlObj['rdf:RDF'];
+	    let channel = xmlObj.channel[0];
+	    let items = xmlObj.item;
+	    return this.buildRSS(channel, items);
+	  }
+
+	  buildRSS2(xmlObj) {
+	    let channel = xmlObj.rss.channel[0];
+	    let items = channel.item;
+	    let feed = this.buildRSS(channel, items);
+	    if (xmlObj.rss.$ && xmlObj.rss.$['xmlns:itunes']) {
+	      this.decorateItunes(feed, channel);
+	    }
+	    return feed;
+	  }
+
+	  buildRSS(channel, items) {
+	    items = items || [];
+	    let feed = {items: []};
+	    let feedFields = fields.feed.concat(this.options.customFields.feed);
+	    let itemFields = fields.item.concat(this.options.customFields.item);
+	    if (channel['atom:link'] && channel['atom:link'][0] && channel['atom:link'][0].$) {
+	      feed.feedUrl = channel['atom:link'][0].$.href;
+	    }
+	    if (channel.image && channel.image[0] && channel.image[0].url) {
+	      feed.image = {};
+	      let image = channel.image[0];
+	      if (image.link) feed.image.link = image.link[0];
+	      if (image.url) feed.image.url = image.url[0];
+	      if (image.title) feed.image.title = image.title[0];
+	      if (image.width) feed.image.width = image.width[0];
+	      if (image.height) feed.image.height = image.height[0];
+	    }
+	    const paginationLinks = this.generatePaginationLinks(channel);
+	    if (Object.keys(paginationLinks).length) {
+	      feed.paginationLinks = paginationLinks;
+	    }
+	    utils.copyFromXML(channel, feed, feedFields);
+	    feed.items = items.map(xmlItem => this.parseItemRss(xmlItem, itemFields));
+	    return feed;
+	  }
+
+	  parseItemRss(xmlItem, itemFields) {
+	    let item = {};
+	    utils.copyFromXML(xmlItem, item, itemFields);
+	    if (xmlItem.enclosure) {
+	      item.enclosure = xmlItem.enclosure[0].$;
+	    }
+	    if (xmlItem.description) {
+	      item.content = utils.getContent(xmlItem.description[0]);
+	      item.contentSnippet = utils.getSnippet(item.content);
+	    }
+	    if (xmlItem.guid) {
+	      item.guid = xmlItem.guid[0];
+	      if (item.guid._) item.guid = item.guid._;
+	    }
+	    if (xmlItem.$ && xmlItem.$['rdf:about']) {
+	      item['rdf:about'] = xmlItem.$['rdf:about'];
+	    }
+	    if (xmlItem.category) item.categories = xmlItem.category;
+	    this.setISODate(item);
+	    return item;
+	  }
+
+	  /**
+	   * Add iTunes specific fields from XML to extracted JSON
+	   *
+	   * @access public
+	   * @param {object} feed extracted
+	   * @param {object} channel parsed XML
+	   */
+	  decorateItunes(feed, channel) {
+	    let items = channel.item || [];
+	    feed.itunes = {};
+
+	    if (channel['itunes:owner']) {
+	      let owner = {};
+
+	      if(channel['itunes:owner'][0]['itunes:name']) {
+	        owner.name = channel['itunes:owner'][0]['itunes:name'][0];
+	      }
+	      if(channel['itunes:owner'][0]['itunes:email']) {
+	        owner.email = channel['itunes:owner'][0]['itunes:email'][0];
+	      }
+	      feed.itunes.owner = owner;
+	    }
+
+	    if (channel['itunes:image']) {
+	      let image;
+	      let hasImageHref = (channel['itunes:image'][0] &&
+	        channel['itunes:image'][0].$ &&
+	        channel['itunes:image'][0].$.href);
+	      image = hasImageHref ? channel['itunes:image'][0].$.href : null;
+	      if (image) {
+	        feed.itunes.image = image;
+	      }
+	    }
+
+	    if (channel['itunes:category']) {
+	      const categoriesWithSubs = channel['itunes:category'].map((category) => {
+	        return {
+	          name: category && category.$ && category.$.text,
+	          subs: category['itunes:category'] ?
+	            category['itunes:category']
+	              .map((subcategory) => ({
+	                name: subcategory && subcategory.$ && subcategory.$.text
+	              })) : null,
+	        };
+	      });
+
+	      feed.itunes.categories = categoriesWithSubs.map((category) => category.name);
+	      feed.itunes.categoriesWithSubs = categoriesWithSubs;
+	    }
+
+	    if (channel['itunes:keywords']) {
+	      if (channel['itunes:keywords'].length > 1) {
+	        feed.itunes.keywords = channel['itunes:keywords'].map(
+	          keyword => keyword && keyword.$ && keyword.$.text
+	        );
+	      } else {
+	        let keywords = channel['itunes:keywords'][0];
+	        if (keywords && typeof keywords._ === 'string') {
+	          keywords = keywords._;
+	        }
+
+	        if (keywords && keywords.$ && keywords.$.text) {
+	          feed.itunes.keywords = keywords.$.text.split(',');
+	        } else if (typeof keywords === "string") {
+	          feed.itunes.keywords = keywords.split(',');
+	        }
+	      }
+	    }
+
+	    utils.copyFromXML(channel, feed.itunes, fields.podcastFeed);
+	    items.forEach((item, index) => {
+	      let entry = feed.items[index];
+	      entry.itunes = {};
+	      utils.copyFromXML(item, entry.itunes, fields.podcastItem);
+	      let image = item['itunes:image'];
+	      if (image && image[0] && image[0].$ && image[0].$.href) {
+	        entry.itunes.image = image[0].$.href;
+	      }
+	    });
+	  }
+
+	  setISODate(item) {
+	    let date = item.pubDate || item.date;
+	    if (date) {
+	      try {
+	        item.isoDate = new Date(date.trim()).toISOString();
+	      } catch (e) {
+	        // Ignore bad date format
+	      }
+	    }
+	  }
+
+	  /**
+	   * Generates a pagination object where the rel attribute is the key and href attribute is the value
+	   *  { self: 'self-url', first: 'first-url', ...  }
+	   *
+	   * @access private
+	   * @param {Object} channel parsed XML
+	   * @returns {Object}
+	   */
+	  generatePaginationLinks(channel) {
+	    if (!channel['atom:link']) {
+	      return {};
+	    }
+	    const paginationRelAttributes = ['self', 'first', 'next', 'prev', 'last'];
+
+	    return channel['atom:link'].reduce((paginationLinks, link) => {
+	      if (!link.$ || !paginationRelAttributes.includes(link.$.rel)) {
+	        return paginationLinks;
+	      }
+	      paginationLinks[link.$.rel] = link.$.href;
+	      return paginationLinks;
+	    }, {});
+	  }
+	}
+
+	parser = Parser;
+	return parser;
+}
+
+var rssParser;
+var hasRequiredRssParser;
+
+function requireRssParser () {
+	if (hasRequiredRssParser) return rssParser;
+	hasRequiredRssParser = 1;
+
+	rssParser = requireParser();
+	return rssParser;
+}
+
+var rssParserExports = requireRssParser();
+var Parser = /*@__PURE__*/getDefaultExportFromCjs(rssParserExports);
+
+function findNewItems(items, state) {
+    const newItems = items.filter(item => {
+        const id = item[state.idField];
+        return id ? !state.readIds.includes(id) : false;
+    });
+    const newState = {
+        ...state,
+        readIds: [...state.readIds, ...newItems.map(item => item[state.idField])],
+    };
+    return { newItems, newState };
+}
+function initializeState(items) {
+    if (items.length === 0) {
+        throw new Error('Cannot initialize state from empty feed.');
+    }
+    const item = items[0];
+    let idField;
+    if ('guid' in item && item.guid) {
+        idField = 'guid';
+    }
+    else if ('link' in item && item.link) {
+        idField = 'link';
+    }
+    else if ('pubDate' in item && item.pubDate) {
+        idField = 'pubDate';
+    }
+    else {
+        throw new Error('No valid ID field found in feed items.');
+    }
+    return {
+        idField,
+        readIds: [],
+    };
+}
+
+async function run(deps) {
     try {
-        const ms = coreExports.getInput('milliseconds');
-        // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-        coreExports.debug(`Waiting ${ms} milliseconds ...`);
-        // Log the current timestamp, wait, then log the new timestamp
-        coreExports.debug(new Date().toTimeString());
-        await wait(parseInt(ms, 10));
-        coreExports.debug(new Date().toTimeString());
-        // Set outputs for other workflow steps to use
-        coreExports.setOutput('time', new Date().toTimeString());
+        const feedUrl = deps.getInput('feed-url');
+        const stateFilePath = deps.getInput('state-file-path') || './rss-state.json';
+        const feed = await deps.fetchFeed(feedUrl);
+        if (feed.items.length === 0) {
+            deps.info('Feed contains no item');
+            return;
+        }
+        const currentState = deps.readState(stateFilePath) ?? initializeState(feed.items);
+        const { newItems, newState } = findNewItems(feed.items, currentState);
+        deps.setOutput('has-new-items', newItems.length > 0);
+        deps.setOutput('new-items', newItems);
+        deps.writeState(stateFilePath, newState);
     }
     catch (error) {
-        // Fail the workflow run if an error occurs
-        if (error instanceof Error)
-            coreExports.setFailed(error.message);
+        if (error instanceof Error) {
+            deps.setFailed(error.message);
+        }
     }
+}
+async function main() {
+    const parser = new Parser();
+    const dependencies = {
+        getInput: coreExports.getInput,
+        setOutput: coreExports.setOutput,
+        info: coreExports.info,
+        setFailed: coreExports.setFailed,
+        fetchFeed: async (url) => parser.parseURL(url),
+        readState: (path) => {
+            if (existsSync(path)) {
+                const data = readFileSync(path, 'utf-8');
+                return JSON.parse(data);
+            }
+            return null;
+        },
+        writeState: (path, state) => {
+            writeFileSync(path, JSON.stringify(state));
+        },
+    };
+    await run(dependencies);
 }
 
 /**
@@ -27289,5 +39480,5 @@ async function run() {
  * main logic.
  */
 /* istanbul ignore next */
-run();
+main();
 //# sourceMappingURL=index.js.map
