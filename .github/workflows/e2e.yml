@@ -20,7 +20,8 @@ jobs:
             - name: Show result
               env:
                 OUTPUT: ${{ toJson(steps.subscribe-feed.outputs) }}
-              run: echo "Output: $OUTPUT"
+              run: |
+                echo "Output: $OUTPUT"
 
             - name: Show updated state file
               run: cat ./state.json
