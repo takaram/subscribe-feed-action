@@ -23,25 +23,21 @@ describe('feed.ts', () => {
     it('should throw error if no valid id field is found', () => {
       const items: FeedItem[] = [{ title: 'test' }];
       expect(() => initializeState(items)).toThrow(
-        'No valid ID field found in feed items.'
+        'No valid ID field found in feed items.',
       );
     });
 
     it('should throw error for empty feed', () => {
       const items: FeedItem[] = [];
       expect(() => initializeState(items)).toThrow(
-        'Cannot initialize state from empty feed.'
+        'Cannot initialize state from empty feed.',
       );
     });
   });
 
   describe('findNewItems', () => {
     it('should return new items and updated state', () => {
-      const items: FeedItem[] = [
-        { guid: '1' },
-        { guid: '2' },
-        { guid: '3' },
-      ];
+      const items: FeedItem[] = [{ guid: '1' }, { guid: '2' }, { guid: '3' }];
       const state = { idField: 'guid' as const, readIds: ['1'] };
 
       const { newItems, newState } = findNewItems(items, state);

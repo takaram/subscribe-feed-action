@@ -5,10 +5,10 @@ import { findNewItems, initializeState, State } from './feed';
 
 export interface Dependencies {
   getInput: (name: string) => string;
-  setOutput: (name: string, value: any) => void;
+  setOutput: (name: string, value: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
   info: (message: string) => void;
   setFailed: (message: string) => void;
-  fetchFeed: (url: string) => Promise<Parser.Output<{[key: string]: any}>>;
+  fetchFeed: (url: string) => Promise<Parser.Output<{ [key: string]: any }>>; // eslint-disable-line @typescript-eslint/no-explicit-any
   readState: (path: string) => State | null;
   writeState: (path: string, state: State) => void;
 }
@@ -26,7 +26,8 @@ export async function run(deps: Dependencies): Promise<void> {
       return;
     }
 
-    const currentState = deps.readState(stateFilePath) ?? initializeState(feed.items);
+    const currentState =
+      deps.readState(stateFilePath) ?? initializeState(feed.items);
 
     const { newItems, newState } = findNewItems(feed.items, currentState);
 

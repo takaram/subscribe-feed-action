@@ -4,7 +4,7 @@ export type State = {
 };
 
 export type FeedItem = {
-  [key: string]: any;
+  [key: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   guid?: string;
   link?: string;
   pubDate?: string;
@@ -17,7 +17,7 @@ export type FindNewItemsResult = {
 
 export function findNewItems(
   items: FeedItem[],
-  state: State
+  state: State,
 ): FindNewItemsResult {
   const newItems = items.filter(item => {
     const id = item[state.idField];
