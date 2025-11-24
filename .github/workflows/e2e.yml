@@ -9,8 +9,6 @@ jobs:
             - name: Checkout repository
               uses: actions/checkout@v5
 
-            - run: echo '{}' > ./state.json
-
             - id: subscribe-feed
               uses: ./
               with:
