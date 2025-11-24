@@ -5,9 +5,26 @@ on:
 jobs:
     e2e-test:
         runs-on: ubuntu-latest
+        env:
+            TEST_STATE: |
+                {
+                    "idField":"guid",
+                    "readIds":[
+                        "https://github.blog/changelog/2025-11-20-linter-integration-with-copilot-code-review-now-in-public-preview",
+                        "https://github.blog/changelog/2025-11-20-enterprise-bring-your-own-key-byok-for-github-copilot-is-now-in-public-preview",
+                        "https://github.blog/changelog/2025-11-19-codeql-2-23-5-adds-support-for-swift-6-2-new-java-queries-and-improved-analysis-accuracy",
+                        "https://github.blog/changelog/2025-11-18-github-copilot-cli-new-models-enhanced-code-search-and-better-image-support",
+                        "https://github.blog/changelog/2025-11-17-gemini-3-pro-is-in-public-preview-for-github-copilot",
+                        "https://github.blog/changelog/2025-11-17-auto-model-selection-for-copilot-in-jetbrains-ides-xcode-and-eclipse-in-public-preview",
+                        "https://github.blog/changelog/2025-11-17-enhanced-mcp-oauth-support-for-github-copilot-in-jetbrains-eclipse-and-xcode",
+                        "https://github.blog/changelog/2025-11-17-custom-agents-available-in-github-copilot-for-jetbrains-eclipse-and-xcode-now-in-public-preview"
+                    ]
+                }
         steps:
             - name: Checkout repository
               uses: actions/checkout@v5
+
+            - run: printenv TEST_STATE > ./state.json
 
             - id: subscribe-feed
               uses: ./
