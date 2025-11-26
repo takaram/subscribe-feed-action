@@ -49,7 +49,7 @@ export async function main(): Promise<void> {
     setOutput: core.setOutput,
     info: core.info,
     setFailed: core.setFailed,
-    fetchFeed: async (url: string) => parser.parseURL(url),
+    fetchFeed: (url: string) => parser.parseURL(url),
     readState: (path: string): State | null => {
       if (existsSync(path)) {
         const data = readFileSync(path, 'utf-8');

@@ -39460,7 +39460,7 @@ async function main() {
         setOutput: coreExports.setOutput,
         info: coreExports.info,
         setFailed: coreExports.setFailed,
-        fetchFeed: async (url) => parser.parseURL(url),
+        fetchFeed: (url) => parser.parseURL(url),
         readState: (path) => {
             if (existsSync(path)) {
                 const data = readFileSync(path, 'utf-8');
